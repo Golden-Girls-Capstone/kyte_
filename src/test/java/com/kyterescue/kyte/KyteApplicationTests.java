@@ -1,0 +1,13 @@
+package com.kyterescue.kyte;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class KyteApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

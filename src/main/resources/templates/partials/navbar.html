@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xlms:th="http://www.thymeleaf.org" xmlns:xlms="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="navbar">
+    <nav class="navbar navbar-default bg-light mb-3 border">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="" href="">Kyte Rescue</a>
+            </div>
+            <ul class="">
+                <li><a href="/Browse">Browse</a></li>
+                <li><a href="/About">About</a></li>
+                <li><a href="/About"></a>Partners</li>
+                <li class=""><a href="/login">Login/Sign Up</a></li>
+                <nav>
+                    <ul>
+                        <!-- More links here... -->
+                        <li>
+                            <form th:action="@{/logout}" th:method="post">
+                                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>
