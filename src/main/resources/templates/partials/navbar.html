@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en" xlms:th="http://www.thymeleaf.org" xmlns:xlms="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+
 <div th:fragment="navbar">
     <nav class="navbar navbar-default bg-light mb-3 border">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="" href="">Kyte Rescue</a>
+<!--                <img> *INSERT LOGO HERE*-->
+                <a class="navbar-brand" href="/home">Kyte Rescue</a>
             </div>
-            <ul class="">
-                <li><a href="/Browse">Browse</a></li>
-                <li><a href="/About">About</a></li>
-                <li><a href="/About"></a>Partners</li>
-                <li class=""><a href="/login">Login/Sign Up</a></li>
+            <ul class="navbar-nav navbar-right navbar-expand">
+                <li><a href="/browse">Browse</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/partners">Partners</a></li>
+<!--                *PROFILE PIC LOGO*-->
                 <nav>
                     <ul>
                         <!-- More links here... -->
@@ -31,5 +25,5 @@
         </div>
     </nav>
 </div>
-</body>
-</html>
+
+
