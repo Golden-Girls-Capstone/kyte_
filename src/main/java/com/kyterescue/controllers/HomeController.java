@@ -8,6 +8,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String landing() {
-        return "landing/index";
+        System.out.println("Inside landing HomeController method");
+        return "landing/landing";
     }
 }
