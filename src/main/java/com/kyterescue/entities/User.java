@@ -29,7 +29,7 @@ public class User {
     @Column(nullable = false)
     private boolean approvalStatus;
 
-    @Column(columnDefinition = "UNSIGNED INT(11)")
+    @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
 
     public User() {
