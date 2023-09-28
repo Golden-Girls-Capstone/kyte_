@@ -29,7 +29,7 @@ public class User {
     @Column(nullable = false)
     private boolean approvalStatus;
 
-    @Column(columnDefinition = "UNSIGNED INT(11)")
+    @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
 
     public User() {
@@ -82,6 +82,13 @@ public class User {
         this.picture = picture;
         this.approvalStatus = approvalStatus;
         this.zipcode = zipcode;
+    }
+
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
     }
 
     public long getId() {
