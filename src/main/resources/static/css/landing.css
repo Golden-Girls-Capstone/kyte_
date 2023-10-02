@@ -9,7 +9,7 @@ body{
     width: 102%;
     overflow: hidden;
     filter: opacity(90%);
-    height: 80vh;
+    height: 90vh;
 }
 
 .text-overlay {
@@ -76,3 +76,7 @@ li {
     list-style-type: none;
 }
 
+.navbar{
+    z-index: 2;
+
+}
