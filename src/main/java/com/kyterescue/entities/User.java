@@ -1,5 +1,6 @@
 package com.kyterescue.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
@@ -34,9 +35,17 @@ public class User {
     @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
 
-
     @ManyToMany(mappedBy = "users")
     private List<Badge> badges;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "user_favorite_pets",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "pet_id")
+    )
+    private List<Pet> pets;
 
     public User() {
 
