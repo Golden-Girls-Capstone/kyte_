@@ -1,6 +1,9 @@
 package com.kyterescue.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "badges")
@@ -17,6 +20,16 @@ public class Badge {
     @Column(columnDefinition = "varchar(255)")
     private String img;
 
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "user_badges",
+            joinColumns = @JoinColumn(name = "badge_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> users;
+
+
     public Badge(Long id, String name, String img) {
         this.id = id;
         this.name = name;
@@ -28,7 +41,7 @@ public class Badge {
         this.img = img;
     }
 
-    public Badge(){
+    public Badge() {
 
     }
 
