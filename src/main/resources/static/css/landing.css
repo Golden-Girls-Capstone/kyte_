@@ -46,13 +46,13 @@ p {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-right: 12em;
+    /*margin-right: 12em;*/
     margin-bottom: 20.5em;
 }
 
 
 .paws{
-    margin-top: 40rem;
+    /*margin-top: 40rem;*/
     display: flex;
     max-width: 20%;
 }
@@ -70,6 +70,7 @@ p {
 .paw-container{
     display: flex;
     justify-content: space-evenly;
+    margin-top: 40em;
 }
 
 li {
@@ -79,4 +80,27 @@ li {
 .navbar{
     z-index: 2;
 
+}
+/*img.paws{*/
+/*    margin-right: unset;*/
+/*}*/
+
+.subheader-container{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #da959a;
+}
+
+.foster{
+    margin-left: 42px;
+}
+
+.outreach{
+    margin-right: 1em;
+}
+.adopt{
+    margin-right: 7px;
 }
