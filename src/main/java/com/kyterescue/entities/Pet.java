@@ -3,6 +3,8 @@ package com.kyterescue.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.util.List;
+
 @Entity
 @Table(name = "pets")
 
@@ -38,6 +40,9 @@ public class Pet {
 
     @Column(columnDefinition = "tinyint NOT NULL")
     private int status;
+
+    @ManyToMany(mappedBy = "pets")
+    private List<User> users;
 
 
     public Pet(String name, String type, String breed, String age, String size, String photo, String description, String gender, int status) {
