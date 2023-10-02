@@ -9,23 +9,26 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<div th:fragment="navbar">
+<div th:fragment="nav">
     <nav class="navbar navbar-default bg-light mb-3 border">
         <div class="container-fluid">
             <div class="navbar-header">
+<!--                INSERT COMPANY LOGO-->
                 <a class="" href="">Kyte Rescue</a>
             </div>
             <ul class="">
-                <li><a href="/Browse">Browse</a></li>
-                <li><a href="/About">About</a></li>
-                <li><a href="/About"></a>Partners</li>
+                <li><a href="/browse">Browse</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/partners">Partners</a></li>
                 <li sec:authorize="!isAuthenticated()" class=""><a href="/login">Login/Sign Up</a></li>
+                <li sec:authorize="isAuthenticated()" class=""><a href="/dashboard">Dashboard</a></li>
 
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
                         <button class="btn-link btn" style="margin-top: 8px">Logout</button>
                     </form>
                 </li>
+
 
             </ul>
         </div>
