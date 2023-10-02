@@ -40,6 +40,8 @@ public class Pet {
     private int status;
 
 
+
+
     public Pet(String name, String type, String breed, String age, String size, String photo, String description, String gender, int status) {
         this.name = name;
         this.type = type;

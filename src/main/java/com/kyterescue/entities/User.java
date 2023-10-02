@@ -3,6 +3,8 @@ package com.kyterescue.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.util.List;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -31,6 +33,10 @@ public class User {
 
     @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
+
+
+    @ManyToMany(mappedBy = "users")
+    private List<Badge> badges;
 
     public User() {
 
