@@ -50,6 +50,7 @@ p {
     margin-bottom: 20.5em;
 }
 
+
 .paws{
     margin-top: 40rem;
     display: flex;
@@ -70,3 +71,8 @@ p {
     display: flex;
     justify-content: space-evenly;
 }
+
+li {
+    list-style-type: none;
+}
+
