@@ -37,17 +37,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
 //                         Pages that require authentication
-                        .requestMatchers("/ads/create", "/ads/*/edit").authenticated()
+                        .requestMatchers("/profile").authenticated()
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
-                        .requestMatchers("/", "/landing", "/ads", "/ads/*", "/sign-up", "/login", "").permitAll()
+                        .requestMatchers("", "/", "/landing", "/sign-up", "/login", "/dashboard", "/browse").permitAll()
                         // allow loading of static resources
-                        .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
+                        .requestMatchers("/css/**", "/static/js/**", "/static/img/**").permitAll()
                 )
                 /* Login configuration */
                 .formLogin((login) -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/ads"))
+                        .defaultSuccessUrl("/dashboard"))
                 /* Logout configuration */
                 .logout((logout) -> logout.logoutSuccessUrl("/"))
                 .httpBasic(withDefaults());
