@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!---------------------------- Edit Modal ------------------->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit My Profile</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="editing mb-3">
+            <label for="user-name" class="col-form-label">Username:</label>
+            <input type="text" class="form-control" id="user-name">
+          </div>
+          <div class="editing mb-3">
+            <label for="password" class="col-form-label">Password:</label>
+            <input type="text" class="form-control" id="password">
+          </div>
+          <div class="editing mb-3">
+            <label for="location" class="col-form-label">Location:</label>
+            <input type="text" class="form-control" id="location">
+          </div>
+          <div class="editing mb-3">
+            <label for="email" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" id="email">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Delete Profile Modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Delete My Accont</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are You sure you want to delete your account? Once you delete your account, all of your data will be lost and you will be unable to recover or have access to your account.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="hero btn btn-primary hero">Yes, I'm Sure</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
