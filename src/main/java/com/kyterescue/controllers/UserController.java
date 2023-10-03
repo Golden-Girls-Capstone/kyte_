@@ -25,13 +25,13 @@ public class UserController {
         this.authenticationService = authenticationService;
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/sign-up")
     public String viewSignup(Model model) {
         model.addAttribute("user", new User());
         return "users/signup";
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/sign-up")
     public String newUserSignup(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
