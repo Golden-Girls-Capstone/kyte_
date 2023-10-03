@@ -33,6 +33,7 @@ public class UserController {
 
     @PostMapping("/sign-up")
     public String newUserSignup(@ModelAttribute User user) {
+        System.out.println("here");
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
@@ -60,6 +61,7 @@ public class UserController {
     public String viewLogout() {
         return "users/logout";
     }
+
 
 
 }
