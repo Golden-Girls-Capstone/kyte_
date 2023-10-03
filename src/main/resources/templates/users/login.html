@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:insert="partials/header">
-
     <title>Title</title>
 </head>
 <body>
 <nav th:insert="partials/navbar"></nav>
 <div th:insert="partials/modal"></div>
-
+<div class="page-wrapper">
+    <nav th:insert="partials/navbar"></nav>
+    <div class="container m-5 p-5 justify-center" style="height: max-content; width: min-content">
+        <div class="column" >
+                <form th:action="@{/login}" method="post" class="gap-5">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" />
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" />
+                    <input type="submit" value="Log In" />
+                </form>
+        </div>
+    </div>
+  </div>
 <div th:insert="partials/footer"></div>
 </body>
 </html>
