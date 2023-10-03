@@ -42,7 +42,7 @@ public class Pet {
     private int status;
     /////////////////////////////////////////////
 
-    @OneToMany(mappedBy = "pets")
+    @OneToMany(mappedBy = "pet")
     private List<FosterPet> fosterPets;
 
 
