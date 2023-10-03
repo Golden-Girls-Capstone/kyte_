@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:insert="partials/header">
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+<body>
+    <nav th:insert="partials/navbar"></nav>
+      <div th:insert="partials/modal"></div>
+        <form action="/pets/{id}/view" method="post"></form>
+<!--object that I am grabbing is "pet"-->
+</body>
+</html>
