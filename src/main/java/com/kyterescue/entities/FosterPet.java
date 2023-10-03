@@ -22,6 +22,11 @@ public class FosterPet {
     @Column(columnDefinition = "DATE NOT NULL")
     private Date end_date;
 
+    //////////////////////////////////////////////
+    @Column(columnDefinition = "VARCHAR(250)")
+    private String foster_reviews;
+    //////////////////////////////////////////////
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -30,7 +35,7 @@ public class FosterPet {
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
 
-    public FosterPet(){
+    public FosterPet() {
 
     }
 
@@ -43,6 +48,15 @@ public class FosterPet {
     public FosterPet(Date start_date, Date end_date) {
         this.start_date = start_date;
         this.end_date = end_date;
+    }
+
+    public FosterPet(Long id, Date start_date, Date end_date, String foster_reviews, User user, Pet pet) {
+        this.id = id;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.foster_reviews = foster_reviews;
+        this.user = user;
+        this.pet = pet;
     }
 
     public User getUser() {
@@ -76,5 +90,15 @@ public class FosterPet {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
+
+    //////////////////////////////////////////////
+    public String getFoster_reviews() {
+        return foster_reviews;
+    }
+
+    public void setFoster_reviews(String foster_reviews) {
+        this.foster_reviews = foster_reviews;
+    }
+    //////////////////////////////////////////////
 
 }
