@@ -52,7 +52,7 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .defaultSuccessUrl("/dashboard"))
                 /* Logout configuration */
-                .logout((logout) -> logout.logoutSuccessUrl("/"))
+                .logout((logout) -> logout.logoutSuccessUrl("/logout"))  //CHANGED THIS LINE, ADDED LOGOUT
                 .httpBasic(withDefaults());
         return http.build();
     }
