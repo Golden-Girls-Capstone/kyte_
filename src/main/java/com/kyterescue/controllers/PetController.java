@@ -2,31 +2,34 @@ package com.kyterescue.controllers;
 
 import com.kyterescue.entities.Pet;
 import com.kyterescue.entities.PetRepository;
+import com.kyterescue.entities.UserRepository;
 import com.kyterescue.services.AuthenticationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PetController {
 
+    UserRepository usersDao;
     PetRepository petsDao;
     AuthenticationService authenticationService;
 
-    PetController(PetRepository petsDao, AuthenticationService authenticationService) {
+    PetController(UserRepository usersDao, PetRepository petsDao, AuthenticationService authenticationService) {
+        this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.authenticationService = authenticationService;
     }
 
     @GetMapping("/dashboard")
-    public String viewDashboard() {
+    public String viewDashboard(Model model) {
+        authenticationService.grabAuthenticatedUserDetails(model);
         return "pets/dashboard";
     }
 
     @PostMapping("/dashboard")
-    public String editDashboard() {
+    public String editDashboard(Model model) {
+        authenticationService.grabAuthenticatedUserDetails(model);
         return "pets/dashboard";
     }
 
@@ -36,7 +39,8 @@ public class PetController {
     }
 
     @PostMapping("/browse")
-    public String fosterOrSave() {
+    public String fosterOrSave(Model model) {
+        authenticationService.grabAuthenticatedUserDetails(model);
         return "pets/browse";
     }
 

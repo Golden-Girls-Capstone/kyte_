@@ -51,7 +51,8 @@ public class UserController {
     }
 
     @PostMapping("/profile/edit")
-    public String editProfile() {
+    public String editProfile(Model model) {
+        authenticationService.grabAuthenticatedUserDetails(model);
         return "users/profile";
     }
 
