@@ -54,10 +54,11 @@ public class User {
 
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, int zipcode) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.zipcode = zipcode;
     }
 
     public User(String username, String email, String password, String picture, boolean approvalStatus, int zipcode) {
