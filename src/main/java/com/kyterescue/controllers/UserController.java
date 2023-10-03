@@ -59,4 +59,6 @@ public class UserController {
     public String viewLogout() {
         return "users/logout";
     }
+
+
 }

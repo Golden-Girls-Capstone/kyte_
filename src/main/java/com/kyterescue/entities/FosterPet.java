@@ -2,8 +2,10 @@ package com.kyterescue.entities;
 
 
 import jakarta.persistence.*;
+import org.springframework.security.core.parameters.P;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "foster_pets")
@@ -20,19 +22,14 @@ public class FosterPet {
     @Column(columnDefinition = "DATE NOT NULL")
     private Date end_date;
 
-    /////////////////////////////////////////////
-
-    //ask someone if this is right
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "pets_id", nullable = false)
+    @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
 
-
-    /////////////////////////////////////////////
     public FosterPet(){
 
     }
