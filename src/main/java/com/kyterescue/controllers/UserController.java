@@ -2,6 +2,8 @@ package com.kyterescue.controllers;
 
 import com.kyterescue.entities.User;
 import com.kyterescue.entities.UserRepository;
+import com.kyterescue.services.AuthenticationService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +17,12 @@ public class UserController {
     UserRepository usersDao;
     PasswordEncoder passwordEncoder;
 
-    UserController(UserRepository usersDao, PasswordEncoder passwordEncoder) {
+    AuthenticationService authenticationService;
+
+    UserController(UserRepository usersDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService) {
         this.usersDao = usersDao;
         this.passwordEncoder = passwordEncoder;
+        this.authenticationService = authenticationService;
     }
 
     @GetMapping("/signup")
@@ -31,7 +36,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
-        return "users/signup";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -40,11 +45,12 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String viewProfile() {
+    public String viewProfile(Model model) {
+        authenticationService.grabAuthenticatedUserDetails(model);
         return "users/profile";
     }
 
-    @PostMapping("/profile")
+    @PostMapping("/profile/edit")
     public String editProfile() {
         return "users/profile";
     }
