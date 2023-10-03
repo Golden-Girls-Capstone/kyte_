@@ -1,0 +1,150 @@
+.page-wrapper{
+    min-width: 100%;
+    min-height: 100%;
+}
+
+body{
+    background-color: #fffaec;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search {
+
+    position: relative;
+    display: flex;
+    width: 40%;
+}
+
+.searchTerm {
+    width: 100%;
+    border: 3px solid #de9a9a;
+    border-right: none;
+    padding: 5px;
+    height: 36px;
+    border-radius: 17px 0 0 17px;
+    outline: none;
+    color: #e57777;
+}
+
+.searchTerm:focus{
+    color: #de9a9a;
+}
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid #de9a9a;
+    background: #de9a9a;
+    text-align: center;
+    color: #fffce6;
+    border-radius: 0 17px 17px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+    width: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.card {
+    background-color: rgba(222, 154, 154, 0);
+    min-width: 111px;
+    min-height: 111px;
+    margin-top: 50px;
+}
+
+
+.card-column {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+
+/* Some basic CSS overrides */
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+
+.profile {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+    /*width: 90%;*/
+    /*max-width: 300px;*/
+    background-color: rgba(222, 154, 154, 0);
+    border-radius: 16px;
+    position: relative;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    text-align: center;
+    color: #000000;
+}
+
+
+.profile-image {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 175px;
+    height: 175px;
+    position: relative;
+}
+img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.pet-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.profile-user-handle {
+    color: #7d8396;
+}
+
+
+
+.pet-status{
+    background-color: green;
+    color: white;
+}
+
+.foster-btn, .save-btn{
+    color: #f2f2f2;
+    background-color: #de9a9a;
+    border-radius: 20px;
+    margin-top: 20px;
+    border-color: #de9a9a;
+
+}
+
+
+
+
+
+
+

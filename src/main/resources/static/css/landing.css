@@ -12,15 +12,6 @@ body{
     height: 90vh;
 }
 
-.text-overlay {
-    position: absolute;
-    top: 50%;
-    left: 40%; /* Adjust the left value to move the text to the left */
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 1;
-}
-
 p {
     font-size: 2.5rem;
     font-family: 'Montserrat', sans-serif;
@@ -31,9 +22,8 @@ p {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* Apply these styles to the background image itself */
 .blur-background {
-    filter: blur(3px); /* Adjust the blur amount as needed */
+    filter: blur(3px);
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -46,13 +36,11 @@ p {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /*margin-right: 12em;*/
     margin-bottom: 20.5em;
 }
 
 
 .paws{
-    /*margin-top: 40rem;*/
     display: flex;
     max-width: 70%;
 }
@@ -87,8 +75,6 @@ li {
     font-weight: bold;
 
 }
-
-
 
 a {
     justify-content: space-around;
