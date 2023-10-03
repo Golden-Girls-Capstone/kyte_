@@ -40,10 +40,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
 //                         Pages that require authentication
-                        .requestMatchers("/profile").authenticated()
+                        .requestMatchers("/profile","/dashboard").authenticated()
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
-                        .requestMatchers("", "/", "/landing", "/sign-up", "/login", "/dashboard", "/browse", "/api/test").permitAll()
+                        .requestMatchers("", "/", "/landing", "/sign-up", "/login", "/about","/partners", "/browse", "/api/test").permitAll()
                         // allow loading of static resources
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                 )
