@@ -40,6 +40,14 @@ public class Pet {
 
     @Column(columnDefinition = "tinyint NOT NULL")
     private int status;
+    /////////////////////////////////////////////
+
+    @OneToMany(mappedBy = "pets")
+    private List<FosterPet> fosterPets;
+
+
+
+    /////////////////////////////////////////////
 
     @ManyToMany(mappedBy = "pets")
     private List<User> users;

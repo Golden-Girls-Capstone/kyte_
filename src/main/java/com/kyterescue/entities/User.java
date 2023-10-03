@@ -34,7 +34,13 @@ public class User {
 
     @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
+    /////////////////////////////////////////////
+    @OneToMany(mappedBy = "user")
+    private List<FosterPet> fosterPets;
 
+
+
+    /////////////////////////////////////////////
     @ManyToMany(mappedBy = "users")
     private List<Badge> badges;
 
