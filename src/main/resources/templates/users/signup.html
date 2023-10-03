@@ -10,7 +10,7 @@
     <div class="container my-5 p-5 d-flex justify-content-center">
         <div class="row d-flex justify-center row-gap-3" >
             <h3>Sign Up</h3>
-            <form th:action="@{/signup}" method="post" class=" row d-flex justify-content-center p-5" th:object="${user}">
+            <form th:action="@{/sign-up}" th:method="post" class=" row d-flex justify-content-center p-5" th:object="${user}">
                 <label for="username"></label>
                 <input id="username" name="username" type="text" th:field="*{username}" placeholder="Username"/>
                 <label for="email"></label>
