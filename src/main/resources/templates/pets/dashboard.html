@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head th:insert="partials/header">
     <title>Title</title>
 </head>
 <body>
+<div class="page-wrapper">
+    <nav th:insert="partials/navbar"></nav>
+    <div class="container py-5 my-3">
+        <div class="column foster-info d-flex">
+            <div th:object="${current}" class=" current-foster row justify-start" style="width:25%">
+               <h2>Current Foster</h2>
+                <h3></h3>
+                <h4 th:field="*{name}"></h4>
+                <button>Complete Foster</button>
+            </div>
+            <div th:each="foster : ${fosters}" class="previous-foster d-flex flex-row-reverse" style="width:50%">
+                    <h2>Previous Fosters</h2>
+                    <h3 th:image="${foster.photo}"></h3>
+                    <h4 th:if="${foster.name != null}" th:text="${foster.getName()}"></h4>
+            </div>
+        </div>
+    </div>
 
+</div>
+
+<footer th:insert="partials/footer"></footer>
 </body>
 </html>

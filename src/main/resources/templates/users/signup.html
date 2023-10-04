@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head th:insert="partials/header">
     <title>Title</title>
 </head>
 <body>
-
+<nav th:insert="partials/navbar"></nav>
+<div th:insert="partials/modal"></div>
+<div class="page-wrapper ">
+    <div class="container my-5 p-5 d-flex justify-content-center">
+        <div class="row d-flex justify-center row-gap-3" >
+            <h3>Sign Up</h3>
+            <form th:action="@{/sign-up}" th:method="post" class=" row d-flex justify-content-center p-5" th:object="${user}">
+                <label for="username"></label>
+                <input id="username" name="username" type="text" th:field="*{username}" placeholder="Username"/>
+                <label for="email"></label>
+                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
+                <label for="password"></label>
+                <input id="password" name="password" type="password" th:field="*{password}" placeholder="Password"/>
+                <label for="zipcode"></label>
+                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>
+                <input type="submit" class="" value="Sign Up" />
+                <a href="/login" >Already a Member? Login here!</a>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:insert="partials/footer"></div>
 </body>
 </html>

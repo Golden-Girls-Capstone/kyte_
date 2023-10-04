@@ -40,19 +40,16 @@ public class Pet {
 
     @Column(columnDefinition = "tinyint NOT NULL")
     private int status;
-    /////////////////////////////////////////////
 
     @OneToMany(mappedBy = "pet")
     private List<FosterPet> fosterPets;
 
-
-
-    /////////////////////////////////////////////
-
     @ManyToMany(mappedBy = "pets")
     private List<User> users;
 
+    public Pet(){
 
+    }
     public Pet(String name, String type, String breed, String age, String size, String photo, String description, String gender, int status) {
         this.name = name;
         this.type = type;
@@ -65,9 +62,7 @@ public class Pet {
         this.status = status;
     }
 
-    public Pet(){
-
-    }
+    public Long getId() {return id;}
 
     public String getName() {
         return name;

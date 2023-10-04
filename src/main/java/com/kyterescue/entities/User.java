@@ -34,13 +34,10 @@ public class User {
 
     @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
-    /////////////////////////////////////////////
+
     @OneToMany(mappedBy = "user")
     private List<FosterPet> fosterPets;
 
-
-
-    /////////////////////////////////////////////
     @ManyToMany(mappedBy = "users")
     private List<Badge> badges;
 
@@ -57,10 +54,11 @@ public class User {
 
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password, int zipcode) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.zipcode = zipcode;
     }
 
     public User(String username, String email, String password, String picture, boolean approvalStatus, int zipcode) {

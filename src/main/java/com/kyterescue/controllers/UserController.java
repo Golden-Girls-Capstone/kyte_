@@ -25,14 +25,15 @@ public class UserController {
         this.authenticationService = authenticationService;
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/sign-up")
     public String viewSignup(Model model) {
         model.addAttribute("user", new User());
         return "users/signup";
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/sign-up")
     public String newUserSignup(@ModelAttribute User user) {
+        System.out.println("here");
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
@@ -46,12 +47,13 @@ public class UserController {
 
     @GetMapping("/profile")
     public String viewProfile(Model model) {
-        authenticationService.grabAuthenticatedUserDetails(model);
+        authenticationService.grabAuthenticationUserDetails(model);
         return "users/profile";
     }
 
     @PostMapping("/profile/edit")
-    public String editProfile() {
+    public String editProfile(Model model) {
+        authenticationService.grabAuthenticationUserDetails(model);
         return "users/profile";
     }
 
@@ -59,4 +61,7 @@ public class UserController {
     public String viewLogout() {
         return "users/logout";
     }
+
+
+
 }

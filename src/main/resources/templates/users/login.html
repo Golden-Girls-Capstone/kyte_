@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:insert="partials/header">
+<head th:insert="~{partials/header :: header}">
     <title>Title</title>
 </head>
 <body>
-<nav th:insert="partials/navbar"></nav>
-<div th:insert="partials/modal"></div>
-<div class="page-wrapper">
-    <nav th:insert="partials/navbar"></nav>
-    <div class="container m-5 p-5 justify-center" style="height: max-content; width: min-content">
-        <div class="column" >
-                <form th:action="@{/login}" method="post" class="gap-5">
-                    <label for="username">Username</label>
-                    <input id="username" name="username" type="text" />
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" />
-                    <input type="submit" value="Log In" />
+<nav th:insert="~{partials/navbar :: nav}"></nav>
+<div th:insert="~{partials/modal}"></div>
+<div class="page-wrapper ">
+    <div class="container my-5 p-5 d-flex justify-content-center">
+        <div class="row d-flex justify-center row-gap-3" >
+            <h3>Login</h3>
+                <form th:action="@{/login}" method="post" class=" row d-flex justify-content-center p-5 ">
+                    <label for="username"></label>
+                    <input id="username" name="username" type="text" placeholder="username"/>
+                    <label for="password"></label>
+                    <input id="password" name="password" type="password" placeholder="password"/>
+                    <input type="submit" class="" value="Log In" />
+                    <a href="/sign-up" >Not a Member? Sign up here!</a>
                 </form>
         </div>
     </div>
   </div>
-<div th:insert="partials/footer"></div>
+<div th:insert="~{partials/footer :: footer}"></div>
 </body>
 </html>
