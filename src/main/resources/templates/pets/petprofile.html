@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head th:insert="partials/header">
-      <meta charset="UTF-8">
-      <title>Title</title>
-  </head>
+<head th:insert="partials/header">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/petprofile.css">
+    <link rel="stylesheet" href="/css/mainStyling.css">
+</head>
 <body>
-    <nav th:insert="partials/navbar"></nav>
-      <div th:insert="partials/modal"></div>
-        <form action="/pets/{id}/view" method="post"></form>
-<!--object that I am grabbing is "pet"-->
+<nav th:insert="partials/navbar"></nav>
+<div th:insert="partials/modal"></div>
+
+<form action="@{/pets/{id}/view}" th:method="get" th:object="${pet}"></form>
+<div class="container">
+    <img src="/img/yarn.png">
+    <div class="container-fluid page">
+    <div class="container-background">
+        <div class="column d-flex">
+        <img class="pet-profile-pic" th:src="${pet.getPhoto()}" alt="Pet Photo">
+        <h1 class="pet-name" th:text="${pet.getName()}"></h1>
+        </div>
+    </div>
+            <h3 th:text="${pet.getDescription()}"></h3>
+            <h6 th:text="${pet.getAge()}"></h6>
+            <h6 th:text="${pet.getBreed()}"></h6>
+            <h6 th:text="${pet.getGender()}"></h6>
+            <h6 th:text="${pet.getSize()}"></h6>
+
+
+
+
+
+    </div>
+</div>
+
 </body>
 </html>
