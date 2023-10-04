@@ -3,6 +3,7 @@ package com.kyterescue.controllers;
 import com.kyterescue.entities.User;
 import com.kyterescue.entities.UserRepository;
 import com.kyterescue.services.AuthenticationService;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,11 @@ public class UserController {
 
     @GetMapping("/profile")
     public String viewProfile(Model model) {
-        authenticationService.grabAuthenticationUserDetails(model);
+        long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
+        User user = usersDao.getUserById(userId);
+        System.out.println(user.getUsername());
+        System.out.println(user.getEmail());
+        model.addAttribute("profile", user);
         return "users/profile";
     }
 
