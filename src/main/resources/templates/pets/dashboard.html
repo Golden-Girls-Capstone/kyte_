@@ -8,16 +8,24 @@
     <nav th:insert="partials/navbar"></nav>
     <div class="container py-5 my-3">
         <div class="column foster-info d-flex">
-            <div th:object="${current}" class=" current-foster row justify-start gap-5" style="width:25%">
-               <h2>Current Foster</h2>
-                <h3> IMAGE OF ANIMAL</h3>
-                <h4 th:field="*{name}"></h4>
-                <button>Complete Foster</button>
+            <div th:object="${current}" class=" current-foster row gap-5" style="width:25%">
+                <h2 class="text-center">Current Foster</h2>
+                <div>
+                    <img class="current-foster-pet-pic" th:src="${current.getPhoto()}">
+                    <h4 th:field="*{name}"></h4>
+                </div>
+                <button style="width: 25%">Complete Foster</button>
             </div>
-            <div th:each="foster : ${fosters}" class="previous-foster d-flex flex-row-reverse" style="width:50%">
-                    <h2>Previous Fosters</h2>
-                    <h3 th:image="${foster.photo}"></h3>
+            <div th:each="foster : ${fosters}" class="previous-foster d-flex row justify-end" style="width:50%">
+                <h2 class="text-center">Previous Fosters</h2>
+                <div class=" card column text-center" style="width: fit-content">
+                    <img class="previous-foster-pet-pic" th:src="${foster.photo}" alt="previous-foster-pet-image">
                     <h4 th:if="${foster.name != null}" th:text="${foster.getName()}"></h4>
+                    <h5>Dates fostered:</h5>
+                    <p th:field="${foster.getSize()}"></p>
+
+                </div>
+
             </div>
         </div>
     </div>
