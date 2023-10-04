@@ -17,7 +17,7 @@ public class AuthenticationService {
         this.usersDao = usersDao;
     }
 
-    public void grabAuthenticatedUserDetails(Model model) {
+    public void sendAuthenticatedUserDetails(Model model) {
         Object authenticatedUser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(authenticatedUser instanceof UserDetails) {
             User castedUser = (User) authenticatedUser;
@@ -27,7 +27,16 @@ public class AuthenticationService {
         }
     }
 
-    public User testCurrentSession() {
-        return loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public User grabAuthenticationUserDetails(Model model) {
+        User loginUser = null;
+        Object authenticationDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(authenticationDetails instanceof UserDetails) {
+            User castedUser = (User) authenticationDetails;
+            long userId = castedUser.getId();
+            loginUser = usersDao.getUserById(userId);
+        }
+        return loginUser;
     }
+
+
 }

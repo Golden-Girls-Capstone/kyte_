@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface PetRepository extends JpaRepository<Pet, Long> {
 
-    @Query("FROM Pet p WHERE p.id LIKE ?1")
+    @Query("FROM Pet p WHERE p.id = ?1")
     Pet getPetById(long id);
 
 }

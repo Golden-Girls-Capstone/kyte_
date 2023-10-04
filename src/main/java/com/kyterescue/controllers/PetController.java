@@ -1,35 +1,47 @@
 package com.kyterescue.controllers;
 
-import com.kyterescue.entities.Pet;
-import com.kyterescue.entities.PetRepository;
-import com.kyterescue.entities.UserRepository;
+import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
+import com.kyterescue.services.DashboardFosterDisplayService;
+import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 public class PetController {
 
     UserRepository usersDao;
     PetRepository petsDao;
+    FosterPetRepository fostersDao;
     AuthenticationService authenticationService;
+    DashboardFosterDisplayService dashboardFosterDisplayService;
 
-    PetController(UserRepository usersDao, PetRepository petsDao, AuthenticationService authenticationService) {
+    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService) {
         this.usersDao = usersDao;
         this.petsDao = petsDao;
+        this.fostersDao = fostersDao;
         this.authenticationService = authenticationService;
+        this.dashboardFosterDisplayService = dashboardFosterDisplayService;
     }
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) {
-        authenticationService.grabAuthenticatedUserDetails(model);
+        Pet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
+        List<Pet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
+        model.addAttribute("current", currentFoster);
+        model.addAttribute("fosters", fosterHistory);
         return "pets/dashboard";
     }
 
     @PostMapping("/dashboard")
     public String editDashboard(Model model) {
-        authenticationService.grabAuthenticatedUserDetails(model);
         return "pets/dashboard";
     }
 
@@ -40,7 +52,7 @@ public class PetController {
 
     @PostMapping("/browse")
     public String fosterOrSave(Model model) {
-        authenticationService.grabAuthenticatedUserDetails(model);
+        authenticationService.grabAuthenticationUserDetails(model);
         return "pets/browse";
     }
 
