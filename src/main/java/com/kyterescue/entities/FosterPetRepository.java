@@ -14,4 +14,6 @@ public interface FosterPetRepository extends JpaRepository <FosterPet, Long> {
     FosterPet findFosterPetByPetId(Pet pet);
     @Query("FROM FosterPet f WHERE f.user = ?1")
     List<FosterPet> findFosterPetsOfUser(User loggedInUser);
+    @Query(value = "SELECT foster_reviews FROM foster_pets f WHERE f.pet_id = ?1", nativeQuery = true)
+    List<String> findReviewsOfFoster(long petId);
 }
