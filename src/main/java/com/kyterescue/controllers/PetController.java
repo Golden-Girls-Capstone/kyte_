@@ -60,10 +60,14 @@ public class PetController {
         return "pets/browse";
     }
 
+    @PostMapping("/browse/add-favorites")
+
     @GetMapping("pets/{id}/view")
     public String viewPetProfile(@PathVariable String id, Model model) {
         Pet petToView = petsDao.getPetById(Long.parseLong(id));
+        FosterPet fosterToView = fostersDao.findFosterPetById(Long.parseLong(id));
         model.addAttribute("pet", petToView);
+        model.addAttribute("foster", fosterToView);
         return "pets/petprofile";
     }
 }
