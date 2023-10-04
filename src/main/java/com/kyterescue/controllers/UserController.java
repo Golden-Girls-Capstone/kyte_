@@ -47,13 +47,13 @@ public class UserController {
 
     @GetMapping("/profile")
     public String viewProfile(Model model) {
-        authenticationService.grabAuthenticatedUserDetails(model);
+        authenticationService.grabAuthenticationUserDetails(model);
         return "users/profile";
     }
 
     @PostMapping("/profile/edit")
     public String editProfile(Model model) {
-        authenticationService.grabAuthenticatedUserDetails(model);
+        authenticationService.grabAuthenticationUserDetails(model);
         return "users/profile";
     }
 

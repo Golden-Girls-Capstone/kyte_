@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:insert="partials/header">
+<head th:insert="~{partials/header :: header}">
     <title>Title</title>
 </head>
 <body>
-<nav th:insert="partials/navbar"></nav>
-<div th:insert="partials/modal"></div>
+<nav th:insert="~{partials/navbar :: nav}"></nav>
+<div th:insert="~{partials/modal}"></div>
 <div class="page-wrapper ">
     <div class="container my-5 p-5 d-flex justify-content-center">
         <div class="row d-flex justify-center row-gap-3" >
@@ -21,6 +21,6 @@
         </div>
     </div>
   </div>
-<div th:insert="partials/footer"></div>
+<div th:insert="~{partials/footer :: footer}"></div>
 </body>
 </html>
