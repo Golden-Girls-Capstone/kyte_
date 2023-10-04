@@ -8,9 +8,9 @@
     <nav th:insert="partials/navbar"></nav>
     <div class="container py-5 my-3">
         <div class="column foster-info d-flex">
-            <div th:object="${current}" class=" current-foster row justify-start" style="width:25%">
+            <div th:object="${current}" class=" current-foster row justify-start gap-5" style="width:25%">
                <h2>Current Foster</h2>
-                <h3></h3>
+                <h3> IMAGE OF ANIMAL</h3>
                 <h4 th:field="*{name}"></h4>
                 <button>Complete Foster</button>
             </div>
