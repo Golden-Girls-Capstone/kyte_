@@ -1,0 +1,26 @@
+.container-fluid.page {
+    height: 110vh;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 73%;
+    margin-top: 43px;
+    margin-bottom: 43px;
+}
+.pet-profile-pic{
+    border-style: solid;
+    border-radius: 50%;
+    background-color: lightpink;
+}
+img.pet-profile-pic {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-top: 18px;
+    margin-left: 10px;
+}
+h1.pet-name {
+    margin-left: 13%;
+    margin-top: 26px;
+}
+
+
