@@ -68,9 +68,9 @@ public class PetController {
     @GetMapping("pets/{id}/view")
     public String viewPetProfile(@PathVariable String id, Model model) {
         Pet petToView = petsDao.getPetById(Long.parseLong(id));
-        FosterPet fosterToView = fostersDao.findFosterPetByPetId(petToView);
+        List<String> reviews = fostersDao.findReviewsOfFoster(petToView.getId());
         model.addAttribute("pet", petToView);
-        model.addAttribute("foster", fosterToView);
+        model.addAttribute("reviews", reviews);
         return "pets/petprofile";
     }
 }

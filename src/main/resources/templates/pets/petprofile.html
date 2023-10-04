@@ -27,14 +27,14 @@
                      <h6 th:text="${pet.getGender()}"></h6>
                      <h6 th:text="${pet.getSize()}"></h6>
                  </div>
-<!--    <div>-->
-<!--        <h3>Foster Pet Reviews:</h3>-->
-<!--        <ul>-->
-<!--            <li th:each="review : ${foster_pets.petfoster_reviews}">-->
-<!--                <span th:text="${review}"></span>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
+    <div>
+        <h3>Foster Pet Reviews:</h3>
+        <ul>
+            <li th:each="review : ${reviews}">
+                <span th:text="${review}"></span>
+            </li>
+        </ul>
+    </div>
     </div>
 
 </body>
