@@ -1,5 +1,7 @@
 package com.kyterescue.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.DashboardFosterDisplayService;
@@ -32,9 +34,11 @@ public class PetController {
     }
 
     @GetMapping("/dashboard")
-    public String viewDashboard(Model model) {
+    public String viewDashboard(Model model) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
         Pet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(fosterHistory));
         model.addAttribute("current", currentFoster);
         model.addAttribute("fosters", fosterHistory);
         return "pets/dashboard";

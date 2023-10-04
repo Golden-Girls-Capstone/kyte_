@@ -12,15 +12,23 @@
     background-color: lightpink;
 }
 img.pet-profile-pic {
-    border-radius: 50%;
+    border-radius: 70% 70% 50% 50% / 90% 90% 50% 50%;
     width: 200px;
     height: 200px;
     margin-top: 18px;
     margin-left: 10px;
 }
+
+
 h1.pet-name {
     margin-left: 13%;
     margin-top: 26px;
 }
-
+.info-pet.column {
+    width: 22%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
