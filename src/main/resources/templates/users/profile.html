@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en"
+       xmlns:xlmns=>
+<head th:insert="~{partials/header:: header}">
     <title>Title</title>
 </head>
 <body>
+<nav th:insert="~{partials/navbar:: nav}"></nav>
+<!--<nav th:insert="partials/model"></nav>-->
 
+<!--<form th:action="@{/profile}" method="post">-->
+<!--<label for="username"></label>-->
+
+<!--</form>-->
+
+<div class="container">
+<!--    <div th:text="${profile}"></div>-->
+    <div th:text="${profile.username}"></div>
+    <div th:text="${profile.email}"></div>
+
+</div>
+
+
+<footer th:insert:="~{partials/footer:: footer}"></footer>
 </body>
 </html>
