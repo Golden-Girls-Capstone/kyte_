@@ -8,8 +8,10 @@ import java.util.List;
 
 public interface FosterPetRepository extends JpaRepository <FosterPet, Long> {
 
-    @Query("FROM FosterPet f WHERE f.pet = ?1")
+    @Query("FROM FosterPet f WHERE f.id = ?1")
     FosterPet findFosterPetById(long id);
+    @Query("FROM FosterPet f WHERE f.pet = ?1")
+    FosterPet findFosterPetByPetId(Pet pet);
     @Query("FROM FosterPet f WHERE f.user = ?1")
     List<FosterPet> findFosterPetsOfUser(User loggedInUser);
 }
