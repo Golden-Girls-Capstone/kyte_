@@ -7,23 +7,22 @@
 <div class="page-wrapper">
     <nav th:insert="partials/navbar"></nav>
     <div class="container py-5 my-3">
-        <div class="column foster-info d-flex">
-            <div th:object="${current}" class=" current-foster row gap-5" style="width:25%">
+        <div class="column foster-info d-flex text-center">
+            <div th:object="${current}" class=" current-foster row gap-5 px-5 justify-content-center" style="width:50%">
                 <h2 class="text-center">Current Foster</h2>
                 <div>
                     <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">
-                    <h4 th:field="*{name}"></h4>
+                    <h4 th:field="*{name}">NAME</h4>
                 </div>
                 <button style="width: 50%">Complete Foster</button>
             </div>
-            <div th:each="foster : ${fosters}" class="previous-foster d-flex row justify-end" style="width:50%">
+            <div th:each="foster : ${fosters}" class="previous-foster d-flex row px-2" style="width:50%">
                 <h2 class="text-center">Previous Fosters</h2>
                 <div class=" card column text-center" style="width: fit-content">
                     <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px" alt="previous-foster-pet-image">
                     <h4 th:if="${foster.name != null}" th:text="${foster.getName()}"></h4>
                     <h5>Dates fostered:</h5>
-                    <p th:field="${foster.getSize()}"></p>
-
+                    <h6> 10/3-10/19</h6>
                 </div>
 
             </div>
