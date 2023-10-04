@@ -11,25 +11,31 @@
 <div th:insert="partials/modal"></div>
 
 <form action="@{/pets/{id}/view}" th:method="get" th:object="${pet}"></form>
-<div class="container">
-        <div class="profile-top d-flex">
-        <img class="pet-profile-pic" th:src="${pet.getPhoto()}" alt="Pet Photo">
-        <h1 class="pet-name" th:text="${pet.getName()}"></h1>
-        </div>
-    <div class="column d-flex">
-        <h1>All About</h1> <h1 th:text="${pet.getName()}">...</h1>
-            <h3 th:text="${pet.getDescription()}"></h3>
-        </div>
-    <div class="info-pet column d-flex">
-    <h6 th:text="${pet.getAge()}"></h6>
-            <h6 th:text="${pet.getBreed()}"></h6>
-            <h6 th:text="${pet.getGender()}"></h6>
-            <h6 th:text="${pet.getSize()}"></h6>
-<!--        <h3 th:text="${foster_pets.getfoster_reviews()}"></h3>-->
+    <div class="container">
+         <div class="profile-top d-flex">
+             <img class="pet-profile-pic" th:src="${pet.getPhoto()}" alt="Pet Photo">
+                <h1 class="pet-name" th:text="${pet.getName()}"></h1>
+         </div>
+            <div class="description column d-flex">
+                <h1 th:text="'All About ' + ${pet.getName()} + '...'">All About Cody...</h1>
+            </div>
+
+             <h3 th:text="${pet.getDescription()}"></h3>
+                 <div class="info-pet column d-flex">
+                     <h6 th:text="${pet.getAge()}"></h6>
+                     <h6 th:text="${pet.getBreed()}"></h6>
+                     <h6 th:text="${pet.getGender()}"></h6>
+                     <h6 th:text="${pet.getSize()}"></h6>
+                 </div>
+<!--    <div>-->
+<!--        <h3>Foster Pet Reviews:</h3>-->
+<!--        <ul>-->
+<!--            <li th:each="review : ${foster_pets.petfoster_reviews}">-->
+<!--                <span th:text="${review}"></span>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
     </div>
-
-
-</div>
 
 </body>
 </html>
