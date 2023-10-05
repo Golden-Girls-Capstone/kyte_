@@ -1,5 +1,4 @@
 package com.kyterescue.config;
-
 import com.kyterescue.services.UserDetailsLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

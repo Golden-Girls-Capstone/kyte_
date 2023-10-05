@@ -12,12 +12,12 @@ body{
     height: 90vh;
 }
 
-p {
+.logo {
     font-size: 2.5rem;
     font-family: 'Montserrat', sans-serif;
 }
 
-.p2 {
+.motto {
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
 }
@@ -73,6 +73,7 @@ li {
 .link{
     color: #da959a;
     font-weight: bold;
+    font-size: 2.5rem;
 
 }
 
