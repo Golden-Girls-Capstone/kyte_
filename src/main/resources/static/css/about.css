@@ -1,0 +1,82 @@
+/*--- heading on Our Mission  ------*/
+h1.Title {
+    display: flex;
+    justify-content: space-around;
+    font-family: Montserrat;
+}
+img.pet-picture {
+    border-radius: 50%;
+    width: 270px;
+    margin-right: 26px;
+    margin-left: -68px;
+
+}
+
+p.mission1 {
+    font-size: 1em;
+    width: 62%;
+}
+
+.mission-stmt1.column {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: absolute;
+    top: 154px;
+    right: 0%;
+}
+.mission-stmt2.column {
+    display: flex;
+    position: absolute;
+    flex-direction: row-reverse;
+    align-items: center;
+    bottom: 17%;
+}
+.blue-blob {
+    background: #718BFC;
+    width: 23%;
+    height: 28vh;
+    position: relative;
+    left: 91%;
+    top: -60px;
+}
+.yellow-blob3 {
+    width: 115px;
+    height: 114px;
+    background: #FFEB5C;
+    left: 1px;
+    position: relative;
+    left: 6%;
+    top: -5em;
+}
+.yellow-blob1 {
+    width: 209px;
+    height: 215px;
+    background: #FFEB5C;
+    position: relative;
+    top: 7em;
+    left: -191px;
+}
+.yellow-blob2 {
+    width: 226px;
+    height: 89px;
+    background: #FFEB5C;
+    position: relative;
+    left: 1%;
+    bottom: -226px;
+}
+img.pet-picture2 {
+    border-radius: 50%;
+    width: 271px;
+    margin-right: 74px;
+    height: 280px;
+}
+h1.FAQ {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 190px;
+    font-family: Montserrat;
+
+
+}
