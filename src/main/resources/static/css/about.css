@@ -78,5 +78,15 @@ h1.FAQ {
     margin-top: 190px;
     font-family: Montserrat;
 
-
+}
+.FAQ-questions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 48px;
+}
+.accordion.hero{
+    background: #FFFAEC !important;
 }
