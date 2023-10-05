@@ -1,3 +1,4 @@
+keys.js
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -36,3 +37,4 @@ build/
 
 ### Application Properties ###
 application.properties
+
