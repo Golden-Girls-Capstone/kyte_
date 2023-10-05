@@ -12,7 +12,7 @@
                 <h2 class="text-center">Current Foster</h2>
                 <div>
                     <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">
-                    <h4 th:field="*{name}">NAME</h4>
+                    <h4 th:text="${current.name}"></h4>
                 </div>
                 <button style="width: 50%">Complete Foster</button>
             </div>
@@ -22,7 +22,7 @@
                     <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px" alt="previous-foster-pet-image">
                     <h4 th:if="${foster.name != null}" th:text="${foster.getName()}"></h4>
                     <h5>Dates fostered:</h5>
-                    <h6> 10/3-10/19</h6>
+                    <h6 th:text> </h6>
                 </div>
 
             </div>
