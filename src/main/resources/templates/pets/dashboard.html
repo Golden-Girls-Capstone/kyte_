@@ -18,7 +18,7 @@
             </div>
             <div th:each="foster : ${fosters}" class="previous-foster d-flex row px-2" style="width:50%">
                 <h2 class="text-center">Previous Fosters</h2>
-                <div class=" card column text-center" style="width: fit-content">
+                <div class="column text-center" style="width: fit-content">
                     <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px" alt="previous-foster-pet-image">
                     <h4 th:if="${foster.name != null}" th:text="${foster.getName()}"></h4>
                     <h5>Dates fostered:</h5>
