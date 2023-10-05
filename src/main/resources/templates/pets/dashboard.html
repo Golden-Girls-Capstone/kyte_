@@ -7,6 +7,16 @@
 <div class="page-wrapper">
     <nav th:insert="partials/navbar"></nav>
     <div class="container py-5 my-3">
+        <div class="container">
+            <div th:text="${profile.picture}"></div>
+            <h5>above this goes the user's picture if we choose</h5>
+
+            <div th:text="${profile.username}"></div>
+            <div th:text="${profile.email}"></div>
+
+            <div th:text="${profile.zipcode}"></div>
+
+        </div>
         <div class="column foster-info d-flex text-center">
             <div th:object="${current}" class=" current-foster row gap-5 px-5 justify-content-center" style="width:50%">
                 <h2 class="text-center">Current Foster</h2>
