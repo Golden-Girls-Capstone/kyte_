@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head th:insert="partials/header">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<nav th:insert="partials/navbar"></nav>
+    <form action="@{/about}" th:method="get"></form>
+        <div class="container">
+            <h1 class="Title"> Our Mission </h1>
+            <div class="blue-blob"></div>
+                <div class="mission-stmt1 column">
+                    <img class="pet-picture" src="/img/kitty.avif">
+                        <p class="mission1"> At Kyte Rescue, our mission is to provide a safe and caring haven for animals facing hardship and uncertainty, while simultaneously uniting them with compassionate individuals and families willing to offer their homes and hearts. Our commitment is multi-faceted: we rescue animals from challenging situations, provide them with comprehensive care and rehabilitation, and advocate for their well-being. Through a network of dedicated foster families, we create loving, temporary homes that nurture our animal friends back to health and happiness. We're equally dedicated to education, aiming to raise awareness about responsible pet ownership, animal welfare, and the rewards of fostering. </p>
+                </div>
+
+                        <div class="mission-stmt2 column">
+                             <img class="pet-picture2" src="/img/bnny.jpeg">
+                                <p class="mission1"> Our ultimate goal is to find forever homes for our foster animals, ensuring each placement is a perfect match for both the pet and the family. Above all, we foster a sense of community among our volunteers, supporters, and foster families, coming together to make a positive impact. Join us in our mission to create a world where every animal is cherished, protected, and loved, enriching both their lives and ours."</p>
+                        </div>
+                                <div class="yellow-blob1"></div>
+                                <div class="yellow-blob2"></div>
+                                <div class="yellow-blob3"></div>
+                                 <br>
+                            <div class ="FAQ-page">
+                                <h1 class="FAQ"> Frequently Asked Questions </h1>
+                            </div>
+            <div class="FAQ-questions">
+                <h3>1. Add a what are the benefits of fostering a pet?</h3>
+                <h3>2. What are the challenges of fostering a pet?</h3>
+                <h3>3. What kind of pets can I foster?</h3>
+                <h3>4. How do i prepare to foster a pet?</h3>
+                <h3>5. What do i need to provide for a foster pet?</h3>
+
+
+
+
+            </div>
+
+
+
+
+    </div>
+
 
 </body>
 </html>

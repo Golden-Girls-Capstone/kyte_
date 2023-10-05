@@ -1,5 +1,7 @@
 package com.kyterescue.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.DashboardFosterDisplayService;
@@ -32,11 +34,17 @@ public class PetController {
     }
 
     @GetMapping("/dashboard")
-    public String viewDashboard(Model model) {
+    public String viewDashboard(Model model) throws JsonProcessingException {
         Pet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
-        List<Pet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
+        List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
         model.addAttribute("current", currentFoster);
+        model.addAttribute("pets", petHistory);
+        long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
+        User user = usersDao.getUserById(userId);
+        model.addAttribute("profile", user);
+        List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
         model.addAttribute("fosters", fosterHistory);
+
         return "pets/dashboard";
     }
 
@@ -56,10 +64,17 @@ public class PetController {
         return "pets/browse";
     }
 
+//    @PostMapping("/browse/add-favorites")
+//    public String addToFavorites(Model model) {
+//
+//    }
+
     @GetMapping("pets/{id}/view")
     public String viewPetProfile(@PathVariable String id, Model model) {
         Pet petToView = petsDao.getPetById(Long.parseLong(id));
+        List<String> reviews = fostersDao.findReviewsOfFoster(petToView.getId());
         model.addAttribute("pet", petToView);
+        model.addAttribute("reviews", reviews);
         return "pets/petprofile";
     }
 }

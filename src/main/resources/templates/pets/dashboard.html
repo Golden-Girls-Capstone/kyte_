@@ -4,24 +4,53 @@
     <title>Title</title>
 </head>
 <body>
-<div class="page-wrapper">
+<div class="page-wrapper overflow-scroll">
     <nav th:insert="partials/navbar"></nav>
-    <div class="container py-5 my-3">
-        <div class="column foster-info d-flex">
-            <div th:object="${current}" class=" current-foster row justify-start" style="width:25%">
-               <h2>Current Foster</h2>
-                <h3></h3>
-                <h4 th:field="*{name}"></h4>
-                <button>Complete Foster</button>
+    <!--            USER PROFILE PAGE-->
+    <div class="container vh-100">
+        <div th:text="${profile.picture}"></div>
+        <h5>above this goes the user's picture if we choose</h5>
+
+        <div th:text="${profile.username}"></div>
+        <div th:text="${profile.email}"></div>
+
+        <div th:text="${profile.zipcode}"></div>
+
+    </div>
+    <!--        FOSTER PAGE: CURRENT AND PREVIOUS FOSTERS-->
+    <div class="container py-5 my-3 vh-100">
+        <div class="column foster-info d-flex text-center">
+            <div th:object="${current}" class=" current-foster row gap-5 px-5 justify-content-center" style="width:50%">
+                <h2 class="text-center">Current Foster</h2>
+                <div>
+                    <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">
+                    <h4 th:text="${current.name}"></h4>
+                </div>
+                <button style="width: 50%">Complete Foster</button>
             </div>
-            <div th:each="foster : ${fosters}" class="previous-foster d-flex flex-row-reverse" style="width:50%">
-                    <h2>Previous Fosters</h2>
-                    <h3 th:image="${foster.photo}"></h3>
-                    <h4  th:text="${foster.getName()}"></h4>
+            <div class="previous-foster d-flex row px-2" style="width:50%">
+                <div th:each="pet : ${pets}" >
+                    <h2 class="text-center">Previous Fosters</h2>
+                    <div class="column text-center" style="width: fit-content">
+                        <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px"
+                             alt="previous-foster-pet-image">
+                        <h4 th:if="${pet.name != null}" th:text="${pet.getName()}"></h4>
+                    </div>
+                </div>
+                <div th:each="foster : ${fosters}">
+                    <h5></h5>
+                </div>
             </div>
         </div>
     </div>
-
+    <!--FAVORITES PAGE-->
+    <div class="container vh-100">
+        <h1>FAVORITES PAGE</h1>
+    </div>
+    <!--    USERS REVIEWS PAGE-->
+    <div>
+        <h1>USER REVIEWS PAGE</h1>
+    </div>
 </div>
 
 <footer th:insert="partials/footer"></footer>

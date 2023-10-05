@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head th:insert="~{partials/header:: header}">
     <title>Title</title>
 </head>
 <body>
+<nav th:insert="~{partials/navbar:: nav}"></nav>
 
-<h1>logout page</h1>
+<h1>You've been logged out ! :)</h1>
 
+<footer th:insert="~{partials/footer:: footer}"></footer>
 </body>
 </html>
