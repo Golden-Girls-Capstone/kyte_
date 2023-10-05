@@ -41,6 +41,11 @@ public class PetController {
         System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(fosterHistory));
         model.addAttribute("current", currentFoster);
         model.addAttribute("fosters", fosterHistory);
+        long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
+        User user = usersDao.getUserById(userId);
+        System.out.println(user.getUsername());
+        System.out.println(user.getEmail());
+        model.addAttribute("profile", user);
         return "pets/dashboard";
     }
 
