@@ -46,15 +46,6 @@ public class UserController {
         return "users/login";
     }
 
-    @GetMapping("/profile")
-    public String viewProfile(Model model) {
-//        long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
-//        User user = usersDao.getUserById(userId);
-//        System.out.println(user.getUsername());
-//        System.out.println(user.getEmail());
-//        model.addAttribute("profile", user);
-        return "users/profile";
-    }
 
     @PostMapping("/profile/edit")
     public String editProfile(Model model) {

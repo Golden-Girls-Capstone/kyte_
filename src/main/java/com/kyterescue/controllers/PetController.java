@@ -35,17 +35,16 @@ public class PetController {
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
         Pet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
-        List<Pet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
-        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(fosterHistory));
+        List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
         model.addAttribute("current", currentFoster);
-        model.addAttribute("fosters", fosterHistory);
+        model.addAttribute("pets", petHistory);
         long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
         User user = usersDao.getUserById(userId);
-        System.out.println(user.getUsername());
-        System.out.println(user.getEmail());
         model.addAttribute("profile", user);
+        List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
+        model.addAttribute("fosters", fosterHistory);
+
         return "pets/dashboard";
     }
 
