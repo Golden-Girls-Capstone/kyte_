@@ -38,7 +38,7 @@ p.mission1 {
     width: 23%;
     height: 28vh;
     position: relative;
-    left: 91%;
+    left: 84%;
     top: -60px;
 }
 .yellow-blob3 {
@@ -80,13 +80,157 @@ h1.FAQ {
 
 }
 .FAQ-questions {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-top: 48px;
+    position: absolute;
+    z-index: 12;
+    right: 135px;
+
 }
-.accordion.hero{
-    background: #FFFAEC !important;
+img.yarn {
+    position: relative;
+    width: 202px;
+    top: -27em;
+    left: -5px;
+}
+.purple-blob1 {
+    position: relative;
+    width: 268px;
+    background: lavender;
+    height: 284px;
+    bottom: -19em;
+    left: -11em;
+}
+.red-blob2 {
+    position: relative;
+    width: 209px;
+    height: 343px;
+    background: red;
+    bottom: 27em;
+    left: 73em;
+}
+.grey-blob2 {
+    position: relative;
+    width: 272px;
+    height: 231px;
+    background: gray;
+    left: 70em;
+    top: -18em;
+}
+img.pink-paw {
+    position: absolute;
+    width: 372px;
+    top: 86em;
+    left: 68em;
+}
+.Devs-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    bottom: 9em;
+    font-family: Montserrat;
+}
+.Dev {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: space-around;
+    border-style:solid;
+}
+img.Dev.Ty{
+    position: relative;
+    top: -17em;
+    right: 5em;
+}
+img.Dev.Arusa {
+    position: relative;
+    top: -14em;
+    left: 67em;
+}
+img.Dev.Emily {
+    position: relative;
+    top: -11em;
+    right: 5em;
+}
+img.Dev.Keila {
+    position: relative;
+    top: -9em;
+    left: 67em;
+}
+img.Dev.Sam {
+    position: relative;
+    right: 5em;
+}
+.elevator-pitch{
+    position:relative;
+    width: 80%;
+}
+.elevator-pitch.Ty {
+    top: -25em;
+    left: 12em;
+}
+.elevator-pitch.Arusa{
+    bottom: 23em;
+    left: 1em;
+}
+.elevator-pitch.Emily{
+    top: -21em;
+    left: 12em;
+}
+.elevator-pitch.Keila{
+    bottom: 18em;
+    left: 2em;
+}
+.elevator-pitch.Sam{
+    top: -12em;
+    left: 12em;
+}
+img.Dev-Ty\'s.pet {
+    border-radius: 50%;
+    width: 204px;
+    height: 204px;
+    position: absolute;
+    top: 127em;
+    left: 12em;
+}
+
+img.Dev-Arusa\'s.pet {
+    border-radius: 50%;
+    width: 204px;
+    height: 204px;
+    position: absolute;
+    left: 68rem;
+    top: 152em;
+}
+img.Dev-Emily\'s.pet {
+    border-radius: 50%;
+    width: 204px;
+    height: 204px;
+    position: absolute;
+    top: 179em;
+    left: 12em;
+}
+img.Dev-Keila\'s.pet {
+    border-radius: 50%;
+    width: 204px;
+    height: 204px;
+    position: absolute;
+    top: 203em;
+    left: 68em;
+}
+
+img.Dev-Sam\'s.pet {
+    border-radius: 50%;
+    width: 204px;
+    height: 204px;
+    border-style: dotted;
+    position: absolute;
+    top: 234em;
+    left: 12em;
 }
