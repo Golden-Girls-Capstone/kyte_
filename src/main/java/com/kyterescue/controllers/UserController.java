@@ -1,7 +1,6 @@
 package com.kyterescue.controllers;
 
-import com.kyterescue.entities.User;
-import com.kyterescue.entities.UserRepository;
+import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,16 +10,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @Controller
 public class UserController {
 
     UserRepository usersDao;
+    FosterPetRepository fosterPetDao;
     PasswordEncoder passwordEncoder;
 
     AuthenticationService authenticationService;
 
-    UserController(UserRepository usersDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService) {
+    UserController(UserRepository usersDao, FosterPetRepository fosterPetDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService) {
         this.usersDao = usersDao;
+        this.fosterPetDao = fosterPetDao;
         this.passwordEncoder = passwordEncoder;
         this.authenticationService = authenticationService;
     }
@@ -64,18 +67,18 @@ public class UserController {
         return "users/logout";
     }
 
-//    @DeleteMapping("user/{id}")
-//    String deleteUser(@PathVariable Long id){
-//        if(!usersDao.existsById(id)){
-//            throw new RuntimeException();
-//        }
-//        usersDao.deleteById(id);
-//        return "redirect:/login";
-//    }
 
     @PostMapping("/profile/edit/delete/{id}")
     public String deleteUser(@PathVariable long id) {
-        usersDao.delete(usersDao.findById(id).get());
+        User userToDelete = usersDao.findById(id).get();
+//        ArrayList<FosterPet> userFosterPets =
+//        for(FosterPet fosterPet : userToDelete.getFosterPets()) {
+//            fosterPetDao.delete(fosterPet);
+//        }
+//        userToDelete.setPets(new ArrayList<>());
+//        usersDao.save(userToDelete);
+        usersDao.delete(userToDelete);
+        SecurityContextHolder.getContext().setAuthentication(null);
         return "redirect:/login";
     }
 
