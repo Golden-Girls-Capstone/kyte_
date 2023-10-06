@@ -11,8 +11,10 @@
         <div class="row d-flex justify-center row-gap-3" >
             <h3>Login</h3>
                 <form th:action="@{/login}" method="post" class=" row d-flex justify-content-center p-5 ">
+                    <h6>Username:</h6>
                     <label for="username"></label>
                     <input id="username" name="username" type="text" placeholder="username"/>
+                    <h6>Password:</h6>
                     <label for="password"></label>
                     <input id="password" name="password" type="password" placeholder="password"/>
                     <input type="submit" class="" value="Log In" />

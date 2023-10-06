@@ -42,6 +42,10 @@
                         <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>
                         <input type="submit" class="" value="submit changes" />
                     </form>
+                    <form th:action="@{|/profile/edit/delete/${profile.id}|}" th:method="POST">
+<!--                        <button class="btn btn-danger w-100">Delete My Account</button>-->
+                        <input type="submit" class="" value="delete account" />
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

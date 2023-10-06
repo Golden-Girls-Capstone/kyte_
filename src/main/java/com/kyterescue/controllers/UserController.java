@@ -5,12 +5,11 @@ import com.kyterescue.entities.UserRepository;
 import com.kyterescue.services.AuthenticationService;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -64,6 +63,22 @@ public class UserController {
     public String viewLogout() {
         return "users/logout";
     }
+
+//    @DeleteMapping("user/{id}")
+//    String deleteUser(@PathVariable Long id){
+//        if(!usersDao.existsById(id)){
+//            throw new RuntimeException();
+//        }
+//        usersDao.deleteById(id);
+//        return "redirect:/login";
+//    }
+
+    @PostMapping("/profile/edit/delete/{id}")
+    public String deleteUser(@PathVariable long id) {
+        usersDao.delete(usersDao.findById(id).get());
+        return "redirect:/login";
+    }
+
 
 
 
