@@ -22,20 +22,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-<!--                    <form th:action="@{}" th:method="post" class=" row d-flex justify-content-center p-5" th:object="${user}">-->
-                    <form>
+                    <form th:action="@{/profile/edit}" th:method="post" class=" row d-flex justify-content-center p-5" th:object="${profile}">
                         <h4>inside form</h4>
-<!--                        <label for="username"></label>-->
-<!--                        <input id="username" name="username" type="text" th:field="*{username}" placeholder="Username"/>-->
-<!--                        <label for="email"></label>-->
-<!--                        <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>-->
-<!--                        <label for="zipcode"></label>-->
-<!--                        <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>-->
+                        <p>Username</p>
+                        <input id="username" name="username" type="text" th:field="*{username}" placeholder="Username"/>
+                        <p>Email</p>
+                        <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
+                        <p>Zipcode</p>
+                        <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>
+                        <input type="submit" class="" value="submit changes" />
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </div>

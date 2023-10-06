@@ -48,9 +48,16 @@ public class UserController {
 
 
     @PostMapping("/profile/edit")
-    public String editProfile(Model model) {
-        authenticationService.grabAuthenticationUserDetails(model);
-        return "users/profile";
+    public String editProfile(@ModelAttribute User user, @CurrentSecurityContext(expression = "authentication?.name") String username) {
+//        authenticationService.grabAuthenticationUserDetails(model);
+//        long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
+//        User user = usersDao.getUserById(userId);
+        User userToEdit = usersDao.findByUsername(username);
+        userToEdit.setEmail(user.getEmail());
+        userToEdit.setUsername(user.getUsername());
+        userToEdit.setZipcode(user.getZipcode());
+        usersDao.save(userToEdit);
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/logout")

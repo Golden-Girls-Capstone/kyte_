@@ -35,6 +35,7 @@ public class PetController {
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) throws JsonProcessingException {
+
         Pet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
         model.addAttribute("current", currentFoster);
