@@ -16,7 +16,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String viewLanding(Model model) {
-        authenticationService.grabAuthenticationUserDetails(model);
+//        authenticationService.grabAuthenticationUserDetails(model);
         return "landing/landing";
     }
 

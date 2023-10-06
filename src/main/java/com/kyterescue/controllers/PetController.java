@@ -59,7 +59,7 @@ public class PetController {
     }
 
     @GetMapping("/browse")
-    public String viewBrowse(Model model, @RequestParam(name = "zipcode") int zipcode) throws IOException {
+    public String viewBrowse(Model model) throws IOException {
 //        if(authenticationService.grabAuthenticationUserDetails(model) != null) {
 //            long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
 //            User user = usersDao.getUserById(userId);
@@ -79,7 +79,7 @@ public class PetController {
 
     @PostMapping("/browse")
     public String fosterOrSave(Model model) {
-        authenticationService.grabAuthenticationUserDetails(model);
+//        authenticationService.grabAuthenticationUserDetails(model);
         return "pets/browse";
     }
 
