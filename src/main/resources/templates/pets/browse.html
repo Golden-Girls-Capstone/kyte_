@@ -51,7 +51,16 @@
                 <h2>Sir Chester</h2>
                 <img class="modal-image" src="/img/dogkiss.jpeg" >
                 <p>Here the information of the animal like its breed, color, and etc </p>
-                <button id="submit-foster-btn">Submit</button>
+                <form class="foster-form" action="/action_page.php">
+                    <label for="start">Start Date: </label>
+                    <input type="text" id="start" name="startDate" placeholder="Your Start Date">
+
+                    <label for="end">End Date: </label>
+                    <input type="text" id="end" name="endDate" placeholder="Your End Date">
+
+                    <input id="submit-foster-btn" type="submit" value="Submit">
+                </form>
+<!--                <button id="submit-foster-btn">Submit</button>-->
             </div>
         </div>
     </div>
