@@ -18,7 +18,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-//    @Autowired
+    @Autowired
     private UserDetailsLoader usersLoader;
 
     public SecurityConfig(UserDetailsLoader usersLoader) {

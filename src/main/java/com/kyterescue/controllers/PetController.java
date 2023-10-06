@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.DashboardFosterDisplayService;
-import com.kyterescue.services.GrabApiDataService;
+//import com.kyterescue.services.GrabApiDataService;
 import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,15 +26,15 @@ public class PetController {
     FosterPetRepository fostersDao;
     AuthenticationService authenticationService;
     DashboardFosterDisplayService dashboardFosterDisplayService;
-    GrabApiDataService grabData;
+//    GrabApiDataService grabData;
 
-    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService, GrabApiDataService grabData) {
+    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService) {
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.fostersDao = fostersDao;
         this.authenticationService = authenticationService;
         this.dashboardFosterDisplayService = dashboardFosterDisplayService;
-        this.grabData = grabData;
+//        this.grabData = grabData;
     }
 
     @GetMapping("/dashboard")
@@ -60,20 +60,20 @@ public class PetController {
 
     @GetMapping("/browse")
     public String viewBrowse(Model model, @RequestParam(name = "zipcode") int zipcode) throws IOException {
-        if(authenticationService.grabAuthenticationUserDetails(model) != null) {
-            long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
-            User user = usersDao.getUserById(userId);
-            if(user.getZipcode() == 0) {
-                List<Pet> pets = grabData.findAllPetsByZipcode(zipcode);
-                petsDao.saveAll(pets);
-            } else {
-                List<Pet> pets = grabData.findAllPetsByZipcode(user.getZipcode());
-                petsDao.saveAll(pets);
-            }
-        } else {
-            List<Pet> pets = grabData.findAllPetsByZipcode(zipcode);
-            petsDao.saveAll(pets);
-                }
+//        if(authenticationService.grabAuthenticationUserDetails(model) != null) {
+//            long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
+//            User user = usersDao.getUserById(userId);
+//            if(user.getZipcode() == 0) {
+//                List<Pet> pets = grabData.findAllPetsByZipcode(zipcode);
+//                petsDao.saveAll(pets);
+//            } else {
+//                List<Pet> pets = grabData.findAllPetsByZipcode(user.getZipcode());
+//                petsDao.saveAll(pets);
+//            }
+//        } else {
+//            List<Pet> pets = grabData.findAllPetsByZipcode(zipcode);
+//            petsDao.saveAll(pets);
+//                }
         return "pets/browse";
     }
 
