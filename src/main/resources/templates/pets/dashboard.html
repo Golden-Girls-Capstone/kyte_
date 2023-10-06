@@ -7,21 +7,30 @@
 <div class="page-wrapper overflow-scroll m-3">
     <nav th:insert="partials/navbar:: nav"></nav>
     <!--            USER PROFILE PAGE-->
-    <div class="column">
-        <img src="/img/dogkiss.jpeg" alt="placeholder" style="height: 50px; width: 50px">
-    </div>
-    <div class="column">
-        <div class="row">
-            <h2>USER USER: test</h2>
-            <h2>USER EMAIL: test@test.com</h2>
-            <h2>USER PASS: *******</h2>
-            <h2>USER ZIPCODE: 78245</h2>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+
+        <div class="column mx-2 d-flex align-items-center">
+            <img src="/img/dogkiss.jpeg" alt="placeholder" style="height: 250px; width: 400px">
+            <!--        <div th:text="${profile.picture}"></div>-->
+        </div>
+        <div class="column">
+            <div class="row">
+                <div th:text="${profile.username}"></div>
+                <div th:text="${profile.email}"></div>
+                <div th:text="${profile.zipcode}"></div>
+            </div>
+            <!-- Button trigger modal -->
+            <div class="column" >
+                <button type="button" class="btn btn-light" style="height: min-content; width: max-content" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Edit Info
+                </button>
+                <button type="button" class="btn btn-danger text-light" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Delete Account
+                </button>
+            </div>
         </div>
     </div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Edit User Profile
-    </button>
+
 
     <!-- Modal -->
     <div class="modal fade modal-dialog modal-dialog-centered" id="staticBackdrop" data-bs-backdrop="static"
@@ -53,17 +62,6 @@
         </div>
     </div>
 
-    <div class="container vh-100 ">
-        <div th:text="${profile.picture}"></div>
-        <h5>above this goes the user's picture if we choose</h5>
-
-        <div th:text="${profile.username}"></div>
-        <div th:text="${profile.email}"></div>
-
-        <div th:text="${profile.zipcode}"></div>
-
-    </div>
-
 
     <!--        FOSTER PAGE: CURRENT AND PREVIOUS FOSTERS-->
     <div class="container py-5 my-3 vh-100">
@@ -72,7 +70,7 @@
                 <h2 class="text-center">Current Foster</h2>
                 <div>
                     <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">
-                                        <h4 th:if="${current != null}" th:text="${current.name}"></h4>
+                    <h4 th:if="${current != null}" th:text="${current.name}"></h4>
                 </div>
                 <button style="width: 50%">Complete Foster</button>
             </div>
