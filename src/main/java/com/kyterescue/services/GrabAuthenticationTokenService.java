@@ -13,7 +13,7 @@ public class GrabAuthenticationTokenService {
     @Value("${pet.secret}")
     private String petSecret;
     public String tokenURL = "https://api.petfinder.com/v2/oauth2/token";
-    private OkHttpClient client;
+    private OkHttpClient client = new OkHttpClient();
     private ObjectMapper mapper = new ObjectMapper();
 
     public String getBearerToken() throws IOException {
