@@ -28,54 +28,128 @@ document.addEventListener("DOMContentLoaded", function () {
         closeModal();
     });
 });
+function determineApiCall() {
+    const zipcode = document.getElementById('zipcode');
+    const category = document.getElementById('category');
 
-//fetching
-fetch('/api/token', {
-    method: 'GET',
-    headers: {
-        'Accept': 'text/plain',
+    if (zipcode == null && category == null) {
+        fetchByDefault();
+    } else {
+        fetchBySearch();
     }
-})
-    .then(response => response.text())
-    .then(token => {
-        // Save the token into a const
-        const bearerToken = `Bearer ${token}`;
-        fetch('/api/data', {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer'  + bearerToken,
-                'Content-Type': 'application/json'
-            },
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
+}
+//fetching
+
+function fetchByDefault() {
+    fetch('/api/token', {
+        method: 'GET',
+        headers: {
+            'Accept': 'text/plain',
+        }
+    })
+        .then(response => response.text())
+        .then(token => {
+            // Save the token into a const
+            const bearerToken = `Bearer ${token}`;
+            fetch('/api/data/default', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + bearerToken,
+                    'Content-Type': 'application/json'
+                },
             })
-            .then(data => {
-                console.log(data)
-                // response data
-                const dataList = document.getElementById('data-list'); // Get the <ul> element
-                for (animalKey in data) {
-                    if(data.hasOwnProperty(animalKey)) {
-                        const animals = data[animalKey];
-                        for(let i = 1; i < 20; i++) {
-                            if(animals[i]) {
-                                let listItem = document.createElement('li');
-                                listItem.textContent = `${animals[i].name}, ${animals[i].age}, ${animals[i].contact.address.postcode}`;
-                                dataList.append(listItem);
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // response data
+                    const dataList = document.getElementById('data-list'); // Get the <ul> element
+                    dataList.innerHTML = "";
+                    for (animalKey in data) {
+                        if (data.hasOwnProperty(animalKey)) {
+                            const animals = data[animalKey];
+                            for (let i = 1; i < 20; i++) {
+                                if (animals[i]) {
+                                    let listItem = document.createElement('li');
+                                    listItem.textContent = `${animals[i].name}, ${animals[i].age}, ${animals[i].contact.address.postcode}`;
+                                    dataList.append(listItem);
+                                }
                             }
                         }
                     }
-                }
+                })
+                .catch(error => {
+                    console.error('Second Fetch error:', error);
+                });
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error('First Fetch error:', error);
+
+        });
+}
+function fetchBySearch() {
+    const category = document.getElementById('category').value;
+    const zipcode = document.getElementById('zipcode').value
+        fetch('/api/token', {
+            method: 'GET',
+            headers: {
+                'Accept': 'text/plain',
+            }
+        })
+            .then(response => response.text())
+            .then(token => {
+                // Save the token into a const
+                const bearerToken = `Bearer ${token}`;
+                fetch('/api/data/search?category=' + category + '&zipcode=' + zipcode , {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Bearer ' + bearerToken,
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data)
+                        // response data
+                        const dataList = document.getElementById('data-list'); // Get the <ul> element
+                        dataList.innerHTML = "";
+                        for (animalKey in data) {
+                            if (data.hasOwnProperty(animalKey)) {
+                                const animals = data[animalKey];
+                                for (let i = 1; i < 20; i++) {
+                                    if (animals[i]) {
+                                        let listItem = document.createElement('li');
+                                        listItem.textContent = `${animals[i].name}, ${animals[i].age}, ${animals[i].contact.address.postcode}`;
+                                        dataList.append(listItem);
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Second Fetch error:', error);
+                    });
             })
             .catch(error => {
-                console.error('Second Fetch error:', error);
+                // Handle any errors
+                console.error('First Fetch error:', error);
             });
-    })
-    .catch(error => {
-        // Handle any errors
-        console.error('First Fetch error:', error);
+}
+document.addEventListener("DOMContentLoaded", function() {
+    fetchByDefault();
+})
+document.getElementById('search-form').addEventListener("submit", function(e) {
+    e.preventDefault();
+   fetchBySearch();
+});
 
-    });
+

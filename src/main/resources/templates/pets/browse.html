@@ -14,30 +14,33 @@
 
 </head>
 <body>
-<nav th:replace="partials/navbar :: nav" ></nav>
+<nav th:replace="~{partials/navbar :: nav}" ></nav>
 
 <h1>JSON Data Display</h1>
 <ul id="data-list"></ul>
 <div class="page-wrapper">
     <div class="container">
         <div class="row">
-            <h1>Browse</h1>
+            <h1>What are you looking for?</h1>
             <div class="col">
                 <div class="search">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                    <select class="categoryDropdown">
-                        <option value="category1">Cats</option>
-                        <option value="category2">Dogs</option>
-                        <option value="category3">Rodents</option>
-                        <!-- Add more categories as needed -->
-                    </select>
-                    <input type="text" class="zipcode" placeholder="Enter ZIP code">
-                    <button type="submit" class="searchButton">
-                        🔍
-                    </button>
+                    <form action="/api/data/search" id="search-form" th:object="${searchForm}" method="get">
+                        <select id="category" name="category" class="categoryDropdown">
+                            <option value="cat">Cats</option>
+                            <option value="dog">Dogs</option>
+                            <option value="small-furry">Rodents</option>
+                            <option value="bird">Birds</option>
+                            <option value="rabbit">Rabbits</option>
+                            <option value="barnyard">Barnyard</option>
+                            <option value="scales-fins-other">Scales/Fins</option>
+                            <!-- Add more categories as needed -->
+                        </select>
+                        <input type="text" id="zipcode" name="zipcode" class="zipcode" th:field="${searchForm.zipcode}" placeholder="Enter ZIP code">
+                        <button type="submit" id="search-button" class="searchButton">
+                            🔍
+                        </button>
+                    </form>
                 </div>
-
-
             </div>
         </div>
         <div class="row cards-container">

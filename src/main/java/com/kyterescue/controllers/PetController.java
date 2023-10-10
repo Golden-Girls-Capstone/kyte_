@@ -27,7 +27,6 @@ public class PetController {
     FosterPetRepository fostersDao;
     AuthenticationService authenticationService;
     DashboardFosterDisplayService dashboardFosterDisplayService;
-//    GrabApiDataService grabData;
 
     PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService) {
         this.usersDao = usersDao;
@@ -35,7 +34,6 @@ public class PetController {
         this.fostersDao = fostersDao;
         this.authenticationService = authenticationService;
         this.dashboardFosterDisplayService = dashboardFosterDisplayService;
-//        this.grabData = grabData;
     }
 
     @GetMapping("/dashboard")
@@ -46,6 +44,7 @@ public class PetController {
         model.addAttribute("current", currentFoster);
         model.addAttribute("pets", petHistory);
         long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
+//        long userId = 7L;
         User user = usersDao.getUserById(userId);
         model.addAttribute("profile", user);
         List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
@@ -73,26 +72,12 @@ public class PetController {
 
     @GetMapping("/browse")
     public String viewBrowse(Model model) throws IOException {
-//        if(authenticationService.grabAuthenticationUserDetails(model) != null) {
-//            long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
-//            User user = usersDao.getUserById(userId);
-//            if(user.getZipcode() == 0) {
-//                List<Pet> pets = grabData.findAllPetsByZipcode(zipcode);
-//                petsDao.saveAll(pets);
-//            } else {
-//                List<Pet> pets = grabData.findAllPetsByZipcode(user.getZipcode());
-//                petsDao.saveAll(pets);
-//            }
-//        } else {
-//            List<Pet> pets = grabData.findAllPetsByZipcode(zipcode);
-//            petsDao.saveAll(pets);
-//                }
+        model.addAttribute("searchForm", new SearchForm());
         return "pets/browse";
     }
 
     @PostMapping("/browse")
     public String fosterOrSave(Model model) {
-//        authenticationService.grabAuthenticationUserDetails(model);
         return "pets/browse";
     }
 
