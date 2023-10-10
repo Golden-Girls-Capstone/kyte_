@@ -11,7 +11,7 @@
     <div class="container user-profile-container d-flex justify-content-center">
         <div class="column user-profile-pic d-flex align-items-center mx-5">
             <img src="/img/dogkiss.jpeg" alt="placeholder" class="user-profile-pic" style="width: 350px; height: 200px">
-                    <div th:text="${profile.picture}"></div>
+            <div th:text="${profile.picture}"></div>
         </div>
 
         <div class="column user-info d-flex align-items-center">
@@ -28,44 +28,50 @@
                 </button>
             </div>
             <!-- Modal -->
-            <div class="modal fade modal-dialog modal-dialog-centered" id="staticBackdrop" data-bs-backdrop="static"
-                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit User Info</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form th:action="@{/profile/edit}" th:method="post"
-                                  class=" row d-flex justify-content-center p-5"
-                                  th:object="${profile}">
-                                <p>Username</p>
-                                <input id="username" name="username" type="text" th:field="*{username}"
-                                       placeholder="Username"/>
-                                <p>Email</p>
-                                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
-                                <p>Zipcode</p>
-                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"
-                                       placeholder="Zipcode"/>
-                                <input type="submit" class="" value="Update Account"/>
-                            </form>
-                            <form th:action="@{|/profile/edit/delete/${profile.id}|}" th:method="POST">
-                                <input type="submit" class="" value="delete account"/>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Update</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="modal fade modal-dialog modal-dialog-centered" id="staticBackdrop" data-bs-backdrop="static"-->
+<!--                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+<!--                <div class="modal-dialog">-->
+<!--                    <div class="modal-content">-->
+<!--                        <div class="modal-header">-->
+<!--                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit User Info</h1>-->
+<!--                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                        </div>-->
+<!--                        <div class="modal-body">-->
+<!--                            <form th:action="@{/profile/edit}" th:method="post"-->
+<!--                                  class=" row d-flex justify-content-center p-5"-->
+<!--                                  th:object="${profile}">-->
+<!--                                <p>Username</p>-->
+<!--                                <input id="username" name="username" type="text" th:field="*{username}"-->
+<!--                                       placeholder="Username"/>-->
+<!--                                <p>Email</p>-->
+<!--                                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>-->
+<!--                                <p>Zipcode</p>-->
+<!--                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"-->
+<!--                                       placeholder="Zipcode"/>-->
+<!--                                <input type="submit" class="" value="Update Account"/>-->
+<!--                            </form>-->
+<!--                            <form th:action="@{|/profile/edit/delete/${profile.id}|}" th:method="POST">-->
+<!--                                <input type="submit" class="" value="delete account"/>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                            <button type="button" class="btn btn-primary">Update</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
-        <div class="column profile-anchors align-items-center">
-            <button><a href="#" >Fosters</a></button>
-            <button>Favorites</button>
-            <button>Reviews</button>
+        <div class="row d-flex anchor-buttons">
+            <div class="column inline-flex">
+
+            <button class="learn-more" id="favorites-btn"> Favorites
+            </button>
+            <button class="learn-more" id="fosters-btn"> Fosters
+            </button>
+            <button class="learn-more" id="reviews-btn"> Reviews
+            </button>
+            </div>
         </div>
     </div>
 
@@ -80,11 +86,13 @@
                     <h4 th:if="${current != null}" th:text="${current.pet.name}"></h4>
                 </div>
                 <div th:if="${current != null}">
-                    <form th:action="@{|/pet/review/${current.id}|}" th:method="post" class=" row d-flex justify-content-center p-5"
+                    <form th:action="@{|/pet/review/${current.id}|}" th:method="post"
+                          class=" row d-flex justify-content-center p-5"
                           th:object="${profile}">
                         <h4>inside form</h4>
-                        <input id="foster_review" name="foster_review" type="text" th:value="${current.foster_reviews}" placeholder="foster review">
-<!--                        <input type="submit" class="" value="submit review"/>-->
+                        <input id="foster_review" name="foster_review" type="text" th:value="${current.foster_reviews}"
+                               placeholder="foster review">
+                        <!--                        <input type="submit" class="" value="submit review"/>-->
                         <button type="submit">submit review</button>
                     </form>
                 </div>
@@ -103,6 +111,8 @@
             </div>
         </div>
     </div>
+
+
     <!--FAVORITES PAGE-->
     <div class="container vh-50 p-5">
         <div id="carouselExampleCaptions" class="carousel slide">
@@ -152,20 +162,17 @@
     <!--    USERS REVIEWS PAGE-->
 
 
-
     <!--    the reviews will be stored in the foster_reviews col in the foster-pets table-->
     <!--    it needs to be tied to the user in the id and then be tied to the foster_pets id (ask ty for clarification that they can only leave reviews on a pet they have fostered, and that's why we won't need the pet id?)-->
 
 
-
-<!--    working on review form below-->
-<!--    <form th:action="@{/profile/fosters}" th:method="post" class=" row d-flex justify-content-center p-5"-->
-<!--          th:object="${profile}">-->
-<!--        <h4>inside form</h4>-->
-<!--        <input id="foster_review" name="foster_review" type="text" th:field="*{foster_review}" placeholder="foster review"/>-->
-<!--        <input type="submit" class="" value="submit review"/>-->
-<!--    </form>-->
-
+    <!--    working on review form below-->
+    <!--    <form th:action="@{/profile/fosters}" th:method="post" class=" row d-flex justify-content-center p-5"-->
+    <!--          th:object="${profile}">-->
+    <!--        <h4>inside form</h4>-->
+    <!--        <input id="foster_review" name="foster_review" type="text" th:field="*{foster_review}" placeholder="foster review"/>-->
+    <!--        <input type="submit" class="" value="submit review"/>-->
+    <!--    </form>-->
 
 
     <div>
@@ -186,7 +193,7 @@
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <h3 class="modal-title">
+                    <h3 class="modal-title p-3">
                         Are you sure you want to delete this review?
                     </h3>
                     <div class="modal-footer">
