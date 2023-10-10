@@ -11,7 +11,7 @@
     <div class="container user-profile-container d-flex justify-content-center">
         <div class="column user-profile-pic d-flex align-items-center mx-5">
             <img src="/img/dogkiss.jpeg" alt="placeholder" class="user-profile-pic" style="width: 350px; height: 200px">
-            <!--        <div th:text="${profile.picture}"></div>-->
+                    <div th:text="${profile.picture}"></div>
         </div>
 
         <div class="column user-info d-flex align-items-center">
@@ -51,7 +51,6 @@
                                 <input type="submit" class="" value="Update Account"/>
                             </form>
                             <form th:action="@{|/profile/edit/delete/${profile.id}|}" th:method="POST">
-                                <!--                        <button class="btn btn-danger w-100">Delete My Account</button>-->
                                 <input type="submit" class="" value="delete account"/>
                             </form>
                         </div>
