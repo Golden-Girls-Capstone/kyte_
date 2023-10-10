@@ -6,6 +6,7 @@ import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.DashboardFosterDisplayService;
 //import com.kyterescue.services.GrabApiDataService;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +39,7 @@ public class PetController {
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) throws JsonProcessingException {
 
-        Pet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
+        FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
         model.addAttribute("current", currentFoster);
         model.addAttribute("pets", petHistory);
@@ -56,6 +57,18 @@ public class PetController {
     public String editDashboard(Model model) {
         return "pets/dashboard";
     }
+
+    @PostMapping("pet/review/{fosterId}")
+    public String editPetReview(@PathVariable long fosterId, @RequestParam("foster_review") String review){
+        System.out.println("inside pet review");
+        FosterPet foster = fostersDao.findById(fosterId).get();
+        foster.setFoster_reviews(review);
+        fostersDao.save(foster);
+
+        return "redirect:/dashboard";
+    }
+
+
 
     @GetMapping("/browse")
     public String viewBrowse(Model model) throws IOException {
@@ -76,4 +89,5 @@ public class PetController {
         model.addAttribute("reviews", reviews);
         return "pets/petprofile";
     }
+
 }

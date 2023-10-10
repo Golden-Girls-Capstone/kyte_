@@ -59,6 +59,8 @@ public class UserController {
         userToEdit.setUsername(user.getUsername());
         userToEdit.setZipcode(user.getZipcode());
         usersDao.save(userToEdit);
+
+
         return "redirect:/dashboard";
     }
 

@@ -40,7 +40,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
 //                         Pages that require authentication
-                        .requestMatchers("/profile",  "/profile/edit", "/dashboard","/profile/edit/delete/{id}").authenticated()
+
+                        .requestMatchers("/profile", "/dashboard", "/profile/edit", "/profile/edit/delete/{id}", "pet/review/{fosterId}").authenticated()
+
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
 
