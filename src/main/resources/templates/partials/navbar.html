@@ -23,7 +23,6 @@
                 <li><a href="/about">About</a></li>
                 <li><a href="https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlebrand&initialms=MP_PMK_Googlebrand&pcode=WPSN7GO2PK01&lpcode=WPSN7GO1PK01&test&ds_rl=1066461&gad=1&gclid=CjwKCAjw9-6oBhBaEiwAHv1QvD9ozAHSPTXea0-ArbOHAJJn0SomEDqvrPVDfbaAhAUbNF6cIke6kRoCPCwQAvD_BwE&gclsrc=aw.ds">Partners</a></li>
                 <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/login">Login</a></li>
-                <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/sign-up">Sign Up</a></li>
                 <li sec:authorize="isAuthenticated()" class="nav-item"><a href="/dashboard">Dashboard</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
