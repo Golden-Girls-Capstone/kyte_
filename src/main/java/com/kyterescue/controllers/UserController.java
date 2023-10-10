@@ -2,6 +2,8 @@ package com.kyterescue.controllers;
 
 import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
+import com.kyterescue.services.CheckForUniqueEmailService;
+import com.kyterescue.services.CheckForUniqueUsernameService;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,12 +22,16 @@ public class UserController {
     PasswordEncoder passwordEncoder;
 
     AuthenticationService authenticationService;
+    CheckForUniqueUsernameService checkUsername;
+    CheckForUniqueEmailService checkEmail;
 
-    UserController(UserRepository usersDao, FosterPetRepository fosterPetDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService) {
+    UserController(UserRepository usersDao, FosterPetRepository fosterPetDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService, CheckForUniqueUsernameService checkUsername, CheckForUniqueEmailService checkEmail) {
         this.usersDao = usersDao;
         this.fosterPetDao = fosterPetDao;
         this.passwordEncoder = passwordEncoder;
         this.authenticationService = authenticationService;
+        this.checkUsername = checkUsername;
+        this.checkEmail = checkEmail;
     }
 
     @GetMapping("/sign-up")
@@ -35,12 +41,22 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String newUserSignup(@ModelAttribute User user) {
-        System.out.println("here");
+    public String newUserSignup(@ModelAttribute User user, Model model) {
+        if(checkUsername.check(user.getUsername()) && checkEmail.check(user.getEmail())) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
         return "redirect:/login";
+        } else {
+            if(!checkUsername.check(user.getUsername())) {
+                model.addAttribute("userNotUnique", true);
+            } else if(!checkEmail.check(user.getEmail())) {
+                model.addAttribute("emailNotUnique", true);
+            } else if(!checkUsername.check(user.getUsername()) && !checkEmail.check(user.getEmail())) {
+                model.addAttribute("bothNotUnique", true);
+            }
+            return "redirect:/sign-up";
+        }
     }
 
     @GetMapping("/login")
