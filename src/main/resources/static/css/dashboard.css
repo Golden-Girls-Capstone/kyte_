@@ -26,7 +26,7 @@ body {
 }
 
 
-button {
+ .edit-account-btn, .foster-btn, .review-btn, .fav-btn, .remove-fav-btn {
     padding: 12.5px 30px;
     border: 2px solid #FFC0CBFF;
     border-radius: 100px;
@@ -38,14 +38,14 @@ button {
     /*margin: 0 10rem;*/
 }
 
-button:hover {
+ .edit-account-btn:hover, .foster-btn:hover, .review-btn:hover, .fav-btn:hover, .remove-fav-btn:hover {
     background-color: #ff7d90;
     box-shadow: 0 0 20px #693b43;
     color: #ffffff;
     transform: scale(1.1);
 }
 
-button:active {
+.edit-account-btn:active, .foster-btn:active, .review-btn:active, .fav-btn:active, .remove-fav-btn:active {
     background-color: #fa667b;
     transition: all 0.25s;
     -webkit-transition: all 0.25s;
