@@ -35,14 +35,15 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
 //                         Pages that require authentication
-                        .requestMatchers("/profile",  "/profile/edit", "/profile/edit/delete/{id}").authenticated()
+                        .requestMatchers("/profile",  "/profile/edit", "/dashboard","/profile/edit/delete/{id}").authenticated()
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */
-                        .requestMatchers("", "/", "/dashboard", "/landing", "/sign-up", "/login", "/browse", "/api/test", "pets/**", "/logout", "/about", "/api/data").permitAll()
+                        .requestMatchers("", "/",  "/landing", "/sign-up", "/login", "/browse", "/api/test", "pets/**", "/logout", "/about", "/api/data").permitAll()
                         // allow loading of static resources
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()
                 )
