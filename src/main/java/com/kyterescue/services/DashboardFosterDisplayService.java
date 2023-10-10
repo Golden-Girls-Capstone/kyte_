@@ -22,15 +22,16 @@ public class DashboardFosterDisplayService {
         this.petsDao = petsDao;
         this.authenticationService = authenticationService;
     }
-    public Pet grabCurrentFoster(Model model) {
-        Pet currentFoster = null;
+    public FosterPet grabCurrentFoster(Model model) {
+//        Pet currentFoster = null;
         List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(authenticationService.grabAuthenticationUserDetails(model));
         for (FosterPet foster : allFosters) {
             if (LocalDate.now().isAfter(foster.getStart_date()) && LocalDate.now().isBefore(foster.getEnd_date())) {
-                currentFoster = petsDao.getPetById(foster.getPet().getId());
+//                currentFoster = petsDao.getPetById(foster.getPet().getId());
+                return foster;
             }
         }
-            return currentFoster;
+            return null;
     }
     public List<Pet> grabPetHistory(Model model) {
         List<Pet> petHistory = new ArrayList<>();
