@@ -43,6 +43,7 @@ public class PetController {
         model.addAttribute("current", currentFoster);
         model.addAttribute("pets", petHistory);
         long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
+//        long userId = 7L;
         User user = usersDao.getUserById(userId);
         model.addAttribute("profile", user);
         List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);

@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:insert="partials/header:: header">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <title>Title</title>
 </head>
 <body>
-<div class="page-wrapper overflow-scroll m-3">
+<div class="page-wrapper overflow-scroll">
     <nav th:insert="partials/navbar:: nav"></nav>
     <!--            USER PROFILE PAGE-->
-    <div class="container vh-100 d-flex justify-content-center align-items-center">
-
-        <div class="column mx-2 d-flex align-items-center">
-            <img src="/img/dogkiss.jpeg" alt="placeholder" style="height: 250px; width: 400px">
-            <!--        <div th:text="${profile.picture}"></div>-->
+    <div class="container user-profile-container d-flex justify-content-center">
+        <div class="column user-profile-pic d-flex align-items-center mx-5">
+            <img src="/img/dogkiss.jpeg" alt="placeholder" class="user-profile-pic" style="width: 350px; height: 200px">
+                    <div th:text="${profile.picture}"></div>
         </div>
-        <div class="column">
+
+        <div class="column user-info d-flex align-items-center">
             <div class="row">
                 <div th:text="${profile.username}"></div>
                 <div th:text="${profile.email}"></div>
                 <div th:text="${profile.zipcode}"></div>
             </div>
             <!-- Button trigger modal -->
-            <div class="column" >
-                <button type="button" class="btn btn-light" style="height: min-content; width: max-content" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <div class="user-btns column">
+                <button type="button" class="edit-account-btn" style="height: min-content; width: max-content"
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Edit Info
                 </button>
-                <button type="button" class="btn btn-danger text-light" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">Delete Account
-                </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade modal-dialog modal-dialog-centered" id="staticBackdrop" data-bs-backdrop="static"
+                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit User Info</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/profile/edit}" th:method="post"
+                                  class=" row d-flex justify-content-center p-5"
+                                  th:object="${profile}">
+                                <p>Username</p>
+                                <input id="username" name="username" type="text" th:field="*{username}"
+                                       placeholder="Username"/>
+                                <p>Email</p>
+                                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
+                                <p>Zipcode</p>
+                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"
+                                       placeholder="Zipcode"/>
+                                <input type="submit" class="" value="Update Account"/>
+                            </form>
+                            <form th:action="@{|/profile/edit/delete/${profile.id}|}" th:method="POST">
+                                <input type="submit" class="" value="delete account"/>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade modal-dialog modal-dialog-centered" id="staticBackdrop" data-bs-backdrop="static"
-         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form th:action="@{/profile/edit}" th:method="post" class=" row d-flex justify-content-center p-5"
-                          th:object="${profile}">
-                        <h4>inside form</h4>
-                        <p>Username</p>
-                        <input id="username" name="username" type="text" th:field="*{username}" placeholder="Username"/>
-                        <p>Email</p>
-                        <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
-                        <p>Zipcode</p>
-                        <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>
-                        <input type="submit" class="" value="submit changes"/>
-                    </form>
-                    <form th:action="@{|/profile/edit/delete/${profile.id}|}" th:method="POST">
-<!--                        <button class="btn btn-danger w-100">Delete My Account</button>-->
-                        <input type="submit" class="" value="delete account" />
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Update</button>
-                </div>
-            </div>
+        <div class="column profile-anchors align-items-center">
+            <button><a href="#" >Fosters</a></button>
+            <button>Favorites</button>
+            <button>Reviews</button>
         </div>
     </div>
 

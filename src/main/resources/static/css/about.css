@@ -234,3 +234,69 @@ img.Dev-Sam\'s.pet {
     top: 234em;
     left: 12em;
 }
+
+/*media Queries*/
+
+@media (max-width: 1200px) {
+
+    .Title {
+        font-size: 28px;
+    }
+
+    .mission-stmt1.column,
+    .mission-stmt2.column {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pet-picture,
+    .pet-picture2 {
+        width: 200px;
+        height: 200px;
+        margin: 0;
+    }
+
+    .mission1 {
+        width: 80%;
+        font-size: 0.9em;
+    }
+
+}
+
+@media (max-width: 992px) {
+
+    .Title {
+        font-size: 24px;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .Title {
+        font-size: 20px;
+    }
+
+    .mission1 {
+        font-size: 0.8em;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .Title {
+        font-size: 18px;
+    }
+
+    .mission1 {
+        font-size: 0.7em;
+    }
+
+}
+div#accordionExample {
+    --bs-accordion-bg: #FFFAEC;
+    --bs-accordion-active-bg: #FFFAEC;
+}
+
