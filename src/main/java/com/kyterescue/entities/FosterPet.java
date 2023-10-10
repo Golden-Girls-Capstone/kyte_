@@ -21,12 +21,8 @@ public class FosterPet {
     @Column(columnDefinition = "DATE NOT NULL")
     private LocalDate endDate;
 
-////////////////////////////////////////////////
-
     @OneToMany(mappedBy = "fosterPet", cascade = CascadeType.ALL)
     private List<Review> reviews;
-
-////////////////////////////////////////////////
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -34,8 +30,6 @@ public class FosterPet {
     @ManyToOne
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
-    @Column(columnDefinition = "VARCHAR(250)")
-    private String fosterReviews;
 
     public FosterPet() {
 
@@ -46,14 +40,16 @@ public class FosterPet {
         this.user = user;
         this.pet = pet;
     }
-    public FosterPet(Long id, LocalDate startDate, LocalDate endDate, String fosterReviews, User user, Pet pet) {
+
+    public FosterPet(Long id, LocalDate startDate, LocalDate endDate, List<Review> reviews, User user, Pet pet) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.fosterReviews = fosterReviews;
+        this.reviews = reviews;
         this.user = user;
         this.pet = pet;
     }
+
     public User getUser() {
         return user;
     }
@@ -78,12 +74,5 @@ public class FosterPet {
     public void setEnd_date(LocalDate end_date) {
         this.endDate = end_date;
     }
-    public String getFoster_reviews() {
-        return fosterReviews;
-    }
-    public void setFoster_reviews(String foster_reviews) {
-        this.fosterReviews = foster_reviews;
-    }
-
 
 }

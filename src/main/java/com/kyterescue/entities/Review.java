@@ -14,7 +14,6 @@ public class Review {
 
     @Column(columnDefinition = "VARCHAR(100)")
     private String body;
-////////////////////////////////////////////////
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -24,7 +23,6 @@ public class Review {
     @JoinColumn(name = "fosterPet_id", nullable = false)
     private FosterPet fosterPet;
 
-////////////////////////////////////////////////
     public Long getId() {
         return id;
     }
