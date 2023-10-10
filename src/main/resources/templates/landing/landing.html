@@ -16,9 +16,7 @@
 <body>
 <nav th:replace="partials/navbar :: nav" ></nav>
 <div class="page-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col">
+    <div class="container-dog">
                 <!-- Background image and container with text overlay -->
                 <div class="background-container">
                     <img src="/img/dogkiss.jpeg" class="blur-background" />
@@ -30,16 +28,12 @@
                             <p class="motto">Joining Hearts, Creating Homes. Together,
                                 we can</p>
                             <p class="motto">make a difference, one furry friend at a time.</p>
+                            <button class="btn login" href="/sign-up">Sign Up!</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 </div>
-<div>
-    <div class="row">
-        <div class="col">
             <div class=" paw-container">
                     <a href="/browse">
                         <img class="paws" src="/img/paw1.png"/>
@@ -54,12 +48,9 @@
                         <p class="link">Outreach</p>
                     </a>
                 </div>
-            </div>
-
-        </div>
-</div>
+<div>
 <footer th:insert="partials/footer"></footer>
-
+</div>
 </body>
 </html>
 
