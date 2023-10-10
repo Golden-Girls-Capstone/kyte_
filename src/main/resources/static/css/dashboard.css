@@ -1,15 +1,60 @@
 body {
     overflow: scroll;
+    margin-top: 3rem;
 }
 
 .user-profile-container {
     height: 100vh;
-    top: 0;
-    max-width: fit-content;
-    position: absolute;
+    /*top: 0;*/
+    max-width: 100vw;
     overflow: hidden;
-    background-image: url("../img/profile-bg5.jpg");
+    background-image: url("../img/profile-bg2.jpg");
     background-position: center;
+}
+
+.user-profile-pic {
+    justify-content: center;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.user-info {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+button {
+    padding: 12.5px 30px;
+    border: 2px solid #FFC0CBFF;
+    border-radius: 100px;
+    background-color: rgba(255, 126, 247, 0.11);
+    color: #ff7d90;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    /*margin: 0 10rem;*/
+}
+
+button:hover {
+    background-color: #ff7d90;
+    box-shadow: 0 0 20px #693b43;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+button:active {
+    background-color: #fa667b;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+}
+
+.anchor-tags button {
+    text-align: center;
 }
 
 
