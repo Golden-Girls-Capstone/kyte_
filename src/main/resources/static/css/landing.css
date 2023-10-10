@@ -1,6 +1,7 @@
 
 body{
     overflow: scroll;
+    background-color: #ffffff;
 }
 .background-container {
     background-size: cover;
