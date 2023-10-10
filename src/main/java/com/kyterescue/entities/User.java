@@ -35,14 +35,14 @@ public class User {
     @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<FosterPet> fosterPets;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Badge> badges;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_favorite_pets",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -164,5 +164,29 @@ public class User {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public List<FosterPet> getFosterPets() {
+        return fosterPets;
+    }
+
+    public void setFosterPets(List<FosterPet> fosterPets) {
+        this.fosterPets = fosterPets;
+    }
+
+    public List<Badge> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(List<Badge> badges) {
+        this.badges = badges;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
     }
 }

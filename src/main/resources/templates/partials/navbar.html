@@ -1,9 +1,12 @@
-<nav th:fragment="nav" class="navbar navbar-default bg-light mb-3 border navbar-expand-lg">
+<nav th:fragment="nav" class="navbar navbar-expand-md navbar-dark fixed-top" id="myNavbar">
     <div class="container-fluid">
-        <div class="navbar-header m-3">
-            <!--                INSERT COMPANY LOGO-->
-            <a class="nav-header" href="/">Kyte Rescue</a>
+
+        <!--                INSERT COMPANY LOGO-->
+        <div class="d-flex justify-content-center align-items-center">
+        <img class="navbar-brand Logo" src="/img/Logo.png">
+        <a class="navbar-brand" href="/">Kyte Rescue</a>
         </div>
+
         <ul class="nav-items d-flex column-gap-4 m-3">
             <li><a href="/browse">Browse</a></li>
             <li><a href="/about">About</a></li>
@@ -21,5 +24,32 @@
 <!--        <button class="shape" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"-->
 <!--                aria-controls="offcanvasRight"></button>-->
 <!--        <div class="oogla"></div>-->
+
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <ul class="nav-items d-flex gap-4">
+                <li><a href="/browse">Browse</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="https://secure.aspca.org/donate/ps-gn-p2?ms=MP_PMK_Googlebrand&initialms=MP_PMK_Googlebrand&pcode=WPSN7GO2PK01&lpcode=WPSN7GO1PK01&test&ds_rl=1066461&gad=1&gclid=CjwKCAjw9-6oBhBaEiwAHv1QvD9ozAHSPTXea0-ArbOHAJJn0SomEDqvrPVDfbaAhAUbNF6cIke6kRoCPCwQAvD_BwE&gclsrc=aw.ds">Partners</a></li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/login">Login</a></li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/sign-up">Sign Up</a></li>
+                <li sec:authorize="isAuthenticated()" class="nav-item"><a href="/dashboard">Dashboard</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
     </div>
 </nav>

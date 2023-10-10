@@ -3,6 +3,7 @@ body{
     background-color: #fffaec;
 }
 .background-container {
+    background-size: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -12,12 +13,12 @@ body{
     height: 90vh;
 }
 
-.logo {
+P.logo {
     font-size: 2.5rem;
     font-family: 'Montserrat', sans-serif;
 }
 
-.motto {
+P.motto {
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
 }
@@ -48,7 +49,7 @@ body{
 .text-overlay {
     position: absolute;
     top: 50%;
-    left: 40%; /* Adjust the left value to move the text to the left */
+    left: 40%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 1;
@@ -87,3 +88,150 @@ a {
 }
 
 a:visited { color:#dc787f }
+
+/*Navbar Css*/
+a.nav-header {
+    display: flex;
+    flex-direction: row;
+}
+
+img.navbar-brand.Logo {
+    width: 37px;
+}
+
+
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+        flex-direction: row-reverse;
+    }
+
+}
+.navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    height: 5vh;
+}
+button.navbar-toggler.collapsed {
+    margin-top: -8px;
+}
+#myNavbar {
+    transition: box-shadow 0.3s ease-in-out;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+#myNavbar.shadow {
+   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    background-color: rgba(243, 238, 225, 0.97);
+}
+
+
+/* Flex direction (column) for offcanvas menu */
+.offcanvas-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/*---------------------------Media QUERIES---------------------*/
+/*Small Phone Screen*/
+@media (max-width: 768px) {
+    .navbar-toggler.collapsed + #navbarOffcanvas .nav-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar.container-fluid.d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/*Large Screen */
+@media (min-width: 768px) {
+    .navbar-expand-md .offcanvas .offcanvas-body {
+        display: flex;
+        flex-grow: 0;
+        padding: 0;
+        overflow-y: visible;
+        flex-direction: row-reverse;
+        margin-top: 22px;
+    }
+}
+/* Mobile Portrait */
+@media (max-width: 576px) {
+    .background-container {
+        height: 80vh;
+    }
+
+    .landing-text {
+        margin-bottom: 15em;
+    }
+
+    .paw-container {
+        margin-top: 30em;
+    }
+
+    .text-overlay {
+        left: 20%;
+    }
+}
+
+/* Mobile Landscape and Small Tablets */
+@media (min-width: 577px) and (max-width: 767px) {
+    .background-container {
+        height: 70vh;
+    }
+
+    .landing-text {
+        margin-bottom: 17em;
+    }
+
+    .paw-container {
+        margin-top: 25em;
+    }
+
+    .text-overlay {
+        left: 25%;
+    }
+    P.logo {
+        font-size: 2rem;
+    }
+
+    P.motto {
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablets and Small Desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    .background-container {
+        height: 60vh;
+    }
+
+    .landing-text {
+        margin-bottom: 18em;
+    }
+
+    .paw-container {
+        margin-top: 20em;
+    }
+
+    .text-overlay {
+        left: 30%;
+    }
+    P.logo {
+        font-size: 2rem;
+    }
+    P.motto {
+        font-size: 20px;    }
+}
+
+
+
+
+
+
+

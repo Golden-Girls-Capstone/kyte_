@@ -92,6 +92,11 @@
 			<artifactId>okhttp</artifactId>
 			<version>4.9.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>logging-interceptor</artifactId>
+			<version>4.9.1</version> <!-- Use the same version as OkHTTP -->
+		</dependency>
     </dependencies>
 	<build>
 		<plugins>
