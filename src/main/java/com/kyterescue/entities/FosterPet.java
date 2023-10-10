@@ -20,6 +20,14 @@ public class FosterPet {
     private LocalDate startDate;
     @Column(columnDefinition = "DATE NOT NULL")
     private LocalDate endDate;
+
+////////////////////////////////////////////////
+
+    @OneToMany(mappedBy = "fosterPet", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
+////////////////////////////////////////////////
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

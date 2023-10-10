@@ -38,6 +38,11 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<FosterPet> fosterPets;
 
+    ////////////////////////////////////////////////
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+////////////////////////////////////////////////
+
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<Badge> badges;
 
