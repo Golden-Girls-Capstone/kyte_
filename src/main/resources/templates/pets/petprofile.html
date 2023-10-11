@@ -12,28 +12,32 @@
 
 <form action="@{/pets/{id}/view}" th:method="get" th:object="${pet}"></form>
     <div class="container">
-         <div class="profile-top d-flex">
-             <img class="pet-profile-pic" th:src="${pet.getPhoto()}" alt="Pet Photo">
-                <h1 class="pet-name" th:text="${pet.getName()}"></h1>
+         <div class="profile-top ">
+             <img class="pet-profile-pic" th:src="${pet.getPhoto()}" alt="">
+                <h1 class="pet-name" th:text="${pet.getName()}"> </h1>
          </div>
-            <div class="description column d-flex">
-                <h1 th:text="'All About ' + ${pet.getName()}">All About Cody...</h1>
+            <div class="description column ">
+                <p class="petprofile-description"   th:text="'Description:  ' + ${pet.getName()}"> </p>
             </div>
 
              <h3 th:text="${pet.getDescription()}"></h3>
                  <div class="info-pet column d-flex">
-                     <h6 th:text="${pet.getAge()}"></h6>
-                     <h6 th:text="${pet.getBreed()}"></h6>
-                     <h6 th:text="${pet.getGender()}"></h6>
-                     <h6 th:text="${pet.getSize()}"></h6>
+                     <p th:text="${pet.getAge()}"></p>
+                     <p th:text="${pet.getBreed()}"></p>
+                     <p th:text="${pet.getGender()}"></p>
+                     <p th:text="${pet.getSize()}"></p>
                  </div>
     <div>
         <h3>Foster Pet Reviews:</h3>
-        <ul>
-            <li th:each="review : ${reviews}">
-                <span th:text="${review}"></span>
-            </li>
-        </ul>
+
+        <div class="review-container">
+            <ul>
+                <li th:each="review : ${reviews}">
+                    <span th:text="${review}"></span>
+                </li>
+            </ul>
+        </div>
+
     </div>
     </div>
 
