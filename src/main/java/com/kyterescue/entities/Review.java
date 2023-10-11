@@ -23,6 +23,8 @@ public class Review {
     @JoinColumn(name = "fosterPet_id", nullable = false)
     private FosterPet fosterPet;
 
+
+
     public Long getId() {
         return id;
     }
@@ -37,5 +39,21 @@ public class Review {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public FosterPet getFosterPet() {
+        return fosterPet;
+    }
+
+    public void setFosterPet(FosterPet fosterPet) {
+        this.fosterPet = fosterPet;
     }
 }

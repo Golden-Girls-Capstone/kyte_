@@ -8,6 +8,7 @@ import com.kyterescue.services.DashboardFosterDisplayService;
 //import com.kyterescue.services.GrabApiDataService;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.auditing.CurrentDateTimeProvider;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,19 +26,23 @@ public class PetController {
     UserRepository usersDao;
     PetRepository petsDao;
     FosterPetRepository fostersDao;
+    ReviewRepository reveiwsDao;
     AuthenticationService authenticationService;
     DashboardFosterDisplayService dashboardFosterDisplayService;
 
-    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService) {
+    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, ReviewRepository reviewsDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService) {
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.fostersDao = fostersDao;
+        this.reveiwsDao = reviewsDao;
         this.authenticationService = authenticationService;
         this.dashboardFosterDisplayService = dashboardFosterDisplayService;
     }
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) throws JsonProcessingException {
+
+        //this is showing stuff on the dashboard
 
         FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
@@ -50,6 +55,10 @@ public class PetController {
         List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
         model.addAttribute("fosters", fosterHistory);
 
+        //this for the history of the reviews the user has made
+//        List<Review> reviewHistory = dashboardFosterDisplayService
+        model.addAttribute("review", new Review());
+
         return "pets/dashboard";
     }
 
@@ -58,17 +67,15 @@ public class PetController {
         return "pets/dashboard";
     }
 
-    @PostMapping("pet/review/{fosterId}")
-    public String editPetReview(@PathVariable long fosterId, @RequestParam("foster_review") String review){
-        System.out.println("inside pet review");
-        FosterPet foster = fostersDao.findById(fosterId).get();
-        foster.setFoster_reviews(review);
-        fostersDao.save(foster);
-
-        return "redirect:/dashboard";
-    }
-
-
+//    @PostMapping("pet/review/{fosterId}")
+//    public String editPetReview(@PathVariable long fosterId, @RequestParam("foster_review") String review){
+//        System.out.println("inside pet review");
+//        FosterPet foster = fostersDao.findById(fosterId).get();
+//        foster.setFoster_reviews(review);
+//        fostersDao.save(foster);
+//
+//        return "redirect:/dashboard";
+//    }
 
     @GetMapping("/browse")
     public String viewBrowse(Model model) throws IOException {
@@ -89,5 +96,19 @@ public class PetController {
         model.addAttribute("reviews", reviews);
         return "pets/petprofile";
     }
+
+
+    @PostMapping("/dashboard/review")
+    public String createReview(@RequestParam Review review, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
+        Review newReview = new Review();
+        User user = usersDao.findByUsername(username);
+        FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
+        newReview.setBody(review.getBody());
+        newReview.setUser(user);
+        newReview.setFosterPet(currentFoster);
+        reveiwsDao.save(newReview);
+        return "pets/dashboard";
+    }
+
 
 }
