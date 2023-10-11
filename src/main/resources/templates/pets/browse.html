@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,11 +69,11 @@
         <h2 class="modal-name">Sir Chester</h2>
         <img class="modal-image" src="/img/dogkiss.jpeg">
         <p class="modal-pet-info-browse">Here is the information of the animal like its breed, color, and etc</p>
-        <form class="foster-form" action="/action_page.php">
+        <form class="foster-form" action="/action_page.php" th:object="${foster}">
             <label for="start">Start Date: </label>
-            <input type="text" id="start" name="startDate" placeholder="MM/DD/YYYY">
+            <input th:field="${foster.start_date}" type="text" id="start" name="startDate" placeholder="MM/DD/YYYY">
             <label for="end" >End Date: </label>
-            <input type="text" id="end" name="endDate" placeholder="MM/DD/YYYY">
+            <input th:field="${foster.end_date}" type="text" id="end" name="endDate" placeholder="MM/DD/YYYY">
             <input id="submit-foster-btn" type="submit" value="Submit">
         </form>
     </div>

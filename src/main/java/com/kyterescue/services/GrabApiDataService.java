@@ -16,7 +16,9 @@ import java.util.List;
 public class GrabApiDataService {
     final OkHttpClient client = new OkHttpClient();
     @Value("${pet.url}")
-    private String petURL;
+            private String petURL;
+    @Value("${single.pet.url}")
+            private String singlePetUrl;
     GrabAuthenticationTokenService grabAuthenticationTokenService;
     GrabApiDataService(GrabAuthenticationTokenService grabAuthenticationTokenService) {
         this.grabAuthenticationTokenService = grabAuthenticationTokenService;
@@ -58,6 +60,22 @@ public class GrabApiDataService {
         String results = "";
         Request request = new Request.Builder()
                 .url(petURL + "type=" + type)
+                .addHeader("Authorization", "Bearer " + grabAuthenticationTokenService.getBearerToken())
+                .build();
+        try(Response response = client.newCall(request).execute()) {
+            if(!response.isSuccessful()) {
+                throw new IOException("Unexpected response code " + response);
+            }
+            results = response.body().string();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
+    public String findAnimalById(long id) throws IOException {
+        String results = "";
+        Request request = new Request.Builder()
+                .url(singlePetUrl + id)
                 .addHeader("Authorization", "Bearer " + grabAuthenticationTokenService.getBearerToken())
                 .build();
         try(Response response = client.newCall(request).execute()) {

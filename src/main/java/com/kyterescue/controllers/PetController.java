@@ -6,6 +6,7 @@ import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.DashboardFosterDisplayService;
 //import com.kyterescue.services.GrabApiDataService;
+import com.kyterescue.services.PetMapperService;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
@@ -26,17 +27,19 @@ public class PetController {
     UserRepository usersDao;
     PetRepository petsDao;
     FosterPetRepository fostersDao;
-    ReviewRepository reveiwsDao;
+    ReviewRepository reviewsDao;
     AuthenticationService authenticationService;
     DashboardFosterDisplayService dashboardFosterDisplayService;
+    PetMapperService mapperService;
 
-    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, ReviewRepository reviewsDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService) {
+    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, ReviewRepository reviewsDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService, PetMapperService mapperService) {
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.fostersDao = fostersDao;
-        this.reveiwsDao = reviewsDao;
+        this.reviewsDao = reviewsDao;
         this.authenticationService = authenticationService;
         this.dashboardFosterDisplayService = dashboardFosterDisplayService;
+        this.mapperService = mapperService;
     }
 
     @GetMapping("/dashboard")
@@ -61,12 +64,29 @@ public class PetController {
     @GetMapping("/browse")
     public String viewBrowse(Model model) throws IOException {
         model.addAttribute("searchForm", new SearchForm());
+        model.addAttribute("foster", new FosterPet());
         return "pets/browse";
     }
 
     @PostMapping("/browse")
-    public String fosterOrSave(Model model) {
-        return "pets/browse";
+    public String fosterOrSave(@ModelAttribute(name = "foster") FosterPet fosterPet, @CurrentSecurityContext(expression = "authentication?.name") String username, @RequestParam(name = "petId") Long id, @RequestParam(name = "button") String button) throws IOException {
+        if(button.equals("foster")) {
+            Pet petToFoster = mapperService.checkAndMapToPet(String.valueOf(id));
+            FosterPet newFoster = mapperService.mapPetToFosterPet(fosterPet, usersDao.findByUsername(username), petToFoster);
+            newFoster.setStart_date((LocalDate) fosterPet.getStart_date());
+            newFoster.setEnd_date((LocalDate) fosterPet.getEnd_date());
+            fostersDao.save(newFoster);
+            return "pets/browse";
+
+        } else if(button.equals("save")) {
+           Pet favoritePet = mapperService.checkAndMapToPet(String.valueOf(id));
+           User user = usersDao.findByUsername(username);
+           user.addFavorite(favoritePet);
+           usersDao.save(user);
+           return "pets/browse";
+        } else {
+            return "pets/browse";
+        }
     }
 
     @GetMapping("pets/{id}/view")
@@ -86,7 +106,7 @@ public class PetController {
         newReview.setBody(review.getBody());
         newReview.setUser(user);
         newReview.setFosterPet(currentFoster);
-        reveiwsDao.save(newReview);
+        reviewsDao.save(newReview);
         return "pets/dashboard";
     }
 
