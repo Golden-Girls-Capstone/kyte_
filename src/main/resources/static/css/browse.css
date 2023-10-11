@@ -1,6 +1,7 @@
 .page-wrapper{
     min-width: 100%;
     min-height: 100%;
+    margin-top: 7rem;
 }
 
 body{
@@ -84,7 +85,7 @@ a {
 }
 
 
-.profile {
+.profile-card {
     padding: 3rem;
     width: 90%;
     max-width: 300px;
@@ -95,12 +96,12 @@ a {
     background-clip: padding-box;
     text-align: center;
     color: #000000;
-
-
-
-
 }
 
+#profile-cards{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .profile-image {
     border-radius: 50%;
@@ -114,6 +115,8 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: inherit;
+    width: inherit;
 }
 
 
@@ -121,6 +124,7 @@ img {
     font-size: 1.5rem;
     font-weight: 600;
     margin-top: 1.5rem;
+    text-align: center;
 }
 
 .profile-user-handle {
@@ -130,8 +134,9 @@ img {
 
 
 .pet-status{
-    background-color: green;
+    background-color: #239e23;
     color: white;
+    text-align: center;
 }
 
 .foster-btn, .save-btn, #confirmButton,.openModalButton, #submit-foster-btn {
@@ -215,20 +220,21 @@ input#start, input#end{
 
 .categoryDropdown{
     border: 3px solid #de9a9a;
-    border-right: none;
+    /*border-right: none;*/
     padding: 5px;
     height: 36px;
     outline: none;
     color: #e57777;
     font: inherit;
+     border-radius: 17px 0 0 17px;
 }
 
-.zipcode{
+.zipcode, .sizeDropdown, .ageDropdown{
     border: 3px solid #de9a9a;
-    border-right: none;
+    /*border-right: none;*/
     padding: 5px;
     height: 36px;
-    /* border-radius: 17px 0 0 17px; */
+
     outline: none;
     color: #e57777;
     font: inherit;
