@@ -112,7 +112,7 @@ public class PetController {
 
     @PostMapping("/dashboard/review/delete")
     public String deleteReview(@PathVariable long id) {
-        reveiwsDao.delete(reveiwsDao.findById(id).get());
+        reviewsDao.delete(reviewsDao.findById(id).get());
         return "redirect:/pets/dashboard";
     }
 
