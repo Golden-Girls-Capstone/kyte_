@@ -1,18 +1,24 @@
-.container-fluid.page {
-    height: 110vh;
-    background: #fff;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    width: 73%;
-    margin-top: 43px;
-    margin-bottom: 43px;
+/*.container-fluid.page {*/
+/*    height: 110vh;*/
+/*    background: #fffce6;*/
+/*    !*box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;*!*/
+/*    width: 73%;*/
+/*    margin-top: 43px;*/
+/*    margin-bottom: 43px;*/
+/*}*/
+body{
+    background-color: #fffce6;
+    color: #0e1843;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .pet-profile-pic{
     border-style: solid;
     border-radius: 50%;
-    background-color: lightpink;
+    background-color: #d19fa5;
 }
 img.pet-profile-pic {
-    border-radius: 70% 70% 50% 50% / 90% 90% 50% 50%;
+    /*border-radius: 70% 70% 50% 50% / 90% 90% 50% 50%;*/
     width: 200px;
     height: 200px;
     margin-top: 18px;
@@ -20,15 +26,48 @@ img.pet-profile-pic {
 }
 
 
-h1.pet-name {
-    margin-left: 13%;
-    margin-top: 26px;
-}
 .info-pet.column {
-    width: 22%;
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    font-size: 2em;
 }
 
+
+.profile-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pet-name{
+    text-align: center;
+}
+
+
+.petprofile-description{
+    text-align: center;
+    font-size: 2em;
+}
+
+
+.review-container {
+    /*max-width: 50%;*/
+    /*max-height: 50%;*/
+    border: 2px solid #0e1843;
+    padding: 20px;
+    background-color: #dfb7b7;
+    border-radius: 20px
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    /*margin-top: 20px;*/
+}
+
+.review-container ul {
+    list-style: none;
+    padding: 0; /* Remove default padding on the list */
+}
+
+.review-container li {
+    margin: 10px 0; /* Add spacing between each review item */
+}
