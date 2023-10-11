@@ -1,32 +1,33 @@
 body {
     overflow: scroll;
-    margin-top: 3rem;
+    /*margin-top: 3rem;*/
 }
 
 .user-profile-container {
     height: 100vh;
-    /*top: 0;*/
+    top: 0;
     max-width: 100vw;
     overflow: hidden;
     background-image: url("../img/profile-bg2.jpg");
     background-position: center;
 }
 
-.user-profile-pic {
-    justify-content: center;
-    text-align: center;
-    margin-top: 3rem;
-}
 
 .user-info {
-    margin-top: 5rem;
-    margin-bottom: 10rem;
+    /*margin-bottom: 10rem;*/
     align-items: center;
     justify-content: center;
+    margin-left: 10rem;
+    padding: 5rem;
+    border: 2px solid white;
+    border-radius: 5%;
+    background-color: rgba(255, 216, 223, 0.33);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
- .edit-account-btn, .foster-btn, .review-btn, .fav-btn, .remove-fav-btn {
+ .edit-account-btn, .foster-btn, .review-btn, .fav-btn, .remove-fav-btn, .complete-foster-btn {
     padding: 12.5px 30px;
     border: 2px solid #FFC0CBFF;
     border-radius: 100px;
@@ -38,16 +39,17 @@ body {
     /*margin: 0 10rem;*/
 }
 
- .edit-account-btn:hover, .foster-btn:hover, .review-btn:hover, .fav-btn:hover, .remove-fav-btn:hover {
+ .edit-account-btn:hover, .foster-btn:hover, .review-btn:hover, .fav-btn:hover, .remove-fav-btn:hover, .complete-foster-btn:hover {
     background-color: #ff7d90;
     box-shadow: 0 0 20px #693b43;
     color: #ffffff;
     transform: scale(1.1);
 }
 
-.edit-account-btn:active, .foster-btn:active, .review-btn:active, .fav-btn:active, .remove-fav-btn:active {
-    background-color: #fa667b;
+.edit-account-btn:active, .foster-btn:active, .review-btn:active, .fav-btn:active, .remove-fav-btn:active, .complete-foster-btn:active {
+    background-color: #ff7d90;
     transition: all 0.25s;
+    color: #ffffff;
     -webkit-transition: all 0.25s;
     box-shadow: none;
     transform: scale(0.98);
@@ -55,6 +57,56 @@ body {
 
 .anchor-tags button {
     text-align: center;
+    margin-top: 4rem;
 }
 
+.user-profile-pic {
+    /*border: #ffffff 3px solid;*/
+    border-radius: 50%;
+    height: 20rem;
+    width: 22rem;
+    margin-bottom: 3rem;
+}
+
+.profile-pic-badge {
+    margin-top: 5rem;
+    justify-content: center;
+
+}
+
+.user-badges {
+    text-align: center;
+}
+
+.user-pic-badge {
+    padding: 5rem;
+    border: 2px solid white;
+    border-radius: 5%;
+    background-color: rgba(255, 216, 223, 0.33);
+}
+
+.badge-text {
+    color: #ff7d90;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bolder;
+}
+
+.welcome-text {
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color: white;
+    font-style: italic;
+    text-align: center;
+}
+
+.favorites-container {
+    background-color: #f6d5db;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    margin: 2rem 0;
+
+}
 

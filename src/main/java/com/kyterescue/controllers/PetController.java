@@ -61,16 +61,6 @@ public class PetController {
         return "pets/dashboard";
     }
 
-//    @PostMapping("pet/review/{fosterId}")
-//    public String editPetReview(@PathVariable long fosterId, @RequestParam("foster_review") String review){
-//        System.out.println("inside pet review");
-//        FosterPet foster = fostersDao.findById(fosterId).get();
-//        foster.setFoster_reviews(review);
-//        fostersDao.save(foster);
-//
-//        return "redirect:/dashboard";
-//    }
-
     @GetMapping("/browse")
     public String viewBrowse(Model model) throws IOException {
         model.addAttribute("searchForm", new SearchForm());
@@ -102,9 +92,8 @@ public class PetController {
     @GetMapping("pets/{id}/view")
     public String viewPetProfile(@PathVariable String id, Model model) {
         Pet petToView = petsDao.getPetById(Long.parseLong(id));
-        List<String> reviews = fostersDao.findReviewsOfFoster(petToView.getId());
         model.addAttribute("pet", petToView);
-        model.addAttribute("reviews", reviews);
+//        model.addAttribute("reviews", reviews);
         return "pets/petprofile";
     }
 
@@ -120,6 +109,13 @@ public class PetController {
         reviewsDao.save(newReview);
         return "pets/dashboard";
     }
+
+    @PostMapping("/dashboard/review/delete")
+    public String deleteReview(@PathVariable long id) {
+        reveiwsDao.delete(reveiwsDao.findById(id).get());
+        return "redirect:/pets/dashboard";
+    }
+
 
 
 }
