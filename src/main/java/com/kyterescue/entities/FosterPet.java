@@ -53,8 +53,12 @@ public class FosterPet {
     public User getUser() {
         return user;
     }
+    public void setUser(User user) { this.user = user;}
     public Pet getPet() {
         return pet;
+    }
+    public void setPet(Pet pet){
+        this.pet = pet;
     }
     public Long getId() {
         return id;

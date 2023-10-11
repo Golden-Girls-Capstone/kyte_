@@ -63,26 +63,21 @@ document.addEventListener("DOMContentLoaded", function () {
                         imageUrl = petData.photos[0].medium || petData.photos[0].medium || petData.photos[0].small;
                     }
                     card.innerHTML = `
-                        <div class="profile-image">
+                    <div class="profile-image">
                             <img src="${imageUrl}" alt="Pet Image">
-                        </div>
-                        <input type="hidden"  id="petIdInput" name="petId" value="${petData.id}" >
+                    </div>
+                        <input type="hidden"  id="petIdInput" name="petId" th:value="${petData.id}">
                         <h2 class="pet-name">${petData.name}</h2>
-                        <div class="pet-status">${petData.status}</div>
-                        <div class="profile-actions">
-                        
-                        
-                        <form method="post" action="/browse/foster">
-                          <button class="openModalButton" data-pet-id="${petData.id}">Foster</button>
+                    <div class="pet-status">${petData.status}</div>
+                    <div class="profile-actions">
+                        <form method="post" action="/browse">
+                            <button type="submit" name="button" th:value="foster" class="openModalButton">Foster</button>
                         </form>
-                  
-                      <form method="post" action="/browse/save">
-                       <button class="save-btn">Save</button>
-                       </form>
-                           
-                        </div>
+                        <form method="post" action="/browse">
+                            <button type="submit" name="button" th:value="save" class="save-btn">Save</button>
+                        </form>
+                    </div>
                     `;
-
                     profileCardsContainer.appendChild(card);
                 }
             }

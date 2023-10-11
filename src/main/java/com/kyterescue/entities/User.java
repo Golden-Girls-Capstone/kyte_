@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -51,7 +52,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "pet_id")
     )
-    private List<Pet> pets;
+    private List<Pet> pets = new ArrayList<>();
 
     public User() {
 
@@ -111,6 +112,10 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
+    }
+
+    public void addFavorite(Pet pet) {
+        pets.add(pet);
     }
 
     public long getId() {
