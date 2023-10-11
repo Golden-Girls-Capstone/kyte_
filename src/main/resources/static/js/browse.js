@@ -70,9 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         <h2 class="pet-name">${petData.name}</h2>
                         <div class="pet-status">${petData.status}</div>
                         <div class="profile-actions">
-                            <button class="openModalButton" data-pet-id="${petData.id}">Foster</button>
+                        
+                        
+                        <form method="post" action="/browse/foster">
+                          <button class="openModalButton" data-pet-id="${petData.id}">Foster</button>
+                        </form>
                   
-                            <button class="save-btn">Save</button>
+                      <form method="post" action="/browse/save">
+                       <button class="save-btn">Save</button>
+                       </form>
+                           
                         </div>
                     `;
 
