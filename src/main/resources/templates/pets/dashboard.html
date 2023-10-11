@@ -110,9 +110,9 @@
                           class=" row d-flex justify-content-center p-5"
                           th:object="${profile}">
                         <h4>inside form</h4>
-                        <input id="foster_review" name="foster_review" type="text"
-                               th:value="${current.foster_reviews}"
-                               placeholder="foster review">
+<!--                        <input id="foster_review" name="foster_review" type="text" th:value="${current.foster_reviews}"-->
+<!--                               placeholder="foster review">-->
+                        <!--                        <input type="submit" class="" value="submit review"/>-->
                         <button type="submit">submit review</button>
                     </form>
                 </div>
@@ -148,11 +148,6 @@
         </div>
     </div>
     <!--    USERS REVIEWS PAGE-->
-
-
-    <!--    the reviews will be stored in the foster_reviews col in the foster-pets table-->
-    <!--    it needs to be tied to the user in the id and then be tied to the foster_pets id (ask ty for clarification that they can only leave reviews on a pet they have fostered, and that's why we won't need the pet id?)-->
-
 
     <!--    working on review form below-->
     <!--    Note from Emily: This form will take in ONE input from the user (the text/body) and submit it to the database to be displayed later on-->
