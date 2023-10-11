@@ -40,25 +40,16 @@ public class PetController {
     }
 
     @GetMapping("/dashboard")
-    public String viewDashboard(Model model) throws JsonProcessingException {
-
-        //this is showing stuff on the dashboard
-
+    public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
         FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
+        List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
+        User user = usersDao.findByUsername(username);
         model.addAttribute("current", currentFoster);
         model.addAttribute("pets", petHistory);
-//        long userId = authenticationService.grabAuthenticationUserDetails(model).getId();
-        long userId = 7L;
-        User user = usersDao.getUserById(userId);
         model.addAttribute("profile", user);
-        List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
         model.addAttribute("fosters", fosterHistory);
-
-        //this for the history of the reviews the user has made
-//        List<Review> reviewHistory = dashboardFosterDisplayService
         model.addAttribute("review", new Review());
-
         return "pets/dashboard";
     }
 
