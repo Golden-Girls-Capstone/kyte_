@@ -62,7 +62,7 @@ public class PetController {
     public String editPetReview(@PathVariable long fosterId, @RequestParam("foster_review") String review){
         System.out.println("inside pet review");
         FosterPet foster = fostersDao.findById(fosterId).get();
-        foster.setFoster_reviews(review);
+//        foster.setFoster_reviews(review);
         fostersDao.save(foster);
 
         return "redirect:/dashboard";
