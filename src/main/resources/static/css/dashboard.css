@@ -96,7 +96,7 @@ body {
     font-size: 2rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
-    color: white;
+    color: #ff7d90;
     font-style: italic;
     text-align: center;
 }
@@ -110,3 +110,28 @@ body {
 
 }
 
+#foster-review-input {
+    width: 25rem;
+    height: 15rem;
+    padding-bottom: 13rem;
+    text-align: start;
+    word-break: break-all;
+    word-break-wrap: wp;
+}
+
+
+.current-foster-pet-pic {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+
+}
+
+.complete-foster-btn {
+    width: 15rem;
+    height: 3rem;
+}
+
+.foster-container {
+    margin: 2rem 0;
+}
