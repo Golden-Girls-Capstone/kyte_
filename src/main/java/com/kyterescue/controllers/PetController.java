@@ -51,7 +51,7 @@ public class PetController {
         List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
         model.addAttribute("current", currentFoster);
         model.addAttribute("pets", petHistory);
-        model.addAttribute("profile", user);
+        model.addAttribute("user", user);
         model.addAttribute("fosters", fosterHistory);
         model.addAttribute("reviews", reviewHistory);
         model.addAttribute("review", new Review());
