@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Browse Page</title>
@@ -63,8 +63,9 @@
     </div>
 </div>
 
-<div id="myModal" class="modal">
-    <div class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div id="myModal" class="modal" >
+    <div  class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+
         <span id="closeModalButton" class="close">&times;</span>
         <h2 class="modal-name">Sir Chester</h2>
         <img class="modal-image" src="/img/dogkiss.jpeg">
@@ -76,6 +77,9 @@
             <input th:field="${foster.end_date}" type="text" id="end" name="endDate" placeholder="MM/DD/YYYY">
             <input id="submit-foster-btn" type="submit" value="Submit">
         </form>
+    </div>
+    <div >
+        <h1>test</h1>
     </div>
 </div>
 
