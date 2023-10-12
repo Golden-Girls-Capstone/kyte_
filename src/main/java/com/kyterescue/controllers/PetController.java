@@ -44,14 +44,16 @@ public class PetController {
 
     @GetMapping("/dashboard")
     public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
+        User user = usersDao.findByUsername(username);
+        List<Review> reviewHistory = dashboardFosterDisplayService.grabReviewHistory(user);
         FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
         List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
-        User user = usersDao.findByUsername(username);
         model.addAttribute("current", currentFoster);
         model.addAttribute("pets", petHistory);
         model.addAttribute("profile", user);
         model.addAttribute("fosters", fosterHistory);
+        model.addAttribute("reviews", reviewHistory);
         model.addAttribute("review", new Review());
         return "pets/dashboard";
     }
@@ -99,7 +101,8 @@ public class PetController {
 
 
     @PostMapping("/dashboard/review")
-    public String createReview(@RequestParam Review review, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
+    public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
+        System.out.println("save form");
         Review newReview = new Review();
         User user = usersDao.findByUsername(username);
         FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
@@ -107,13 +110,13 @@ public class PetController {
         newReview.setUser(user);
         newReview.setFosterPet(currentFoster);
         reviewsDao.save(newReview);
-        return "pets/dashboard";
+        return "redirect:/dashboard";
     }
 
-    @PostMapping("/dashboard/review/delete")
+    @PostMapping("/dashboard/review/delete/{id}")
     public String deleteReview(@PathVariable long id) {
         reviewsDao.delete(reviewsDao.findById(id).get());
-        return "redirect:/pets/dashboard";
+        return "redirect:/dashboard";
     }
 
 

@@ -105,18 +105,14 @@
                     <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">
                     <h4 th:if="${current != null}" th:text="${current.pet.name}"></h4>
                 </div>
-                <div th:if="${current != null}">
-                    <form th:action="@{|/pet/review/${current.id}|}" th:method="post"
-                          class=" row d-flex justify-content-center p-5"
-                          th:object="${profile}">
-                        <h4>inside form</h4>
-<!--                        <input id="foster_review" name="foster_review" type="text" th:value="${current.foster_reviews}"-->
-<!--                               placeholder="foster review">-->
-                        <!--                        <input type="submit" class="" value="submit review"/>-->
-                        <button type="submit">submit review</button>
-                    </form>
-                </div>
-                <button class="complete-foster-btn" >Complete Foster</button>
+                <form th:action="@{/dashboard/review}" th:method="post" class=" row d-flex justify-content-center p-5"
+                      th:object="${review}">
+                    <p>Pet review</p>
+                    <input id="body" name="body" type="text" th:field="*{body}"
+                           placeholder="type your review here"/>
+                    <input type="submit" class="" value="Submit Review"/>
+                </form>
+                <button style="width: 50%">Complete Foster</button>
             </div>
             <div class="previous-foster d-flex row px-2" style="width:50%">
                 <div th:each="pet : ${pets}">
@@ -128,7 +124,6 @@
                         <h4 th:if="${pet.name != null}" th:text="${pet.getName()}"></h4>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -149,6 +144,7 @@
     </div>
     <!--    USERS REVIEWS PAGE-->
 
+
     <!--    working on review form below-->
     <!--    Note from Emily: This form will take in ONE input from the user (the text/body) and submit it to the database to be displayed later on-->
     <!--    <form th:action="@{/dashboard/review}" th:method="post" th:object="${review}"-->
@@ -160,20 +156,26 @@
     <!--    </form>-->
 
 
-    <div class="user-reviews-container" id="userReviews">
-        <div class="card" style="width: 18rem;">
-            <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">(NAME OF PET)</h5>
-                <p class="card-text">(Users review of previous foster pet)</p>
-                <button type="button" class="btn btn-light text-danger" data-bs-toggle="modal"
-                        data-bs-target="#reviewModal">
-                    Delete Review
-                </button>
+       <div>
+        <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
+            <div class="card" style="width: 18rem;" th:data-coffee-id="${review.id}">
+                <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">(NAME OF PET)</h5>
+                    <p class="card-text" th:text="${review.body}">REVIEWS BODY</p>
+                    <!--                    <button type="button" class="btn btn-light text-danger" data-bs-toggle="modal"-->
+                    <!--                            data-bs-target="#reviewModal">-->
+                    <!--                        Delete Review-->
+                    <!--                    </button>-->
+
+                    <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
+                        <!--            <input type="submit" class="" value="delete review"/>-->
+                        <button class="btn btn-danger w-100">Delete Coffee</button>
+                    </form>
+
+                </div>
             </div>
         </div>
-        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel"
-             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

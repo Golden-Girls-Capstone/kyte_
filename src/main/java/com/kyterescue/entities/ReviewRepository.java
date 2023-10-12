@@ -14,4 +14,7 @@ public interface ReviewRepository extends JpaRepository <Review, Long> {
     @Query("FROM FosterPet f WHERE f.user = ?1")
     List<FosterPet> findFosterPetsOfUser(User loggedInUser);
 
+    @Query("FROM Review r where r.user = ?1")
+    List <Review> findReviewsOfUser(User loggedInUser);
+
 }
