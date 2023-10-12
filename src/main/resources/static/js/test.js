@@ -1,5 +1,4 @@
 
-function call () {
     gsap.registerPlugin(ScrollTrigger);
 
     const pageContainer = document.querySelector(".container");
@@ -57,8 +56,5 @@ function call () {
 
         ScrollTrigger.refresh();
     });
-}
-call();
-document.addEventListener("DOMContentLoaded", function () {
-    call();
-});
+
+
