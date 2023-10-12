@@ -55,15 +55,26 @@ public class UserController {
         return "users/login";
     }
 
+
     @PostMapping("/profile/edit")
-    public String editProfile(@ModelAttribute User user, @CurrentSecurityContext(expression = "authentication?.name") String username) {
+    public String editProfile(@ModelAttribute User user, @RequestParam String oldPassword,
+                              @RequestParam String newPassword,
+                              @CurrentSecurityContext(expression = "authentication?.name") String username) {
         User userToEdit = usersDao.findByUsername(username);
         userToEdit.setEmail(user.getEmail());
         userToEdit.setUsername(user.getUsername());
         userToEdit.setZipcode(user.getZipcode());
+
+        if (!passwordEncoder.matches(oldPassword, userToEdit.getPassword())) {
+            return "redirect:/profile/edit";
+        }
+        userToEdit.setPassword(passwordEncoder.encode(newPassword));
+
         usersDao.save(userToEdit);
+
         return "redirect:/dashboard";
     }
+
     @GetMapping("/logout")
     public String viewLogout() {
         return "users/logout";
