@@ -14,10 +14,13 @@ public class DashboardFosterDisplayService {
 
     private final UserRepository usersDao;
     private final PetRepository petsDao;
+
+    private final ReviewRepository reviewsDao;
     private final AuthenticationService authenticationService;
 
-    DashboardFosterDisplayService(FosterPetRepository fostersDao, PetRepository petsDao, UserRepository usersDao, AuthenticationService authenticationService) {
+    DashboardFosterDisplayService(FosterPetRepository fostersDao, PetRepository petsDao, ReviewRepository reviewsDao, UserRepository usersDao, AuthenticationService authenticationService) {
         this.fostersDao = fostersDao;
+        this.reviewsDao = reviewsDao;
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.authenticationService = authenticationService;
@@ -49,7 +52,10 @@ public class DashboardFosterDisplayService {
         return fosterHistory;
     }
 
-
+    public List<Review> grabReviewHistory(User user){
+        List<Review> reviewHistory = reviewsDao.findReviewsOfUser(user);
+        return reviewHistory;
+    }
 
 
 

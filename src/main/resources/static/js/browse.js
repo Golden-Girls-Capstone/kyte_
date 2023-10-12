@@ -1,99 +1,123 @@
-//modal functionality
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById('myModal');
-    const openModalButtons = document.querySelectorAll('.openModalButton');
     const closeModalButton = document.getElementById('closeModalButton');
     const confirmButton = document.getElementById('submit-foster-btn');
+    const profileCardsContainer = document.getElementById('profile-cards');
+    const petIdInput = document.getElementById('petIdInput'); // Added this line
+    const openModalButton = document.querySelectorAll('.openModalButton');
 
-    // Function to open the modal
-    function openModal() {
+
+    // Function to open the modal and set the pet's API ID
+    function openModal(petId) {
+        petId = petIdInput
+        // petIdInput.value = petId; // Set the value of the hidden input
         modal.style.display = 'block';
     }
 
-    // Function to close the modal2
+    // Function to close the modal
     function closeModal() {
         modal.style.display = 'none';
     }
 
-    // Event listeners for opening and closing the modal
-    for (const button of openModalButtons) {
-        button.addEventListener('click', openModal);
-    }
 
+    // Event delegation to handle click events for dynamically generated "Foster" buttons
+    profileCardsContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('openModalButton')) {
+            const petId = event.target.getAttribute('data-pet-id');
+            openModal(petId);
+        }
+    });
+
+    // Event listeners for opening and closing the modal
+    for (const card of profileCardsContainer.querySelectorAll('.openModalButton')) {
+        card.addEventListener('click', function() {
+            const petId = card.getAttribute('data-pet-id'); // Get the pet's API ID
+            console.log('Clicked Foster button for pet ID:' + petId); // Add this line
+            openModal(petId); // Pass the API ID to the openModal function
+        });
+    }
     closeModalButton.addEventListener('click', closeModal);
+
+    // openModalButton.addEventListener('click', function(e) {
+    // });
+
 
     confirmButton.addEventListener('click', () => {
         // Add your code to handle the submission here
         alert('You confirmed!');
         closeModal();
     });
-});
-function determineApiCall() {
-    const zipcode = document.getElementById('zipcode');
-    const category = document.getElementById('category');
 
-    if (zipcode == null && category == null) {
-        fetchByDefault();
-    } else {
-        fetchBySearch();
-    }
-}
-//fetching
+    // Function to render search results as profile cards
+    function renderSearchResults(data) {
+        profileCardsContainer.innerHTML = ''; // Clear the container
 
-function fetchByDefault() {
-    fetch('/api/token', {
-        method: 'GET',
-        headers: {
-            'Accept': 'text/plain',
+        for (const animalKey in data) {
+            if (data.hasOwnProperty(animalKey)) {
+                const animals = data[animalKey];
+                for (let i = 0; i < animals.length; i++) {
+                    const petData = animals[i];
+                    const card = document.createElement('div');
+                    card.classList.add('profile-card');
+
+                    let imageUrl = '/img/default.jpg'; // Default image
+
+                    if (petData.photos && petData.photos.length > 0) {
+                        // Use the URL of the first photo from the API
+                        imageUrl = petData.photos[0].medium || petData.photos[0].medium || petData.photos[0].small;
+                    }
+                    card.innerHTML = `
+                    <div class="profile-image">
+                            <img src="${imageUrl}" alt="Pet Image">
+                    </div>
+                        <h2 class="pet-name">${petData.name}</h2>
+                    <div class="pet-status">${petData.status}</div>
+                    <div class="profile-actions">
+                        <input type="hidden"  class="petId" name="petId" th:value="${petData.id}">
+                        <form method="post" action="/browse">
+                            <button type="submit" name="button" th:value="foster" class="openModalButton">Foster</button>
+                        </form>
+<!--                        <form method="post" action="/browse">-->
+                            <button type="submit" name="button" th:value="save" class="save-btn">Save</button>
+<!--                        </form>x-->
+                    </div>
+                    `;
+                    profileCardsContainer.appendChild(card);
+
+
+
+
+                }
+            }
         }
-    })
-        .then(response => response.text())
-        .then(token => {
-            // Save the token into a const
-            const bearerToken = `Bearer ${token}`;
-            fetch('/api/data/default', {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + bearerToken,
-                    'Content-Type': 'application/json'
-                },
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // response data
-                    const dataList = document.getElementById('data-list'); // Get the <ul> element
-                    dataList.innerHTML = "";
-                    for (animalKey in data) {
-                        if (data.hasOwnProperty(animalKey)) {
-                            const animals = data[animalKey];
-                            for (let i = 1; i < 20; i++) {
-                                if (animals[i]) {
-                                    let listItem = document.createElement('li');
-                                    listItem.textContent = `${animals[i].name}, ${animals[i].age}, ${animals[i].contact.address.postcode}`;
-                                    dataList.append(listItem);
-                                }
-                            }
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.error('Second Fetch error:', error);
-                });
-        })
-        .catch(error => {
-            // Handle any errors
-            console.error('First Fetch error:', error);
+        // let saveButtons = document.querySelectorAll('.save-btn');
+        // console.log(saveButtons);
+        // for(let i = 0; i < saveButtons.length; i++) {
+        //     saveButtons[i].addEventListener("click", function() {
+        //         console.log("button" + i + "clicked")
+        //     })
+        // }
+        // saveButtons.forEach(saveButton => {
+        //     saveButton.addEventListener('click', e => {
+        //         saveButton
+        //     })
+        // })
+    }
 
-        });
-}
-function fetchBySearch() {
-    const category = document.getElementById('category').value;
-    const zipcode = document.getElementById('zipcode').value
+
+    // Function to handle the form submission
+    document.getElementById('search-form').addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent the default form submission
+        fetchBySearch();
+    });
+
+    // Function to fetch and render search results
+    function fetchBySearch() {
+        const category = document.getElementById('category').value;
+        const zipcode = document.getElementById('zipcode').value;
+        const age = document.getElementById('age').value;
+        const size = document.getElementById('size').value;
+
         fetch('/api/token', {
             method: 'GET',
             headers: {
@@ -102,54 +126,33 @@ function fetchBySearch() {
         })
             .then(response => response.text())
             .then(token => {
-                // Save the token into a const
                 const bearerToken = `Bearer ${token}`;
-                fetch('/api/data/search?category=' + category + '&zipcode=' + zipcode , {
+                // Include age and size in the API request
+                const apiUrl = `/api/data/search?category=${category}&zipcode=${zipcode}&age=${age}&size=${size}`;
+
+                return fetch(apiUrl, {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer ' + bearerToken,
+                        'Authorization': bearerToken,
                         'Content-Type': 'application/json'
                     },
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log(data)
-                        // response data
-                        const dataList = document.getElementById('data-list'); // Get the <ul> element
-                        dataList.innerHTML = "";
-                        for (animalKey in data) {
-                            if (data.hasOwnProperty(animalKey)) {
-                                const animals = data[animalKey];
-                                for (let i = 1; i < 20; i++) {
-                                    if (animals[i]) {
-                                        let listItem = document.createElement('li');
-                                        listItem.textContent = `${animals[i].name}, ${animals[i].age}, ${animals[i].contact.address.postcode}`;
-                                        dataList.append(listItem);
-                                    }
-                                }
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Second Fetch error:', error);
-                    });
+                });
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Render the search results as profile cards
+                renderSearchResults(data);
             })
             .catch(error => {
-                // Handle any errors
-                console.error('First Fetch error:', error);
+                console.error('Fetch error:', error);
             });
-}
-document.addEventListener("DOMContentLoaded", function() {
-    fetchByDefault();
-})
-document.getElementById('search-form').addEventListener("submit", function(e) {
-    e.preventDefault();
-   fetchBySearch();
+    }
+
+    // Initial data fetch and render (if needed)
+    // fetchDataAndRender(); // If you have an initial data fetch
 });
-
-

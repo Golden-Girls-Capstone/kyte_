@@ -14,6 +14,9 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String apiId;
+
     @Column(columnDefinition = "varchar(100)")
     private String name;
 
@@ -50,7 +53,8 @@ public class Pet {
     public Pet(){
 
     }
-    public Pet(String name, String type, String breed, String age, String size, String photo, String description, String gender, int status) {
+    public Pet(String apiId, String name, String type, String breed, String age, String size, String photo, String description, String gender, int status) {
+        this.apiId = apiId;
         this.name = name;
         this.type = type;
         this.breed = breed;
@@ -63,6 +67,14 @@ public class Pet {
     }
 
     public Long getId() {return id;}
+
+    public String getApiId() {
+        return apiId;
+    }
+
+    public void setApiId(String apiId) {
+        this.apiId = apiId;
+    }
 
     public String getName() {
         return name;
