@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmButton = document.getElementById('submit-foster-btn');
     const profileCardsContainer = document.getElementById('profile-cards');
     const petIdInput = document.getElementById('petIdInput'); // Added this line
-    const openModalButton = document.getElementById('openModalButton');
+    const openModalButton = document.querySelectorAll('.openModalButton');
+
 
 
     // Function to open the modal and set the pet's API ID
@@ -37,6 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     closeModalButton.addEventListener('click', closeModal);
+
+    // openModalButton.addEventListener('click', function(e) {
+    //     e.target(openModalButton);
+    // });
+
 
     confirmButton.addEventListener('click', () => {
         // Add your code to handle the submission here
@@ -75,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </form>
                         <form method="post" action="/browse">
                             <button type="submit" name="button" th:value="save" class="save-btn">Save</button>
-                        </form>
+                        </form>x
                     </div>
                     `;
                     profileCardsContainer.appendChild(card);
@@ -125,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 // Render the search results as profile cards
+                console.log("before render")
                 renderSearchResults(data);
             })
             .catch(error => {
