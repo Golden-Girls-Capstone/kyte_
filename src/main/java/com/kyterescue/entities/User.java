@@ -42,8 +42,18 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviews;
 
-    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
-    private List<Badge> badges;
+//    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+//    private List<Badge> badges;
+//
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_badges",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "badge_id")
+    )
+    private List<Badge> badges = new ArrayList<>();
+
 
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)

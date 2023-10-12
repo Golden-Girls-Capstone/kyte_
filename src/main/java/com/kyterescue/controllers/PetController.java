@@ -28,14 +28,16 @@ public class PetController {
     PetRepository petsDao;
     FosterPetRepository fostersDao;
     ReviewRepository reviewsDao;
+    BadgeRespository badgeDao;
     AuthenticationService authenticationService;
     DashboardFosterDisplayService dashboardFosterDisplayService;
     PetMapperService mapperService;
 
-    PetController(UserRepository usersDao, PetRepository petsDao, FosterPetRepository fostersDao, ReviewRepository reviewsDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService, PetMapperService mapperService) {
+    PetController(UserRepository usersDao,BadgeRespository badgeDao, PetRepository petsDao, FosterPetRepository fostersDao, ReviewRepository reviewsDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService, PetMapperService mapperService) {
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.fostersDao = fostersDao;
+        this.badgeDao = badgeDao;
         this.reviewsDao = reviewsDao;
         this.authenticationService = authenticationService;
         this.dashboardFosterDisplayService = dashboardFosterDisplayService;
@@ -49,10 +51,12 @@ public class PetController {
         FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
         List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
+        List<Badge> badgeHistory = dashboardFosterDisplayService.grabBadgeHistory(username);
         model.addAttribute("current", currentFoster);
         model.addAttribute("pets", petHistory);
         model.addAttribute("user", user);
         model.addAttribute("fosters", fosterHistory);
+        model.addAttribute("badges", badgeHistory);
         model.addAttribute("reviews", reviewHistory);
         model.addAttribute("review", new Review());
         return "pets/dashboard";
