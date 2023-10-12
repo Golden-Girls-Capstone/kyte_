@@ -41,7 +41,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((requests) -> requests
 //                         Pages that require authentication
 
-                        .requestMatchers("/profile",  "/profile/edit", "/profile/edit/delete/{id}", "pet/review/{fosterId}").authenticated()
+                        .requestMatchers("/profile",  "/profile/edit", "/profile/edit/delete/{id}", "/pet/review/{fosterId}", "/dashboard/review", "/dashboard/review/delete/{id}").authenticated()
 
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and view ads */

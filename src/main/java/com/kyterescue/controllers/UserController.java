@@ -49,10 +49,12 @@ public class UserController {
             return "redirect:/sign-up";
         }
     }
+
     @GetMapping("/login")
     public String viewLogin() {
         return "users/login";
     }
+
     @PostMapping("/profile/edit")
     public String editProfile(@ModelAttribute User user, @CurrentSecurityContext(expression = "authentication?.name") String username) {
         User userToEdit = usersDao.findByUsername(username);
