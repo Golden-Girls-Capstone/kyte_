@@ -84,9 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     `;
                     profileCardsContainer.appendChild(card);
 
-
-
-
                 }
             }
         }
@@ -156,3 +153,43 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial data fetch and render (if needed)
     // fetchDataAndRender(); // If you have an initial data fetch
 });
+
+
+
+
+
+
+//POTENTIAL JAVASCRIPT FOR PAGINATION
+
+// let currentPage = 1; // Initial page
+// const itemsPerPage = 10; // Number of items per page
+//
+// function fetchPage(page) {
+//     // Make an API request with the desired page parameter
+//     // Update your API endpoint and handling as needed
+//     fetch(`/api/resource?page=${page}&per_page=${itemsPerPage}`)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             // Process and display data here
+//         })
+//         .catch((error) => {
+//             console.error(error);
+//         });
+// }
+//
+// // Handle the "Next" button click
+// document.getElementById('forward').addEventListener('click', () => {
+//     currentPage++;
+//     fetchPage(currentPage);
+// });
+//
+// // Handle the "Previous" button click
+// document.getElementById('backward').addEventListener('click', () => {
+//     if (currentPage > 1) {
+//         currentPage--;
+//         fetchPage(currentPage);
+//     }
+// });
+//
+// // Initial API request
+// fetchPage(currentPage);
