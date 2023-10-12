@@ -1,40 +1,142 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:insert="partials/header :: header">
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">-->
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <nav th:insert="partials/navbar :: nav"></nav>
     <form action="@{/about}" th:method="get"></form>
-        <div class="container">
-            <div class="Devs-container">
-                <div class="profile">
-                    <div class="profile-item--container">
-                        <div class="profile-item"><p>Menu 1</p> </div>
+        <div class="container-fluid">
+<!--            <div class="container">-->
+<!--                <section data-bgcolor="#bcb8ad" data-textcolor="#032f35">-->
+<!--                    <div>-->
+<!--                        <h1 data-scroll data-scroll-speed="1"><span>Horizontal</span> <span>scroll</span> <span>section</span></h1>-->
+<!--                        <p data-scroll data-scroll-speed="2" data-scroll-delay="0.2">with GSAP ScrollTrigger & Locomotive Scroll</p>-->
+<!--                    </div>-->
+
+<!--                </section>-->
+
+<!--                <section id="sectionPin">-->
+<!--                    <div class="pin-wrap">-->
+<!--                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>-->
+<!--                        <img src="" alt="">-->
+<!--                        <img src="" alt="">-->
+<!--                        <img src="" alt="">-->
+
+<!--                    </div>-->
+<!--                </section>-->
+<!--                <section data-bgcolor="#e3857a" data-textcolor="#f1dba7"><img src="https://images.pexels.com/photos/4791474/pexels-photo-4791474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">-->
+<!--                    <h2 data-scroll data-scroll-speed="1" class="credit"><a href="https://thisisadvantage.com" target="_blank">Made by Advantage</a></h2>-->
+<!--                </section>-->
+<!--            </div>-->
+
+
+                <h1 class="meet-Devs"> Meet The Developers </h1>
+            <div class="Devs-R-Us">
+                <div class="person row">
+                    <div class="container Devs">
+                        <div class="container-inner">
+                            <img class="circle">
+                        </div>
+                        <div class="img">
+                            <img class="img1" src="/img/Emily.png">
+                        </div>
                     </div>
-                    <div class="profile-item--container">
-                        <div class="profile-item"><p>Menu 2</p></div>
-                    </div>
-                    <div class="profile-item--container">
-                        <div class="profile-item"><p>Menu 3</p></div>
-                    </div>
+                        <div class="icon-row-Em gap-2">
+                            <a href="https://github.com/emilysmendes"><img class="tiny-links" src="/img/github.png"></a>
+                            <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
+                            <img class="tiny-links" href="" src="/img/linkedin.png">
+                        </div>
+                    <div class="divider"></div>
+                    <div class="name">Emily</div>
+                    <div class="title">Full-Stack Developer</div>
                 </div>
+
+                <div class="person row">
+                    <div class="container Devs">
+                        <div class="container-inner">
+                            <img class="circle">
+                        </div>
+                        <div class="img">
+                            <img class="img2" src="/img/Arusa.png">
+                        </div>
+                    </div>
+                    <div class="icon-row-Ar gap-2">
+                        <a href="https://github.com/hussainarusa"><img class="tiny-links" src="/img/github.png"></a>
+                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
+                        <img class="tiny-links" href="" src="/img/linkedin.png">
+                    </div>
+                    <div class="divider"></div>
+                    <div class="name">Arusa</div>
+                    <div class="title">Full-Stack Developer</div>
+                </div>
+
+                <div class="person row">
+                    <div class="container Devs">
+                        <div class="container-inner">
+                            <img class="circle">
+                        </div>
+                        <div class="img">
+                            <img class="img3" src="/img/Ty.png">
+                        </div>
+                    </div>
+                    <div class="icon-row-Ty gap-2">
+                        <a href="https://github.com/TyONeal"><img class="tiny-links" src="/img/github.png"></a>
+                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
+                        <img class="tiny-links" href="" src="/img/linkedin.png">
+                    </div>
+                    <div class="divider"></div>
+                    <div class="name">TY</div>
+                    <div class="title">Full-Stack Developer</div>
+                </div>
+
+                <div class="person row">
+                    <div class="container Devs">
+                        <div class="container-inner">
+                            <img class="circle">
+                        </div>
+                        <div class="img">
+                            <img class="img4" src="/img/Sam.png">
+                        </div>
+                    </div>
+                    <div class="icon-row-S gap-2">
+                        <a href="https://github.com/SamR0429"><img class="tiny-links" src="/img/github.png"></a>
+                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
+                        <img class="tiny-links" href="" src="/img/linkedin.png">
+                    </div>
+                    <div class="divider"></div>
+                    <div class="name">Sam</div>
+                    <div class="title">Full-Stack Developer</div>
+                </div>
+
+
+                <div class="person row">
+                    <div class="container Devs">
+                        <div class="container-inner">
+                            <img class="circle">
+                        </div>
+                        <div class="img">
+                            <img class="img5" src="/img/Subject.png">
+                        </div>
+                    </div>
+                    <div class="icon-row-K gap-2">
+                        <a href="https://github.com/Kvar54"><img class="tiny-links"  src="/img/github.png"></a>
+                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
+                        <img class="tiny-links" href="" src="/img/linkedin.png">
+                    </div>
+                    <div class="divider"></div>
+                    <div class="name">Keila</div>
+                    <div class="title">Full-Stack Developer</div>
+                </div>
+
+            </div>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- Our Mission Statement-->
             <h1 class="Title"> Our Mission </h1>
             <div class="blue-blob"></div>
                 <div class="mission-stmt1 column">
@@ -118,7 +220,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
                 <!-- Background Blobs           <-->
@@ -131,5 +232,12 @@
 
         </div>
 <div th:insert="~{partials/footer :: footer}"></div>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>-->
+<!--<script src="/js/test.js"></script>-->
+
+
+
 </body>
 </html>
