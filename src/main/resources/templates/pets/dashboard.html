@@ -13,20 +13,20 @@
         <div class=" column profile-pic-badge d-flex mx-5">
             <div class="user-pic-badge align-items-center">
                 <img src="/img/dogkiss.jpeg" alt="placeholder" class="user-profile-pic">
-                <div th:if="${profile != null}" th:text="${profile.picture}"></div>
+                <div th:if="${user != null}" th:text="${user.picture}"></div>
 <!--                <h2 class="welcome-text">Welcome,</h2>-->
-                <h2 class="welcome-text"> Welcome,  <span th:text="${profile.username}"></span> </h2>
+                <h2 class="welcome-text"> Welcome,  <span th:if="${user != null}" th:text="${user.username}"></span> </h2>
             </div>
 
             <!--        USER INFO AND EDIT BUTTON-->
 
             <div class="column user-info">
                 <div class="row">
-                    <div th:if="${profile != null}" th:text="${profile.username}"></div>
+                    <div th:if="${user != null}" th:text="${user.username}"></div>
                     <br>
-                    <div th:if="${profile != null}" th:text="${profile.email}"></div>
+                    <div th:if="${user != null}" th:text="${user.email}"></div>
                     <br>
-                    <div th:if="${profile != null}" th:text="${profile.zipcode}"></div>
+                    <div th:if="${user != null}" th:text="${user.zipcode}"></div>
                 </div>
                 <br>
                 <!-- Button trigger modal -->
@@ -58,7 +58,7 @@
                         <div class="modal-body">
                             <form th:action="@{/profile/edit}" th:method="post"
                                   class=" row d-flex justify-content-center p-5"
-                                  th:object="${profile}">
+                                  th:object="${user}">
                                 <br>
                                 <input id="username" name="username" type="text" th:field="*{username}"
                                        placeholder="Username"/>
