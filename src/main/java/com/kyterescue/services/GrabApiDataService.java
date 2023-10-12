@@ -45,7 +45,6 @@ public class GrabApiDataService {
                 .url(petURL + "location=" + zipcode + "&type=" + type)
                 .addHeader("Authorization", "Bearer " + grabAuthenticationTokenService.getBearerToken())
                 .build();
-        System.out.println(petURL+"location="+zipcode+"&type=" + type);
         try(Response response = client.newCall(request).execute()) {
             if(!response.isSuccessful()) {
                 throw new IOException("Unexpected response code " + response);
@@ -73,6 +72,7 @@ public class GrabApiDataService {
         return results;
     }
     public String findAnimalById(long id) throws IOException {
+        System.out.println("inside get pet by id");
         String results = "";
         Request request = new Request.Builder()
                 .url(singlePetUrl + id)

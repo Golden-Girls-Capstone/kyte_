@@ -67,35 +67,35 @@ public class PetController {
     public String viewBrowse(Model model, @CurrentSecurityContext(expression = "authentication?.name") String username) throws IOException {
         User user= usersDao.findByUsername(username);
         model.addAttribute("user", user);
-
         model.addAttribute("searchForm", new SearchForm());
         model.addAttribute("foster", new FosterPet());
         return "pets/browse";
     }
 
-    @PostMapping("/browse")
-    public String fosterOrSave(@ModelAttribute(name = "foster") FosterPet fosterPet, @CurrentSecurityContext(expression = "authentication?.name") String username, @RequestParam(name = "petId") Long id, @RequestParam(name = "button") String button) throws IOException {
-            System.out.println("inside browse");
-        if(button.equals("foster")) {
-            Pet petToFoster = mapperService.checkAndMapToPet(String.valueOf(id));
-            FosterPet newFoster = mapperService.mapPetToFosterPet(fosterPet, usersDao.findByUsername(username), petToFoster);
-            newFoster.setStart_date((LocalDate) fosterPet.getStart_date());
-            newFoster.setEnd_date((LocalDate) fosterPet.getEnd_date());
-            fostersDao.save(newFoster);
-            return "pets/browse";
-
-        } else if(button.equals("save")) {
-            System.out.println("save pressed");
-           Pet favoritePet = mapperService.checkAndMapToPet(String.valueOf(id));
-           User user = usersDao.findByUsername(username);
-           user.addFavorite(favoritePet);
-           usersDao.save(user);
-            System.out.println(user.getPets());
-           return "pets/browse";
-        } else {
-            return "pets/browse";
-        }
-    }
+//    @PostMapping("/browse")
+//    public String fosterOrSave(@ModelAttribute(name = "foster") FosterPet fosterPet, @CurrentSecurityContext(expression = "authentication?.name") String username, @RequestParam(name = "petId") Long id, @RequestParam(name = "button") String button) throws IOException {
+//            System.out.println("inside browse");
+//        if("foster".equals(button)) {
+//            Pet petToFoster = mapperService.checkAndMapToPet(String.valueOf(id));
+//            FosterPet newFoster = mapperService.mapPetToFosterPet(fosterPet, usersDao.findByUsername(username), petToFoster);
+//            newFoster.setStart_date((LocalDate) fosterPet.getStart_date());
+//            newFoster.setEnd_date((LocalDate) fosterPet.getEnd_date());
+//
+//            fostersDao.save(newFoster);
+//            return "pets/browse";
+//
+//        } else if("save".equals(button)) {
+//            System.out.println("save pressed");
+//           Pet favoritePet = mapperService.checkAndMapToPet(String.valueOf(id));
+//           User user = usersDao.findByUsername(username);
+//           user.addFavorite(favoritePet);
+//           usersDao.save(user);
+//            System.out.println(user.getPets());
+//           return "pets/browse";
+//        } else {
+//            return "pets/browse";
+//        }
+//    }
 
     @GetMapping("pets/{id}/view")
     public String viewPetProfile(@PathVariable String id, Model model) {
