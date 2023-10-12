@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const openModalButton = document.querySelectorAll('.openModalButton');
 
 
-
     // Function to open the modal and set the pet's API ID
     function openModal(petId) {
         petId = petIdInput
@@ -33,14 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const card of profileCardsContainer.querySelectorAll('.openModalButton')) {
         card.addEventListener('click', function() {
             const petId = card.getAttribute('data-pet-id'); // Get the pet's API ID
-            console.log('Clicked Foster button for pet ID:', petId); // Add this line
+            console.log('Clicked Foster button for pet ID:' + petId); // Add this line
             openModal(petId); // Pass the API ID to the openModal function
         });
     }
     closeModalButton.addEventListener('click', closeModal);
 
     // openModalButton.addEventListener('click', function(e) {
-    //     e.target(openModalButton);
     // });
 
 
@@ -72,23 +70,40 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="profile-image">
                             <img src="${imageUrl}" alt="Pet Image">
                     </div>
-                        <input type="hidden"  id="petIdInput" name="petId" th:value="${petData.id}">
                         <h2 class="pet-name">${petData.name}</h2>
                     <div class="pet-status">${petData.status}</div>
                     <div class="profile-actions">
+                        <input type="hidden"  class="petId" name="petId" th:value="${petData.id}">
                         <form method="post" action="/browse">
                             <button type="submit" name="button" th:value="foster" class="openModalButton">Foster</button>
                         </form>
-                        <form method="post" action="/browse">
+<!--                        <form method="post" action="/browse">-->
                             <button type="submit" name="button" th:value="save" class="save-btn">Save</button>
-                        </form>x
+<!--                        </form>x-->
                     </div>
                     `;
                     profileCardsContainer.appendChild(card);
+
+
+
+
                 }
             }
         }
+        // let saveButtons = document.querySelectorAll('.save-btn');
+        // console.log(saveButtons);
+        // for(let i = 0; i < saveButtons.length; i++) {
+        //     saveButtons[i].addEventListener("click", function() {
+        //         console.log("button" + i + "clicked")
+        //     })
+        // }
+        // saveButtons.forEach(saveButton => {
+        //     saveButton.addEventListener('click', e => {
+        //         saveButton
+        //     })
+        // })
     }
+
 
     // Function to handle the form submission
     document.getElementById('search-form').addEventListener("submit", function(e) {
@@ -131,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(data => {
                 // Render the search results as profile cards
-                console.log("before render")
                 renderSearchResults(data);
             })
             .catch(error => {

@@ -34,8 +34,6 @@ public class PetApiController {
         SearchForm searchForm = new SearchForm();
         searchForm.setCategory(category);
         searchForm.setZipcode(zipcode);
-        System.out.println(category);
-        System.out.println(zipcode);
         if(searchForm.getZipcode() != 0 && searchForm.getCategory() != null) {
             return grabData.findAllPetsByZipcodeAndType(searchForm.getZipcode(), searchForm.getCategory());
         } else if(searchForm.getZipcode() == 0 && searchForm.getCategory() != null) {

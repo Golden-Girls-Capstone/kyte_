@@ -20,6 +20,7 @@ public class PetMapperService {
     }
 
     public Pet checkAndMapToPet(String id) throws IOException {
+        System.out.println("inside petmapper");
         if(petsDao.existsByApiId(id)) {
             return petsDao.findByApiId(id);
         } else {
@@ -28,6 +29,7 @@ public class PetMapperService {
     }
 
     public FosterPet mapPetToFosterPet(FosterPet foster, User user, Pet pet) {
+        System.out.println("inside mappet to foster");
         if (fostersDao.existsById(foster.getId())) {
             return fostersDao.findFosterPetById(foster.getId());
         } else {
