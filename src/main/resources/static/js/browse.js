@@ -110,10 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to fetch and render search results
     function fetchBySearch() {
-        const category = document.getElementById('category').value;
+        const type = document.getElementById('type').value;
         const zipcode = document.getElementById('zipcode').value;
         const age = document.getElementById('age').value;
         const size = document.getElementById('size').value;
+
 
         fetch('/api/token', {
             method: 'GET',
@@ -125,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(token => {
                 const bearerToken = `Bearer ${token}`;
                 // Include age and size in the API request
-                const apiUrl = `/api/data/search?category=${category}&zipcode=${zipcode}&age=${age}&size=${size}`;
+                const apiUrl = `/api/data/search?type=${type}&age=${age}&size=${size}&zipcode=${zipcode}&page=1`;
 
                 return fetch(apiUrl, {
                     method: 'GET',

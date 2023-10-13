@@ -21,8 +21,8 @@
             <div class="col">
                 <div class="search">
                     <form action="/api/data/search" id="search-form" th:object="${searchForm}" method="get">
-                        <select id="category" name="category" class="categoryDropdown">
-                            <option value="cat">Cats</option>
+                        <select id="type" name="type" class="categoryDropdown" th:field="${searchForm.type}">
+                            <option value="cat" selected>Cats</option>
                             <option value="dog">Dogs</option>
                             <option value="small-furry">Rodents</option>
                             <option value="bird">Birds</option>
@@ -31,15 +31,15 @@
                             <option value="scales-fins-other">Scales/Fins</option>
                             <!-- Add more categories as needed -->
                         </select>
-                        <select id="age" name="age" class="ageDropdown">
-                            <option value="baby">Baby</option>
+                        <select id="age" name="age" class="ageDropdown" th:field="${searchForm.age}">
+                            <option value="baby" selected>Baby</option>
                             <option value="young">Young</option>
                             <option value="adult">Adult</option>
                             <option value="senior">Senior</option>
                             <!-- Add more age options as needed -->
                         </select>
-                        <select id="size" name="size" class="sizeDropdown">
-                            <option value="small">Small</option>
+                        <select id="size" name="size" class="sizeDropdown" th:field="${searchForm.size}">
+                            <option value="small" selected>Small</option>
                             <option value="medium">Medium</option>
                             <option value="large">Large</option>
                             <!-- Add more size options as needed -->
