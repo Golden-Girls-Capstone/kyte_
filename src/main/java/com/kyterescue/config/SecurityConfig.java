@@ -44,7 +44,7 @@ public class SecurityConfig {
                         .requestMatchers("/profile",  "/profile/edit", "/profile/edit/delete/{id}", "/pet/review/{fosterId}", "/dashboard/review", "/dashboard/review/delete/{id}").authenticated()
 
                         /* Pages that do not require authentication
-                         * anyone can visit the home page, register, login, and view ads */
+                         * anyone can visit the home page, register, login, and browse */
 
                         .requestMatchers("", "/", "/dashboard", "/landing", "/sign-up", "/login", "/browse", "/api/test", "pets/**", "/logout", "/about", "/api/data/default", "/api/data/search", "/api/data/types", "/api/token").permitAll()
 

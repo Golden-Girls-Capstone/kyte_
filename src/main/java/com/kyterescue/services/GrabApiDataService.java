@@ -20,57 +20,12 @@ public class GrabApiDataService {
     @Value("${single.pet.url}")
             private String singlePetUrl;
     GrabAuthenticationTokenService grabAuthenticationTokenService;
+    private int currentPage = 1;
     GrabApiDataService(GrabAuthenticationTokenService grabAuthenticationTokenService) {
         this.grabAuthenticationTokenService = grabAuthenticationTokenService;
+
     }
-    public String findAllPetsByZipcode(int zipcode) throws IOException {
-        String results = "";
-        Request request = new Request.Builder()
-                .url(petURL + "location=" + zipcode)
-                .addHeader("Authorization", "Bearer " + grabAuthenticationTokenService.getBearerToken())
-                .build();
-        try(Response response = client.newCall(request).execute()) {
-                if(!response.isSuccessful()) {
-                    throw new IOException("Unexpected response code " + response);
-                }
-                results = response.body().string();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-       return results;
-    }
-    public String findAllPetsByZipcodeAndType(int zipcode, String type) throws IOException {
-        String results = "";
-        Request request = new Request.Builder()
-                .url(petURL + "location=" + zipcode + "&type=" + type)
-                .addHeader("Authorization", "Bearer " + grabAuthenticationTokenService.getBearerToken())
-                .build();
-        try(Response response = client.newCall(request).execute()) {
-            if(!response.isSuccessful()) {
-                throw new IOException("Unexpected response code " + response);
-            }
-            results = response.body().string();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return results;
-    }
-    public String findAllPetsByType(String type) throws IOException {
-        String results = "";
-        Request request = new Request.Builder()
-                .url(petURL + "type=" + type)
-                .addHeader("Authorization", "Bearer " + grabAuthenticationTokenService.getBearerToken())
-                .build();
-        try(Response response = client.newCall(request).execute()) {
-            if(!response.isSuccessful()) {
-                throw new IOException("Unexpected response code " + response);
-            }
-            results = response.body().string();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-        return results;
-    }
+
     public String findAnimalById(long id) throws IOException {
         System.out.println("inside get pet by id");
         String results = "";
@@ -84,6 +39,22 @@ public class GrabApiDataService {
             }
             results = response.body().string();
         } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
+    public String findAnimalsBySearch(String type, String age, String size, int zipcode, int page) throws IOException {
+        String results = "";
+        Request request = new Request.Builder()
+                .url(petURL + "type=" + type +  "&age=" + age + "&size=" + size + "&location=" + zipcode + "&page=" + page)
+                .addHeader("Authorization", "Bearer " + grabAuthenticationTokenService.getBearerToken())
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("unexpected response code " + response);
+            }
+            results = response.body().string();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return results;
