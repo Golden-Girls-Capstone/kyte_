@@ -27,21 +27,13 @@ public class PetApiController {
     }
     @GetMapping(value = "/api/data/default", produces = "application/json")
     public String apiCallDefault() throws IOException {
-        return grabData.findAllPetsByZipcode(78249);
+        return grabData.findAnimalsBySearch("cat", "baby", "small", 78249, 1);
     }
     @GetMapping(value = "/api/data/search", produces = "application/json")
-    public String apiCallSearch(@RequestParam(name = "category", value = "category") String category, @RequestParam(name = "zipcode", value = "zipcode") int zipcode) throws IOException {
-        SearchForm searchForm = new SearchForm();
-        searchForm.setCategory(category);
-        searchForm.setZipcode(zipcode);
-        if(searchForm.getZipcode() != 0 && searchForm.getCategory() != null) {
-            return grabData.findAllPetsByZipcodeAndType(searchForm.getZipcode(), searchForm.getCategory());
-        } else if(searchForm.getZipcode() == 0 && searchForm.getCategory() != null) {
-            return grabData.findAllPetsByType(searchForm.getCategory());
-        } else if(searchForm.getZipcode() !=0 && searchForm.getCategory() == null) {
-            return grabData.findAllPetsByZipcode(searchForm.getZipcode());
-        }
-        return grabData.findAllPetsByZipcode(78249);
+    public String apiCallSearch(
+            @ModelAttribute SearchForm searchForm) throws IOException {
+        searchForm.setPage(1);
+        return grabData.findAnimalsBySearch(searchForm.getType(), searchForm.getAge(), searchForm.getSize(), searchForm.getZipcode(), searchForm.getPage());
     }
     @GetMapping(value = "api/data/types", produces = "application/json")
     public String apiCallTypes() throws IOException {
