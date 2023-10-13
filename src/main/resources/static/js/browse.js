@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     const card = document.createElement('div');
                     card.classList.add('profile-card');
 
-                    let imageUrl = '/img/default.jpg'; // Default image
+                    let imageUrl = '/img/place-holder-pets.png'; // Default image
 
                     if (petData.photos && petData.photos.length > 0) {
                         // Use the URL of the first photo from the API
-                        imageUrl = petData.photos[0].medium || petData.photos[0].medium || petData.photos[0].small;
+                        imageUrl = petData.photos[0].medium || '/img/place-holder-pets.png';
                     }
                     card.innerHTML = `
                     <div class="profile-image">
@@ -74,9 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="pet-status">${petData.status}</div>
                     <div class="profile-actions">
                         <input type="hidden"  class="petId" name="petId" th:value="${petData.id}">
-                        <form method="post" action="/browse">
+<!--                        <form method="post" action="/browse">-->
                             <button type="submit" name="button" th:value="foster" class="openModalButton">Foster</button>
-                        </form>
+<!--                        </form>-->
 <!--                        <form method="post" action="/browse">-->
                             <button type="submit" name="button" th:value="save" class="save-btn">Save</button>
 <!--                        </form>x-->
