@@ -41,8 +41,18 @@
                 <br>
                 <!--                USER BADGES-->
                 <div class="user-badges">
-                    <h4 class="badge-text">Acquired Badges:</h4>
-                    <!--            <span th:insert="${profile.getBadges()}"></span>-->
+<!--                                <span th:insert="${profile.getBadges()}"></span>-->
+<!--                    <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">-->
+
+                    <div th:each="badge : ${badges}">
+                        <div class="card" style="width: 18rem;" th:data-coffee-id="${badge.id}">
+                        <h4 class="badge-text">Acquired Badges:</h4>
+                        <div class="column text-center" style="width: fit-content">
+                            <h4 th:text="${badge.getName()}"></h4>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
@@ -155,6 +165,19 @@
             </div>
         </div>
     </div>
+    <!--    USERS REVIEWS PAGE-->
+
+       <div>
+        <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
+            <div class="card" style="width: 18rem;" th:data-coffee-id="${review.id}">
+                <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">(NAME OF PET)</h5>
+                    <p class="card-text" th:text="${review.body}">REVIEWS BODY</p>
+                    <!--                    <button type="button" class="btn btn-light text-danger" data-bs-toggle="modal"-->
+                    <!--                            data-bs-target="#reviewModal">-->
+                    <!--                        Delete Review-->
+                    <!--                    </button>-->
 </div>
 
 
