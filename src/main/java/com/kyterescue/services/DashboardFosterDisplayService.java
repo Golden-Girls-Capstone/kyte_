@@ -15,12 +15,15 @@ public class DashboardFosterDisplayService {
     private final UserRepository usersDao;
     private final PetRepository petsDao;
 
+    private final BadgeRespository badgesDao;
+
     private final ReviewRepository reviewsDao;
     private final AuthenticationService authenticationService;
 
-    DashboardFosterDisplayService(FosterPetRepository fostersDao, PetRepository petsDao, ReviewRepository reviewsDao, UserRepository usersDao, AuthenticationService authenticationService) {
+    DashboardFosterDisplayService(FosterPetRepository fostersDao, BadgeRespository badgesDao, PetRepository petsDao, ReviewRepository reviewsDao, UserRepository usersDao, AuthenticationService authenticationService) {
         this.fostersDao = fostersDao;
         this.reviewsDao = reviewsDao;
+        this.badgesDao = badgesDao;
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.authenticationService = authenticationService;
@@ -57,6 +60,10 @@ public class DashboardFosterDisplayService {
         return reviewHistory;
     }
 
+    public List<Badge> grabBadgeHistory(String username){
+        List<Badge> badgeHistory = usersDao.findByUsername(username).getBadges();
+        return badgeHistory;
+    }
 
 
 }

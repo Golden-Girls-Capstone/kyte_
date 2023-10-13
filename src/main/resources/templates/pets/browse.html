@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="partials/header:: header">
     <meta charset="UTF-8">
+    <meta name="_csrf" data-th-content="${_csrf.token}" />
     <title>Browse Page</title>
 
 </head>
@@ -57,22 +58,7 @@
     </div>
 </div>
 
-<div id="myModal" class="modal" >
-    <div  class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable" >
-
-        <span id="closeModalButton" class="close">&times;</span>
-        <h2 class="modal-name">Sir Chester</h2>
-        <img class="modal-image" src="/img/dogkiss.jpeg">
-        <p class="modal-pet-info-browse">Here is the information of the animal like its breed, color, and etc</p>
-        <input id="view-foster-btn" type="submit" value="View Pet Info">
-        <form class="foster-form" action="/action_page.php" th:object="${foster}">
-            <label for="start">Start Date: </label>
-            <input th:field="${foster.start_date}" type="text" id="start" name="startDate" placeholder="MM/DD/YYYY">
-            <label for="end" >End Date: </label>
-            <input th:field="${foster.end_date}" type="text" id="end" name="endDate" placeholder="MM/DD/YYYY">
-            <input id="submit-foster-btn" type="submit" value="Submit">
-        </form>
-    </div>
+<div id="myModal" class="modal">
 </div>
 
 <div class="pagination">
