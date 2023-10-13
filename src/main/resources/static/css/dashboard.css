@@ -147,3 +147,19 @@ body {
 .foster-container {
     margin: 2rem 0;
 }
+
+.reviews-container {
+    margin: 2rem 0;
+
+}
+
+.profile-header {
+    margin-top: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.review-cards {
+    display: inline-grid;
+}
