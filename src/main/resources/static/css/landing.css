@@ -3,15 +3,6 @@ body{
     overflow: scroll;
     background-color: #ffffff;
 }
-.background-container {
-    background-size: cover;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    filter: opacity(90%);
-    height: 90vh;
-}
 
 P.logo {
     font-size: 2.5rem;
@@ -22,14 +13,6 @@ P.logo {
 P.motto {
     font-size: 1.5rem;
     font-family: 'Montserrat', sans-serif;
-}
-
-.blur-background {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-
 }
 
 .landing-text {
@@ -73,32 +56,238 @@ li {
     font-size: larger;
     color: white;
 }
+/*-----------------------wave effect on image------------------------*/
+.background-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 99vh;
+    overflow: hidden;
+}
+
+.blur-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: -1;
+}
+
+svg.blue-svg {
+    position: absolute;
+    top: 48rem;
+}
+svg.svg2 {
+    fill: white;
+    width: 100%;
+    position: relative;
+    top: -10rem;
+    filter: drop-shadow(0 -6mm 4mm rgba(255, 239, 225, 0.58));}
+
+svg.bottom-svg3 {
+    position: relative;
+    top: -5rem;
+}
+svg.top-svg3 {
+    position: relative;
+    bottom: -5rem;
+    filter: drop-shadow(0px 10px 9px rgba(253, 204, 187, 0.66));
+}
+.white-line {
+    position: absolute;
+    width: 100%;
+    z-index: 8;
+    background: #fff;
+    height: 52px;
+    top: 123.4rem;
+}
+
+.bkg-dog {
+    background: #bde4f97a;
+    height: 77vh;
+    width: 39rem;
+    border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+    position: relative;
+    top: 4em;
+    left: 1em;
+}
+.bluedog{
+    width: 29rem;
+    position: absolute;
+    top: 56em;
+    right: 52rem;
+    filter: brightness(0.9);
+}
+button.btn-jumbotron {
+    border-radius: 6px;
+    width: 154px;
+    height: 41px;
+    color: #FFFFFF;
+    font-family: -webkit-body;
+    background: #86b7fe;
+    border-style: unset;
+    font-weight: bolder;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+
+}
+.btn-jumbotron:hover {
+    box-shadow: 0 0 10px 2px rgba(134, 183, 254, 0.88);
+    transform: scale(1.05);
+    background: #CCEAFA;
+    color: #86b7fe;
+}
+.adopt-title {
+    display: flex;
+    justify-content: center;
+}
+/*-----------------idk-----*/
+
+.jumbotron {
+    background: rgba(213, 236, 250, 0.85);
+    height: 76vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.jumbo-title {
+    text-align: left;
+}
+
+.jumbo-content {
+    width: 40%;
+    text-align: right;
+    position: relative;
+    top: -4em;
+}
+.foster-tittle {
+    display: flex;
+    justify-content: center;
+}
+
+.first-row {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: -70rem;
+    flex-direction: row-reverse;
+}
+
+.first-row-text-content {
+    width: 41%;
+}
+
+.second-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #FFEEE0;
+    flex-direction: row-reverse;
+}
+.image-stuff {
+    height: 500px;
+    width: 622px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.org-cat {
+    width: 19rem;
+    position: relative;
+    top: 10rem;
+    left: -14rem;
+}
+.heart {
+    --size: 35rem;
+    position: relative;
+    width: var(--size);
+    height: calc(var(--size) * 0.3);
+    top: -7rem;
+}
+
+.heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    left: calc(var(--size) * 0.55);
+    top: 0;
+    width: calc(var(--size) * 0.55);
+    height: calc(var(--size) * 0.85);
+    background: #F1D8DA;
+    border-radius: calc(var(--size) * 0.55) calc(var(--size) * 0.55) 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    filter: drop-shadow(0px 10px 9px rgba(253, 204, 187, 0.66));
+}
 
 
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    filter: drop-shadow(0px 10px 9px rgba(215, 135, 144, 0.7));
+}
+.btn-adopt {
+    border-radius: 6px;
+    width: 154px;
+    height: 41px;
+    color: rgb(255, 255, 255);
+    font-family: -webkit-body;
+    background: #D78790;
+    border-style: unset;
+    font-weight: bolder;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.btn-adopt:hover {
+    box-shadow: 0 0 10px 2px rgba(215, 135, 144, 0.86);
+    transform: scale(1.05);
+    background: rgba(215, 135, 144, 0.24);
+    color: #D78790;
+}
 
 
+img.doggy {
+    position: absolute;
+    width: 42rem;
+    height: 22rem;
+    top: 135rem;
+}
+.btn-outreach {
+    border-radius: 6px;
+    width: 154px;
+    height: 41px;
+    color: white;
+    font-family: -webkit-body;
+    background: #eebdabd1;
+    border-style: unset;
+    font-weight: bolder;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: box-shadow 0.3s;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+.btn-outreach:hover {
+    box-shadow: 0 0 10px 2px rgb(241 197 180);
+    transform: scale(1.05);
+    background: white;
+    color: #eebdabd1;
+}
 
 
 
@@ -179,7 +368,9 @@ button.navbar-toggler.collapsed {
 /*Large Screen */
 @media (min-width: 992px) {
 .text-overlay{
-    top: 20rem
+    top: 20rem;
+    right: unset;
+    left: 22rem
 }
 
 }
@@ -327,7 +518,10 @@ button.navbar-toggler.collapsed {
     P.motto {
         font-size: 15px;    }
 }
-
+.outreach-title {
+    display: flex;
+    justify-content: center;
+}
 
 
 
