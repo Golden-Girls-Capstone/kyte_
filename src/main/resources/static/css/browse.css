@@ -90,14 +90,14 @@ a {
     padding: 3rem;
     width: 90%;
     max-width: 300px;
-    background-color: #ffeee2;
+    background-color: #ffeee1;
     border-radius: 16px;
     position: relative;
-    border: 9px solid #fdccbc;
+    border: 9px solid #ffeee1;
     background-clip: padding-box;
     text-align: center;
     color: #20254b;
-    box-shadow: 0 4px 8px #de9a9a;
+    box-shadow: 0 4px 8px #86b7fe;
 }
 
 #profile-cards{
@@ -138,18 +138,33 @@ img {
 
 
 .pet-status{
-    background-color: rgba(35, 158, 35, 0.48);
+    background-color: rgb(35, 158, 35);
     color: white;
     text-align: center;
 }
 
 .foster-btn, .save-btn, #confirmButton,.openModalButton, #submit-foster-btn, #view-foster-btn {
     color: #ffffff;
-    background-color: #de9a9a;
-    border-radius: 20px;
+    border-radius: 9px;
     margin-top: 20px;
     border-color: #de9a9a;
+    width: 154px;
+    height: 41px;
+    background: #de9a9a;
+    border-style: unset;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
 
+}
+
+.foster-btn:hover, .save-btn:hover, #confirmButton:hover,.openModalButton:hover, #submit-foster-btn:hover, #view-foster-btn:hover{
+    box-shadow: 0 0 10px 2px rgb(222, 154, 154);
+    transform: scale(1.05);
+    background: #f1d8da;
+    color: #d8868d;
 }
 
 .card-holder{
@@ -161,6 +176,7 @@ img {
 .profile-actions{
     display: flex;
     justify-content: space-around;
+    gap: 2em;
 }
 
 
