@@ -41,12 +41,12 @@ public class SecurityConfig {
         http.authorizeHttpRequests((requests) -> requests
 //                         Pages that require authentication
 
-                        .requestMatchers("/profile",  "/profile/edit", "/profile/edit/delete/{id}", "/pet/review/{fosterId}", "/dashboard/review", "/dashboard/review/delete/{id}").authenticated()
+                        .requestMatchers("/profile",  "/profile/edit", "/profile/edit/delete/{id}", "/pet/review/{fosterId}", "/dashboard/review", "/dashboard/review/delete/{id}", "/browse/foster").authenticated()
 
                         /* Pages that do not require authentication
                          * anyone can visit the home page, register, login, and browse */
 
-                        .requestMatchers("", "/", "/dashboard", "/landing", "/sign-up", "/login", "/browse", "/api/test", "pets/**", "/logout", "/about", "/api/data/default", "/api/data/search", "/api/data/types", "/api/token").permitAll()
+                        .requestMatchers("", "/", "/dashboard", "/landing", "/sign-up", "/login", "/browse", "/browse/*", "/api/test", "pets/**", "/logout", "/about", "/api/data/default", "/api/data/search", "/api/data/types", "/api/token").permitAll()
 
                         // allow loading of static resources
                         .requestMatchers("/css/**", "/js/**", "/img/**").permitAll()

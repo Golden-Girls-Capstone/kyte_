@@ -1,17 +1,75 @@
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById('myModal');
-    const closeModalButton = document.getElementById('closeModalButton');
-    const confirmButton = document.getElementById('submit-foster-btn');
     const profileCardsContainer = document.getElementById('profile-cards');
-    const petIdInput = document.getElementById('petIdInput'); // Added this line
-    const openModalButton = document.querySelectorAll('.openModalButton');
+    const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
 
 
     // Function to open the modal and set the pet's API ID
-    function openModal(petId) {
-        petId = petIdInput
-        // petIdInput.value = petId; // Set the value of the hidden input
+    function openModal(petData) {
+    const closeModalButton = document.getElementById('closeModalButton');
+    const confirmButton = document.getElementById('submit-foster-btn');
+    const openModalButton = document.querySelectorAll('.openModalButton');
+        modal.innerHTML = `
+        <div  class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+
+        <span id="closeModalButton" class="close">&times;</span>
+        <h2 class="modal-name"></h2>
+        <img class="modal-image" src="${petData.photos[0].small}">
+        <p class="modal-pet-info-browse">Name: ${petData.name}</p>
+        <p class="modal-pet-info-browse">Age: ${petData.age}</p>
+        <p class="modal-pet-info-browse">Gender: ${petData.gender}</p>
+        <p class="modal-pet-info-browse">Age: ${petData.status}</p>
+
+
+            <input type="hidden" id="petId" name="petId" value="${petData.id}">
+            <input type="hidden" id="petName" name="petName" value="${petData.name}">
+            <input type="hidden" id="petType" name="petType" value="${petData.type}">
+            <input type="hidden" id="petBreed" name="petBreed" value="${petData.breeds[0]}">
+            <input type="hidden" id="petAge" name="petAge" value="${petData.age}">
+            <input type="hidden" id="petSize" name="petSize" value="${petData.size}">
+            <input type="hidden" id="petPhoto" name="petPhoto" value="${petData.photos[0].small}">
+            <input type="hidden" id="petGender" name="petGender" value="${petData.gender}">
+            <input type="hidden" id="petStatus" name="petStatus" value="${petData.status}">
+            <label for="start">Start Date: </label>
+            <input type="text" id="start" name="startDate" placeholder="MM/DD/YYYY">
+            <label for="end" >End Date: </label>
+            <input type="text" id="end" name="endDate" placeholder="MM/DD/YYYY">
+            <input id="submit-foster-btn" type="submit" value="Submit" name="submitFoster">
+    </div>
+        `
         modal.style.display = 'block';
+        modal.querySelector('submit-foster-btn').addEventListener('click', async function() {
+            const firstUrl = 'fillInHere'; // ******enter endpoint******
+            const petObject = {
+                petId: petData.id,
+                petName: petData.name,
+                petType: petData.type,
+                petBreed: petData.breeds[0],
+                petAge: petData.age,
+                petSize: petData.size,
+                petPhoto: petData.photos[0].small,
+                petGender: petData.gender,
+                petStatus: petData.status
+            }
+            const fetchOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                body: JSON.stringify(petObject)
+            }
+            let results = await fetch(firstUrl, fetchOptions);
+
+
+
+        })
+    // closeModalButton.addEventListener('click', closeModal);
+    // confirmButton.addEventListener('click', () => {
+    //     // Add your code to handle the submission here
+    //     alert('You confirmed!');
+    //     closeModal();
+    // });
     }
 
     // Function to close the modal
@@ -29,24 +87,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Event listeners for opening and closing the modal
-    for (const card of profileCardsContainer.querySelectorAll('.openModalButton')) {
-        card.addEventListener('click', function() {
-            const petId = card.getAttribute('data-pet-id'); // Get the pet's API ID
-            console.log('Clicked Foster button for pet ID:' + petId); // Add this line
-            openModal(petId); // Pass the API ID to the openModal function
-        });
-    }
-    closeModalButton.addEventListener('click', closeModal);
+    // for (const card of profileCardsContainer.querySelectorAll('.openModalButton')) {
+    //     card.addEventListener('click', function() {
+    //         const petId = card.getAttribute('data-pet-id'); // Get the pet's API ID
+    //         console.log('Clicked Foster button for pet ID:' + petId); // Add this line
+    //         openModal(petId); // Pass the API ID to the openModal function
+    //     });
+    // }
 
-    // openModalButton.addEventListener('click', function(e) {
-    // });
-
-
-    confirmButton.addEventListener('click', () => {
-        // Add your code to handle the submission here
-        alert('You confirmed!');
-        closeModal();
-    });
 
     // Function to render search results as profile cards
     function renderSearchResults(data) {
@@ -73,34 +121,25 @@ document.addEventListener("DOMContentLoaded", function () {
                         <h2 class="pet-name">${petData.name}</h2>
                     <div class="pet-status">${petData.status}</div>
                     <div class="profile-actions">
-                        <input type="hidden"  class="petId" name="petId" th:value="${petData.id}">
 <!--                        <form method="post" action="/browse">-->
-                            <button type="submit" name="button" th:value="foster" class="openModalButton">Foster</button>
+                            <button type="submit" name="fosterButton" class="openModalButton">Foster</button>
 <!--                        </form>-->
 <!--                        <form method="post" action="/browse">-->
-                            <button type="submit" name="button" th:value="save" class="save-btn">Save</button>
+                            <button type="submit" name="button" value="save" class="save-btn">Save</button>
 <!--                        </form>x-->
                     </div>
                     `;
+
+                    card.querySelector('.openModalButton').addEventListener('click', function(e) {
+                        console.log(petData);
+                        openModal(petData);
+                    });
                     profileCardsContainer.appendChild(card);
 
                 }
             }
         }
-        // let saveButtons = document.querySelectorAll('.save-btn');
-        // console.log(saveButtons);
-        // for(let i = 0; i < saveButtons.length; i++) {
-        //     saveButtons[i].addEventListener("click", function() {
-        //         console.log("button" + i + "clicked")
-        //     })
-        // }
-        // saveButtons.forEach(saveButton => {
-        //     saveButton.addEventListener('click', e => {
-        //         saveButton
-        //     })
-        // })
     }
-
 
     // Function to handle the form submission
     document.getElementById('search-form').addEventListener("submit", function(e) {

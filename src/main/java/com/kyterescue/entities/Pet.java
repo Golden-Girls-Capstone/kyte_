@@ -53,7 +53,7 @@ public class Pet {
     public Pet(){
 
     }
-    public Pet(String apiId, String name, String type, String breed, String age, String size, String photo, String description, String gender, int status) {
+    public Pet(String apiId, String name, String type, String breed, String age, String size, String photo, String gender, int status) {
         this.apiId = apiId;
         this.name = name;
         this.type = type;

@@ -67,25 +67,25 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form th:action="@{/profile/edit}" th:method="post"
-                                  class=" row d-flex justify-content-center p-5"
-                                  th:object="${user}">
-                                <br>
-                                <input id="username" name="username" type="text" th:field="*{username}"
-                                       placeholder="Username"/>
-                                <br>
-                                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
-                                <br>
-                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"
-                                       placeholder="Zipcode"/>
-                                <br>
-                                <input id="oldPassword" name="oldPassword" type="password" placeholder="old password"/>
-                                <br>
-                                <input id="newPassword" name="newPassword" type="password" placeholder="new password"/>
-                                <br>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary" value="Update Account"/>
-                            </form>
+<!--                            <form th:action="@{/profile/edit}" th:method="post"-->
+<!--                                  class=" row d-flex justify-content-center p-5"-->
+<!--                                  th:object="${user}">-->
+<!--                                <br>-->
+<!--                                <input id="username" name="username" type="text" th:field="*{username}"-->
+<!--                                       placeholder="Username"/>-->
+<!--                                <br>-->
+<!--                                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>-->
+<!--                                <br>-->
+<!--                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"-->
+<!--                                       placeholder="Zipcode"/>-->
+<!--                                <br>-->
+<!--                                <input id="oldPassword" name="oldPassword" type="password" placeholder="old password"/>-->
+<!--                                <br>-->
+<!--                                <input id="newPassword" name="newPassword" type="password" placeholder="new password"/>-->
+<!--                                <br>-->
+<!--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                                <input type="submit" class="btn btn-primary" value="Update Account"/>-->
+<!--                            </form>-->
 
                         </div>
                     </div>
