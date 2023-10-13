@@ -108,11 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     const card = document.createElement('div');
                     card.classList.add('profile-card');
 
-                    let imageUrl = '/img/default.jpg'; // Default image
+                    let imageUrl = '/img/place-holder-pets.png'; // Default image
 
                     if (petData.photos && petData.photos.length > 0) {
                         // Use the URL of the first photo from the API
-                        imageUrl = petData.photos[0].medium || petData.photos[0].medium || petData.photos[0].small;
+                        imageUrl = petData.photos[0].medium || '/img/place-holder-pets.png';
                     }
                     card.innerHTML = `
                     <div class="profile-image">
