@@ -1,3 +1,14 @@
+:root {
+    --baby-blue: #cee7f5;
+    --muave: #d8868d;
+    --peach: #fdccbc;
+    --cream: #ffeee2;
+    --blush: #f4d9db;
+    --navy: #20254b;
+    --primary-font: 'Montserrat', sans-serif;
+
+}
+
 
 .page-wrapper {
     min-height: 100%;

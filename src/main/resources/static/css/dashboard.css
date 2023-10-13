@@ -1,3 +1,15 @@
+:root {
+    --baby-blue: #cee7f5;
+    --muave: #d8868d;
+    --peach: #fdccbc;
+    --cream: #ffeee2;
+    --blush: #f4d9db;
+    --navy: #20254b;
+    --primary-font: 'Montserrat', sans-serif;
+
+}
+
+
 body {
     overflow: scroll;
     /*margin-top: 3rem;*/
@@ -21,7 +33,7 @@ body {
     padding: 5rem;
     border: 2px solid white;
     border-radius: 5%;
-    background-color: rgba(255, 216, 223, 0.33);
+    background-color: rgba(255, 216, 223, 0.71);
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
 }
@@ -134,4 +146,20 @@ body {
 
 .foster-container {
     margin: 2rem 0;
+}
+
+.reviews-container {
+    margin: 2rem 0;
+
+}
+
+.profile-header {
+    margin-top: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.review-cards {
+    display: inline-grid;
 }
