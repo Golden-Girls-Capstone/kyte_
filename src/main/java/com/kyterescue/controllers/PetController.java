@@ -79,9 +79,36 @@ public class PetController {
         return "pets/browse";
     }
 
-//    @PostMapping("/browse")
-//    public String fosterOrSave(@ModelAttribute(name = "foster") FosterPet fosterPet, @CurrentSecurityContext(expression = "authentication?.name") String username, @RequestParam(name = "petId") Long id, @RequestParam(name = "button") String button) throws IOException {
-//            System.out.println("inside browse");
+    @PostMapping("/browse/foster")
+    public String fosterOrSave(
+            @RequestParam(name = "petId") String apiId,
+            @RequestParam(name = "petName") String name,
+            @RequestParam(name = "petType") String type,
+            @RequestParam(name = "petBreed") String breed,
+            @RequestParam(name = "petAge") String age,
+            @RequestParam(name = "petSize") String size,
+            @RequestParam(name = "petPhoto") String photo,
+            @RequestParam(name = "petGender") String gender,
+            @RequestParam(name = "petStatus") boolean status,
+            @RequestParam(name = "submitFoster") String button
+    ) throws IOException {
+        System.out.println("inside post");
+        int intStatus;
+        if(status) {
+            intStatus = 1;
+        } else {
+            intStatus = 0;
+        }
+        if(button != null) {
+            Pet pet = new Pet(apiId, name, type, breed, age, size, photo, gender, intStatus);
+            petsDao.save(pet);
+        }
+        return "pets/browse";
+    }
+
+
+
+        //            System.out.println("inside browse");
 //        if("foster".equals(button)) {
 //            Pet petToFoster = mapperService.checkAndMapToPet(String.valueOf(id));
 //            FosterPet newFoster = mapperService.mapPetToFosterPet(fosterPet, usersDao.findByUsername(username), petToFoster);
