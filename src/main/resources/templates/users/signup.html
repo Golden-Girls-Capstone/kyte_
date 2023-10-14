@@ -8,23 +8,103 @@
 <div th:insert="partials/modal"></div>
 <div class="page-wrapper ">
     <div class="container my-5 p-5 d-flex justify-content-center">
-        <div class="row d-flex justify-center row-gap-3" >
+        <div class="row d-flex justify-center row-gap-3">
             <h3>Sign Up</h3>
-            <form th:action="@{/sign-up}" th:method="post" class=" row d-flex justify-content-center p-5" th:object="${user}">
-                <label for="username"></label>
-                <input id="username" name="username" type="text" th:field="*{username}" placeholder="Username"/>
-                <label for="email"></label>
-                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
-                <label for="password"></label>
-                <input id="password" name="password" type="password" th:field="*{password}" placeholder="Password"/>
-                <label for="zipcode"></label>
-                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>
-                <input type="submit" class="" value="Sign Up" />
-                <a href="/login" >Already a Member? Login here!</a>
-            </form>
+
+<!--            original form-->
+            <!--            <form th:action="@{/sign-up}" th:method="post" class=" row d-flex justify-content-center p-5" th:object="${user}">-->
+            <!--                <label for="username"></label>-->
+            <!--                <input id="username" name="username" type="text" th:field="*{username}" placeholder="Username"/>-->
+            <!--                <label for="email"></label>-->
+            <!--                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>-->
+            <!--                <label for="password"></label>-->
+            <!--                <input id="password" name="password" type="password" th:field="*{password}" placeholder="Password"/>-->
+            <!--                <label for="zipcode"></label>-->
+            <!--                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>-->
+            <!--                <input type="submit" class="" value="Sign Up" />-->
+            <!--                <a href="/login" >Already a Member? Login here!</a>-->
+            <!--            </form>-->
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group d-flex">
+                        <form th:action="@{/sign-up}" th:method="post" class=" row d-flex justify-content-center p-5"
+                              th:object="${user}">
+
+                            <input class="form-control rounded mt-1" aria-label="username"
+                                   aria-describedby="username" id="username-input" name="username" type="username"
+                                   th:field="*{username}"
+                                   placeholder="Username"/>
+                            <label for="email"></label>
+                            <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>
+
+                            <input class="form-control rounded mt-1" aria-label="password"
+                                   aria-describedby="password" id="password-input" name="password" type="password"
+                                   th:field="*{password}"
+                                   placeholder="Password"/>
+
+                            <label for="zipcode"></label>
+                            <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}" placeholder="Zipcode"/>
+
+                            <input type="submit" class="" value="Sign Up"/>
+                            <a href="/login">Already a Member? Login here!</a>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Password Validation Check -->
+                <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
+                    <div class="alert px-4 py-3 mb-0 d-none"
+                         role="alert"
+                         data-mdb-color="warning"
+                         id="password-alert">
+                        <ul class="list-unstyled mb-0">
+                            <li class="requirements" id="password-leng">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Your password must have at least 8 characters
+                            </li>
+                            <li class="requirements" id="password-big-letter">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Your password must have at least 1 big letter
+                            </li>
+                            <li class="requirements" id="password-num">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Your password must have at least 1 number
+                            </li>
+                            <li class="requirements" id="password-special-char">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Your password must have at least 1 special character
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--this is for the validation of the username-->
+                <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
+                    <div class="alert px-4 py-3 mb-0 d-none"
+                         role="alert"
+                         data-mdb-color="warning"
+                         id="username-alert">
+                        <ul class="list-unstyled mb-0">
+                            <li class="requirements leng">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <i class="fas fa-times text-danger me-3"></i>
+                                Your username must have at least 4 characters
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--            this is the end of the password validation check part-->
         </div>
     </div>
 </div>
 <div th:insert="partials/footer"></div>
+<script src="/js/validation.js"></script>
+
 </body>
 </html>
