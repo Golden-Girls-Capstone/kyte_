@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     UserRepository usersDao;
     FosterPetRepository fosterPetDao;
+    BadgeRespository badgesDao;
     PasswordEncoder passwordEncoder;
     AuthenticationService authenticationService;
     CheckForUniqueUsernameService checkUsername;
     CheckForUniqueEmailService checkEmail;
-    UserController(UserRepository usersDao, FosterPetRepository fosterPetDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService, CheckForUniqueUsernameService checkUsername, CheckForUniqueEmailService checkEmail) {
+    UserController(UserRepository usersDao,BadgeRespository badgesDao, FosterPetRepository fosterPetDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService, CheckForUniqueUsernameService checkUsername, CheckForUniqueEmailService checkEmail) {
         this.usersDao = usersDao;
         this.fosterPetDao = fosterPetDao;
+        this.badgesDao = badgesDao;
         this.passwordEncoder = passwordEncoder;
         this.authenticationService = authenticationService;
         this.checkUsername = checkUsername;
