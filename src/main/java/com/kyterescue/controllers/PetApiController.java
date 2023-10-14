@@ -64,7 +64,7 @@ public class PetApiController {
     public FosterPet createFosterPet(@PathVariable long petId, @PathVariable String startDate, @PathVariable String endDate, @CurrentSecurityContext(expression = "authentication?.name") String username) throws JsonProcessingException {
         LocalDate localStart = LocalDate.of(Integer.parseInt(startDate.substring(0, 4)), Integer.parseInt(startDate.substring(5, 7)), Integer.parseInt(startDate.substring(8, 10)));
         LocalDate localEnd = LocalDate.of(Integer.parseInt(endDate.substring(0, 4)), Integer.parseInt(endDate.substring(5, 7)), Integer.parseInt(endDate.substring(8, 10)));
-        FosterPet foster = new FosterPet(localStart, localEnd, usersDao.findByUsername(username), petsDao.getPetById(petId));
+        FosterPet foster = new FosterPet(localStart, localEnd, usersDao.findByUsername(username), petsDao.getPetById(petId), true);
         fostersDao.save(foster);
         return foster;
     }

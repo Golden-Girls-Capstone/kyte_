@@ -48,13 +48,11 @@ public class PetController {
 
     public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
         User user = usersDao.findByUsername(username);
-        List<Review> reviewHistory = dashboardFosterDisplayService.grabReviewHistory(user);
-        FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
-        List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
-        List<FosterPet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(model);
+        List<Review> reviewHistory = dashboardFosterDisplayService.grabReviewHistory(username);
+        Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(username);
+        List<Pet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(username);
         List<Badge> badgeHistory = dashboardFosterDisplayService.grabBadgeHistory(username);
         model.addAttribute("current", currentFoster);
-        model.addAttribute("pets", petHistory);
         model.addAttribute("user", user);
         model.addAttribute("fosters", fosterHistory);
         model.addAttribute("badges", badgeHistory);
@@ -77,29 +75,6 @@ public class PetController {
         return "pets/browse";
     }
 
-        //            System.out.println("inside browse");
-//        if("foster".equals(button)) {
-//            Pet petToFoster = mapperService.checkAndMapToPet(String.valueOf(id));
-//            FosterPet newFoster = mapperService.mapPetToFosterPet(fosterPet, usersDao.findByUsername(username), petToFoster);
-//            newFoster.setStart_date((LocalDate) fosterPet.getStart_date());
-//            newFoster.setEnd_date((LocalDate) fosterPet.getEnd_date());
-//
-//            fostersDao.save(newFoster);
-//            return "pets/browse";
-//
-//        } else if("save".equals(button)) {
-//            System.out.println("save pressed");
-//           Pet favoritePet = mapperService.checkAndMapToPet(String.valueOf(id));
-//           User user = usersDao.findByUsername(username);
-//           user.addFavorite(favoritePet);
-//           usersDao.save(user);
-//            System.out.println(user.getPets());
-//           return "pets/browse";
-//        } else {
-//            return "pets/browse";
-//        }
-//    }
-
     @GetMapping("pets/{id}/view")
     public String viewPetProfile(@PathVariable String id, Model model) {
         Pet petToView = petsDao.getPetById(Long.parseLong(id));
@@ -111,14 +86,13 @@ public class PetController {
 
     @PostMapping("/dashboard/review")
     public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
-        System.out.println("save form");
-        Review newReview = new Review();
-        User user = usersDao.findByUsername(username);
-        FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
-        newReview.setBody(review.getBody());
-        newReview.setUser(user);
-        newReview.setFosterPet(currentFoster);
-        reviewsDao.save(newReview);
+        Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(username);
+        FosterPet unsetCurrentFoster = dashboardFosterDisplayService.grabCurrentFosterAsFosterPet(username);
+        review.setUser(usersDao.findByUsername(username));
+        review.setPet(currentFoster);
+        reviewsDao.save(review);
+        unsetCurrentFoster.setStatus(false);
+        fostersDao.save(unsetCurrentFoster);
         return "redirect:/dashboard";
     }
 

@@ -50,6 +50,9 @@ public class Pet {
     @ManyToMany(mappedBy = "pets")
     private List<User> users;
 
+    @OneToMany(mappedBy = "fosterPet", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
     public Pet(){
 
     }
@@ -146,5 +149,13 @@ public class Pet {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
