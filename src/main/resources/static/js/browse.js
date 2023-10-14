@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     const card = document.createElement('div');
                     card.classList.add('profile-card');
 
-                    let imageUrl = '/img/default.jpg'; // Default image
+                    let imageUrl = '/img/place-holder-pets.png'; // Default image
 
                     if (petData.photos && petData.photos.length > 0) {
                         // Use the URL of the first photo from the API
-                        imageUrl = petData.photos[0].medium || petData.photos[0].medium || petData.photos[0].small;
+                        imageUrl = petData.photos[0].medium || '/img/place-holder-pets.png';
                     }
                     card.innerHTML = `
                     <div class="profile-image">
@@ -74,18 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="pet-status">${petData.status}</div>
                     <div class="profile-actions">
                         <input type="hidden"  class="petId" name="petId" th:value="${petData.id}">
-                        <form method="post" action="/browse">
+<!--                        <form method="post" action="/browse">-->
                             <button type="submit" name="button" th:value="foster" class="openModalButton">Foster</button>
-                        </form>
+<!--                        </form>-->
 <!--                        <form method="post" action="/browse">-->
                             <button type="submit" name="button" th:value="save" class="save-btn">Save</button>
 <!--                        </form>x-->
                     </div>
                     `;
                     profileCardsContainer.appendChild(card);
-
-
-
 
                 }
             }
@@ -113,10 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to fetch and render search results
     function fetchBySearch() {
-        const category = document.getElementById('category').value;
+        const type = document.getElementById('type').value;
         const zipcode = document.getElementById('zipcode').value;
         const age = document.getElementById('age').value;
         const size = document.getElementById('size').value;
+
 
         fetch('/api/token', {
             method: 'GET',
@@ -128,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(token => {
                 const bearerToken = `Bearer ${token}`;
                 // Include age and size in the API request
-                const apiUrl = `/api/data/search?category=${category}&zipcode=${zipcode}&age=${age}&size=${size}`;
+                const apiUrl = `/api/data/search?type=${type}&age=${age}&size=${size}&zipcode=${zipcode}&page=1`;
 
                 return fetch(apiUrl, {
                     method: 'GET',
@@ -156,3 +154,43 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial data fetch and render (if needed)
     // fetchDataAndRender(); // If you have an initial data fetch
 });
+
+
+
+
+
+
+//POTENTIAL JAVASCRIPT FOR PAGINATION
+
+// let currentPage = 1; // Initial page
+// const itemsPerPage = 10; // Number of items per page
+//
+// function fetchPage(page) {
+//     // Make an API request with the desired page parameter
+//     // Update your API endpoint and handling as needed
+//     fetch(`/api/resource?page=${page}&per_page=${itemsPerPage}`)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             // Process and display data here
+//         })
+//         .catch((error) => {
+//             console.error(error);
+//         });
+// }
+//
+// // Handle the "Next" button click
+// document.getElementById('forward').addEventListener('click', () => {
+//     currentPage++;
+//     fetchPage(currentPage);
+// });
+//
+// // Handle the "Previous" button click
+// document.getElementById('backward').addEventListener('click', () => {
+//     if (currentPage > 1) {
+//         currentPage--;
+//         fetchPage(currentPage);
+//     }
+// });
+//
+// // Initial API request
+// fetchPage(currentPage);

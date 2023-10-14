@@ -13,6 +13,7 @@ body{
 
     position: relative;
     display: flex;
+    margin-bottom: 4em;
 
 }
 
@@ -89,18 +90,21 @@ a {
     padding: 3rem;
     width: 90%;
     max-width: 300px;
-    background-color: rgba(222, 154, 154, 0);
+    background-color: #ffeee2;
     border-radius: 16px;
     position: relative;
-    border: 3px solid transparent;
+    border: 9px solid #fdccbc;
     background-clip: padding-box;
     text-align: center;
-    color: #000000;
+    color: #20254b;
+    box-shadow: 0 4px 8px #de9a9a;
 }
 
 #profile-cards{
     display: flex;
     flex-wrap: wrap;
+    gap: 19px;
+    margin-bottom: 4em;
 }
 
 .profile-image {
@@ -134,12 +138,12 @@ img {
 
 
 .pet-status{
-    background-color: #239e23;
+    background-color: rgba(35, 158, 35, 0.48);
     color: white;
     text-align: center;
 }
 
-.foster-btn, .save-btn, #confirmButton,.openModalButton, #submit-foster-btn {
+.foster-btn, .save-btn, #confirmButton,.openModalButton, #submit-foster-btn, #view-foster-btn {
     color: #ffffff;
     background-color: #de9a9a;
     border-radius: 20px;
@@ -238,4 +242,46 @@ input#start, input#end{
     outline: none;
     color: #e57777;
     font: inherit;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.pagination button {
+    margin: 0 10px;
+}
+
+button#forward, button#backward{
+    width: 40px;
+    height: 36px;
+    border: 1px solid #de9a9a;
+    background: #de9a9a;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 20rem;
+    cursor: pointer;
+    font-size: 20px;
+
+}
+
+#view-foster-btn{
+    margin-bottom: 20px;
+}
+
+.browse-h1{
+    color: #0e1843;
+    font-family: 'Lora', serif;
+
 }

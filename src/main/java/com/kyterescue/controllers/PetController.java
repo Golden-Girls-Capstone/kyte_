@@ -45,8 +45,15 @@ public class PetController {
     }
 
     @GetMapping("/dashboard")
-    public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
-        User user = usersDao.findByUsername(username);
+
+//    UNCOMMENT THE NEXT TWO LINES TO ENABLE SPRING AUTHENTICATION
+//    public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
+//    User user = usersDao.findByUsername(username);
+
+//    THE NEXT TWO LINES ALLOW ME TO BYPASS LOGIN TO GET TO DASHBOARD. COMMENT OUT WHEN READY TO RE-ENABLE SPRING AUTHENTICATION
+        public String viewDashboard(Model model) throws JsonProcessingException {
+        User user = usersDao.findByUsername("test");
+
         List<Review> reviewHistory = dashboardFosterDisplayService.grabReviewHistory(user);
         FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
