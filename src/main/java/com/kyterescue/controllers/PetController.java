@@ -46,14 +46,8 @@ public class PetController {
 
     @GetMapping("/dashboard")
 
-//    UNCOMMENT THE NEXT TWO LINES TO ENABLE SPRING AUTHENTICATION
-//    public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
-//    User user = usersDao.findByUsername(username);
-
-//    THE NEXT TWO LINES ALLOW ME TO BYPASS LOGIN TO GET TO DASHBOARD. COMMENT OUT WHEN READY TO RE-ENABLE SPRING AUTHENTICATION
-        public String viewDashboard(Model model) throws JsonProcessingException {
-        User user = usersDao.findByUsername("test");
-
+    public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
+        User user = usersDao.findByUsername(username);
         List<Review> reviewHistory = dashboardFosterDisplayService.grabReviewHistory(user);
         FosterPet currentFoster = dashboardFosterDisplayService.grabCurrentFoster(model);
         List<Pet> petHistory = dashboardFosterDisplayService.grabPetHistory(model);
@@ -82,35 +76,6 @@ public class PetController {
         model.addAttribute("foster", new FosterPet());
         return "pets/browse";
     }
-
-    @PostMapping("/browse/foster")
-    public String fosterOrSave(
-            @RequestParam(name = "petId") String apiId,
-            @RequestParam(name = "petName") String name,
-            @RequestParam(name = "petType") String type,
-            @RequestParam(name = "petBreed") String breed,
-            @RequestParam(name = "petAge") String age,
-            @RequestParam(name = "petSize") String size,
-            @RequestParam(name = "petPhoto") String photo,
-            @RequestParam(name = "petGender") String gender,
-            @RequestParam(name = "petStatus") boolean status,
-            @RequestParam(name = "submitFoster") String button
-    ) throws IOException {
-        System.out.println("inside post");
-        int intStatus;
-        if(status) {
-            intStatus = 1;
-        } else {
-            intStatus = 0;
-        }
-        if(button != null) {
-            Pet pet = new Pet(apiId, name, type, breed, age, size, photo, gender, intStatus);
-            petsDao.save(pet);
-        }
-        return "pets/browse";
-    }
-
-
 
         //            System.out.println("inside browse");
 //        if("foster".equals(button)) {
