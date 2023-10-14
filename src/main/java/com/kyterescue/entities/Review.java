@@ -1,6 +1,7 @@
 package com.kyterescue.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,11 +15,10 @@ public class Review {
 
     @Column(columnDefinition = "VARCHAR(100)")
     private String body;
-
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "fosterPet_id", nullable = false)
     private Pet fosterPet;
@@ -48,7 +48,7 @@ public class Review {
     public void setUser(User user) {
         this.user = user;
     }
-
+    @JsonIgnore
     public Pet getPet() {
         return fosterPet;
     }

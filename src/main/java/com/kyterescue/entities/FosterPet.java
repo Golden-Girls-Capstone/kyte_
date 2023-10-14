@@ -28,7 +28,6 @@ public class FosterPet {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;

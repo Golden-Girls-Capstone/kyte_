@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to open the modal and set the pet's API ID
     function openModal(petData, imageUrl) {
-        console.log(petData);
         modal.innerHTML = `
         <div  class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable" >
 
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <input id="submit-foster-btn" type="submit" value="Submit" name="submitFoster">
     </div>
         `
-    const closeModalButton = modal.querySelector('#closeModalButton');
     const confirmButton = modal.querySelector('#submit-foster-btn');
         modal.style.display = 'block';
         confirmButton.addEventListener('click', async function() {
@@ -67,10 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let endDate = modal.querySelector('#end').value;
             const secondUrl = `/browse/foster/${petReturnData.id}/${startDate}/${endDate}`;
 
-            let fosterPetObject = {
-                startDate: startDate,
-                endDate: endDate
-            }
             let fosterPetOptions = {
                 method: 'POST',
                 headers: {
@@ -85,27 +79,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         })
-    // closeModalButton.addEventListener('click', closeModal);
-    // confirmButton.addEventListener('click', () => {
-    //     // Add your code to handle the submission here
-    //     alert('You confirmed!');
-    //     closeModal();
-    // });
     }
 
-    // Function to close the modal
-    function closeModal() {
-        modal.style.display = 'none';
-    }
+    //function to add favorites
+    async function addFavorite(petData, imageUrl) {
+        console.log("inside addFavorite function")
+            const url = '/browse/pet'; // ******enter endpoint******
+            const petObject = {
+                apiId: petData.id,
+                name: petData.name,
+                type: petData.type,
+                breed: petData.breeds[0],
+                age: petData.age,
+                size: petData.size,
+                photo: imageUrl,
+                gender: petData.gender,
+                status: petData.status === 'adoptable'
+            }
+            const petFetchOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                body: JSON.stringify(petObject)
+            }
+        let petFetchResponse = await fetch(url, petFetchOptions);
+        let petReturnData = await petFetchResponse.json();
+        console.log("after first fetch");
+        const favoriteUrl = `/browse/favorite/${petReturnData.id}`;
 
-    // Event listeners for opening and closing the modal
-    // for (const card of profileCardsContainer.querySelectorAll('.openModalButton')) {
-    //     card.addEventListener('click', function() {
-    //         const petId = card.getAttribute('data-pet-id'); // Get the pet's API ID
-    //         console.log('Clicked Foster button for pet ID:' + petId); // Add this line
-    //         openModal(petId); // Pass the API ID to the openModal function
-    //     });
-    // }
+        let fosterPetOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            }
+        }
+        let favoriteFetchResponse = await fetch(favoriteUrl, fosterPetOptions);
+        let favoritePetReturnData = await favoriteFetchResponse.json();
+        console.log(favoritePetReturnData);
+        }
+
 
 
     // Function to render search results as profile cards
@@ -137,16 +152,20 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button type="submit" name="fosterButton" class="openModalButton" data-pet-image="${imageUrl}">Foster</button>
 <!--                        </form>-->
 <!--                        <form method="post" action="/browse">-->
-                            <button type="submit" name="button" value="save" class="save-btn">Save</button>
+                            <button type="submit" name="favoriteButton" class="saveFavoriteButton" data-pet-image="${imageUrl}">Save</button>
 <!--                        </form>x-->
                     </div>
                     `;
 
                     card.querySelector('.openModalButton').addEventListener('click', function(e) {
-                        console.log(petData);
                         openModal(petData, e.target.getAttribute('data-pet-image'));
                     });
+                    card.querySelector('.saveFavoriteButton').addEventListener('click', function(e) {
+                        console.log("inside event listener before addfavorite method")
+                        addFavorite(petData, e.target.getAttribute('data-pet-image'));
+                    })
                     profileCardsContainer.appendChild(card);
+
 
                 }
             }
@@ -202,8 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Initial data fetch and render (if needed)
-    // fetchDataAndRender(); // If you have an initial data fetch
 });
 
 

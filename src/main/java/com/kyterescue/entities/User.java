@@ -35,16 +35,12 @@ public class User {
 
     @Column(columnDefinition = "INT(11) UNSIGNED")
     private int zipcode;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<FosterPet> fosterPets;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviews;
-
-//    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
-//    private List<Badge> badges;
-//
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -53,8 +49,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "badge_id")
     )
     private List<Badge> badges = new ArrayList<>();
-
-
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -62,7 +56,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "pet_id")
     )
-    private List<Pet> pets = new ArrayList<>();
+    private List<Pet> favorites = new ArrayList<>();
 
     public User() {
 
@@ -124,9 +118,6 @@ public class User {
         password = copy.password;
     }
 
-    public void addFavorite(Pet pet) {
-        pets.add(pet);
-    }
 
     public long getId() {
         return id;
@@ -183,7 +174,7 @@ public class User {
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
-
+    @JsonIgnore
     public List<FosterPet> getFosterPets() {
         return fosterPets;
     }
@@ -191,7 +182,7 @@ public class User {
     public void setFosterPets(List<FosterPet> fosterPets) {
         this.fosterPets = fosterPets;
     }
-
+    @JsonIgnore
     public List<Badge> getBadges() {
         return badges;
     }
@@ -199,12 +190,19 @@ public class User {
     public void setBadges(List<Badge> badges) {
         this.badges = badges;
     }
-
-    public List<Pet> getPets() {
-        return pets;
+    @JsonIgnore
+    public List<Pet> getFavorites() {
+        return favorites;
+    }
+    public void setFavorites(List<Pet> favorites) {
+        this.favorites = favorites;
+    }
+    @JsonIgnore
+    public List<Review> getReviews() {
+        return reviews;
     }
 
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

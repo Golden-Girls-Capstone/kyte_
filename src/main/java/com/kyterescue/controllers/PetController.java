@@ -47,16 +47,12 @@ public class PetController {
     @GetMapping("/dashboard")
 
     public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
-        User user = usersDao.findByUsername(username);
-        List<Review> reviewHistory = dashboardFosterDisplayService.grabReviewHistory(username);
-        Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(username);
-        List<Pet> fosterHistory = dashboardFosterDisplayService.grabFosterHistory(username);
-        List<Badge> badgeHistory = dashboardFosterDisplayService.grabBadgeHistory(username);
-        model.addAttribute("current", currentFoster);
-        model.addAttribute("user", user);
-        model.addAttribute("fosters", fosterHistory);
-        model.addAttribute("badges", badgeHistory);
-        model.addAttribute("reviews", reviewHistory);
+        model.addAttribute("current", dashboardFosterDisplayService.grabCurrentFosterAsPet(username));
+        model.addAttribute("user", usersDao.findByUsername(username));
+        model.addAttribute("fosters", dashboardFosterDisplayService.grabFosterHistory(username));
+        model.addAttribute("favorites", dashboardFosterDisplayService.grabFavorites(username));
+        model.addAttribute("badges", dashboardFosterDisplayService.grabBadgeHistory(username));
+        model.addAttribute("reviews", dashboardFosterDisplayService.grabReviewHistory(username));
         model.addAttribute("review", new Review());
         return "pets/dashboard";
     }
