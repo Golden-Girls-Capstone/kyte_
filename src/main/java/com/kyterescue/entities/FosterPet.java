@@ -21,9 +21,9 @@ public class FosterPet {
     private LocalDate startDate;
     @Column(columnDefinition = "DATE NOT NULL")
     private LocalDate endDate;
+    @Column
+    private boolean status;
 
-    @OneToMany(mappedBy = "fosterPet", cascade = CascadeType.ALL)
-    private List<Review> reviews;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -36,18 +36,18 @@ public class FosterPet {
     public FosterPet() {
 
     }
-    public FosterPet(LocalDate startDate, LocalDate endDate, User user, Pet pet) {
+    public FosterPet(LocalDate startDate, LocalDate endDate, User user, Pet pet, boolean status) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.user = user;
         this.pet = pet;
+        this.status = status;
     }
 
     public FosterPet(Long id, LocalDate startDate, LocalDate endDate, List<Review> reviews, User user, Pet pet) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.reviews = reviews;
         this.user = user;
         this.pet = pet;
     }
@@ -67,6 +67,12 @@ public class FosterPet {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public boolean getStatus() {
+        return status;
+    }
+    public void setStatus(boolean status) {
+        this.status = status;
     }
     public ChronoLocalDate getStart_date() {
         return startDate;

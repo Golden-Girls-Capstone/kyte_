@@ -41,199 +41,210 @@
                 <br>
                 <!--                USER BADGES-->
                 <div class="user-badges">
-<!--                                <span th:insert="${profile.getBadges()}"></span>-->
-<!--                    <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">-->
+                    <!--                                <span th:insert="${profile.getBadges()}"></span>-->
+                    <!--                    <img class="current-foster-pet-pic" src="/img/dogkiss.jpeg" style="height: 50px; width: 50px">-->
 
                     <div th:each="badge : ${badges}">
                         <div class="card" style="width: 18rem;" th:data-coffee-id="${badge.id}">
-                        <h4 class="badge-text">Acquired Badges:</h4>
-                        <div class="column text-center" style="width: fit-content">
-                            <h4 th:text="${badge.getName()}"></h4>
+                            <h4 class="badge-text">Acquired Badges:</h4>
+                            <div class="column text-center" style="width: fit-content">
+                                <h4 th:if="${badge != null}" th:text="${badge.name}"></h4>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Account Info</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!--                            <form th:action="@{/profile/edit}" th:method="post"-->
+                                <!--                                  class=" row d-flex justify-content-center p-5"-->
+                                <!--                                  th:object="${user}">-->
+                                <!--                                <br>-->
+                                <!--                                <input id="username" name="username" type="text" th:field="*{username}"-->
+                                <!--                                       placeholder="Username"/>-->
+                                <!--                                <br>-->
+                                <!--                                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>-->
+                                <!--                                <br>-->
+                                <!--                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"-->
+                                <!--                                       placeholder="Zipcode"/>-->
+                                <!--                                <br>-->
+                                <!--                                <input id="oldPassword" name="oldPassword" type="password" placeholder="old password"/>-->
+                                <!--                                <br>-->
+                                <!--                                <input id="newPassword" name="newPassword" type="password" placeholder="new password"/>-->
+                                <!--                                <br>-->
+                                <!--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                                <!--                                <input type="submit" class="btn btn-primary" value="Update Account"/>-->
+                                <!--                            </form>-->
+
+                            </div>
                         </div>
                     </div>
-
-
+                </div>
+            </div>
+            <!--        ANCHOR TAGS-->
+            <div class="row anchor-tags">
+                <div class="column gap-15 anchor-btns d-flex justify-content-around">
+                    <a href="#userFavorites">
+                        <button class="fav-btn">Favorites</button>
+                    </a>
+                    <a href="#userFosters">
+                        <button class="foster-btn">Fosters</button>
+                    </a>
+                    <a href="#userReviews">
+                        <button class="review-btn">Reviews</button>
+                    </a>
                 </div>
             </div>
 
 
+        </div>
+        <!--        FOSTER PAGE: CURRENT AND PREVIOUS FOSTERS-->
+        <div class="foster-container vh-100" id="userFosters">
+            <div class="column foster-info d-flex text-center">
+                <div th:if="${current != null}" th:object="${current}"
+                     class=" current-foster row gap-5 px-5 justify-content-center"
+                     style="width:50%">
+                    <h2 class="profile-header">Current Foster</h2>
+                    <div>
+                        <!--                    <img class="current-foster-pet-pic" th:src="${current.pet.photo}">-->
+                        <h4 th:if="${current != null}" th:text="${current.name}"></h4>
+
+                    </div>
+
+                    <!--                FOSTER MODAL BTN-->
+                    <button type="button" class="complete-foster-btn" data-bs-toggle="modal"
+                            data-bs-target="#review-modal">
+                        Complete Foster
+                    </button>
+                </div>
+
+                <div class="previous-foster d-flex row px-2" style="width:50%">
+                    <div th:each="foster : ${fosters}">
+                        <h2 class="profile-header">Previous Fosters</h2>
+                        <div class="column text-center" style="width: fit-content">
+                            <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg"
+                                 style="height: 200px; width: 200px"
+                                 alt="previous-foster-pet-image">
+                            <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="fosterModal"
                  aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Account Info</h1>
+                            <h1 class="modal-title fs-5" id="fosterModalBtn">Submit a review</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-<!--                            <form th:action="@{/profile/edit}" th:method="post"-->
-<!--                                  class=" row d-flex justify-content-center p-5"-->
-<!--                                  th:object="${user}">-->
-<!--                                <br>-->
-<!--                                <input id="username" name="username" type="text" th:field="*{username}"-->
-<!--                                       placeholder="Username"/>-->
-<!--                                <br>-->
-<!--                                <input id="email" name="email" type="email" th:field="*{email}" placeholder="Email"/>-->
-<!--                                <br>-->
-<!--                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"-->
-<!--                                       placeholder="Zipcode"/>-->
-<!--                                <br>-->
-<!--                                <input id="oldPassword" name="oldPassword" type="password" placeholder="old password"/>-->
-<!--                                <br>-->
-<!--                                <input id="newPassword" name="newPassword" type="password" placeholder="new password"/>-->
-<!--                                <br>-->
-<!--                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--                                <input type="submit" class="btn btn-primary" value="Update Account"/>-->
-<!--                            </form>-->
+                            <form th:action="@{/dashboard/review}" th:method="post" th:object="${review}"
+                                  class=" row d-flex justify-content-center p-5">
+                                <input id="foster-review-input" name="foster_review" class="form-control" type="text"
+                                       th:field="${review.body}"
+                                       placeholder="Enter your review (Max: 250)"/>
+                                <h1></h1>
+                                <h1></h1>
+
+                                <input type="submit" class="btn btn-danger" value="submit review"/>
+                            </form>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--        ANCHOR TAGS-->
-        <div class="row anchor-tags">
-            <div class="column gap-15 anchor-btns d-flex justify-content-around">
-                <a href="#userFavorites">
-                    <button class="fav-btn">Favorites</button>
-                </a>
-                <a href="#userFosters">
-                    <button class="foster-btn">Fosters</button>
-                </a>
-                <a href="#userReviews">
-                    <button class="review-btn">Reviews</button>
-                </a>
-            </div>
-        </div>
+        <!--    USERS REVIEWS PAGE-->
 
-
-    </div>
-    <!--        FOSTER PAGE: CURRENT AND PREVIOUS FOSTERS-->
-    <div class="foster-container vh-100" id="userFosters">
-        <div class="column foster-info d-flex text-center">
-            <div th:object="${current}" class=" current-foster row gap-5 px-5 justify-content-center"
-                 style="width:50%">
-                <h2 class="profile-header">Current Foster</h2>
-                <div>
-                    <!--                    <img class="current-foster-pet-pic" th:src="${current.pet.photo}">-->
-                    <h4 th:if="${current != null}" th:text="${current.pet.name}"></h4>
-                </div>
-
-                <!--                FOSTER MODAL BTN-->
-                <button type="button" class="complete-foster-btn" data-bs-toggle="modal" data-bs-target="#review-modal">
-                    Complete Foster
-                </button>
-            </div>
-
-            <div class="previous-foster d-flex row px-2" style="width:50%">
-                <div th:each="pet : ${pets}">
-                    <h2 class="profile-header">Previous Fosters</h2>
-                    <div class="column text-center" style="width: fit-content">
-                        <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg"
-                             style="height: 200px; width: 200px"
-                             alt="previous-foster-pet-image">
-                        <h4 th:if="${pet.name != null}" th:text="${pet.getName()}"></h4>
+        <div>
+            <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
+                <div class="card" style="width: 18rem;" th:data-coffee-id="${review.id}">
+                    <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">(NAME OF PET)</h5>
+                        <p class="card-text" th:text="${review.body}">REVIEWS BODY</p>
+                        <!--                    <button type="button" class="btn btn-light text-danger" data-bs-toggle="modal"-->
+                        <!--                            data-bs-target="#reviewModal">-->
+                        <!--                        Delete Review-->
+                        <!--                    </button>-->
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="fosterModal"
-             aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="fosterModalBtn">Submit a review</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <!--        FAVORITES PAGE-->
+                    <div class="favorites-container vh-50 p-5" id="userFavorites">
+                        <h3 class="profile-header">My Favorites</h3>
+                        <br>
+                        <div class="card" style="width: 18rem;">
+                            <img src="/img/dogkiss.jpeg" class="card-img-top" alt="placeholder">
+                            <div class="card-body">
+                                <h5 class="card-title">PET NAME</h5>
+                                <p class="card-text">DESCRIPTION OF PET</p>
+                                <button class="remove-fav-btn">Remove Favorite</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form th:action="@{/dashboard/review}" th:method="post" th:object="${review}"
-                              class=" row d-flex justify-content-center p-5">
-                            <input id="foster-review-input" name="foster_review" class="form-control" type="text"
-                                   th:field="${review.body}"
-                                   placeholder="Enter your review (Max: 250)"/>
-                            <h1></h1>
-                            <h1></h1>
 
-                            <input type="submit" class="btn btn-danger" value="submit review"/>
-                        </form>
 
+                    <!--    USERS REVIEWS PAGE-->
+
+
+                    <div class="reviews-container vh-75" id="userReviews">
+                        <h3 class="profile-header">Foster Reviews</h3>
+                        <div th:each="review : ${reviews}" class="column d-flex review-cards">
+                            <div class="card" style="width: 18rem;" th:data-coffee-id="${review.id}">
+                                <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">(NAME OF PET)</h5>
+                                    <p class="card-text" th:text="${review.body}">REVIEWS BODY</p>
+                                    <button type="button" class="btn btn-danger text-light delete-foster-btn"
+                                            data-bs-toggle="modal" data-bs-target="#delete-review-modal">Delete Review
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="delete-review-modal" tabindex="-1" aria-labelledby="deleteModal"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <h3 class="modal-title p-3">
+                                        Are you sure you want to delete this review?
+                                    </h3>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                        <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
+                                            <button class="btn btn-danger w-100">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--    USERS REVIEWS PAGE-->
 
-       <div>
-        <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
-            <div class="card" style="width: 18rem;" th:data-coffee-id="${review.id}">
-                <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">(NAME OF PET)</h5>
-                    <p class="card-text" th:text="${review.body}">REVIEWS BODY</p>
-                    <!--                    <button type="button" class="btn btn-light text-danger" data-bs-toggle="modal"-->
-                    <!--                            data-bs-target="#reviewModal">-->
-                    <!--                        Delete Review-->
-                    <!--                    </button>-->
-</div>
-
-
-<!--        FAVORITES PAGE-->
-<div class="favorites-container vh-50 p-5" id="userFavorites">
-    <h3 class="profile-header">My Favorites</h3>
-    <br>
-    <div class="card" style="width: 18rem;">
-        <img src="/img/dogkiss.jpeg" class="card-img-top" alt="placeholder">
-        <div class="card-body">
-            <h5 class="card-title">PET NAME</h5>
-            <p class="card-text">DESCRIPTION OF PET</p>
-            <button class="remove-fav-btn">Remove Favorite</button>
-        </div>
-    </div>
-</div>
-
-
-<!--    USERS REVIEWS PAGE-->
-
-
-<div class="reviews-container vh-75" id="userReviews">
-    <h3 class="profile-header">Foster Reviews</h3>
-    <div th:each="review : ${reviews}" class="column d-flex review-cards">
-        <div class="card" style="width: 18rem;" th:data-coffee-id="${review.id}">
-            <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">(NAME OF PET)</h5>
-                <p class="card-text" th:text="${review.body}">REVIEWS BODY</p>
-                <button type="button" class="btn btn-danger text-light delete-foster-btn" data-bs-toggle="modal" data-bs-target="#delete-review-modal">Delete Review
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="delete-review-modal" tabindex="-1" aria-labelledby="deleteModal"
-         aria-hidden="true">
-        <div class="modal-dialog" >
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <h3 class="modal-title p-3">
-                    Are you sure you want to delete this review?
-                </h3>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
-                        <button class="btn btn-danger w-100">Delete</button>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <footer th:insert="partials/footer:: footer"></footer>
-</div>
 </body>
 </html>
