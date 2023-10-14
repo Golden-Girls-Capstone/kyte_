@@ -1,5 +1,6 @@
 package com.kyterescue.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
@@ -43,11 +44,10 @@ public class Pet {
 
     @Column
     private boolean status;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "pet")
     private List<FosterPet> fosterPets;
-
-    @ManyToMany(mappedBy = "pets")
+    @ManyToMany(mappedBy = "favorites")
     private List<User> users;
 
     @OneToMany(mappedBy = "fosterPet", cascade = CascadeType.ALL)
@@ -157,5 +157,25 @@ public class Pet {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+    @JsonIgnore
+    public List<FosterPet> getFosterPets() {
+        return fosterPets;
+    }
+
+    public void setFosterPets(List<FosterPet> fosterPets) {
+        this.fosterPets = fosterPets;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

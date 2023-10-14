@@ -59,13 +59,16 @@ public class DashboardFosterDisplayService {
     }
 
     public List<Review> grabReviewHistory(@CurrentSecurityContext(expression = "authentication?.name") String username){
-        List<Review> reviewHistory = reviewsDao.findReviewsOfUser(usersDao.findByUsername(username));
-        return reviewHistory;
+        return reviewsDao.findReviewsOfUser(usersDao.findByUsername(username));
     }
 
     public List<Badge> grabBadgeHistory(@CurrentSecurityContext(expression = "authentication?.name") String username){
-        List<Badge> badgeHistory = usersDao.findByUsername(username).getBadges();
-        return badgeHistory;
+        return usersDao.findByUsername(username).getBadges();
+
+    }
+
+    public List<Pet> grabFavorites(@CurrentSecurityContext(expression = "authentication?.name") String username) {
+        return usersDao.findByUsername(username).getFavorites();
     }
 
 

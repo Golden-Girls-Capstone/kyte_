@@ -3,6 +3,7 @@ package com.kyterescue.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
+import com.kyterescue.services.AddFavoritesService;
 import com.kyterescue.services.GrabApiDataService;
 import com.kyterescue.services.GrabAuthenticationTokenService;
 import com.kyterescue.services.PetMapperService;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @RestController
 public class PetApiController {
@@ -26,14 +28,16 @@ public class PetApiController {
     FosterPetRepository fostersDao;
     GrabApiDataService grabData;
     PetMapperService mapperService;
+    AddFavoritesService addFavoritesService;
 
-    PetApiController(GrabApiDataService grabData, FosterPetRepository fostersDao, UserRepository usersDao, GrabAuthenticationTokenService grabToken, PetRepository petsDao, PetMapperService mapperService) {
+    PetApiController(GrabApiDataService grabData, FosterPetRepository fostersDao, UserRepository usersDao, GrabAuthenticationTokenService grabToken, PetRepository petsDao, PetMapperService mapperService, AddFavoritesService addFavoritesService) {
         this.grabData = grabData;
         this.grabToken = grabToken;
         this.petsDao = petsDao;
         this.mapperService = mapperService;
         this.usersDao = usersDao;
         this.fostersDao = fostersDao;
+        this.addFavoritesService = addFavoritesService;
     }
     @GetMapping(value = "api/token", produces = "text/plain")
     public ResponseEntity<String> getToken() throws IOException {
@@ -68,4 +72,10 @@ public class PetApiController {
         fostersDao.save(foster);
         return foster;
     }
+    @PostMapping(value = "browse/favorite/{petId}")
+    public void addFavorite(@PathVariable long petId, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
+        System.out.println("inside addfavorite restcontroller");
+        addFavoritesService.add(petsDao.getPetById(petId), username, model);
+    }
+
 }

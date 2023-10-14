@@ -332,13 +332,13 @@
 
 
                     <!--        FAVORITES PAGE-->
-                    <div class="favorites-container vh-50 p-5" id="userFavorites">
+                    <div th:each="favorite : ${favorites}" class="favorites-container vh-50 p-5" id="userFavorites">
                         <h3 class="profile-header">My Favorites</h3>
                         <br>
                         <div class="card" style="width: 18rem;">
                             <img src="/img/dogkiss.jpeg" class="card-img-top" alt="placeholder">
                             <div class="card-body">
-                                <h5 class="card-title">PET NAME</h5>
+                                <h5 class="card-title" th:if="${favorite != null}" th:text="${favorite.name}"></h5>
                                 <p class="card-text">DESCRIPTION OF PET</p>
                                 <button class="remove-fav-btn">Remove Favorite</button>
                             </div>

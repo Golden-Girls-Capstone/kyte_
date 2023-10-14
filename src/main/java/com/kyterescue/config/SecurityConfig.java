@@ -49,7 +49,8 @@ public class SecurityConfig {
                                 "/dashboard/review",
                                 "/dashboard/review/delete/{id}",
                                 "/browse/pet",
-                                "/browse/foster/*/*/*"
+                                "/browse/foster/*/*/*",
+                                "browse/favorite/*"
                                 )
                                 .authenticated()
 
