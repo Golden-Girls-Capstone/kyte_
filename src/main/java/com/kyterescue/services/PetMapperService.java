@@ -1,5 +1,6 @@
 package com.kyterescue.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
 import org.springframework.stereotype.Service;
@@ -19,24 +20,23 @@ public class PetMapperService {
         this.fostersDao = fostersDao;
     }
 
-    public Pet checkAndMapToPet(String id) throws IOException {
-        System.out.println("inside petmapper");
-        if(petsDao.existsByApiId(id)) {
-            return petsDao.findByApiId(id);
+    public Pet checkAndMapToPet(Pet pet) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(pet));
+        if(petsDao.existsByApiId(pet.getApiId())) {
+            return petsDao.findByApiId(pet.getApiId());
         } else {
-            return mapper.readValue(grabData.findAnimalById(Long.parseLong(id)), Pet.class);
+            petsDao.save(pet);
+            return pet;
         }
     }
 
-    public FosterPet mapPetToFosterPet(FosterPet foster, User user, Pet pet) {
-        System.out.println("inside mappet to foster");
-        if (fostersDao.existsById(foster.getId())) {
-            return fostersDao.findFosterPetById(foster.getId());
-        } else {
-        foster.setPet(pet);
+    public FosterPet mapPetToFosterPet(FosterPet foster, User user, Pet pet) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(foster));
         foster.setUser(user);
+        foster.setPet(pet);
+        fostersDao.save(foster);
         return foster;
-        }
-
     }
 }

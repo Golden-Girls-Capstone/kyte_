@@ -1,6 +1,7 @@
 package com.kyterescue.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.security.core.parameters.P;
 
@@ -23,10 +24,11 @@ public class FosterPet {
 
     @OneToMany(mappedBy = "fosterPet", cascade = CascadeType.ALL)
     private List<Review> reviews;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet;
