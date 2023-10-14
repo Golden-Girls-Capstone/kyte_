@@ -21,7 +21,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "fosterPet_id", nullable = false)
-    private FosterPet fosterPet;
+    private Pet fosterPet;
 
 
 
@@ -49,11 +49,11 @@ public class Review {
         this.user = user;
     }
 
-    public FosterPet getFosterPet() {
+    public Pet getPet() {
         return fosterPet;
     }
 
-    public void setFosterPet(FosterPet fosterPet) {
+    public void setPet(Pet fosterPet) {
         this.fosterPet = fosterPet;
     }
 }

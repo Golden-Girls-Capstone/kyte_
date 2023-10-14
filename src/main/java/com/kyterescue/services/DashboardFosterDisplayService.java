@@ -1,6 +1,7 @@
 package com.kyterescue.services;
 
 import com.kyterescue.entities.*;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -28,39 +29,41 @@ public class DashboardFosterDisplayService {
         this.petsDao = petsDao;
         this.authenticationService = authenticationService;
     }
-    public FosterPet grabCurrentFoster(Model model) {
-//        Pet currentFoster = null;
-        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(authenticationService.grabAuthenticationUserDetails(model));
+    public Pet grabCurrentFosterAsPet(@CurrentSecurityContext(expression = "authentication?.name") String username) {
+        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(username));
         for (FosterPet foster : allFosters) {
-            if (LocalDate.now().isAfter(foster.getStart_date()) && LocalDate.now().isBefore(foster.getEnd_date())) {
-//                currentFoster = petsDao.getPetById(foster.getPet().getId());
-                return foster;
+            if(foster.getStatus()) {
+                return petsDao.findByApiId(foster.getPet().getApiId());
             }
         }
             return null;
     }
-    public List<Pet> grabPetHistory(Model model) {
-        List<Pet> petHistory = new ArrayList<>();
-        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(authenticationService.grabAuthenticationUserDetails(model));
-        for (FosterPet foster : allFosters) {
-            if (LocalDate.now().isBefore(foster.getStart_date()) || LocalDate.now().isAfter(foster.getEnd_date())) {
-                petHistory.add(petsDao.getPetById(foster.getPet().getId()));
+    public FosterPet grabCurrentFosterAsFosterPet(@CurrentSecurityContext(expression = "authorization?.name") String username) {
+        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(username));
+        for(FosterPet foster : allFosters) {
+            if(foster.getStatus()) {
+                return foster;
             }
         }
-        return petHistory;
+        return null;
     }
-
-    public List<FosterPet> grabFosterHistory(Model model){
-        List<FosterPet> fosterHistory = fostersDao.findFosterPetsOfUser(authenticationService.grabAuthenticationUserDetails(model));
+    public List<Pet> grabFosterHistory(@CurrentSecurityContext(expression = "authentication?.name") String username) {
+        List<Pet> fosterHistory = new ArrayList<>();
+        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(username));
+        for (FosterPet foster : allFosters) {
+            if(!foster.getStatus()) {
+                fosterHistory.add(petsDao.findByApiId(foster.getPet().getApiId()));
+            }
+        }
         return fosterHistory;
     }
 
-    public List<Review> grabReviewHistory(User user){
-        List<Review> reviewHistory = reviewsDao.findReviewsOfUser(user);
+    public List<Review> grabReviewHistory(@CurrentSecurityContext(expression = "authentication?.name") String username){
+        List<Review> reviewHistory = reviewsDao.findReviewsOfUser(usersDao.findByUsername(username));
         return reviewHistory;
     }
 
-    public List<Badge> grabBadgeHistory(String username){
+    public List<Badge> grabBadgeHistory(@CurrentSecurityContext(expression = "authentication?.name") String username){
         List<Badge> badgeHistory = usersDao.findByUsername(username).getBadges();
         return badgeHistory;
     }

@@ -23,7 +23,7 @@ public class Pet {
     @Column(columnDefinition = "varchar(100) NOT NULL")
     private String type;
 
-    @Column(columnDefinition = "varchar(100) NOT NULL")
+    @Column(columnDefinition = "varchar(100)")
     private String breed;
 
     @Column(columnDefinition = "varchar(200) NOT NULL")
@@ -41,8 +41,8 @@ public class Pet {
     @Column(columnDefinition = "varchar(100) NOT NULL")
     private String gender;
 
-    @Column(columnDefinition = "tinyint NOT NULL")
-    private int status;
+    @Column
+    private boolean status;
 
     @OneToMany(mappedBy = "pet")
     private List<FosterPet> fosterPets;
@@ -50,10 +50,13 @@ public class Pet {
     @ManyToMany(mappedBy = "pets")
     private List<User> users;
 
+    @OneToMany(mappedBy = "fosterPet", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
     public Pet(){
 
     }
-    public Pet(String apiId, String name, String type, String breed, String age, String size, String photo, String description, String gender, int status) {
+    public Pet(String apiId, String name, String type, String breed, String age, String size, String photo, String gender, boolean status) {
         this.apiId = apiId;
         this.name = name;
         this.type = type;
@@ -140,11 +143,19 @@ public class Pet {
         this.gender = gender;
     }
 
-    public int getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
