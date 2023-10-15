@@ -47,12 +47,13 @@ public class PetController {
     @GetMapping("/dashboard")
 
     public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
-        model.addAttribute("current", dashboardFosterDisplayService.grabCurrentFosterAsPet(username));
-        model.addAttribute("user", usersDao.findByUsername(username));
-        model.addAttribute("fosters", dashboardFosterDisplayService.grabFosterHistory(username));
-        model.addAttribute("favorites", dashboardFosterDisplayService.grabFavorites(username));
-        model.addAttribute("badges", dashboardFosterDisplayService.grabBadgeHistory(username));
-        model.addAttribute("reviews", dashboardFosterDisplayService.grabReviewHistory(username));
+        User user = usersDao.findByUsername(username);
+        model.addAttribute("current", dashboardFosterDisplayService.grabCurrentFosterAsPet(user));
+        model.addAttribute("user", user);
+        model.addAttribute("fosters", dashboardFosterDisplayService.grabFosterHistory(user));
+        model.addAttribute("favorites", user.getFavorites());
+        model.addAttribute("badges", user.getBadges());
+        model.addAttribute("reviews", user.getReviews());
         model.addAttribute("review", new Review());
         return "pets/dashboard";
     }
@@ -82,8 +83,9 @@ public class PetController {
 
     @PostMapping("/dashboard/review")
     public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
-        Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(username);
-        FosterPet unsetCurrentFoster = dashboardFosterDisplayService.grabCurrentFosterAsFosterPet(username);
+        User user = usersDao.findByUsername(username);
+        Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(user);
+        FosterPet unsetCurrentFoster = dashboardFosterDisplayService.grabCurrentFosterAsFosterPet(user);
         review.setUser(usersDao.findByUsername(username));
         review.setPet(currentFoster);
         reviewsDao.save(review);
@@ -97,7 +99,4 @@ public class PetController {
         reviewsDao.delete(reviewsDao.findById(id).get());
         return "redirect:/dashboard";
     }
-
-
-
 }

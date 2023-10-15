@@ -29,8 +29,8 @@ public class DashboardFosterDisplayService {
         this.petsDao = petsDao;
         this.authenticationService = authenticationService;
     }
-    public Pet grabCurrentFosterAsPet(@CurrentSecurityContext(expression = "authentication?.name") String username) {
-        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(username));
+    public Pet grabCurrentFosterAsPet(User user) {
+        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(user.getUsername()));
         for (FosterPet foster : allFosters) {
             if(foster.getStatus()) {
                 return petsDao.findByApiId(foster.getPet().getApiId());
@@ -38,8 +38,8 @@ public class DashboardFosterDisplayService {
         }
             return null;
     }
-    public FosterPet grabCurrentFosterAsFosterPet(@CurrentSecurityContext(expression = "authorization?.name") String username) {
-        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(username));
+    public FosterPet grabCurrentFosterAsFosterPet(User user) {
+        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(user.getUsername()));
         for(FosterPet foster : allFosters) {
             if(foster.getStatus()) {
                 return foster;
@@ -47,9 +47,9 @@ public class DashboardFosterDisplayService {
         }
         return null;
     }
-    public List<Pet> grabFosterHistory(@CurrentSecurityContext(expression = "authentication?.name") String username) {
+    public List<Pet> grabFosterHistory(User user) {
         List<Pet> fosterHistory = new ArrayList<>();
-        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(username));
+        List<FosterPet> allFosters = fostersDao.findFosterPetsOfUser(usersDao.findByUsername(user.getUsername()));
         for (FosterPet foster : allFosters) {
             if(!foster.getStatus()) {
                 fosterHistory.add(petsDao.findByApiId(foster.getPet().getApiId()));
@@ -57,19 +57,4 @@ public class DashboardFosterDisplayService {
         }
         return fosterHistory;
     }
-
-    public List<Review> grabReviewHistory(@CurrentSecurityContext(expression = "authentication?.name") String username){
-        return reviewsDao.findReviewsOfUser(usersDao.findByUsername(username));
-    }
-
-    public List<Badge> grabBadgeHistory(@CurrentSecurityContext(expression = "authentication?.name") String username){
-        return usersDao.findByUsername(username).getBadges();
-
-    }
-
-    public List<Pet> grabFavorites(@CurrentSecurityContext(expression = "authentication?.name") String username) {
-        return usersDao.findByUsername(username).getFavorites();
-    }
-
-
 }
