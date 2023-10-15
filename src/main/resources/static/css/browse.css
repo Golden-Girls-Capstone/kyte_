@@ -114,7 +114,7 @@ a {
     height: 175px;
     position: relative;
 }
-img {
+.pet-card-img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -300,4 +300,8 @@ button#forward, button#backward{
     color: #0e1843;
     font-family: 'Lora', serif;
 
+}
+
+#search-form{
+    display: flex;
 }
