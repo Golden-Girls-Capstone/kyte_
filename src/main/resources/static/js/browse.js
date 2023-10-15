@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     card.innerHTML = `
                     <div class="profile-image">
-                            <img src="${imageUrl}" alt="Pet Image">
+                            <img class="pet-card-img" src="${imageUrl}" alt="Pet Image">
                     </div>
                         <h2 class="pet-name">${petData.name}</h2>
                     <div class="pet-status">${petData.status}</div>
