@@ -8,210 +8,217 @@
 </head>
 <body>
 <nav th:insert="partials/navbar :: nav"></nav>
-    <form action="@{/about}" th:method="get"></form>
-        <div class="container-fluid">
+<form action="@{/about}" th:method="get"></form>
+    <div class="container-fluid">
+        <h1 class="meet-Devs"> Meet The Developers </h1>
+    <div class="Devs-R-Us">
+        <div class="top row">
+<!--      Card Emily -->
+            <div class="Emily col-md-3">
+                <h1 class="name-em">Emily</h1>
 
+                <div id="curve" class="card-Dev Emily">
+            <div class="footer">
+                <div class="connections">
 
-
-
-                <h1 class="meet-Devs"> Meet The Developers </h1>
-            <div class="Devs-R-Us">
-                <div class="person row">
-                    <div class="container Devs">
-                        <div class="container-inner">
-                            <img class="circle">
-                        </div>
-                        <div class="img">
-                            <img class="img1" src="/img/Emily.png">
-                        </div>
-                    </div>
-                        <div class="icon-row-Em gap-2">
-                            <a href="https://github.com/emilysmendes"><img class="tiny-links" src="/img/github.png"></a>
-                            <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
-                            <img class="tiny-links" href="" src="/img/linkedin.png">
-                        </div>
-                    <div class="divider"></div>
-                    <div class="name">Emily</div>
-                    <div class="title">Full-Stack Developer</div>
+                    <div class="connection github"><div class="icon"></div></div>
+                    <div class="connection twitter"><div class="icon"></div></div>
+                    <div class="connection behance"><div class="icon"></div></div>
                 </div>
+                <svg class="curve em">
+                    <path id="em-p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />
+                    <rect id="dummyRect-em" x="0" y="0" height="450" width="400"
+                          fill="transparent" />
+                    <!-- slide up-->
+                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect-em.mouseover" end="dummyRect-em.mouseout" dur="0.1s" id="bounce1" />
+                    <!-- slide up and curve in -->
+                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect-em.mouseout" dur="0.15s" id="bounce2" />
+                    <!-- slide down and curve in -->
+                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect-em.mouseout" dur="0.15s" id="bounce3" />
+                    <!-- slide down and curve out -->
+                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect-em.mouseout" dur="0.1s" id="bounce4" />
+                    <!-- curve in -->
+                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect-em.mouseout" dur="0.05s" id="bounce5" />
 
-                <div class="person row">
-                    <div class="container Devs">
-                        <div class="container-inner">
-                            <img class="circle">
-                        </div>
-                        <div class="img">
-                            <img class="img2" src="/img/Arusa.png">
-                        </div>
-                    </div>
-                    <div class="icon-row-Ar gap-2">
-                        <a href="https://github.com/hussainarusa"><img class="tiny-links" src="/img/github.png"></a>
-                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
-                        <img class="tiny-links" href="" src="/img/linkedin.png">
-                    </div>
-                    <div class="divider"></div>
-                    <div class="name">Arusa</div>
-                    <div class="title">Full-Stack Developer</div>
-                </div>
-
-                <div class="person row">
-                    <div class="container Devs">
-                        <div class="container-inner">
-                            <img class="circle">
-                        </div>
-                        <div class="img">
-                            <img class="img3" src="/img/Ty.png">
-                        </div>
-                    </div>
-                    <div class="icon-row-Ty gap-2">
-                        <a href="https://github.com/TyONeal"><img class="tiny-links" src="/img/github.png"></a>
-                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
-                        <img class="tiny-links" href="" src="/img/linkedin.png">
-                    </div>
-                    <div class="divider"></div>
-                    <div class="name">TY</div>
-                    <div class="title">Full-Stack Developer</div>
-                </div>
-
-                <div class="person row">
-                    <div class="container Devs">
-                        <div class="container-inner">
-                            <img class="circle">
-                        </div>
-                        <div class="img">
-                            <img class="img4" src="/img/Sam.png">
-                        </div>
-                    </div>
-                    <div class="icon-row-S gap-2">
-                        <a href="https://github.com/SamR0429"><img class="tiny-links" src="/img/github.png"></a>
-                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
-                        <img class="tiny-links" href="" src="/img/linkedin.png">
-                    </div>
-                    <div class="divider"></div>
-                    <div class="name">Sam</div>
-                    <div class="title">Full-Stack Developer</div>
-                </div>
-
-
-                <div class="person row">
-                    <div class="container Devs">
-                        <div class="container-inner">
-                            <img class="circle">
-                        </div>
-                        <div class="img">
-                            <img class="img5" src="/img/Subject.png">
-                        </div>
-                    </div>
-                    <div class="icon-row-K gap-2">
-                        <a href="https://github.com/Kvar54"><img class="tiny-links"  src="/img/github.png"></a>
-                        <img class="tiny-links" href="" src="/img/codeuplogo.jpeg">
-                        <img class="tiny-links" href="" src="/img/linkedin.png">
-                    </div>
-                    <div class="divider"></div>
-                    <div class="name">Keila</div>
-                    <div class="title">Full-Stack Developer</div>
-                </div>
-
-            </div>
-
-<!-- Our Mission Statement-->
-            <h1 class="Title"> Our Mission </h1>
-            <div class="blue-blob"></div>
-                <div class="mission-stmt1 column">
-                    <img class="pet-picture" src="/img/kitty.avif">
-                        <p class="mission1"> At Kyte Rescue, our mission is to provide a safe and caring haven for animals facing hardship and uncertainty, while simultaneously uniting them with compassionate individuals and families willing to offer their homes and hearts. Our commitment is multi-faceted: we rescue animals from challenging situations, provide them with comprehensive care and rehabilitation, and advocate for their well-being. Through a network of dedicated foster families, we create loving, temporary homes that nurture our animal friends back to health and happiness. We're equally dedicated to education, aiming to raise awareness about responsible pet ownership, animal welfare, and the rewards of fostering. </p>
-                </div>
-
-                        <div class="mission-stmt2 column">
-                             <img class="pet-picture2" src="/img/bnny.jpeg">
-                                <p class="mission1"> Our ultimate goal is to find forever homes for our foster animals, ensuring each placement is a perfect match for both the pet and the family. Above all, we foster a sense of community among our volunteers, supporters, and foster families, coming together to make a positive impact. Join us in our mission to create a world where every animal is cherished, protected, and loved, enriching both their lives and ours."</p>
-                        </div>
-                                <div class="yellow-blob1"></div>
-                                <div class="yellow-blob2"></div>
-                                <div class="yellow-blob3"></div>
-                                 <br>
-                            <div class ="FAQ-page">
-                                <h1 class="FAQ"> Frequently Asked Questions </h1>
-                            </div>
-<!--bootstrap accordian-->
-
-            <div class="FAQ-questions">
-                <div class="accordion FAQ" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                1. What are the benefits of fostering a pet?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>Here are the benefits of Fostering an animal!</strong> Fostering a pet is a rewarding experience that saves lives, provides companionship, and offers a sense of fulfillment. It allows you to enjoy the perks of pet ownership without the long-term commitment, teaches responsibility, reduces stress, and often leads to successful adoptions. Fostering also contributes to overburdened shelters, creating a stronger sense of community among animal lovers. It's a flexible way to make a positive impact on animals in need and enrich your own life in the process.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                2. What are the challenges of fostering a pet?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>Fostering A pet is not for everyone. Here are some of the challenges that may come with such a big responsibility. </strong> Fostering a pet may include adapting to a temporary commitment, managing potential behavioral issues, and dealing with the emotional attachment when the foster pet finds a permanent home. Additionally, some pets may require special medical care or have specific needs that demand extra attention. Fostering can also be emotionally taxing for individuals who may become attached to the animals they care for but must eventually say goodbye. Nonetheless, with the right support and resources from animal rescue organizations, many of these challenges can be overcome, making the rewards of fostering well worth the effort.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                3. What kind of pets can I foster?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>We have access to all animals on our site, however...</strong> The types of pets you can foster vary depending on the animal rescue shelter in your location. Common foster pets include cats and dogs of all ages and breeds, but you might also have the opportunity to foster small animals like rabbits, guinea pigs, birds, and reptiles. Some shelters even offer fostering for special-needs pets or animals with medical conditions. It's essential to establish and specify your preferences when visiting our site so that we can find the right fit for your fostering experience.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                4. How do I prepare to foster a pet?
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>It's important to be prepared.</strong> Preparing to foster a pet involves several key steps. Firstly, create a safe and welcoming space in your home for the animal, including appropriate bedding, food, and water. Familiarize yourself with the specific needs of the pet you'll be fostering, which may include medical requirements or behavioral considerations. Gather essential supplies, such as food, bowls, toys, and grooming tools. Lastly, communicate closely with the animal rescue organization to understand their expectations and guidelines, ensuring a smooth and positive fostering experience for both you and the pet.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                5. What do I need to provide for a foster pet?
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>Make your home inviting to your foster pets.</strong> To care for a foster pet, you'll need to provide a safe home, nutritious food, clean water, essential supplies like bowls and toys, necessary medical attention, social interaction, exercise, and ongoing communication with the rescue shelters. Tailoring your care to the pet's specific needs, whether it's a dog, cat, or another animal, ensures a comfortable and nurturing environment during their stay with you.
-                            </div>
-                        </div>
-                    </div>
+                    <animate xlink:href="#em-p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect-em.mouseout" dur="0.15s" id="bounceOut" />
+                </svg>
+                <div class="info">
+                    <div class="name">Emily Mendes</div>
+                    <div class="job"> "Teamwork is the dreamwork"</div>
                 </div>
             </div>
+            <div class="card-blur"></div>
+        </div>
+            </div>
+<!-- Sam's Card  -->
+            <div class="Sam col-md-3">
+                <h1 class="nametag">Sam</h1>
 
-                <!-- Background Blobs           <-->
-                <div class="purple-blob1"></div>
-                 <div class="red-blob2"></div>
-                    <div class="grey-blob2"></div>
-            <br>
+                <div class="card-Dev Sam">
+
+            <div class="footer">
+                <div class="connections">
+                    <div class="connection github"><div class="icon"></div></div>
+                    <div class="connection twitter"><div class="icon"></div></div>
+                    <div class="connection behance"><div class="icon"></div></div>
+                </div>
+                <svg class="curve s">
+                    <path id="S-p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />
+                    <rect id="dummyRect-s" x="0" y="0" height="450" width="400"
+                          fill="transparent" />
+                    <!-- slide up-->
+                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect-s.mouseover" end="dummyRect-s.mouseout" dur="0.1s" id="bounce1-s" />
+                    <!-- slide up and curve in -->
+                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1-s.end" end="S-dummyRect-s.mouseout" dur="0.15s" id="bounce2-s" />
+                    <!-- slide down and curve in -->
+                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2-s.end" end="S-dummyRect-s.mouseout" dur="0.15s" id="bounce3-s" />
+                    <!-- slide down and curve out -->
+                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3-s.end" end="S-dummyRect-s.mouseout" dur="0.1s" id="bounce4-s" />
+                    <!-- curve in -->
+                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4-s.end" end="S-dummyRect-s.mouseout" dur="0.05s" id="bounce5-s" />
+
+                    <animate xlink:href="#S-p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="S-dummyRect-s.mouseout" dur="0.15s" id="bounceOut-s" />
+                </svg>
+                <div class="info">
+                    <div class="name">Sam Ramos</div>
+                    <div class="job"> "Teamwork is the dreamwork"</div>
+                </div>
+            </div>
+            <div class="card-blur"></div>
+        </div>
+            </div>
+<!--Ty Card-->
+            <div class="Ty col-md-3">
+                <h1 class="nametag">Ty</h1>
+                <div class="card-Dev Ty">
+            <div class="footer">
+                <div class="connections">
+                    <div class="connection github"><div class="icon"></div></div>
+                    <div class="connection twitter"><div class="icon"></div></div>
+                    <div class="connection behance"><div class="icon"></div></div>
+                </div>
+                <svg class="curve">
+                    <path id="p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />
+                    <rect id="dummyRect" x="0" y="0" height="450" width="400"
+                          fill="transparent" />
+                    <!-- slide up-->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect.mouseover" end="dummyRect.mouseout" dur="0.1s" id="bounce1" />
+                    <!-- slide up and curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect.mouseout" dur="0.15s" id="bounce2" />
+                    <!-- slide down and curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect.mouseout" dur="0.15s" id="bounce3" />
+                    <!-- slide down and curve out -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect.mouseout" dur="0.1s" id="bounce4" />
+                    <!-- curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect.mouseout" dur="0.05s" id="bounce5" />
+
+                    <animate xlink:href="#p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect.mouseout" dur="0.15s" id="bounceOut" />
+                </svg>
+                <div class="info">
+                    <div class="name">Ty ONeal</div>
+                    <div class="job"> "Teamwork is the dreamwork"</div>
+                </div>
+            </div>
+            <div class="card-blur"></div>
+        </div>
+            </div>
+<!--Arusa's Card-->
+            <div class="Arusa col-md-3">
+                <h1 class="nametag">Arusa</h1>
+            <div class="card-Dev Arusa">
+            <div class="footer">
+                <div class="connections">
+                    <div class="connection github"><div class="icon"></div></div>
+                    <div class="connection twitter"><div class="icon"></div></div>
+                    <div class="connection behance"><div class="icon"></div></div>
+                </div>
+                <svg class="curve">
+                    <path id="p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />
+                    <rect id="dummyRect" x="0" y="0" height="450" width="400"
+                          fill="transparent" />
+                    <!-- slide up-->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect.mouseover" end="dummyRect.mouseout" dur="0.1s" id="bounce1" />
+                    <!-- slide up and curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect.mouseout" dur="0.15s" id="bounce2" />
+                    <!-- slide down and curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect.mouseout" dur="0.15s" id="bounce3" />
+                    <!-- slide down and curve out -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect.mouseout" dur="0.1s" id="bounce4" />
+                    <!-- curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect.mouseout" dur="0.05s" id="bounce5" />
+
+                    <animate xlink:href="#p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect.mouseout" dur="0.15s" id="bounceOut" />
+                </svg>
+                <div class="info">
+                    <div class="name">Arusa Hussain</div>
+                    <div class="job"> "Teamwork is the dreamwork"</div>
+                </div>
+            </div>
+            <div class="card-blur"></div>
+        </div>
+            </div>
+<!-- Keila's card-->
+            <div class="Keila col-md-3">
+                <h1 class="nametag">Keila</h1>
+
+                <div class="card-Dev Keila">
+            <div class="footer">
+                <div class="connections">
+                    <div class="connection github"><div class="icon"></div></div>
+                    <div class="connection twitter"><div class="icon"></div></div>
+                    <div class="connection behance"><div class="icon"></div></div>
+                </div>
+                <svg class="curve">
+                    <path id="p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />
+                    <rect id="dummyRect" x="0" y="0" height="450" width="400"
+                          fill="transparent" />
+                    <!-- slide up-->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect.mouseover" end="dummyRect.mouseout" dur="0.1s" id="bounce1" />
+                    <!-- slide up and curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect.mouseout" dur="0.15s" id="bounce2" />
+                    <!-- slide down and curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect.mouseout" dur="0.15s" id="bounce3" />
+                    <!-- slide down and curve out -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect.mouseout" dur="0.1s" id="bounce4" />
+                    <!-- curve in -->
+                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect.mouseout" dur="0.05s" id="bounce5" />
+
+                    <animate xlink:href="#p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect.mouseout" dur="0.15s" id="bounceOut" />
+                </svg>
+                <div class="info">
+                    <div class="name">Keila Vargas</div>
+                    <div class="job"> "Teamwork is the dreamwork"</div>
+                </div>
+            </div>
+            <div class="card-blur"></div>
+        </div>
+            </div>
+        </div>
+<!--Devs-R-Us  div-->
+    </div>
+        <svg class="blue-svg" viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
+            <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="rgba(213, 236, 250, 0.58)" />
+            <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#DBEFFA" />
+        </svg>
+        <h1 class="Title"> Our Mission </h1>
+        <div class="mission-stmt1 column">
+<!--            <img class="pet-picture" src="/img/kitty.avif">-->
+            <p class="mission1"> At Kyte Rescue, our mission is to provide a safe and caring haven for animals facing hardship and uncertainty, while simultaneously uniting them with compassionate individuals and families willing to offer their homes and hearts. Our commitment is multi-faceted: we rescue animals from challenging situations, provide them with comprehensive care and rehabilitation, and advocate for their well-being. Through a network of dedicated foster families, we create loving, temporary homes that nurture our animal friends back to health and happiness. We're equally dedicated to education, aiming to raise awareness about responsible pet ownership, animal welfare, and the rewards of fostering. </p>
         </div>
 
+        <div class="mission-stmt2 column">
+<!--            <img class="pet-picture2" src="/img/bnny.jpeg">-->
+            <p class="mission1"> Our ultimate goal is to find forever homes for our foster animals, ensuring each placement is a perfect match for both the pet and the family. Above all, we foster a sense of community among our volunteers, supporters, and foster families, coming together to make a positive impact. Join us in our mission to create a world where every animal is cherished, protected, and loved, enriching both their lives and ours."</p>
+        </div>
+        <br>
+        <div class ="FAQ-page">
+            <h1 class="FAQ"> Frequently Asked Questions </h1>
+        </div>
+<!--page wrapper div-->
+    </div>
 
 
-<div th:insert="~{partials/footer :: footer}"></div>
-
-
+<!--<div th:insert="~{partials/footer :: footer}"></div>-->
 
 </body>
 </html>
