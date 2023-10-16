@@ -86,7 +86,7 @@ h1.meet-Devs {
 .FAQ-questions {
     height: 70vh;
     width: 80%;
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -94,17 +94,24 @@ h1.meet-Devs {
     position: absolute;
     z-index: 12;
     right: 135px;
+    align-items: end;
 }
 
 .FAQ-page {
-    margin-top: 10rem;
-    margin-bottom: 5rem;
+    background-image: url("../img/white-creme-bg.png");
+    height: 100vh;
+    padding-top: 13rem;
 }
+
+/*.FAQ-questions {*/
+/*    padding: 10rem 0;*/
+/*}*/
 
 
 div#accordionExample {
     --bs-accordion-bg: #ffffff;
-    --bs-accordion-active-bg: #cbe2ff;
+    --bs-accordion-active-bg: var(--muave);
+
 }
 
 
