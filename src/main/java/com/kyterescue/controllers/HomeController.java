@@ -1,5 +1,4 @@
 package com.kyterescue.controllers;
-
 import com.kyterescue.services.AuthenticationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String viewLanding(Model model) {
-//        authenticationService.grabAuthenticationUserDetails(model);
         return "landing/landing";
     }
 

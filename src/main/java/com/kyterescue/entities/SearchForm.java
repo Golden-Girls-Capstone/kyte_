@@ -22,39 +22,30 @@ public class SearchForm {
     public int getZipcode() {
         return zipcode;
     }
-
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
     }
-
     public String getAge() {
         return age;
     }
-
     public void setAge(String age) {
         this.age = age;
     }
-
     public String getSize() {
         return size;
     }
-
     public void setSize(String size) {
         this.size = size;
     }
-
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
-
     public int getPage() {
         return page;
     }
-
     public void setPage(int page) {
         this.page = page;
     }
