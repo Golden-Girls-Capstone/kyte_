@@ -3,12 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileCardsContainer = document.getElementById('profile-cards');
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
 
-
     // Function to open the modal and set the pet's API ID
     function openModal(petData, imageUrl) {
         modal.innerHTML = `
         <div  class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable" >
-
         <span id="closeModalButton" class="close">&times;</span>
         <h2 class="modal-name"></h2>
         <img class="modal-image" src="${imageUrl}">
@@ -16,8 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <p class="modal-pet-info-browse">Age: ${petData.age}</p>
         <p class="modal-pet-info-browse">Gender: ${petData.gender}</p>
         <p class="modal-pet-info-browse">Age: ${petData.status}</p>
-
-
             <input type="hidden" id="petId" name="petId" value="${petData.id}">
             <input type="hidden" id="petName" name="petName" value="${petData.name}">
             <input type="hidden" id="petType" name="petType" value="${petData.type}">
@@ -57,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(petObject)
             }
-
             let petFetchResponse = await fetch(firstUrl, petFetchOptions);
             let petReturnData = await petFetchResponse.json();
             console.log(petReturnData);
@@ -76,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let fosterPetReturnData = await fosterFetchResponse.json();
             console.log(fosterPetReturnData);
             modal.style.display = 'none';
-
-
         })
     }
 
@@ -121,8 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(favoritePetReturnData);
         }
 
-
-
     // Function to render search results as profile cards
     function renderSearchResults(data) {
         profileCardsContainer.innerHTML = ''; // Clear the container
@@ -143,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     card.innerHTML = `
                     <div class="profile-image">
-                            <img src="${imageUrl}" alt="Pet Image">
+                            <img class="pet-card-img" src="${imageUrl}" alt="Pet Image">
                     </div>
                         <h2 class="pet-name">${petData.name}</h2>
                     <div class="pet-status">${petData.status}</div>
@@ -220,13 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('Fetch error:', error);
             });
     }
-
 });
-
-
-
-
-
 
 //POTENTIAL JAVASCRIPT FOR PAGINATION
 
