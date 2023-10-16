@@ -16,6 +16,10 @@ public class GrabAuthenticationTokenService {
     private OkHttpClient client = new OkHttpClient();
     private ObjectMapper mapper = new ObjectMapper();
 
+    GrabAuthenticationTokenService() {
+
+    }
+
     public String getBearerToken() throws IOException {
         RequestBody body = new FormBody.Builder()
                 .add("grant_type", "client_credentials")

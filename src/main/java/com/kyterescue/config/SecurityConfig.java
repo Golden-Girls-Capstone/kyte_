@@ -1,4 +1,5 @@
 package com.kyterescue.config;
+import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.UserDetailsLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import com.kyterescue.services.UserDetailsLoader;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -35,7 +37,6 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
@@ -50,7 +51,8 @@ public class SecurityConfig {
                                 "/dashboard/review/delete/{id}",
                                 "/browse/pet",
                                 "/browse/foster/*/*/*",
-                                "browse/favorite/*"
+                                "browse/favorite/*",
+                                "/dashboard"
                                 )
                                 .authenticated()
 
@@ -60,7 +62,6 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "",
                                 "/",
-                                "/dashboard",
                                 "/landing",
                                 "/sign-up",
                                 "/login",
@@ -92,5 +93,4 @@ public class SecurityConfig {
                 .httpBasic(withDefaults());
         return http.build();
     }
-
 }

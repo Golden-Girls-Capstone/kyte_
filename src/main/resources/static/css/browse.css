@@ -5,9 +5,10 @@
 }
 
 body{
-    background-color: #ffffff;
+    background-color: #fff7f3;
     font-family: 'Montserrat', sans-serif;
     background-image: url("../img/cream-browse-bg.png");
+    background-repeat: no-repeat;
 }
 
 .search {
@@ -91,10 +92,10 @@ a {
     padding: 3rem;
     width: 90%;
     max-width: 300px;
-    background-color: #cfe6f4;
+    background-color: #ffffffd9;
     border-radius: 16px;
     position: relative;
-    border: 9px solid #cfe6f4;
+    border: 3px solid #cfe6f4;
     background-clip: padding-box;
     text-align: center;
     color: #20254b;
@@ -146,7 +147,7 @@ a {
     text-align: center;
 }
 
-.foster-btn, #confirmButton,.openModalButton, #view-foster-btn {
+.foster-btn, #confirmButton, #view-foster-btn, #submit-foster-btn{
     color: #ffffff;
     border-radius: 9px;
     margin-top: 20px;
@@ -163,7 +164,7 @@ a {
 
 }
 
-.foster-btn:hover, .save-btn:hover, #confirmButton:hover,.openModalButton:hover,  #view-foster-btn:hover{
+#submit-foster-btn:hover, .foster-btn:hover, .save-btn:hover, #confirmButton:hover,.openModalButton:hover,  #view-foster-btn:hover{
     box-shadow: 0 0 10px 2px rgb(216, 134, 141);
     transform: scale(1.05);
     background: #f1d8da;
@@ -321,7 +322,7 @@ button#forward, button#backward{
 }
 
 
-#submit-foster-btn, .saveFavoriteButton{
+ .saveFavoriteButton,.openModalButton{
     color: #ffffff;
     border-radius: 9px;
     margin-top: 20px;
@@ -338,10 +339,28 @@ button#forward, button#backward{
 
 }
 
-#submit-foster-btn:hover, .saveFavoriteButton:hover{
+ .saveFavoriteButton:hover,.openModalButton:hover{
     box-shadow: 0 0 10px 2px rgb(134, 183, 254);
     transform: scale(1.05);
     background: #c7ddfb;
     color: #86b7fe;
 
+}
+
+
+#loading-image{
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+#image-container p {
+    position: absolute;
+    top: 70%;
+    left: 65%;
+    transform: translate(-150%, -50%);
+    background-color: rgba(255, 255, 255, 0.7);
+
+    color: #20254b;
+    font-size: 30px;
+    font-family: 'Lora', sans-serif;
 }

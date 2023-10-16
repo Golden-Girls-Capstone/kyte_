@@ -72,16 +72,16 @@
                                           class=" row d-flex justify-content-center p-5"
                                           th:object="${user}">
                                 <br>
-                                <input id="username" name="username" type="text" th:field="*{username}"
+                                <input id="username" name="username" type="text" class="mb-1" th:field="*{username}"
                                                placeholder="Username"/>
                                 <br>
-                                <input id="email" name="email" type="email" th:field="*{email}"
+                                <input id="email" name="email" type="email" class="mb-1" th:field="*{email}"
                                                placeholder="Email"/>
                                 <br>
-                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"
+                                <input id="zipcode" name="zipcode" type="text" class="mb-1" th:field="*{zipcode}"
                                                placeholder="Zipcode"/>
                                 <br>
-                                <input id="oldPassword" name="oldPassword" type="password"
+                                <input id="oldPassword" name="oldPassword" type="password" class="mb-1"
                                                placeholder="old password"/>
                                 <br>
                                 <input id="newPassword" name="newPassword" type="password"
@@ -97,28 +97,18 @@
                 </div>
             </div>
         </div>
-                <!--        ANCHOR TAGS-->
-        <div class="row anchor-tags">
-            <div class="column gap-15 anchor-btns d-flex justify-content-around">
-                <a href="#userFavorites">
-                    <button class="fav-btn">Favorites</button>
-                </a>
-                <a href="#userFosters">
-                    <button class="foster-btn">Fosters</button>
-                </a>
-                <a href="#userReviews">
-                    <button class="review-btn">Reviews</button>
-                </a>
-            </div>
-        </div>
-    </div>
 
-            <!--        FOSTER PAGE: CURRENT AND PREVIOUS FOSTERS-->
-    <div class="foster-container vh-100" id="userFosters">
+        <!--        ANCHOR TAGS-->
+        <button id="showFavorites">Show Favorites</button>
+        <button id="showFosters">Show Fosters</button>
+        <button id="showReviews">Show Reviews</button>
+
+</div>
+        <!--        FOSTER PAGE: CURRENT AND PREVIOUS FOSTERS-->
+    <div class="foster-container" id="userFosters">
         <div class="column foster-info d-flex text-center">
             <div th:if="${current != null}" th:object="${current}"
-                         class=" current-foster row gap-5 px-5 justify-content-center"
-                         style="width:50%">
+                 id="fosters" class="cards active">
                 <h2 class="profile-header">Current Foster</h2>
                 <div>
                             <!--                    <img class="current-foster-pet-pic" th:src="${current.pet.photo}">-->
@@ -179,8 +169,10 @@
     <div class="favorites-container vh-50 p-5" id="userFavorites">
         <h3 class="text-center my-favs-text">My Favorites</h3>
         <br>
-        <div class="card" style="width: 18rem;">
-            <img src="/img/dogkiss.jpeg" class="card-img-top" alt="placeholder">
+<!--        <div class="card-set fav" style="width: 18rem;">-->
+        <div id="favorites" class="cards" style="width: 18rem;">
+
+        <img src="/img/dogkiss.jpeg" class="card-img-top" alt="placeholder">
             <div class="card-body">
                 <h5 class="card-title">PET NAME</h5>
                 <p class="card-text">DESCRIPTION OF PET</p>
@@ -191,7 +183,7 @@
                     <!--    USERS REVIEWS PAGE-->
     <div>
         <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
-            <div class="card" style="width: 18rem;" th:data-coffee-id="${review.id}">
+            <div id="reviews" class="cards" style="width: 18rem;" th:data-coffee-id="${review.id}">
                 <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">(NAME OF PET)</h5>
@@ -225,6 +217,7 @@
         </div>
     </div>
 </div>
+<script src="/js/dashboard.js"></script>
     <footer th:insert="partials/footer:: footer"></footer>
 </body>
 </html>

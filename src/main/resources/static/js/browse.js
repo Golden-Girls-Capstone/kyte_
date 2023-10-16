@@ -1,7 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.querySelector('#myModal');
     const profileCardsContainer = document.getElementById('profile-cards');
+    const imageContainer = document.getElementById('image-container'); // Added the image container
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+
+
+    function hideLoadingImage() {
+        imageContainer.style.display = 'none';
+    }
+
+
+
+
     // Function to open the modal and set the pet's API ID
     function openModal(petData, imageUrl) {
         modal.innerHTML = `
@@ -164,7 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }
+        hideLoadingImage();
     }
+
 
     // Function to handle the form submission
     document.getElementById('search-form').addEventListener("submit", function(e) {
@@ -172,9 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchBySearch();
     });
 
-    function hideLoadingImage() {
-        loadingImage.style.display = "none";
-    }
+
 
     // Function to fetch and render search results
     function fetchBySearch() {

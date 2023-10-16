@@ -1,5 +1,4 @@
 package com.kyterescue.services;
-
 import com.kyterescue.entities.User;
 import com.kyterescue.entities.UserRepository;
 import com.kyterescue.entities.UserWithRoles;
@@ -22,7 +21,6 @@ public class UserDetailsLoader implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user found for " + username);
         }
-
         return new UserWithRoles(user);
     }
 }
