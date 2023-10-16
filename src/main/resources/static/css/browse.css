@@ -252,7 +252,7 @@ input#start, input#end{
     outline: none;
     color: #d8868d;
     font: inherit;
-     border-radius: 17px 0 0 17px;
+    border-radius: 17px 0 0 17px;
 }
 
 .zipcode, .sizeDropdown, .ageDropdown{

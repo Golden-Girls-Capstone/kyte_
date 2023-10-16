@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.querySelector('#myModal');
     const profileCardsContainer = document.getElementById('profile-cards');
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
-
     // Function to open the modal and set the pet's API ID
     function openModal(petData, imageUrl) {
         modal.innerHTML = `
@@ -10,10 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
         <span id="closeModalButton" class="close">&times;</span>
         <h2 class="modal-name"></h2>
         <img class="modal-image" src="${imageUrl}">
-        <p class="modal-pet-info-browse">Name: ${petData.name}</p>
+        <p class="pet-name-modal modal-pet-info-browse"> ${petData.name}</p>
         <p class="modal-pet-info-browse">Age: ${petData.age}</p>
         <p class="modal-pet-info-browse">Gender: ${petData.gender}</p>
-        <p class="modal-pet-info-browse">Age: ${petData.status}</p>
+        <p class="modal-pet-info-browse">Status: ${petData.status}</p>
+
+
             <input type="hidden" id="petId" name="petId" value="${petData.id}">
             <input type="hidden" id="petName" name="petName" value="${petData.name}">
             <input type="hidden" id="petType" name="petType" value="${petData.type}">
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <input id="submit-foster-btn" type="submit" value="Submit" name="submitFoster">
     </div>
         `
-    const confirmButton = modal.querySelector('#submit-foster-btn');
+        const confirmButton = modal.querySelector('#submit-foster-btn');
         modal.style.display = 'block';
         confirmButton.addEventListener('click', async function() {
             const firstUrl = '/browse/pet'; // ******enter endpoint******
@@ -77,26 +78,26 @@ document.addEventListener("DOMContentLoaded", function () {
     //function to add favorites
     async function addFavorite(petData, imageUrl) {
         console.log("inside addFavorite function")
-            const url = '/browse/pet'; // ******enter endpoint******
-            const petObject = {
-                apiId: petData.id,
-                name: petData.name,
-                type: petData.type,
-                breed: petData.breeds[0],
-                age: petData.age,
-                size: petData.size,
-                photo: imageUrl,
-                gender: petData.gender,
-                status: petData.status === 'adoptable'
-            }
-            const petFetchOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                body: JSON.stringify(petObject)
-            }
+        const url = '/browse/pet'; // ******enter endpoint******
+        const petObject = {
+            apiId: petData.id,
+            name: petData.name,
+            type: petData.type,
+            breed: petData.breeds[0],
+            age: petData.age,
+            size: petData.size,
+            photo: imageUrl,
+            gender: petData.gender,
+            status: petData.status === 'adoptable'
+        }
+        const petFetchOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify(petObject)
+        }
         let petFetchResponse = await fetch(url, petFetchOptions);
         let petReturnData = await petFetchResponse.json();
         console.log("after first fetch");
@@ -112,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let favoriteFetchResponse = await fetch(favoriteUrl, fosterPetOptions);
         let favoritePetReturnData = await favoriteFetchResponse.json();
         console.log(favoritePetReturnData);
-        }
+    }
 
     // Function to render search results as profile cards
     function renderSearchResults(data) {
@@ -158,6 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     profileCardsContainer.appendChild(card);
 
 
+
+
                 }
             }
         }
@@ -168,6 +171,10 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); // Prevent the default form submission
         fetchBySearch();
     });
+
+    function hideLoadingImage() {
+        loadingImage.style.display = "none";
+    }
 
     // Function to fetch and render search results
     function fetchBySearch() {
