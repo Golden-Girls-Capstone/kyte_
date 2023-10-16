@@ -18,20 +18,18 @@ public class AddFavoritesService {
         this.petsDao = petsDao;
     }
 
-    public void add(Pet pet, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
-        System.out.println("inside service");
+    public Pet add(Pet pet, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
         User user = usersDao.findByUsername(username);
         List<Pet> currentFavorites = user.getFavorites();
             if(currentFavorites.contains(pet)) {
-                System.out.println("inside if true");
                 user.getFavorites().remove(pet);
                 usersDao.save(user);
                 model.addAttribute("invalidFavorite", true);
             } else {
-                System.out.println("inside if false");
                 currentFavorites.add(pet);
                 user.setFavorites(currentFavorites);
                 usersDao.save(user);
             }
+            return pet;
     }
 }

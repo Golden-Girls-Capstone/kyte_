@@ -1,4 +1,4 @@
-package com.kyterescue.services;
+package com.kyterescue.config;
 
 import com.kyterescue.entities.FosterPet;
 import com.kyterescue.entities.FosterPetRepository;
@@ -7,7 +7,6 @@ import com.kyterescue.entities.UserRepository;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,11 +14,11 @@ import java.util.Objects;
 
 @Configuration
 @EnableScheduling
-public class ScheduledCheckForFostersService {
+public class ScheduledCheckForFostersConfig {
     private UserRepository usersDao;
     private FosterPetRepository fostersDao;
 
-    ScheduledCheckForFostersService(UserRepository usersDao, FosterPetRepository fostersDao) {
+    ScheduledCheckForFostersConfig(UserRepository usersDao, FosterPetRepository fostersDao) {
         this.usersDao = usersDao;
         this.fostersDao = fostersDao;
     }
