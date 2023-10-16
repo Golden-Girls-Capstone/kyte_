@@ -3,11 +3,20 @@ h1.meet-Devs {
     flex-direction: row;
     justify-content: center;
     position: relative;
-    top: 5rem;
+    top: 10rem;
+    color: var(--navy);
+    font-weight: bolder;
 }
 .Devs-R-Us {
     height: 60vh;
     width: 100%;
+    color: var(--navy);
+}
+
+.devs-container {
+    background-color: var(--baby-blue);
+    font-family: var(--secondary-font);
+    height: 100vh;
 }
 svg.blue-svg {
     margin-top: 9rem;
@@ -131,22 +140,22 @@ svg.curve.em {
 .mission.row {
     height: 70vh;
 }
-.connection.github {
-    height: 35px;
-    width: 35px;
-    margin-left: 20px;
-    padding: 0px;
-    border-radius: 100%;
-    overflow: hidden;
-}
+/*.connection.github {*/
+/*    height: 35px;*/
+/*    width: 35px;*/
+/*    margin-left: 20px;*/
+/*    padding: 0px;*/
+/*    border-radius: 100%;*/
+/*    overflow: hidden;*/
+/*}*/
 
-.connection.twitter {
-    transition-delay: 0.06s;
-}
+/*.connection.twitter {*/
+/*    transition-delay: 0.06s;*/
+/*}*/
 
-.connection.behance {
-    transition-delay: 0.12s;
-}
+/*.connection.behance {*/
+/*    transition-delay: 0.12s;*/
+/*}*/
 
 .connection.github .icon {
     height: 100%;
@@ -192,85 +201,87 @@ svg.curve.em {
 }
 
 /*Emily Card*/
-.card-Dev.Emily {
-    background-image: url("../img/Emily.jpg");
-    width: 10rem;
-    height: 10rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.card-Dev.Emily:hover {
-    border-radius: 8px;
-    width: 17rem;
-    height: 24rem;
-}
-.Emily.col-md-3 {
-    position: relative;
-    top: 14rem;
-    left: 35rem;
-}
-.name-em {
-    position: inherit;
-    top: 13rem;
-    font-family: -webkit-body;
-    display: flex;
-    justify-content: center;
-}
+/*.card-Dev.Emily {*/
+/*    background-image: url("../img/Emily.jpg");*/
+/*    width: 10rem;*/
+/*    height: 10rem;*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*}*/
+/*.card-Dev.Emily:hover {*/
+/*    border-radius: 8px;*/
+/*    width: 17rem;*/
+/*    height: 24rem;*/
+/*}*/
+/*.Emily.col-md-3 {*/
+/*    position: relative;*/
+/*    top: 14rem;*/
+/*    left: 35rem;*/
+/*}*/
+/*.name-em {*/
+/*    position: inherit;*/
+/*    top: 13rem;*/
+/*    font-family: -webkit-body;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
 /*TY Card*/
-.card-Dev.Ty {
-    background-image: url("../img/Ty.jpg");
-    width: 10rem;
-    height: 10rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    Position: relative;
-}
-.card-Dev.Ty:hover {
-    border-radius: 8px;
-    width: 17rem;
-    height: 24rem;
-}
-.Ty.col-md-3 {
-    position: relative;
-    right: -7rem;
-}
+/*.card-Dev.Ty {*/
+/*    background-image: url("../img/Ty.jpg");*/
+/*    width: 10rem;*/
+/*    height: 10rem;*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    Position: relative;*/
+/*}*/
+/*.card-Dev.Ty:hover {*/
+/*    border-radius: 8px;*/
+/*    width: 17rem;*/
+/*    height: 24rem;*/
+/*}*/
+/*.Ty.col-md-3 {*/
+/*    position: relative;*/
+/*    right: -7rem;*/
+/*}*/
 /*Sam Card*/
-.card-Dev.Sam {
-    background-image: url("../img/Sam.jpg");
-    width: 10rem;
-    height: 10rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    Position: relative;
-}
-.card-Dev.Sam:hover {
-    border-radius: 8px;
-    width: 17rem;
-    height: 24rem;
-}
-.Sam.col-md-3 {
-    position: relative;
-    left: -7rem;
-}
+/*.card-Dev.Sam {*/
+/*    background-image: url("../img/Sam.jpg");*/
+/*    width: 10rem;*/
+/*    height: 10rem;*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    Position: relative;*/
+/*}*/
+/*.card-Dev.Sam:hover {*/
+/*    border-radius: 8px;*/
+/*    width: 17rem;*/
+/*    height: 24rem;*/
+/*}*/
+/*.Sam.col-md-3 {*/
+/*    position: relative;*/
+/*    left: -7rem;*/
+/*}*/
 /*Arusa card*/
-.card-Dev.Arusa {
-    background-image: url("../img/Arusa.jpg");
-    width: 10rem;
-    height: 10rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    Position: relative;
-    background-position: initial;
-}
-.card-Dev.Arusa:hover {
-    border-radius: 8px;
-    width: 17rem;
-    height: 24rem;
-}
-.Arusa.col-md-3 {
-    position: relative;
-    top: 15rem;
-}
+/*.card-Dev.Arusa {*/
+/*    background-image: url("../img/Arusa.jpg");*/
+/*    width: 10rem;*/
+/*    height: 10rem;*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    Position: relative;*/
+/*    background-position: initial;*/
+/*}*/
+/*.card-Dev.Arusa:hover {*/
+/*    border-radius: 8px;*/
+/*    width: 17rem;*/
+/*    height: 24rem;*/
+/*}*/
+/*.Arusa.col-md-3 {*/
+/*    position: relative;*/
+/*    top: 15rem;*/
+/*}*/
+
 h1.nametag {
     display: flex;
     flex-direction: row;
@@ -279,22 +290,48 @@ h1.nametag {
 }
 
 /*keila card*/
-.card-Dev.Keila {
-    background-image: url("../img/Arusa'sCats.jpg");
-    width: 10rem;
-    height: 10rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    Position: relative;
+/*.card-Dev.Keila {*/
+/*    background-image: url("../img/Arusa'sCats.jpg");*/
+/*    width: 10rem;*/
+/*    height: 10rem;*/
+/*    background-size: cover;*/
+/*    background-repeat: no-repeat;*/
+/*    Position: relative;*/
+/*}*/
+/*.card-Dev.Keila:hover {*/
+/*    border-radius: 8px;*/
+/*    width: 17rem;*/
+/*    height: 24rem;*/
+/*}*/
+/*.keila.col-md-3 {*/
+/*    position: absolute;*/
+/*    top: 14rem;*/
+/*}*/
+
+.dev-card {
+    max-width: 15rem;
+    max-height: 30rem;
 }
-.card-Dev.Keila:hover {
-    border-radius: 8px;
-    width: 17rem;
-    height: 24rem;
+
+.card-body {
+    text-align: center;
 }
-.keila.col-md-3 {
-    position: absolute;
-    top: 14rem;
+.card-footer {
+    justify-content: center;
+    column-gap: 1rem;
+    padding: 0.5rem;
+}
+
+.alumni-logo {
+    height: 22px;
+    width: 22px;
+}
+
+
+.dev-cards {
+    padding-top: 15rem;
+    row-gap: 15px;
+    justify-content: space-evenly;
 }
 
 
@@ -650,4 +687,5 @@ div#accordionExample {
     --bs-accordion-bg: #ffffff;
     --bs-accordion-active-bg: #ffffff;
 }
+
 
