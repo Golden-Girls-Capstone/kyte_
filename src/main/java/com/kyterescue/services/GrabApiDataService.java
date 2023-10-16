@@ -18,7 +18,7 @@ public class GrabApiDataService {
         this.grabAuthenticationTokenService = grabAuthenticationTokenService;
     }
 
-    public String findAnimalsBySearch(String type, String age, String size, int zipcode, int page) throws IOException {
+    public String findAnimalsBySearch(String type, String age, String size, long zipcode, int page) throws IOException {
         String results = "";
         Request request = new Request.Builder()
                 .url(petURL + "type=" + type +  "&age=" + age + "&size=" + size + "&location=" + zipcode + "&page=" + page)
