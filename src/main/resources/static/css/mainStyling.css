@@ -19,7 +19,7 @@ body {
     margin-top: 4rem;
 }
 
-button {
+.btn {
     border-radius: 6px;
     width: 154px;
     height: 41px;
@@ -35,7 +35,7 @@ button {
     transition: box-shadow 0.3s;
 }
 
-button:hover {
+.btn:hover {
     /*box-shadow: 0 0 10px 2px rgba(215, 135, 144, 0.86);*/
     transform: scale(1.05);
     /*background: rgba(215, 135, 144, 0.24);*/
