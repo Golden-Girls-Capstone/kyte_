@@ -3,21 +3,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileCardsContainer = document.getElementById('profile-cards');
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
 
-
     // Function to open the modal and set the pet's API ID
     function openModal(petData, imageUrl) {
         modal.innerHTML = `
         <div  class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable" >
-
         <span id="closeModalButton" class="close">&times;</span>
         <h2 class="modal-name"></h2>
         <img class="modal-image" src="${imageUrl}">
-        <p class="pet-name-modal modal-pet-info-browse"> ${petData.name}</p>
+        <p class="modal-pet-info-browse">Name: ${petData.name}</p>
         <p class="modal-pet-info-browse">Age: ${petData.age}</p>
         <p class="modal-pet-info-browse">Gender: ${petData.gender}</p>
-        <p class="modal-pet-info-browse">Status: ${petData.status}</p>
-
-
+        <p class="modal-pet-info-browse">Age: ${petData.status}</p>
             <input type="hidden" id="petId" name="petId" value="${petData.id}">
             <input type="hidden" id="petName" name="petName" value="${petData.name}">
             <input type="hidden" id="petType" name="petType" value="${petData.type}">
@@ -57,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(petObject)
             }
-
             let petFetchResponse = await fetch(firstUrl, petFetchOptions);
             let petReturnData = await petFetchResponse.json();
             console.log(petReturnData);
@@ -76,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let fosterPetReturnData = await fosterFetchResponse.json();
             console.log(fosterPetReturnData);
             modal.style.display = 'none';
-
-
         })
     }
 
@@ -120,8 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let favoritePetReturnData = await favoriteFetchResponse.json();
         console.log(favoritePetReturnData);
         }
-
-
 
     // Function to render search results as profile cards
     function renderSearchResults(data) {
@@ -167,8 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     profileCardsContainer.appendChild(card);
 
 
-
-
                 }
             }
         }
@@ -179,10 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); // Prevent the default form submission
         fetchBySearch();
     });
-
-    function hideLoadingImage() {
-        loadingImage.style.display = "none";
-    }
 
     // Function to fetch and render search results
     function fetchBySearch() {
@@ -226,13 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('Fetch error:', error);
             });
     }
-
 });
-
-
-
-
-
 
 //POTENTIAL JAVASCRIPT FOR PAGINATION
 

@@ -3,24 +3,16 @@ package com.kyterescue.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
-import com.kyterescue.services.AddFavoritesService;
-import com.kyterescue.services.GrabApiDataService;
-import com.kyterescue.services.GrabAuthenticationTokenService;
-import com.kyterescue.services.PetMapperService;
+import com.kyterescue.services.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @RestController
 public class PetApiController {
-
-    final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
 
     GrabAuthenticationTokenService grabToken;
     UserRepository usersDao;
@@ -28,16 +20,23 @@ public class PetApiController {
     FosterPetRepository fostersDao;
     GrabApiDataService grabData;
     PetMapperService mapperService;
-    AddFavoritesService addFavoritesService;
+    FavoritesService favoritesService;
+    FosterPetValidationService fosterPetValidationService;
+    DashboardFosterDisplayService dashboardFosterDisplayService;
+    FullFosterPetValidationService fullFosterPetValidationService;
 
-    PetApiController(GrabApiDataService grabData, FosterPetRepository fostersDao, UserRepository usersDao, GrabAuthenticationTokenService grabToken, PetRepository petsDao, PetMapperService mapperService, AddFavoritesService addFavoritesService) {
+
+    PetApiController(GrabApiDataService grabData, FosterPetRepository fostersDao, UserRepository usersDao, GrabAuthenticationTokenService grabToken, PetRepository petsDao, PetMapperService mapperService, FavoritesService favoritesService, FosterPetValidationService fosterPetValidationService, DashboardFosterDisplayService dashboardFosterDisplayService, FullFosterPetValidationService fullFosterPetValidationService) {
         this.grabData = grabData;
         this.grabToken = grabToken;
         this.petsDao = petsDao;
         this.mapperService = mapperService;
         this.usersDao = usersDao;
         this.fostersDao = fostersDao;
-        this.addFavoritesService = addFavoritesService;
+        this.favoritesService = favoritesService;
+        this.fosterPetValidationService = fosterPetValidationService;
+        this.dashboardFosterDisplayService = dashboardFosterDisplayService;
+        this.fullFosterPetValidationService = fullFosterPetValidationService;
     }
     @GetMapping(value = "api/token", produces = "text/plain")
     public ResponseEntity<String> getToken() throws IOException {
@@ -50,7 +49,8 @@ public class PetApiController {
     }
     @GetMapping(value = "/api/data/search", produces = "application/json")
     public String apiCallSearch(
-            @ModelAttribute SearchForm searchForm) throws IOException {
+            @ModelAttribute SearchForm searchForm
+    ) throws IOException {
         searchForm.setPage(1);
         return grabData.findAnimalsBySearch(searchForm.getType(), searchForm.getAge(), searchForm.getSize(), searchForm.getZipcode(), searchForm.getPage());
     }
@@ -66,16 +66,11 @@ public class PetApiController {
     }
     @PostMapping(value = "/browse/foster/{petId}/{startDate}/{endDate}", produces = "application/json")
     public FosterPet createFosterPet(@PathVariable long petId, @PathVariable String startDate, @PathVariable String endDate, @CurrentSecurityContext(expression = "authentication?.name") String username) throws JsonProcessingException {
-        LocalDate localStart = LocalDate.of(Integer.parseInt(startDate.substring(0, 4)), Integer.parseInt(startDate.substring(5, 7)), Integer.parseInt(startDate.substring(8, 10)));
-        LocalDate localEnd = LocalDate.of(Integer.parseInt(endDate.substring(0, 4)), Integer.parseInt(endDate.substring(5, 7)), Integer.parseInt(endDate.substring(8, 10)));
-        FosterPet foster = new FosterPet(localStart, localEnd, usersDao.findByUsername(username), petsDao.getPetById(petId), true);
-        fostersDao.save(foster);
-        return foster;
+        return fullFosterPetValidationService.run(usersDao.findByUsername(username), petsDao.getPetById(petId), startDate, endDate);
     }
     @PostMapping(value = "browse/favorite/{petId}")
     public void addFavorite(@PathVariable long petId, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
-        System.out.println("inside addfavorite restcontroller");
-        addFavoritesService.add(petsDao.getPetById(petId), username, model);
+        favoritesService.toggleFavorite(petsDao.getPetById(petId), usersDao.findByUsername(username), model);
     }
 
 }

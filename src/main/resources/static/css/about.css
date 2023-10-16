@@ -9,7 +9,15 @@ h1.meet-Devs {
     height: 60vh;
     width: 100%;
 }
-
+svg.blue-svg {
+    margin-top: 9rem;
+}
+.FAQ-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+}
 
 .card-Dev {
     position: absolute;
@@ -120,7 +128,9 @@ svg.curve.em {
     fill: white;
 }
 
-
+.mission.row {
+    height: 70vh;
+}
 .connection.github {
     height: 35px;
     width: 35px;
@@ -296,11 +306,7 @@ h1.nametag {
 /*    justify-content: space-around;*/
 /*    font-family: Montserrat;*/
 /*}*/
-img.pet-picture {
-    border-radius: 50%;
-    width: 270px;
 
-}
 
 /*p.mission1 {*/
 /*    font-size: 1em;*/
@@ -367,18 +373,17 @@ img.pet-picture2 {
 /*    font-family: Montserrat;*/
 
 /*}*/
-/*.FAQ-questions {*/
-/*    width: 80%;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: space-evenly;*/
-/*    margin-top: 48px;*/
-/*    position: absolute;*/
-/*    z-index: 12;*/
-/*    right: 135px;*/
-
-/*}*/
+.FAQ-questions {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 100px;
+    position: absolute;
+    z-index: 12;
+    right: 135px;
+}
 
 /*.purple-blob1 {*/
 /*    position: relative;*/
@@ -517,7 +522,7 @@ img.pet-picture2 {
     font-style: italic;
     display:flex;
     justify-content: center;
-    margin-top: 11rem;
+    margin-top: 3rem;
 }
 /*h1.meet-Devs {*/
 /*    display: flex;*/
