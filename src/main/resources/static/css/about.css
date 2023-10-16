@@ -114,6 +114,9 @@ div#accordionExample {
 
 }
 
+.title-text {
+    font-family: var(--primary-font);
+}
 
 /*!*-----------------Media Queries-----------------*!*/
 
