@@ -50,7 +50,8 @@ public class SecurityConfig {
                                 "/dashboard/review/delete/{id}",
                                 "/browse/pet",
                                 "/browse/foster/*/*/*",
-                                "browse/favorite/*"
+                                "browse/favorite/*",
+                                "/dashboard"
                                 )
                                 .authenticated()
 
@@ -60,7 +61,6 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "",
                                 "/",
-                                "/dashboard",
                                 "/landing",
                                 "/sign-up",
                                 "/login",
