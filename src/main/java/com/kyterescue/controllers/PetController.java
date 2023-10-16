@@ -49,7 +49,7 @@ public class PetController {
 //    public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
 //        User user = usersDao.findByUsername(username);
     public String viewDashboard(Model model) throws JsonProcessingException {
-        User user = usersDao.findByUsername("test1");
+        User user = usersDao.findByUsername("kv12");
         model.addAttribute("current", dashboardFosterDisplayService.grabCurrentFosterAsPet(user));
         model.addAttribute("user", user);
         model.addAttribute("fosters", dashboardFosterDisplayService.grabFosterHistory(user));
