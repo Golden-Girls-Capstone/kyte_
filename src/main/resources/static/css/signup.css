@@ -1,6 +1,7 @@
 
 .signup-header{
     font-family: 'Lora', serif;
+    text-align: center;
 }
 
 h6{
@@ -47,4 +48,8 @@ input,.form-control{
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.login-redirect{
+    text-align: center;
 }
