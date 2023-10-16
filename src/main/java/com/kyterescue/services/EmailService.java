@@ -1,17 +1,14 @@
 package com.kyterescue.services;
-
 import com.kyterescue.entities.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.*;
 
-@Service("mailService")
+@Service
 public class EmailService {
 
     public final JavaMailSender emailSender;
-
     @Value("${spring.mail.from}")
     private String from;
 
@@ -25,7 +22,6 @@ public class EmailService {
         msg.setTo(user.getEmail());
         msg.setSubject(subject);
         msg.setText(body);
-
         try{
             this.emailSender.send(msg);
         } catch(MailException ex) {

@@ -1,5 +1,4 @@
 package com.kyterescue.controllers;
-
 import com.kyterescue.entities.UserRepository;
 import com.kyterescue.services.EmailService;
 import org.springframework.security.core.annotation.CurrentSecurityContext;

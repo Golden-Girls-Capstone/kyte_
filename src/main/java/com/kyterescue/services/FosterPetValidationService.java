@@ -1,21 +1,17 @@
 package com.kyterescue.services;
-
 import com.kyterescue.entities.FosterPet;
 import com.kyterescue.entities.FosterPetRepository;
 import com.kyterescue.entities.User;
-import com.kyterescue.entities.UserRepository;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class FosterPetValidationService {
-    private UserRepository usersDao;
+
     private FosterPetRepository fostersDao;
 
-    FosterPetValidationService(UserRepository usersDao, FosterPetRepository fostersDao) {
-        this.usersDao = usersDao;
+    FosterPetValidationService(FosterPetRepository fostersDao) {
         this.fostersDao = fostersDao;
     }
     public boolean startDateBeforeEndDate(LocalDate startDate, LocalDate endDate) {

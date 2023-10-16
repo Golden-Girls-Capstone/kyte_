@@ -26,7 +26,18 @@ public class PetApiController {
     FullFosterPetValidationService fullFosterPetValidationService;
 
 
-    PetApiController(GrabApiDataService grabData, FosterPetRepository fostersDao, UserRepository usersDao, GrabAuthenticationTokenService grabToken, PetRepository petsDao, PetMapperService mapperService, FavoritesService favoritesService, FosterPetValidationService fosterPetValidationService, DashboardFosterDisplayService dashboardFosterDisplayService, FullFosterPetValidationService fullFosterPetValidationService) {
+    PetApiController(
+            GrabApiDataService grabData,
+            FosterPetRepository fostersDao,
+            UserRepository usersDao,
+            GrabAuthenticationTokenService grabToken,
+            PetRepository petsDao,
+            PetMapperService mapperService,
+            FavoritesService favoritesService,
+            FosterPetValidationService fosterPetValidationService,
+            DashboardFosterDisplayService dashboardFosterDisplayService,
+            FullFosterPetValidationService fullFosterPetValidationService
+    ){
         this.grabData = grabData;
         this.grabToken = grabToken;
         this.petsDao = petsDao;
@@ -56,8 +67,6 @@ public class PetApiController {
     }
     @GetMapping(value = "api/data/types", produces = "application/json")
     public String apiCallTypes() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(grabData.findAnimalTypes()));
         return grabData.findAnimalTypes();
     }
     @PostMapping(value = "/browse/pet", produces = "application/json")
@@ -72,5 +81,4 @@ public class PetApiController {
     public void addFavorite(@PathVariable long petId, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
         favoritesService.toggleFavorite(petsDao.getPetById(petId), usersDao.findByUsername(username), model);
     }
-
 }

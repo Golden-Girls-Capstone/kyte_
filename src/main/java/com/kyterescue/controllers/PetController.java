@@ -1,26 +1,16 @@
 package com.kyterescue.controllers;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
 import com.kyterescue.services.AssignUserBadgesService;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.DashboardFosterDisplayService;
-//import com.kyterescue.services.GrabApiDataService;
 import com.kyterescue.services.PetMapperService;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Controller
 public class PetController {
@@ -29,7 +19,7 @@ public class PetController {
     PetRepository petsDao;
     FosterPetRepository fostersDao;
     ReviewRepository reviewsDao;
-    BadgeRespository badgeDao;
+    BadgeRepository badgeDao;
     AuthenticationService authenticationService;
     DashboardFosterDisplayService dashboardFosterDisplayService;
     PetMapperService mapperService;
@@ -37,7 +27,7 @@ public class PetController {
 
     PetController(
             UserRepository usersDao,
-            BadgeRespository badgeDao,
+            BadgeRepository badgeDao,
             PetRepository petsDao,
             FosterPetRepository fostersDao,
             ReviewRepository reviewsDao,
@@ -45,7 +35,7 @@ public class PetController {
             DashboardFosterDisplayService dashboardFosterDisplayService,
             PetMapperService mapperService,
             AssignUserBadgesService badgesService
-    ) {
+    ){
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.fostersDao = fostersDao;
@@ -70,30 +60,24 @@ public class PetController {
         model.addAttribute("review", new Review());
         return "pets/dashboard";
     }
-
     @PostMapping("/dashboard")
     public String editDashboard(Model model) {
         return "pets/dashboard";
     }
-
     @GetMapping("/browse")
     public String viewBrowse(Model model, @CurrentSecurityContext(expression = "authentication?.name") String username) throws IOException {
-        User user= usersDao.findByUsername(username);
+        User user = usersDao.findByUsername(username);
         model.addAttribute("user", user);
         model.addAttribute("searchForm", new SearchForm());
         model.addAttribute("foster", new FosterPet());
         return "pets/browse";
     }
-
     @GetMapping("pets/{id}/view")
     public String viewPetProfile(@PathVariable String id, Model model) {
         Pet petToView = petsDao.getPetById(Long.parseLong(id));
         model.addAttribute("pet", petToView);
-//        model.addAttribute("reviews", reviews);
         return "pets/petprofile";
     }
-
-
     @PostMapping("/dashboard/review")
     public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username) {
         User user = usersDao.findByUsername(username);
@@ -109,7 +93,6 @@ public class PetController {
         usersDao.save(user);
         return "redirect:/dashboard";
     }
-
     @PostMapping("/dashboard/review/delete/{id}")
     public String deleteReview(@PathVariable long id) {
         reviewsDao.delete(reviewsDao.findById(id).get());

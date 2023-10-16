@@ -1,13 +1,8 @@
 package com.kyterescue.entities;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.springframework.security.core.parameters.P;
-
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -85,5 +80,19 @@ public class FosterPet {
     public void setEnd_date(LocalDate end_date) {
         this.endDate = end_date;
     }
-
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+    public boolean isStatus() {
+        return status;
+    }
 }

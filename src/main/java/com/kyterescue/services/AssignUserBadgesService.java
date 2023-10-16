@@ -1,19 +1,18 @@
 package com.kyterescue.services;
 import com.kyterescue.entities.*;
-import jakarta.persistence.Id;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-
 
 @Service
 public class AssignUserBadgesService {
     private UserRepository usersDao;
-    private BadgeRespository badgesDao;
-
+    private BadgeRepository badgesDao;
     private FosterPetRepository fostersDao;
 
-    AssignUserBadgesService(UserRepository usersDao, BadgeRespository badgesDao, FosterPetRepository fostersDao){
+    AssignUserBadgesService(
+            UserRepository usersDao,
+            BadgeRepository badgesDao,
+            FosterPetRepository fostersDao
+    ){
         this.usersDao = usersDao;
         this.badgesDao = badgesDao;
         this.fostersDao = fostersDao;
@@ -33,45 +32,11 @@ public class AssignUserBadgesService {
         };
     }
 
-    public Badge assignBadgeToUser(User user, Badge badge){
+    public void assignBadgeToUser(User user, Badge badge){
         Badge badgeCheck = badgesDao.findBadgeById(badge.getId());
         if(!user.getBadges().contains(badgeCheck)){
             user.getBadges().add(badgeCheck);
             usersDao.save(user);
         }
-        return badgeCheck;
     }
-
-
-
-
-
-//    User user = usersDao.findByUsername(username);
-//    Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(user);
-//    FosterPet unsetCurrentFoster = dashboardFosterDisplayService.grabCurrentFosterAsFosterPet(user);
-//        review.setUser(user);
-//        review.setPet(currentFoster);
-//        reviewsDao.save(review);
-//        unsetCurrentFoster.setStatus(false);
-//        unsetCurrentFoster.setEnd_date(LocalDate.now());
-//        fostersDao.save(unsetCurrentFoster);
-
-
-
-    //target user logged in
-
-    //target the submit review button
-
-    //run through foster history list
-
-    //check for new unsigned value types of cat, dog, small-furry, bird, rabbit, barnyard, scales-fins-other
-
-    //check badgeHistory
-
-    //if there are new fosters that dont have a badge given already to the user in their badge history given them the appropriate badge
-
-    //else do nothing
-
-
-
 }
