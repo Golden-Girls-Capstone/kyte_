@@ -18,27 +18,23 @@ public class AssignUserBadgesService {
 
     public Badge assignBadge(User user, Pet currentFoster){
         String petType = currentFoster.getType();
+
         if(petType.equals("cat")){
             return badgesDao.findBadgeById(1);
-        }
-        if(petType.equals("dog")){
+        }else if(petType.equals("dog")){
             return badgesDao.findBadgeById(2);
-        }
-        if(petType.equals("small-furry")){
+        }else if(petType.equals("small-furry")){
             return badgesDao.findBadgeById(3);
-        }
-        if(petType.equals("bird")){
+        }else if(petType.equals("bird")){
             return badgesDao.findBadgeById(4);
-        }
-        if(petType.equals("rabbit")){
+        }else if(petType.equals("rabbit")){
             return badgesDao.findBadgeById(5);
-        }
-        if(petType.equals("barnyard")){
+        }else if(petType.equals("barnyard")){
             return badgesDao.findBadgeById(6);
-        }
-        if(petType.equals("scales-fins-other")){
+        }else if(petType.equals("scales-fins-other")){
             return badgesDao.findBadgeById(7);
         }
+
 
 
     }
