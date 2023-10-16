@@ -1,0 +1,40 @@
+body{
+    background-image: url("../img/login-bg.svg");
+    background-repeat: no-repeat;
+}
+
+input,.form-control{
+    border: 3px solid #20254b;
+    border-radius: 6px;
+    height: 40px;
+    margin: 0px 0px 10px 0px;
+}
+
+.submit-button{
+    /* background-color: white;*/
+    /*margin-top: 15px;*/
+
+    color: #ffffff;
+    border-radius: 9px;
+    margin-top: 20px;
+    border-color: #d8868d;
+    width: 154px;
+    height: 41px;
+    background: #d8868d;
+    border-style: unset;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+ }
+
+
+
+
+.submit-button:hover{
+    box-shadow: 0 0 10px 2px rgb(216, 134, 141);
+    transform: scale(1.05);
+    background: #f1d8da;
+    color: #d8868d;
+}

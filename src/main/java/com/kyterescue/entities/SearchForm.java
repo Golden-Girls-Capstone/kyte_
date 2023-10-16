@@ -1,7 +1,7 @@
 package com.kyterescue.entities;
 
 public class SearchForm {
-    private int zipcode;
+    private Long zipcode = null;
     private String age;
     private String size;
     private String type;
@@ -11,7 +11,7 @@ public class SearchForm {
 
     }
 
-    public SearchForm(String type, String age, String size, int zipcode, int page) {
+    public SearchForm(String type, String age, String size, Long zipcode, int page) {
         this.zipcode = zipcode;
         this.age = age;
         this.size = size;
@@ -19,10 +19,10 @@ public class SearchForm {
         this.page = page;
     }
 
-    public int getZipcode() {
+    public Long getZipcode() {
         return zipcode;
     }
-    public void setZipcode(int zipcode) {
+    public void setZipcode(Long zipcode) {
         this.zipcode = zipcode;
     }
     public String getAge() {
