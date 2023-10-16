@@ -5,11 +5,115 @@
     --cream: #ffeee2;
     --blush: #f4d9db;
     --navy: #20254b;
-    --primary-font: 'Montserrat', sans-serif;
+    --secondary-font: 'Montserrat', sans-serif;
+    --primary-font: 'Lora', serif;
+}
 
+body {
+    background-color: #ffffff;
 }
 
 
 .page-wrapper {
     min-height: 100%;
+    margin-top: 4rem;
 }
+
+button {
+    border-radius: 6px;
+    width: 154px;
+    height: 41px;
+    /*color: rgb(255, 255, 255);*/
+    font-family: var(--secondary-font);
+    /*background: #D78790;*/
+    border-style: unset;
+    font-weight: bolder;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+button:hover {
+    /*box-shadow: 0 0 10px 2px rgba(215, 135, 144, 0.86);*/
+    transform: scale(1.05);
+    /*background: rgba(215, 135, 144, 0.24);*/
+    /*color: #D78790;*/
+}
+
+
+.navbar{
+    z-index: 2;
+
+}
+
+.link{
+    color: #da959a;
+    font-weight: bold;
+    font-size: 2.5rem;
+
+}
+.btn-link.btn.logout {
+    color: #dc787f;
+    text-decoration: none;
+    margin-top: -7px;
+    padding: 0px;
+}
+
+a.nav-anchor{
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+    text-decoration: none;
+}
+
+a:visited { color:#dc787f }
+
+/*Navbar Css*/
+a.nav-header {
+    display: flex;
+    flex-direction: row;
+}
+
+img.navbar-brand.Logo {
+    width: 37px;
+}
+
+button.navbar-toggler.collapsed {
+    margin-top: -8px;
+}
+#myNavbar {
+    transition: box-shadow 0.3s ease-in-out;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+#myNavbar.shadow {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    background-color: white;
+}
+
+
+/* Flex direction (column) for offcanvas menu */
+.offcanvas-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-items{
+    list-style-type: none;
+    display: flex;
+    margin-top: 1em;
+
+}
+
+.offcanvas-body{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    align-content: stretch;
+}
+
