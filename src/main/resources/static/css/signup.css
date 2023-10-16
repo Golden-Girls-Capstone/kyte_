@@ -53,3 +53,43 @@ input,.form-control{
 .login-redirect{
     text-align: center;
 }
+
+.input-group{
+    gap: unset;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This centers the container vertically */
+}
+
+/* Style the form */
+.signup-form-wrapper {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* background-color: #fff; */
+    margin: 0 auto;
+}
+
+/* Style the input fields */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
