@@ -4,324 +4,129 @@
     <div th:insert="partials/header :: header"></div>
 
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>About Us</title>
     <link rel="stylesheet" href="/css/about.css">
 
 </head>
 <body>
 <nav th:insert="partials/navbar :: nav"></nav>
 <form action="@{/about}" th:method="get"></form>
-<div class="container-fluid devs-container">
-    <h1 class="meet-Devs"> Meet The Developers </h1>
-    <div class="Devs-R-Us">
-        <!--        <div class="top row">-->
-        <!--&lt;!&ndash;      Card Emily &ndash;&gt;-->
-        <!--            <div class="Emily col-md-3">-->
-        <!--                <h1 class="name-em">Emily</h1>-->
-        <!--                <div class="connections">-->
-
-        <!--                    <div class="connection github">-->
-        <!--                        <div class="icon em"></div>-->
-        <!--                    </div>-->
-
-        <!--                    <div class="connection twitter">-->
-
-        <!--                        <div class="icon em"></div>-->
-        <!--                    </div>-->
-        <!--                    <div class="connection behance">-->
-        <!--                        <div class="icon em">-->
-
-        <!--                        </div>-->
-        <!--                    </div>-->
-        <!--                </div>-->
-        <!--                <div id="curve" class="card-Dev Emily">-->
-        <!--            <div class="footer">-->
-
-        <!--                <svg class="curve em">-->
-        <!--                    <path id="em-p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />-->
-        <!--                    <rect id="dummyRect-em" x="0" y="0" height="450" width="400"-->
-        <!--                          fill="transparent" />-->
-        <!--                    &lt;!&ndash; slide up&ndash;&gt;-->
-        <!--                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect-em.mouseover" end="dummyRect-em.mouseout" dur="0.1s" id="bounce1" />-->
-        <!--                    &lt;!&ndash; slide up and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect-em.mouseout" dur="0.15s" id="bounce2" />-->
-        <!--                    &lt;!&ndash; slide down and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect-em.mouseout" dur="0.15s" id="bounce3" />-->
-        <!--                    &lt;!&ndash; slide down and curve out &ndash;&gt;-->
-        <!--                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect-em.mouseout" dur="0.1s" id="bounce4" />-->
-        <!--                    &lt;!&ndash; curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#em-p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect-em.mouseout" dur="0.05s" id="bounce5" />-->
-
-        <!--                    <animate xlink:href="#em-p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect-em.mouseout" dur="0.15s" id="bounceOut" />-->
-        <!--                </svg>-->
-        <!--                <div class="info">-->
-        <!--                    <div class="name">Emily Mendes</div>-->
-        <!--                    <div class="job"> "Teamwork is the dreamwork"</div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="card-blur"></div>-->
-        <!--        </div>-->
-        <!--            </div>-->
-        <!--&lt;!&ndash; Sam's Card  &ndash;&gt;-->
-        <!--            <div class="Sam col-md-3">-->
-        <!--                <h1 class="nametag">Sam</h1>-->
-        <!--                <div class="connections">-->
-        <!--                    <div class="connection github"><div class="icon"></div></div>-->
-        <!--                    <div class="connection twitter"><div class="icon"></div></div>-->
-        <!--                    <div class="connection behance"><div class="icon"></div></div>-->
-        <!--                </div>-->
-        <!--                <div class="card-Dev Sam">-->
-
-        <!--            <div class="footer">-->
-
-        <!--                <svg class="curve s">-->
-        <!--                    <path id="S-p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />-->
-        <!--                    <rect id="dummyRect-s" x="0" y="0" height="450" width="400"-->
-        <!--                          fill="transparent" />-->
-        <!--                    &lt;!&ndash; slide up&ndash;&gt;-->
-        <!--                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect-s.mouseover" end="dummyRect-s.mouseout" dur="0.1s" id="bounce1-s" />-->
-        <!--                    &lt;!&ndash; slide up and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1-s.end" end="S-dummyRect-s.mouseout" dur="0.15s" id="bounce2-s" />-->
-        <!--                    &lt;!&ndash; slide down and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2-s.end" end="S-dummyRect-s.mouseout" dur="0.15s" id="bounce3-s" />-->
-        <!--                    &lt;!&ndash; slide down and curve out &ndash;&gt;-->
-        <!--                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3-s.end" end="S-dummyRect-s.mouseout" dur="0.1s" id="bounce4-s" />-->
-        <!--                    &lt;!&ndash; curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#S-p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4-s.end" end="S-dummyRect-s.mouseout" dur="0.05s" id="bounce5-s" />-->
-
-        <!--                    <animate xlink:href="#S-p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="S-dummyRect-s.mouseout" dur="0.15s" id="bounceOut-s" />-->
-        <!--                </svg>-->
-        <!--                <div class="info">-->
-        <!--                    <div class="name">Sam Ramos</div>-->
-        <!--                    <div class="job"> "Teamwork is the dreamwork"</div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="card-blur"></div>-->
-        <!--        </div>-->
-        <!--            </div>-->
-        <!--&lt;!&ndash;Ty Card&ndash;&gt;-->
-        <!--            <div class="Ty col-md-3">-->
-        <!--                <h1 class="nametag">Ty</h1>-->
-        <!--                <div class="footer">-->
-        <!--                    <div class="connections">-->
-        <!--                        <div class="connection github"><div class="icon"></div></div>-->
-        <!--                        <div class="connection twitter"><div class="icon"></div></div>-->
-        <!--                        <div class="connection behance"><div class="icon"></div></div>-->
-        <!--                    </div>-->
-        <!--                <div class="card-Dev Ty">-->
-        <!--                <svg class="curve">-->
-        <!--                    <path id="p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />-->
-        <!--                    <rect id="dummyRect" x="0" y="0" height="450" width="400"-->
-        <!--                          fill="transparent" />-->
-        <!--                    &lt;!&ndash; slide up&ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect.mouseover" end="dummyRect.mouseout" dur="0.1s" id="bounce1" />-->
-        <!--                    &lt;!&ndash; slide up and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect.mouseout" dur="0.15s" id="bounce2" />-->
-        <!--                    &lt;!&ndash; slide down and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect.mouseout" dur="0.15s" id="bounce3" />-->
-        <!--                    &lt;!&ndash; slide down and curve out &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect.mouseout" dur="0.1s" id="bounce4" />-->
-        <!--                    &lt;!&ndash; curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect.mouseout" dur="0.05s" id="bounce5" />-->
-
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect.mouseout" dur="0.15s" id="bounceOut" />-->
-        <!--                </svg>-->
-        <!--                <div class="info">-->
-        <!--                    <div class="name">Ty ONeal</div>-->
-        <!--                    <div class="job"> "Teamwork is the dreamwork"</div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="card-blur"></div>-->
-        <!--        </div>-->
-        <!--            </div>-->
-        <!--&lt;!&ndash;Arusa's Card&ndash;&gt;-->
-        <!--            <div class="Arusa col-md-3">-->
-        <!--                <h1 class="nametag">Arusa</h1>-->
-        <!--                <div class="connections">-->
-        <!--                    <div class="connection github"><div class="icon"></div></div>-->
-        <!--                    <div class="connection twitter"><div class="icon"></div></div>-->
-        <!--                    <div class="connection behance"><div class="icon"></div></div>-->
-        <!--                </div>-->
-        <!--            <div class="card-Dev Arusa">-->
-        <!--            <div class="footer">-->
-
-        <!--                <svg class="curve">-->
-        <!--                    <path id="p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />-->
-        <!--                    <rect id="dummyRect" x="0" y="0" height="450" width="400"-->
-        <!--                          fill="transparent" />-->
-        <!--                    &lt;!&ndash; slide up&ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect.mouseover" end="dummyRect.mouseout" dur="0.1s" id="bounce1" />-->
-        <!--                    &lt;!&ndash; slide up and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect.mouseout" dur="0.15s" id="bounce2" />-->
-        <!--                    &lt;!&ndash; slide down and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect.mouseout" dur="0.15s" id="bounce3" />-->
-        <!--                    &lt;!&ndash; slide down and curve out &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect.mouseout" dur="0.1s" id="bounce4" />-->
-        <!--                    &lt;!&ndash; curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect.mouseout" dur="0.05s" id="bounce5" />-->
-
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect.mouseout" dur="0.15s" id="bounceOut" />-->
-        <!--                </svg>-->
-        <!--                <div class="info">-->
-        <!--                    <div class="name">Arusa Hussain</div>-->
-        <!--                    <div class="job"> "Teamwork is the dreamwork"</div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="card-blur"></div>-->
-        <!--        </div>-->
-        <!--            </div>-->
-        <!--&lt;!&ndash; Keila's card&ndash;&gt;-->
-        <!--            <div class="Keila col-md-3">-->
-        <!--                <h1 class="nametag">Keila</h1>-->
-        <!--                <div class="connections">-->
-        <!--                    <div class="connection github"><div class="icon"></div></div>-->
-        <!--                    <div class="connection twitter"><div class="icon"></div></div>-->
-        <!--                    <div class="connection behance"><div class="icon"></div></div>-->
-        <!--                </div>-->
-        <!--                <div class="card-Dev Keila">-->
-        <!--            <div class="footer">-->
-
-        <!--                <svg class="curve">-->
-        <!--                    <path id="p" d="M0,200 Q80,100 400,200 V150 H0 V50" transform="translate(0 300)" />-->
-        <!--                    <rect id="dummyRect" x="0" y="0" height="450" width="400"-->
-        <!--                          fill="transparent" />-->
-        <!--                    &lt;!&ndash; slide up&ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,100 400,50 V150 H0 V50" fill="freeze" begin="dummyRect.mouseover" end="dummyRect.mouseout" dur="0.1s" id="bounce1" />-->
-        <!--                    &lt;!&ndash; slide up and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,0 400,50 V150 H0 V50" fill="freeze" begin="bounce1.end" end="dummyRect.mouseout" dur="0.15s" id="bounce2" />-->
-        <!--                    &lt;!&ndash; slide down and curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,80 400,50 V150 H0 V50" fill="freeze" begin="bounce2.end" end="dummyRect.mouseout" dur="0.15s" id="bounce3" />-->
-        <!--                    &lt;!&ndash; slide down and curve out &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,45 400,50 V150 H0 V50" fill="freeze" begin="bounce3.end" end="dummyRect.mouseout" dur="0.1s" id="bounce4" />-->
-        <!--                    &lt;!&ndash; curve in &ndash;&gt;-->
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,50 Q80,50 400,50 V150 H0 V50" fill="freeze" begin="bounce4.end" end="dummyRect.mouseout" dur="0.05s" id="bounce5" />-->
-
-        <!--                    <animate xlink:href="#p" attributeName="d" to="M0,200 Q80,100 400,200 V150 H0 V50" fill="freeze" begin="dummyRect.mouseout" dur="0.15s" id="bounceOut" />-->
-        <!--                </svg>-->
-        <!--                <div class="info">-->
-        <!--                    <div class="name">Keila Vargas</div>-->
-        <!--                    <div class="job"> "Teamwork is the dreamwork"</div>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class="card-blur"></div>-->
-        <!--        </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
+<div class="container-fluid">
+    <div class="devs-container">
+        <h1 class="meet-Devs"> Meet The Developers </h1>
+        <div class="Devs-R-Us">
 
 
-        <!--        EMILY PAGE-->
-        <div class=" row d-flex flex-wrap dev-cards">
-            <!--    Emily card -->
-            <div class="dev-card">
-                <div class="blob1">
+            <!--        EMILY PAGE-->
+            <div class=" row d-flex flex-wrap dev-cards">
+                <!--    Emily card -->
+                <div class="dev-card">
+                    <div class="blob1">
 
 
-                    <img src="/img/Emily.jpg" class="card-img-top emily-dev" alt="...">
-                    <div class="card-body">
-                        <p><strong>Emily Mendes</strong></p>
-                        <p>Full Stack Developer</p>
+                        <img src="/img/Emily.jpg" class="card-img-top emily-dev" alt="...">
+                        <div class="card-body">
+                            <p><strong>Emily Mendes</strong></p>
+                            <p>Full Stack Developer</p>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
+                             class="bi bi-linkedin" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                        <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
                     </div>
                 </div>
-                <div class="card-footer d-flex ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                         class="bi bi-github" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
-                         class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                    </svg>
-                    <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
+                <!--    Sam card-->
+                <div class="dev-card">
+                    <img src="/img/Emily.jpg" class="card-img-top sam-dev" alt="...">
+                    <div class="card-body">
+                        <p><strong>Sam Ramos</strong></p>
+                        <p>Full Stack Developer</p>
+                    </div>
+                    <div class="card-footer d-flex ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
+                             class="bi bi-linkedin" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                        <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
+                    </div>
+                </div>
+                <!--    Ty card-->
+                <div class="dev-card">
+                    <img src="/img/Emily.jpg" class="card-img-top ty-dev" alt="...">
+                    <div class="card-body">
+                        <p><strong>Ty O'neal</strong></p>
+                        <p>Full Stack Developer</p>
+                    </div>
+                    <div class="card-footer d-flex ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
+                             class="bi bi-linkedin" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                        <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
+                    </div>
+                </div>
+                <!--    Keila card-->
+                <div class="dev-card">
+                    <img src="/img/Emily.jpg" class="card-img-top keila-dev" alt="...">
+                    <div class="card-body">
+                        <p><strong>Keila Vargas</strong></p>
+                        <p>Full Stack Developer</p>
+                    </div>
+                    <div class="card-footer d-flex ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
+                             class="bi bi-linkedin" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                        <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
+                    </div>
+                </div>
+                <!--    Arusa card-->
+                <div class="dev-card">
+                    <img src="/img/Emily.jpg" class="card-img-top arusa-dev" alt="...">
+                    <div class="card-body">
+                        <p><strong>Arusa Hussain</strong></p>
+                        <p>Full Stack Developer</p>
+                    </div>
+                    <div class="card-footer d-flex ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
+                             class="bi bi-linkedin" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                        <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
+                    </div>
                 </div>
             </div>
-            <!--    Sam card-->
-            <div class="dev-card">
-                <img src="/img/Emily.jpg" class="card-img-top sam-dev" alt="...">
-                <div class="card-body">
-                    <p><strong>Sam Ramos</strong></p>
-                    <p>Full Stack Developer</p>
-                </div>
-                <div class="card-footer d-flex ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                         class="bi bi-github" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
-                         class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                    </svg>
-                    <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
-                </div>
-            </div>
-            <!--    Ty card-->
-            <div class="dev-card">
-                <img src="/img/Emily.jpg" class="card-img-top ty-dev" alt="...">
-                <div class="card-body">
-                    <p><strong>Ty O'neal</strong></p>
-                    <p>Full Stack Developer</p>
-                </div>
-                <div class="card-footer d-flex ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                         class="bi bi-github" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
-                         class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                    </svg>
-                    <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
-                </div>
-            </div>
-            <!--    Keila card-->
-            <div class="dev-card">
-                <img src="/img/Emily.jpg" class="card-img-top keila-dev" alt="...">
-                <div class="card-body">
-                    <p><strong>Keila Vargas</strong></p>
-                    <p>Full Stack Developer</p>
-                </div>
-                <div class="card-footer d-flex ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                         class="bi bi-github" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
-                         class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                    </svg>
-                    <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
-                </div>
-            </div>
-            <!--    Arusa card-->
-            <div class="dev-card">
-                <img src="/img/Emily.jpg" class="card-img-top arusa-dev" alt="...">
-                <div class="card-body">
-                    <p><strong>Arusa Hussain</strong></p>
-                    <p>Full Stack Developer</p>
-                </div>
-                <div class="card-footer d-flex ">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                         class="bi bi-github" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="dodgerblue"
-                         class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                    </svg>
-                    <img src="/img/codeuplogo.jpeg" class="alumni-logo" alt="...">
-                </div>
-            </div>
+
+
+            <!--Devs-R-Us  div-->
+
         </div>
-
-
-        <!--Devs-R-Us  div-->
-
     </div>
-    <svg class="blue-svg" viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
-        <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700"
-              fill="rgba(213, 236, 250, 0.58)"/>
-        <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#DBEFFA"/>
-    </svg>
-    <div class="mission row">
+
+    <div class="mission-container row">
         <h1 class="Title"> Our Mission </h1>
         <div class="mission-stmt1 column">
             <p class="mission1"> At Kyte Rescue, our mission is to provide a safe and caring haven for animals facing
@@ -443,11 +248,12 @@
             </div>
         </div>
     </div>
-    <!--page wrapper div-->
 </div>
+    <!--page wrapper div-->
 
 
-<div th:insert="~{partials/footer :: footer}"></div>
+
+<footer th:insert="~{partials/footer :: footer}"></footer>
 
 </body>
 </html>
