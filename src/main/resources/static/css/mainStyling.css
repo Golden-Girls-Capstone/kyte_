@@ -16,7 +16,7 @@ body {
 
 .page-wrapper {
     min-height: 100%;
-    margin-top: 4rem;
+    padding-top: 4rem;
 }
 
 button {
