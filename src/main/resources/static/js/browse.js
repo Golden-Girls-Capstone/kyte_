@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <span id="closeModalButton" class="close">&times;</span>
         <h2 class="modal-name"></h2>
         <img class="modal-image" src="${imageUrl}">
-        <p class="modal-pet-info-browse">Name: ${petData.name}</p>
+        <p class="pet-name-modal modal-pet-info-browse"> ${petData.name}</p>
         <p class="modal-pet-info-browse">Age: ${petData.age}</p>
         <p class="modal-pet-info-browse">Gender: ${petData.gender}</p>
-        <p class="modal-pet-info-browse">Age: ${petData.status}</p>
+        <p class="modal-pet-info-browse">Status: ${petData.status}</p>
 
 
             <input type="hidden" id="petId" name="petId" value="${petData.id}">
@@ -167,6 +167,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     profileCardsContainer.appendChild(card);
 
 
+
+
                 }
             }
         }
@@ -177,6 +179,10 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); // Prevent the default form submission
         fetchBySearch();
     });
+
+    function hideLoadingImage() {
+        loadingImage.style.display = "none";
+    }
 
     // Function to fetch and render search results
     function fetchBySearch() {
