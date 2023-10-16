@@ -1,5 +1,7 @@
 .login-header{
+
     font-family: 'Lora', serif;
+    text-align: center;
 }
 
 h6{
@@ -16,14 +18,11 @@ input{
 .login-button{
     color: #ffffff;
     border-radius: 9px;
-    margin-top: 20px;
     border-color: #d8868d;
-    width: 154px;
     height: 41px;
     background: #d8868d;
     border-style: unset;
     font-weight: bolder;
-    display: flex;
     justify-content: center;
     align-items: center;
     transition: box-shadow 0.3s;
@@ -45,3 +44,13 @@ input{
     align-items: center;
     height: 100vh; /* This ensures the background covers the entire viewport height */
 }
+
+.sign-up-redirect{
+    text-align: center;
+}
+
+.login-form-wrap{
+    display: flex;
+    flex-direction: column;
+}
+
