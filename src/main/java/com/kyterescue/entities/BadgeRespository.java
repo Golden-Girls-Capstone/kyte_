@@ -9,4 +9,8 @@ import java.util.List;
 @Repository
 public interface BadgeRespository extends JpaRepository <Badge, Long> {
 
+    Badge findBadgeById(long id);
+
+
+
 }

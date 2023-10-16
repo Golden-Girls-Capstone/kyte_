@@ -3,6 +3,7 @@ package com.kyterescue.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kyterescue.entities.*;
+import com.kyterescue.services.AssignUserBadgesService;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.DashboardFosterDisplayService;
 //import com.kyterescue.services.GrabApiDataService;
@@ -32,8 +33,19 @@ public class PetController {
     AuthenticationService authenticationService;
     DashboardFosterDisplayService dashboardFosterDisplayService;
     PetMapperService mapperService;
+    AssignUserBadgesService badgesService;
 
-    PetController(UserRepository usersDao,BadgeRespository badgeDao, PetRepository petsDao, FosterPetRepository fostersDao, ReviewRepository reviewsDao, AuthenticationService authenticationService, DashboardFosterDisplayService dashboardFosterDisplayService, PetMapperService mapperService) {
+    PetController(
+            UserRepository usersDao,
+            BadgeRespository badgeDao,
+            PetRepository petsDao,
+            FosterPetRepository fostersDao,
+            ReviewRepository reviewsDao,
+            AuthenticationService authenticationService,
+            DashboardFosterDisplayService dashboardFosterDisplayService,
+            PetMapperService mapperService,
+            AssignUserBadgesService badgesService
+    ) {
         this.usersDao = usersDao;
         this.petsDao = petsDao;
         this.fostersDao = fostersDao;
@@ -42,6 +54,7 @@ public class PetController {
         this.authenticationService = authenticationService;
         this.dashboardFosterDisplayService = dashboardFosterDisplayService;
         this.mapperService = mapperService;
+        this.badgesService = badgesService;
     }
 
     @GetMapping("/dashboard")
@@ -82,15 +95,18 @@ public class PetController {
 
 
     @PostMapping("/dashboard/review")
-    public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
+    public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username) {
         User user = usersDao.findByUsername(username);
         Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(user);
         FosterPet unsetCurrentFoster = dashboardFosterDisplayService.grabCurrentFosterAsFosterPet(user);
-        review.setUser(usersDao.findByUsername(username));
+        review.setUser(user);
         review.setPet(currentFoster);
         reviewsDao.save(review);
         unsetCurrentFoster.setStatus(false);
+        unsetCurrentFoster.setEnd_date(LocalDate.now());
         fostersDao.save(unsetCurrentFoster);
+        badgesService.assignBadgeToUser(user, badgesService.getBadgeForUser(currentFoster));
+        usersDao.save(user);
         return "redirect:/dashboard";
     }
 
