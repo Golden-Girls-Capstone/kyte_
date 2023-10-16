@@ -86,10 +86,11 @@ public class PetController {
         User user = usersDao.findByUsername(username);
         Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(user);
         FosterPet unsetCurrentFoster = dashboardFosterDisplayService.grabCurrentFosterAsFosterPet(user);
-        review.setUser(usersDao.findByUsername(username));
+        review.setUser(user);
         review.setPet(currentFoster);
         reviewsDao.save(review);
         unsetCurrentFoster.setStatus(false);
+        unsetCurrentFoster.setEnd_date(LocalDate.now());
         fostersDao.save(unsetCurrentFoster);
         return "redirect:/dashboard";
     }
