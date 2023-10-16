@@ -7,6 +7,7 @@
 body{
     background-color: #ffffff;
     font-family: 'Montserrat', sans-serif;
+    background-image: url("../img/cream-browse-bg.png");
 }
 
 .search {
@@ -19,24 +20,24 @@ body{
 
 .searchTerm {
     width: 100%;
-    border: 3px solid #de9a9a;
+    border: 3px solid #d8868d;
     border-right: none;
     padding: 5px;
     height: 36px;
     border-radius: 17px 0 0 17px;
     outline: none;
-    color: #e57777;
+    color:#d8868d;
 }
 
 .searchTerm:focus{
-    color: #de9a9a;
+    color: #d8868d;
 }
 
 .searchButton {
     width: 40px;
     height: 36px;
-    border: 1px solid #de9a9a;
-    background: #de9a9a;
+    border: 1px solid #d8868d;
+    background: #d8868d;
     text-align: center;
     color: #ffffff;
     border-radius: 0 17px 17px 0;
@@ -90,10 +91,10 @@ a {
     padding: 3rem;
     width: 90%;
     max-width: 300px;
-    background-color: #ffeee1;
+    background-color: #cfe6f4;
     border-radius: 16px;
     position: relative;
-    border: 9px solid #ffeee1;
+    border: 9px solid #cfe6f4;
     background-clip: padding-box;
     text-align: center;
     color: #20254b;
@@ -129,6 +130,8 @@ a {
     font-weight: 600;
     margin-top: 1.5rem;
     text-align: center;
+    color: #20254b;
+    font-family: 'Lora', serif;
 }
 
 .profile-user-handle {
@@ -143,14 +146,14 @@ a {
     text-align: center;
 }
 
-.foster-btn, .save-btn, #confirmButton,.openModalButton, #submit-foster-btn, #view-foster-btn {
+.foster-btn, #confirmButton,.openModalButton, #view-foster-btn {
     color: #ffffff;
     border-radius: 9px;
     margin-top: 20px;
-    border-color: #de9a9a;
+    border-color: #d8868d;
     width: 154px;
     height: 41px;
-    background: #de9a9a;
+    background: #d8868d;
     border-style: unset;
     font-weight: bolder;
     display: flex;
@@ -160,8 +163,8 @@ a {
 
 }
 
-.foster-btn:hover, .save-btn:hover, #confirmButton:hover,.openModalButton:hover, #submit-foster-btn:hover, #view-foster-btn:hover{
-    box-shadow: 0 0 10px 2px rgb(222, 154, 154);
+.foster-btn:hover, .save-btn:hover, #confirmButton:hover,.openModalButton:hover,  #view-foster-btn:hover{
+    box-shadow: 0 0 10px 2px rgb(216, 134, 141);
     transform: scale(1.05);
     background: #f1d8da;
     color: #d8868d;
@@ -194,12 +197,15 @@ a {
 }
 
 .modal-content {
-    background-color: #ffffff;
+    background-color: #ffeee2;
     padding: 53px;
     border-radius: 27px;
     text-align: center;
     position: relative;
     border-width: thick;
+    color: #20254b;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -233,30 +239,30 @@ input#start, input#end{
 }
 
 .modal-name{
-    font-family: 'Playfair', serif;
+    font-family: 'Lora', serif;
     font-weight: bold;
 }
 
 
 .categoryDropdown{
-    border: 3px solid #de9a9a;
+    border: 3px solid #d8868d;
     /*border-right: none;*/
     padding: 5px;
     height: 36px;
     outline: none;
-    color: #e57777;
+    color: #d8868d;
     font: inherit;
-     border-radius: 17px 0 0 17px;
+    border-radius: 17px 0 0 17px;
 }
 
 .zipcode, .sizeDropdown, .ageDropdown{
-    border: 3px solid #de9a9a;
+    border: 3px solid #d8868d;
     /*border-right: none;*/
     padding: 5px;
     height: 36px;
 
     outline: none;
-    color: #e57777;
+    color: #d8868d;
     font: inherit;
 }
 
@@ -282,8 +288,8 @@ input#start, input#end{
 button#forward, button#backward{
     width: 40px;
     height: 36px;
-    border: 1px solid #de9a9a;
-    background: #de9a9a;
+    border: 1px solid #d8868d;
+    background: #d8868d;
     text-align: center;
     color: #ffffff;
     border-radius: 20rem;
@@ -297,11 +303,45 @@ button#forward, button#backward{
 }
 
 .browse-h1{
-    color: #0e1843;
+    color:  #20254b;
     font-family: 'Lora', serif;
+    margin-bottom: 20px;
 
 }
 
 #search-form{
     display: flex;
+}
+
+.pet-name-modal{
+    font-weight: bold;
+    font-family: 'Lora', serif;
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+
+#submit-foster-btn, .saveFavoriteButton{
+    color: #ffffff;
+    border-radius: 9px;
+    margin-top: 20px;
+    border-color: #86b7fe;
+    width: 154px;
+    height: 41px;
+    background: #86b7fe;
+    border-style: unset;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+
+}
+
+#submit-foster-btn:hover, .saveFavoriteButton:hover{
+    box-shadow: 0 0 10px 2px rgb(134, 183, 254);
+    transform: scale(1.05);
+    background: #c7ddfb;
+    color: #86b7fe;
+
 }
