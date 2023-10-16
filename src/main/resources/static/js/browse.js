@@ -41,6 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <input id="submit-foster-btn" type="submit" value="Submit" name="submitFoster">
     </div>
         `
+
+        const closeButton = modal.querySelector('#closeModalButton');
+        closeButton.addEventListener('click', function(e) {
+            modal.style.display = 'none';
+        })
         const confirmButton = modal.querySelector('#submit-foster-btn');
         modal.style.display = 'block';
         confirmButton.addEventListener('click', async function() {
@@ -163,28 +168,20 @@ document.addEventListener("DOMContentLoaded", function () {
                         openModal(petData, e.target.getAttribute('data-pet-image'));
                     });
                     card.querySelector('.saveFavoriteButton').addEventListener('click', function(e) {
-                        console.log("inside event listener before addfavorite method")
                         addFavorite(petData, e.target.getAttribute('data-pet-image'));
                     })
                     profileCardsContainer.appendChild(card);
-
-
-
-
                 }
             }
         }
         hideLoadingImage();
     }
 
-
     // Function to handle the form submission
     document.getElementById('search-form').addEventListener("submit", function(e) {
         e.preventDefault(); // Prevent the default form submission
         fetchBySearch();
     });
-
-
 
     // Function to fetch and render search results
     function fetchBySearch() {
