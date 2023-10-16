@@ -10,6 +10,8 @@ favoritesBtn.addEventListener("click", () => {
 fostersBtn.addEventListener("click", () => {
     hideAllCards();
     document.getElementById("fosters").classList.add("active");
+    document.getElementById("Prev-fosters").classList.add("active");
+
 });
 
 reviewsBtn.addEventListener("click", () => {

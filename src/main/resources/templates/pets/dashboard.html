@@ -13,9 +13,8 @@
     <div class="container-fluid user-profile-container overflow-scroll">
         <!--        PROFILE PIC    -->
         <div class=" column profile-pic-badge d-flex mx-5">
-            <div class="user-pic-badge align-items-center">
-                <img src="/img/shiba-bg.jpg" alt="placeholder" class="user-profile-pic" style="width: 200px; height: auto">
-                <div th:if="${user != null}" th:text="${user.picture}"></div>
+            <div class="user-pic-badge">
+                <div class="user-pic" th:if="${user != null}" th:text="${user.picture}"></div>
                 <!--                <h2 class="welcome-text">Welcome,</h2>-->
 <!--                <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span></h2>-->
             </div>
@@ -99,19 +98,19 @@
         </div>
 
         <!--        ANCHOR TAGS-->
+        <div class="row-buttons">
         <button id="showFavorites">Show Favorites</button>
         <button id="showFosters">Show Fosters</button>
         <button id="showReviews">Show Reviews</button>
-
+        </div>
 </div>
         <!--        FOSTER PAGE: CURRENT AND PREVIOUS FOSTERS-->
     <div class="foster-container" id="userFosters">
         <div class="column foster-info d-flex text-center">
-            <div th:if="${current != null}" th:object="${current}"
-                 id="fosters" class="cards active">
+            <div id="fosters" class="cards active" th:if="${current != null}" th:object="${current}">
                 <h2 class="profile-header">Current Foster</h2>
                 <div>
-                            <!--                    <img class="current-foster-pet-pic" th:src="${current.pet.photo}">-->
+                            <!--<img class="current-foster-pet-pic" th:src="${current.pet.photo}">-->
                     <h4 th:if="${current != null}" th:text="${current.name}"></h4>
 
                 </div>
@@ -124,12 +123,12 @@
             </div>
 
             <div class="previous-foster d-flex row px-2" style="width:50%">
-                <div th:each="foster : ${fosters}">
+                <div id="Prev-foster" class="cards active" th:each="foster: ${fosters}">
                     <h2 class="profile-header">Previous Fosters</h2>
                     <div class="column text-center" style="width: fit-content">
 <!--                                <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg"-->
-                                     style="height: 200px; width: 200px"
-                                     alt="previous-foster-pet-image">
+<!--                                     style="height: 200px; width: 200px"-->
+<!--                                     alt="previous-foster-pet-image">-->
                         <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
                     </div>
                 </div>
@@ -166,11 +165,9 @@
 
 
             <!--        FAVORITES PAGE-->
-    <div class="favorites-container vh-50 p-5" id="userFavorites">
-        <h3 class="text-center my-favs-text">My Favorites</h3>
-        <br>
-<!--        <div class="card-set fav" style="width: 18rem;">-->
-        <div id="favorites" class="cards" style="width: 18rem;">
+    <div class="container vh-50 p-5" id="userFavorites">
+       <div id="favorites" class="cards">
+        <!--        <div class="card-set fav" style="width: 18rem;">-->
 
         <img src="/img/dogkiss.jpeg" class="card-img-top" alt="placeholder">
             <div class="card-body">
@@ -183,7 +180,7 @@
                     <!--    USERS REVIEWS PAGE-->
     <div>
         <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
-            <div id="reviews" class="cards" style="width: 18rem;" th:data-coffee-id="${review.id}">
+            <div id="reviews" class="cards" th:data-coffee-id="${review.id}">
                 <img src="/img/dogkiss.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">(NAME OF PET)</h5>
@@ -199,22 +196,23 @@
                 </div>
             </div>
         </div>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                </div>
-                <h3 class="modal-title p-3">
-                                    Are you sure you want to delete this review?
-                </h3>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                    </button>
-                    <button type="button" class="btn btn-danger text-light">Delete</button>
-                </div>
-            </div>
-        </div>
+<!--        Are you  sure you want to delete modal-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+<!--                                            aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <h3 class="modal-title p-3">-->
+<!--                                    Are you sure you want to delete this review?-->
+<!--                </h3>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close-->
+<!--                    </button>-->
+<!--                    <button type="button" class="btn btn-danger text-light">Delete</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 <script src="/js/dashboard.js"></script>
