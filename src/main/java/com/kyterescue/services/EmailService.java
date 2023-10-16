@@ -1,5 +1,6 @@
 package com.kyterescue.services;
 
+import com.kyterescue.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -18,10 +19,10 @@ public class EmailService {
         this.emailSender = emailSender;
     }
 
-    public void prepareAndSend(String subject, String body) {
+    public void prepareAndSend(String subject, String body, User user) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setFrom(from);
-        //This needs to be sorted out for email service to be finished. ----->msg.setTo()
+        msg.setTo(user.getEmail());
         msg.setSubject(subject);
         msg.setText(body);
 
