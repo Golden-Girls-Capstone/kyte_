@@ -1,9 +1,8 @@
 .user-profile-container{
-    background-image: url("../img/shiba-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
-    height: 100vh;
+    height: 58vh;
 
 }
 
@@ -15,6 +14,7 @@
     justify-content: space-evenly;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    background: #A3C5F7;
 }
 
 .user-info {
@@ -30,4 +30,48 @@
 
 .user-btns {
     justify-content: center;
+}
+.user-badges {
+    height: 12vh;
+    width: 19rem;
+    background: white;
+    border-radius: 17px;
+}
+h4.badge-text {
+    display: flex;
+    justify-content: center;
+}
+.card.current-foster.row.gap-5.px-5.justify-content-center {
+    width: 20%;
+    margin-left: 4rem;
+    height: 43vh;
+}
+input.btn.btn-primary {
+    margin-left: 1rem;
+    margin-top: 2rem;
+    width: 14rem;
+    height: 43px;
+}
+button.btn.btn-secondary {
+    margin-top: 2rem;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    background: aliceblue;
+    border-radius: 11px;
+}
+.modal-header{
+    background: aliceblue;
+}
+input.btn.btn-danger {
+    width: 13rem;
+    height: 48px;
+}
+.cards {
+    display: none;
+}
+
+.active {
+    display: block;
 }
