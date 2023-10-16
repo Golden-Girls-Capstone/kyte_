@@ -6,13 +6,20 @@
     --blush: #f4d9db;
     --navy: #20254b;
     --secondary-font: 'Montserrat', sans-serif;
-    --primary-font: 'Lora', serif;
+    --primary-font: 'Young Serif', serif;
 }
 
 body {
     background-color: #ffffff;
 }
 
+.title-text {
+    font-family: var(--primary-font);
+}
+
+.body-text {
+    font-family: var(--secondary-font);
+}
 
 .page-wrapper {
     min-height: 100%;
