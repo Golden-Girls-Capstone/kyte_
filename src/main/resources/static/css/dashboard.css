@@ -1,5 +1,4 @@
 .user-profile-container{
-    background-image: url("../img/shiba-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -15,6 +14,7 @@
     justify-content: space-evenly;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    background: #A3C5F7;
 }
 
 .user-info {
@@ -29,5 +29,15 @@
 }
 
 .user-btns {
+    justify-content: center;
+}
+.user-badges {
+    height: 12vh;
+    width: 19rem;
+    background: white;
+    border-radius: 17px;
+}
+h4.badge-text {
+    display: flex;
     justify-content: center;
 }
