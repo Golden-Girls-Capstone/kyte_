@@ -9,22 +9,120 @@
 </head>
 <body>
 <nav th:insert="partials/navbar"></nav>
+
+<!--<div class="page-wrapper ">-->
+<!--    <div class="background-img">-->
+<!--        <div class="container my-5 p-5 d-flex justify-content-center">-->
+<!--            <div class="row d-flex justify-center row-gap-3">-->
+<!--                <h2 class="signup-header">Sign Up</h2>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-6">-->
+<!--                        <div class="input-group d-flex">-->
+<!--                            <form th:action="@{/sign-up}" th:method="post"-->
+<!--                                  class="row d-flex justify-content-center p-5"-->
+<!--                                  th:object="${user}">-->
+
+<!--                                <h6>Username</h6>-->
+<!--                                <input class="form-control" aria-label="username"-->
+<!--                                       aria-describedby="username" id="username-input" name="username" type="username"-->
+<!--                                       th:field="*{username}"/>-->
+<!--                                <h6>Email</h6>-->
+<!--                                <label for="email"></label>-->
+<!--                                <input id="email" name="email" type="email" th:field="*{email}"/>-->
+<!--                                <h6>Password</h6>-->
+<!--                                <input class="form-control" aria-label="password"-->
+<!--                                       aria-describedby="password" id="password-input" name="password" type="password"-->
+<!--                                       th:field="*{password}"/>-->
+<!--                                <h6>Zipcode</h6>-->
+<!--                                <label for="zipcode"></label>-->
+<!--                                <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"/>-->
+
+<!--                                <input type="submit" class="submit-button" value="Sign Up!"/>-->
+<!--                                <a href="/login">Already a Member? Login here!</a>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Password Validation Check &ndash;&gt;-->
+<!--                    <div class="d-flex col-6 mt-4 mt-xxl-0 w-auto h-auto">-->
+<!--                        <div class="alert px-4 py-3 mb-0 d-none"-->
+<!--                             role="alert"-->
+<!--                             data-mdb-color="warning"-->
+<!--                             id="password-alert">-->
+<!--                            <ul class="list-unstyled mb-0">-->
+<!--                                <li class="requirements" id="password-leng">-->
+<!--                                    <i class="fas fa-check text-success me-2"></i>-->
+<!--                                    <i class="fas fa-times text-danger me-3"></i>-->
+<!--                                    Your password must have at least 8 characters-->
+<!--                                </li>-->
+<!--                                <li class="requirements" id="password-big-letter">-->
+<!--                                    <i class="fas fa-check text-success me-2"></i>-->
+<!--                                    <i class="fas fa-times text-danger me-3"></i>-->
+<!--                                    Your password must have at least 1 capitol letter-->
+<!--                                </li>-->
+<!--                                <li class="requirements" id="password-num">-->
+<!--                                    <i class="fas fa-check text-success me-2"></i>-->
+<!--                                    <i class="fas fa-times text-danger me-3"></i>-->
+<!--                                    Your password must have at least 1 number-->
+<!--                                </li>-->
+<!--                                <li class="requirements" id="password-special-char">-->
+<!--                                    <i class="fas fa-check text-success me-2"></i>-->
+<!--                                    <i class="fas fa-times text-danger me-3"></i>-->
+<!--                                    Your password must have at least 1 special character-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash;this is for the validation of the username&ndash;&gt;-->
+<!--                    <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">-->
+<!--                        <div class="alert px-4 py-3 mb-0 d-none"-->
+<!--                             role="alert"-->
+<!--                             data-mdb-color="warning"-->
+<!--                             id="username-alert">-->
+<!--                            <ul class="list-unstyled mb-0">-->
+<!--                                <li class="requirements leng">-->
+<!--                                    <i class="fas fa-check text-success me-2"></i>-->
+<!--                                    <i class="fas fa-times text-danger me-3"></i>-->
+<!--                                    Your username must have at least 4 characters-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;            this is the end of the password validation check part&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 <div class="page-wrapper ">
     <div class="background-img">
         <div class="container my-5 p-5 d-flex justify-content-center">
             <div class="row d-flex justify-center row-gap-3">
                 <h2 class="signup-header">Sign Up</h2>
                 <div class="row">
-                    <div class="col-6">
+<!--                    <div class="">-->
                         <div class="input-group d-flex">
-                            <form th:action="@{/sign-up}" th:method="post"
-                                  class=" row d-flex justify-content-center p-5"
-                                  th:object="${user}">
-
+                            <form th:action="@{/sign-up}" th:method="post" class="row d-flex justify-content-center p-5" th:object="${user}">
                                 <h6>Username</h6>
                                 <input class="form-control" aria-label="username"
                                        aria-describedby="username" id="username-input" name="username" type="username"
                                        th:field="*{username}"/>
+                                <div class="mt-2">
+                                    <div class="alert px-4 py-3 mb-0 d-none"
+                                         role="alert"
+                                         data-mdb-color="warning"
+                                         id="username-alert">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="requirements leng">
+                                                <i class="fas fa-check text-success me-2"></i>
+                                                <i class="fas fa-times text-danger me-3"></i>
+                                                Your username must have at least 4 characters
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <h6>Email</h6>
                                 <label for="email"></label>
                                 <input id="email" name="email" type="email" th:field="*{email}"/>
@@ -32,6 +130,36 @@
                                 <input class="form-control" aria-label="password"
                                        aria-describedby="password" id="password-input" name="password" type="password"
                                        th:field="*{password}"/>
+                                <div class="mt-2">
+                                    <div class="alert px-4 py-3 mb-0 d-none"
+                                         role="alert"
+                                         data-mdb-color="warning"
+                                         id="password-alert">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="requirements" id="password-leng">
+                                                <i class="fas fa-check text-success me-2"></i>
+                                                <i class="fas fa-times text-danger me-3"></i>
+                                                Your password must have at least 8 characters
+                                            </li>
+                                            <li class="requirements" id="password-big-letter">
+                                                <i class="fas fa-check text-success me-2"></i>
+                                                <i class="fas fa-times text-danger me-3"></i>
+                                                Your password must have at least 1 capitol letter
+                                            </li>
+                                            <li class="requirements" id="password-num">
+                                                <i class="fas fa-check text-success me-2"></i>
+                                                <i class="fas fa-times text-danger me-3"></i>
+                                                Your password must have at least 1 number
+                                            </li>
+                                            <li class="requirements" id="password-special-char">
+                                                <i class="fas fa-check text-success me-2"></i>
+                                                <i class="fas fa-times text-danger me-3"></i>
+                                                Your password must have at least 1 special character
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <h6>Zipcode</h6>
                                 <label for="zipcode"></label>
                                 <input id="zipcode" name="zipcode" type="text" th:field="*{zipcode}"/>
@@ -41,58 +169,13 @@
                             </form>
                         </div>
                     </div>
-
-                    <!-- Password Validation Check -->
-                    <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
-                        <div class="alert px-4 py-3 mb-0 d-none"
-                             role="alert"
-                             data-mdb-color="warning"
-                             id="password-alert">
-                            <ul class="list-unstyled mb-0">
-                                <li class="requirements" id="password-leng">
-                                    <i class="fas fa-check text-success me-2"></i>
-                                    <i class="fas fa-times text-danger me-3"></i>
-                                    Your password must have at least 8 characters
-                                </li>
-                                <li class="requirements" id="password-big-letter">
-                                    <i class="fas fa-check text-success me-2"></i>
-                                    <i class="fas fa-times text-danger me-3"></i>
-                                    Your password must have at least 1 capitol letter
-                                </li>
-                                <li class="requirements" id="password-num">
-                                    <i class="fas fa-check text-success me-2"></i>
-                                    <i class="fas fa-times text-danger me-3"></i>
-                                    Your password must have at least 1 number
-                                </li>
-                                <li class="requirements" id="password-special-char">
-                                    <i class="fas fa-check text-success me-2"></i>
-                                    <i class="fas fa-times text-danger me-3"></i>
-                                    Your password must have at least 1 special character
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--this is for the validation of the username-->
-                    <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
-                        <div class="alert px-4 py-3 mb-0 d-none"
-                             role="alert"
-                             data-mdb-color="warning"
-                             id="username-alert">
-                            <ul class="list-unstyled mb-0">
-                                <li class="requirements leng">
-                                    <i class="fas fa-check text-success me-2"></i>
-                                    <i class="fas fa-times text-danger me-3"></i>
-                                    Your username must have at least 4 characters
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
-                <!--            this is the end of the password validation check part-->
             </div>
         </div>
     </div>
 </div>
+
+
 <div th:insert="partials/footer"></div>
 <script src="/js/signup-validation.js"></script>
 

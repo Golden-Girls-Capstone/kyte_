@@ -1,9 +1,3 @@
-/*.background-img{*/
-/*    background-image: url("../img/login-bg.svg");*/
-/*    background-repeat: no-repeat;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*}*/
 
 .signup-header{
     font-family: 'Lora', serif;
@@ -19,6 +13,7 @@ input,.form-control{
     height: 40px;
     margin: 0px 0px 10px 0px;
 }
+
 
 .submit-button{
     color: #ffffff;
@@ -45,12 +40,11 @@ input,.form-control{
 
 
 .background-img {
-    background-image: url("../img/login-bg.svg");
+    background-image: url(../img/login-bg.svg);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; /* or background-size: contain; depending on your preference */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* This ensures the background covers the entire viewport height */
+    height: 100vh;
 }
