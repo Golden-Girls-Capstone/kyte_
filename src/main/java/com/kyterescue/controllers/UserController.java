@@ -4,6 +4,7 @@ import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.CheckForUniqueEmailService;
 import com.kyterescue.services.CheckForUniqueUsernameService;
+import com.kyterescue.services.EmailService;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,8 @@ public class UserController {
     AuthenticationService authenticationService;
     CheckForUniqueUsernameService checkUsername;
     CheckForUniqueEmailService checkEmail;
-    UserController(UserRepository usersDao,BadgeRespository badgesDao, FosterPetRepository fosterPetDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService, CheckForUniqueUsernameService checkUsername, CheckForUniqueEmailService checkEmail) {
+    EmailService emailService;
+    UserController(UserRepository usersDao,BadgeRespository badgesDao, FosterPetRepository fosterPetDao, PasswordEncoder passwordEncoder, AuthenticationService authenticationService, CheckForUniqueUsernameService checkUsername, CheckForUniqueEmailService checkEmail, EmailService emailService) {
         this.usersDao = usersDao;
         this.fosterPetDao = fosterPetDao;
         this.badgesDao = badgesDao;
@@ -27,6 +29,7 @@ public class UserController {
         this.authenticationService = authenticationService;
         this.checkUsername = checkUsername;
         this.checkEmail = checkEmail;
+        this.emailService = emailService;
     }
     @GetMapping("/sign-up")
     public String viewSignup(Model model) {
@@ -39,6 +42,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         usersDao.save(user);
+        emailService.prepareAndSend("Welcome to KyteRescue!", "Thanks for joining KyteRescue! We'll have your background check sent to you soon!", user);
         return "redirect:/login";
         } else {
             if(!checkUsername.check(user.getUsername())) {
