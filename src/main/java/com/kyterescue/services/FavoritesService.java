@@ -6,30 +6,33 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
-public class AddFavoritesService {
+public class FavoritesService {
     private UserRepository usersDao;
     private PetRepository petsDao;
 
-    AddFavoritesService(UserRepository usersDao, PetRepository petsDao) {
+    FavoritesService(UserRepository usersDao, PetRepository petsDao) {
         this.usersDao = usersDao;
         this.petsDao = petsDao;
     }
 
-    public Pet add(Pet pet, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
-        User user = usersDao.findByUsername(username);
+    public void toggleFavorite(Pet pet, User user, Model model) {
         List<Pet> currentFavorites = user.getFavorites();
             if(currentFavorites.contains(pet)) {
                 user.getFavorites().remove(pet);
                 usersDao.save(user);
-                model.addAttribute("invalidFavorite", true);
+                model.addAttribute("removeFavorite", true);
             } else {
                 currentFavorites.add(pet);
                 user.setFavorites(currentFavorites);
                 usersDao.save(user);
+                model.addAttribute("addFavorite", true);
             }
-            return pet;
+    }
+    public void removeFavorite(Pet pet, User user, Model model) {
+        user.getFavorites().remove(pet);
+        usersDao.save(user);
+        model.addAttribute("removeFavorite", true);
     }
 }
