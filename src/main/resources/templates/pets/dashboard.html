@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:insert="partials/header:: header">
+<head >
+    <div th:insert="partials/header:: header"></div>
 <!--    <link rel="stylesheet" href="/css/dashboard.css">-->
     <link rel="stylesheet" href="/css/dashboard.css">
     <title>Title</title>
@@ -9,23 +10,26 @@
 <div class="page-wrapper">
     <nav th:insert="partials/navbar:: nav"></nav>
     <!--            USER PROFILE PAGE-->
-    <div class="container user-profile-container justify-content-center vh-100 overflow-scroll">
+    <div class="container-fluid user-profile-container overflow-scroll">
         <!--        PROFILE PIC    -->
         <div class=" column profile-pic-badge d-flex mx-5">
             <div class="user-pic-badge align-items-center">
-<!--                <img src="/img/dogkiss.jpeg" alt="placeholder" class="user-profile-pic">-->
+                <img src="/img/shiba-bg.jpg" alt="placeholder" class="user-profile-pic" style="width: 200px; height: auto">
                 <div th:if="${user != null}" th:text="${user.picture}"></div>
                 <!--                <h2 class="welcome-text">Welcome,</h2>-->
-                <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span></h2>
+<!--                <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span></h2>-->
             </div>
             <!--        USER INFO AND EDIT BUTTON-->
             <div class="column user-info">
+<!--                <div class="row">-->
+<!--                    <div th:if="${user != null}" th:text="${user.username}"></div>-->
+<!--                    <br>-->
+<!--                    <div th:if="${user != null}" th:text="${user.email}"></div>-->
+<!--                    <br>-->
+<!--                    <div th:if="${user != null}" th:text="${user.zipcode}"></div>-->
+<!--                </div>-->
                 <div class="row">
-                    <div th:if="${user != null}" th:text="${user.username}"></div>
-                    <br>
-                    <div th:if="${user != null}" th:text="${user.email}"></div>
-                    <br>
-                    <div th:if="${user != null}" th:text="${user.zipcode}"></div>
+                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!</h2>
                 </div>
                 <br>
                 <!-- Button trigger modal -->
