@@ -51,6 +51,7 @@ public class PetController {
 
     public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
         User user = usersDao.findByUsername(username);
+        System.out.println(user.getFavorites().size());
         model.addAttribute("current", dashboardFosterDisplayService.grabCurrentFosterAsPet(user));
         model.addAttribute("user", user);
         model.addAttribute("fosters", dashboardFosterDisplayService.grabFosterHistory(user));
