@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.querySelector('#myModal');
+    const popupModal = document.querySelector('#popupModal');
     const profileCardsContainer = document.getElementById('profile-cards');
     const imageContainer = document.getElementById('image-container'); // Added the image container
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
@@ -10,7 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    //function to open the popup modal
 
+    function openPopupModal() {
+        popupModal.innerHTML = `
+        <div  class="modal-content modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+        <span id="closeModalButton" class="close">&times;</span>
+        <h2 class="modal-name">Your favorites have been changed!</h2>
+        <p class="pet-name-modal modal-pet-info-browse">Check your Dashboard to view your Favorites!</p>
+        </div>
+        `
+        const closeButton = popupModal.querySelector('#closeModalButton');
+        closeButton.addEventListener('click', function () {
+            popupModal.innerHTML = '';
+        })
+    }
 
     // Function to open the modal and set the pet's API ID
     function openModal(petData, imageUrl) {
@@ -41,6 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
             <input id="submit-foster-btn" type="submit" value="Submit" name="submitFoster">
     </div>
         `
+
+        const closeButton = modal.querySelector('#closeModalButton');
+        closeButton.addEventListener('click', function(e) {
+            modal.style.display = 'none';
+        })
         const confirmButton = modal.querySelector('#submit-foster-btn');
         modal.style.display = 'block';
         confirmButton.addEventListener('click', async function() {
@@ -163,28 +183,22 @@ document.addEventListener("DOMContentLoaded", function () {
                         openModal(petData, e.target.getAttribute('data-pet-image'));
                     });
                     card.querySelector('.saveFavoriteButton').addEventListener('click', function(e) {
-                        console.log("inside event listener before addfavorite method")
                         addFavorite(petData, e.target.getAttribute('data-pet-image'));
+                        openPopupModal();
+                        scrollTo(0, 0);
                     })
                     profileCardsContainer.appendChild(card);
-
-
-
-
                 }
             }
         }
         hideLoadingImage();
     }
 
-
     // Function to handle the form submission
     document.getElementById('search-form').addEventListener("submit", function(e) {
         e.preventDefault(); // Prevent the default form submission
         fetchBySearch();
     });
-
-
 
     // Function to fetch and render search results
     function fetchBySearch() {
