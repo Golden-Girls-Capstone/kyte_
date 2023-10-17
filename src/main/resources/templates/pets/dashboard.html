@@ -157,7 +157,9 @@
             <div class="card-body">
                 <img class="favorites-pet-pic" th:src="${favorite.getPhoto()}">
                 <h5 class="card-title">Name: <span th:text="${favorite.getName()}"></span> !</h5>
-                <button class="remove-fav-btn">Remove Favorite</button>
+                <form method="post" action="/profile/remove/favorite">
+                    <button class="remove-fav-btn">Remove Favorite</button>
+                </form>
             </div>
         </div>
     </div>
