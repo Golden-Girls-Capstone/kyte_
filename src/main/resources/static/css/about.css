@@ -115,7 +115,7 @@ div#accordionExample {
 }
 
 .title-text {
-    font-family: var(--primary-font);
+    font-family: 'Young Serif', serif;
 }
 
 /*!*-----------------Media Queries-----------------*!*/
