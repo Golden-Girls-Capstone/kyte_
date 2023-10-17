@@ -1,3 +1,7 @@
+:root {
+    --primary-font: 'Young Serif', serif;
+    --secondary-font: 'Montserrat', sans-serif;
+}
 
 body{
     overflow: scroll;
@@ -6,13 +10,13 @@ body{
 
 P.logo {
     font-size: 2.5rem;
-    font-family: 'Montserrat', sans-serif;
+    /*font-family: var(--primary-font);*/
     font-weight:bolder;
 }
 
 P.motto {
     font-size: 1.5rem;
-    font-family: 'Montserrat', sans-serif;
+    /*font-family: var(--primary-font);*/
 }
 
 .landing-text {
@@ -21,6 +25,7 @@ P.motto {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20.5em;
+    font-family: var(--primary-font);
 }
 
 
@@ -54,7 +59,7 @@ li {
     width: 9rem;
     border-radius: 8px;
     color: rgb(255, 255, 255);
-    font-family: -webkit-body;
+    /*font-family: var(--secondary-font);*/
     background: #D78790;
     border-style: unset;
     font-weight: bolder;
@@ -107,16 +112,8 @@ svg.bottom-svg3 {
 svg.top-svg3 {
     position: relative;
     bottom: -5rem;
-    filter: drop-shadow(0px 10px 9px rgba(253, 204, 187, 0.66));
 }
-.white-line {
-    position: absolute;
-    width: 100%;
-    z-index: 8;
-    background: #fff;
-    height: 52px;
-    top: 123.4rem;
-}
+
 
 .bkg-dog {
     background: #bde4f97a;
@@ -139,7 +136,7 @@ button.btn-jumbotron {
     width: 154px;
     height: 41px;
     color: #FFFFFF;
-    font-family: -webkit-body;
+    /*font-family: var(--secondary-font);*/
     background: #86b7fe;
     border-style: unset;
     font-weight: bolder;
@@ -208,7 +205,7 @@ button.btn-jumbotron {
     flex-direction: row-reverse;
 }
 .image-stuff {
-    height: 500px;
+    height: 494px;
     width: 622px;
     display: flex;
     justify-content: center;
@@ -255,7 +252,7 @@ button.btn-jumbotron {
     width: 154px;
     height: 41px;
     color: rgb(255, 255, 255);
-    font-family: -webkit-body;
+    /*font-family: var(--primary-font);*/
     background: #D78790;
     border-style: unset;
     font-weight: bolder;
@@ -275,17 +272,16 @@ button.btn-jumbotron {
 
 
 img.doggy {
-    position: absolute;
-    width: 42rem;
-    height: 22rem;
-    top: 135rem;
+    width: 100%;
+    height: 62%;
+    margin-top: 165px;
 }
 .btn-outreach {
     border-radius: 6px;
     width: 154px;
     height: 41px;
     color: white;
-    font-family: -webkit-body;
+    /*font-family: var(--primary-font);*/
     background: #eebdabd1;
     border-style: unset;
     font-weight: bolder;
@@ -341,6 +337,10 @@ a.nav-header {
     flex-direction: row;
 }
 
+.navbar-brand {
+    font-family: var(--primary-font);
+    font-weight: bolder;
+}
 img.navbar-brand.Logo {
     width: 37px;
 }
@@ -367,6 +367,14 @@ button.navbar-toggler.collapsed {
     flex-direction: row;
 }
 
+.title-text {
+    font-family: var(--primary-font);
+    font-weight: bolder;
+}
+
+.body-text {
+    font-family: var(--secondary-font);
+}
 
 
 /*---------------------------Media QUERIES---------------------*/
