@@ -11,7 +11,7 @@ h1.meet-Devs {
     height: 100vh;
     width: 100%;
     color: var(--navy);
-    background-color: #EEF9FFFF;
+    background-image: url("../img/cream-browse-bg.png");
 }
 
 .devs-container {
@@ -98,7 +98,7 @@ h1.meet-Devs {
 }
 
 .FAQ-page {
-    background-image: url("../img/white-creme-bg.png");
+    background-image: url("../img/blue-blob-bg2.png");
     height: 100vh;
     padding-top: 13rem;
 }

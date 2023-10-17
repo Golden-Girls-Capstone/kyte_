@@ -10,7 +10,7 @@
 <div class="page-wrapper">
     <nav th:insert="partials/navbar:: nav"></nav>
     <!--            USER PROFILE PAGE-->
-    <div class=" user-profile-container ">
+    <div class=" user-profile-container">
         <div class="profile-banner ">
             <div class="user-pic-badge">
                 <div class="user-pic" th:if="${user != null}" th:text="${user.picture}"></div>
@@ -18,7 +18,8 @@
             <!--        USER INFO AND EDIT BUTTON-->
             <div class="column user-info">
                 <div class=" user-info-wrapper">
-                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!</h2>
+                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!
+                    </h2>
                     <div class="user-btns column">
                         <button type="button" class="edit-account-btn" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
@@ -37,6 +38,9 @@
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Account Info</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
+                            </div>
+                            <div th:if="${invalidPassword == true}">
+                                <h2>Your password is incorrect!</h2>
                             </div>
                             <div class="modal-body">
                                 <form th:action="@{/profile/edit}" th:method="post"
@@ -67,83 +71,86 @@
                     </div>
                 </div>
                 <!--                USER BADGES-->
-                <div class="user-badges">
+                <div class="user-badges" th:each="badge : ${badges}">
                     <h4 class="badge-text">Acquired Badges:</h4>
-                    <div class="column text-center badges-display">
-                        <div th:each="badge : ${badges}">
-                            <div th:data-badge-id="${badge.id}">
-                                <img class="badges-pic" th:src="@{|/img/${badge.img}|}">
-                                 <p th:text="${badge.getName()}"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img class="badges-pic" th:src="@{|/img/${badge.img}|}">
+                    <!--                    <div >-->
+                    <!--                        <div th:data-badge-id="${badge.id}">-->
+
+                    <!--                            <p th:text="${badge.getName()}"></p>-->
+                    <!--                        </div>-->
                 </div>
             </div>
-            <!--        ANCHOR TAGS-->
-
+            <!--                    <h4 class="badge-text">Acquired Badges:</h4>-->
+            <div class="column text-center badges-display">
+            </div>
         </div>
     </div>
-    <div class="row-buttons">
-        <button class="view-tab-buttons" id="showFavorites">Show Favorites</button>
-        <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
-        <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
-    </div>
+    <!--        ANCHOR TAGS-->
 
-    <div class="wrapper-for-fosters">
+</div>
+</div>
+<div class="row-buttons">
+    <button class="view-tab-buttons" id="showFavorites">Show Favorites</button>
+    <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
+    <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
+</div>
+
+<div class="wrapper-for-fosters">
+</div>
+<div class="row" id="userFosters">
+    <div class="foster-container">
+        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>
     </div>
-    <div class="row" id="userFosters">
-        <div class="foster-container">
-            <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>
-        </div>
-        <div class="fosters-container">
-            <div class="previous-foster">
-            <div id="Prev-foster" class="cards active previous-foster-container" th:each="foster: ${fosters}">
+    <div class="fosters-container">
+        <div class="previous-foster">
+            <div id="Prev-foster" class="cards-hide active previous-foster-container previous-cards"
+                 th:each="foster: ${fosters}">
                 <div class="previous-foster-card">
                     <img class="previous-foster-pet-pic" th:src="${foster.photo}">
                     <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
                 </div>
             </div>
-            </div>
-            <div class="column foster-info">
-                <div id="fosters" class="cards active" th:if="${current != null}" th:object="${current}">
-                    <h2 class="profile-header">Current Foster: </h2>
-                    <div class="current-foster-card-container">
+        </div>
+        <div class="column foster-info">
+            <div id="fosters" class="cards-hide active current-cards" th:if="${current != null}" th:object="${current}">
+                <h2 class="profile-header">Current Foster: </h2>
+                <div class="current-foster-card-container">
                     <img class="current-foster-pet-pic" th:src="${current.photo}">
                     <h4 class="current-foster-name" th:if="${current != null}" th:text="${current.name}"></h4>
 
-                    <button type="button" class="complete-foster-btn" data-bs-toggle="modal" data-bs-target="#review-modal">
+                    <button type="button" class="complete-foster-btn" data-bs-toggle="modal"
+                            data-bs-target="#review-modal">
                         Complete Foster
                     </button>
                 </div>
             </div>
-    </div>
+        </div>
 
 
-
-            <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="fosterModal"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="fosterModalBtn">Submit a review</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form th:action="@{/dashboard/review}" th:method="post" th:object="${review}"
-                                  class=" row d-flex justify-content-center p-5">
-                                <input id="foster-review-input" name="foster_review" class="form-control" type="text"
-                                       th:field="${review.body}"
-                                       placeholder="Enter your review"/>
-                                <input type="submit" class="btn btn-danger" value="submit review"/>
-                            </form>
-                        </div>
+        <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="fosterModal"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="fosterModalBtn">Submit a review</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/dashboard/review}" th:method="post" th:object="${review}"
+                              class=" row d-flex justify-content-center p-5">
+                            <input id="foster-review-input" name="foster_review" class="form-control" type="text"
+                                   th:field="${review.body}"
+                                   placeholder="Enter your review"/>
+                            <input type="submit" class="btn btn-danger" value="submit review"/>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
     <!--        FAVORITES PAGE-->
@@ -154,7 +161,7 @@
                 <img class="favorites-pet-pic" th:src="${favorite.photo}">
                 <h5 class="card-title">Name: <span th:text="${favorite.name}"></span> !</h5>
                 <button class="remove-fav-btn">Remove Favorite</button>
-            </div>
+            </form>
         </div>
     </div>
     <!--    USERS REVIEWS PAGE-->
@@ -173,6 +180,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <script src="/js/dashboard.js"></script>
 <footer th:insert="partials/footer:: footer"></footer>

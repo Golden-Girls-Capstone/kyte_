@@ -50,8 +50,7 @@ public class PetController {
     @GetMapping("/dashboard")
 
     public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
-        User user = usersDao.findByUsername(username);
-        System.out.println(user.getFavorites().size());
+        User user = authenticationService.grabAuthenticationUserDetails(model);
         model.addAttribute("current", dashboardFosterDisplayService.grabCurrentFosterAsPet(user));
         model.addAttribute("user", user);
         model.addAttribute("fosters", dashboardFosterDisplayService.grabFosterHistory(user));
@@ -80,8 +79,8 @@ public class PetController {
         return "pets/petprofile";
     }
     @PostMapping("/dashboard/review")
-    public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username) {
-        User user = usersDao.findByUsername(username);
+    public String createReview(@ModelAttribute Review review, @CurrentSecurityContext(expression = "authentication?.name") String username, Model model) {
+        User user = authenticationService.grabAuthenticationUserDetails(model);
         Pet currentFoster = dashboardFosterDisplayService.grabCurrentFosterAsPet(user);
         FosterPet unsetCurrentFoster = dashboardFosterDisplayService.grabCurrentFosterAsFosterPet(user);
         review.setUser(user);
