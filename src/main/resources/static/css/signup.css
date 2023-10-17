@@ -1,6 +1,7 @@
 
 .signup-header{
     font-family: 'Lora', serif;
+    text-align: center;
 }
 
 h6{
@@ -47,4 +48,85 @@ input,.form-control{
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.login-redirect{
+    text-align: center;
+}
+
+.input-group{
+    gap: unset;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This centers the container vertically */
+}
+
+/* Style the form */
+.signup-form-wrapper {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    /* background-color: #fff; */
+    margin: 0 auto;
+}
+
+/*!* Style the input fields *!*/
+/*.form-control {*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*    margin: 10px 0;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: #000000;
+    padding-right: calc(1.5em + 0.75rem);
+    /*background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e);*/
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+
+/*.form-control {*/
+/*    width: 51%;*/
+/*    display: flex;*/
+/*    padding: 10px;*/
+/*    margin: 10px 0;*/
+/*    border: 3px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    justify-content: center;*/
+/*    align-content: center;*/
+/*    flex-direction: column-reverse;*/
+/*    flex-wrap: nowrap;*/
+/*}*/
+
+
+input, .form-control {
+    border: 3px solid #20254b;
+    border-radius: 6px;
+    height: 40px;
+    margin: 0px 0px 10px 0px;
+    width: 100%;
+}
+
+.submit-button{
+    width: 100%;
 }
