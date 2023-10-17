@@ -29,13 +29,13 @@
 // //     // Show the "Previous Fosters" header when "Show Fosters" button is clicked
 // //     document.getElementById('previousFostersHeader').style.display = 'block';
 // // });
-const favoritesBtn = document.getElementById("showFavorites");
-const fostersBtn = document.getElementById("showFosters");
-const reviewsBtn = document.getElementById("showReviews");
+const favoritesBtn = document.querySelector("#showFavorites");
+const fostersBtn = document.querySelector("#showFosters");
+const reviewsBtn = document.querySelector("#showReviews");
 
 favoritesBtn.addEventListener("click", () => {
     hideAllCards();
-    document.getElementById("favorites").classList.add("active");
+    document.getElementById("favorites-cards").classList.add("active");
     document.getElementById('previousFostersHeader').style.display = 'none'; // Hide the header
 });
 
@@ -53,6 +53,14 @@ reviewsBtn.addEventListener("click", () => {
 });
 
 function hideAllCards() {
-    const cards = document.querySelectorAll(".cards");
-    cards.forEach(card => card.classList.remove("active"));
+    const favoriteCards = document.querySelectorAll(".favorites-cards");
+    const reviewCards = document.querySelectorAll(".reviews-cards");
+    const previousCards = document.querySelectorAll(".previous-cards");
+    const currentCards = document.querySelectorAll(".current-cards");
+
+    favoriteCards.forEach(card => card.classList.remove("active"));
+    reviewCards.forEach(card => card.classList.remove("active"));
+    previousCards.forEach(card => card.classList.remove("active"));
+    currentCards.forEach(card => card.classList.remove("active"));
+
 }

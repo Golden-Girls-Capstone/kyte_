@@ -153,30 +153,30 @@
 </div>
 
 
-<!--        FAVORITES PAGE-->
-<div class="container vh-50 p-5" id="userFavorites" th:each="favorite : ${favorites}">
-    <div id="favorites" class="cards">
-        <div class="card-body">
-            <img class="favorites-pet-pic" th:src="${favorite.getPhoto()}">
-            <h5 class="card-title">Name: <span th:text="${favorite.getName()}"></span> !</h5>
-            <form method="post" action="/profile/remove/favorite">
+    <!--        FAVORITES PAGE-->
+    <div class="container vh-50 p-5" id="userFavorites" >
+        <h2 class="favorites-header">Favorites:</h2>
+        <div th:each="favorite : ${favorites}" class="favorites favorites-cards cards-hide">
+            <div class="card-body">
+                <img class="favorites-pet-pic" th:src="${favorite.photo}">
+                <h5 class="card-title">Name: <span th:text="${favorite.name}"></span> !</h5>
                 <button class="remove-fav-btn">Remove Favorite</button>
             </form>
         </div>
     </div>
-</div>
-<!--    USERS REVIEWS PAGE-->
-<div>
-    <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
-        <div id="reviews" class="cards" th:review-id="${review.id}">
-            <div class="card-body">
-                <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
-                <h5 class="card-title">Name: <span th:text="${review.pet.getName()}"></span> !</h5>
-                <p class="card-text">Review: <span th:text="${review.body}"></span></p>
-                <!--delete button-->
-                <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
-                    <button class="btn btn-danger w-100">Delete Review</button>
-                </form>
+    <!--    USERS REVIEWS PAGE-->
+    <div>
+        <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
+            <div id="reviews" class="cards-hide reviews-cards" th:review-id="${review.id}">
+                <div class="card-body">
+                    <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
+                    <h5 class="card-title">Name: <span th:text="${review.pet.getName()}"></span> !</h5>
+                    <p class="card-text">Review: <span th:text="${review.body}"></span></p>
+                                                <!--delete button-->
+                    <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
+                        <button class="btn btn-danger w-100">Delete Review</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
