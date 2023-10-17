@@ -91,7 +91,7 @@ a {
 .profile-card {
     padding: 3rem;
     width: 90%;
-    max-width: 300px;
+    max-width: 274px;
     background-color: #cfe6f48a;
     border-radius: 16px;
     position: relative;
@@ -147,7 +147,7 @@ a {
     text-align: center;
 }
 
-.foster-btn, #confirmButton, #view-foster-btn, #submit-foster-btn, .saveFavoriteButton,.openModalButton{
+.foster-btn, #confirmButton, #view-foster-btn, .saveFavoriteButton,.openModalButton{
     color: #ffffff;
     border-radius: 9px;
     margin-top: 20px;
@@ -164,7 +164,7 @@ a {
 
 }
 
-#submit-foster-btn:hover, .foster-btn:hover, .save-btn:hover, #confirmButton:hover,.openModalButton:hover,  #view-foster-btn:hover,.saveFavoriteButton:hover{
+ .foster-btn:hover, .save-btn:hover, #confirmButton:hover,.openModalButton:hover,  #view-foster-btn:hover,.saveFavoriteButton:hover{
     box-shadow: 0 0 10px 2px rgb(216, 134, 141);
     transform: scale(1.05);
     background: #f1d8da;
@@ -336,4 +336,32 @@ button#forward, button#backward{
     color: #20254b;
     font-size: 30px;
     font-family: 'Lora', sans-serif;
+}
+
+#submit-foster-btn{
+    color: #ffffff;
+    border-radius: 9px;
+    margin-top: 20px;
+    border-color: #86b7fe;
+    width: 154px;
+    height: 41px;
+    background: #86b7fe;
+    border-style: unset;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+#submit-foster-btn:hover{
+    box-shadow: 0 0 10px 2px rgb(134, 183, 254);
+    transform: scale(1.05);
+    background: #d4e1f6;
+    color: #86b7fe;
+}
+
+input#start, input#end {
+    font: inherit;
+    border-radius: 11px;
 }
