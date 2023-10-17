@@ -89,32 +89,38 @@
         <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
         <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
     </div>
-    <!--        FOSTER PAGE: CURRENT Foster / submit review-->
-    <div class="foster-container" id="userFosters">
-        <div class="previous-foster " style="width:50%">
-            <div id="Prev-foster" class="cards active" th:each="foster: ${fosters}">
-                <h2 class="profile-header">Previous Fosters</h2>
-                <div class="column text-center" style="width: fit-content">
-                    <!--                    <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg" alt="previous-foster-pet-image">-->
-                    <img class="previous-foster-pet-pic" th:src="${foster.photo}">
 
+    <div class="wrapper-for-fosters">
+
+    </div>
+    <div class="row" id="userFosters">
+        <div class="foster-container">
+            <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>
+        </div>
+        <div class="fosters-container">
+            <div class="previous-foster">
+            <div id="Prev-foster" class="cards active previous-foster-container" th:each="foster: ${fosters}">
+                <div class="previous-foster-card">
+                    <img class="previous-foster-pet-pic" th:src="${foster.photo}">
                     <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
                 </div>
             </div>
-        </div>
-        <div class="column foster-info ">
-            <div id="fosters" class="cards active" th:if="${current != null}" th:object="${current}">
-                <h2 class="profile-header">Current Foster</h2>
-                <div class="current-foster-card-container">
+            </div>
+            <div class="column foster-info">
+                <div id="fosters" class="cards active" th:if="${current != null}" th:object="${current}">
+                    <h2 class="profile-header">Current Foster: </h2>
+                    <div class="current-foster-card-container">
                     <img class="current-foster-pet-pic" th:src="${current.photo}">
                     <h4 class="current-foster-name" th:if="${current != null}" th:text="${current.name}"></h4>
-                </div>
 
-                <!--                FOSTER MODAL BTN-->
-                <button type="button" class="complete-foster-btn" data-bs-toggle="modal" data-bs-target="#review-modal">
-                    Complete Foster
-                </button>
+                    <button type="button" class="complete-foster-btn" data-bs-toggle="modal" data-bs-target="#review-modal">
+                        Complete Foster
+                    </button>
+                </div>
             </div>
+    </div>
+
+
 
             <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="fosterModal"
                  aria-hidden="true">
@@ -140,7 +146,7 @@
         </div>
     </div>
 
-        <!--previous fosters section-->
+
 
 
     <!--        FAVORITES PAGE-->
