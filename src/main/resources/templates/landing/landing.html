@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav th:replace="partials/navbar :: nav" ></nav>
+<nav th:replace="partials/navbar :: nav"></nav>
 <div class="page-wrapper">
     <div class="container-dog">
         <!-- Background image and container with text overlay -->
         <div class="background-container">
-            <img src="/img/dogkiss.jpeg" class="blur-background" />
+            <img src="/img/dogkiss.jpeg" class="blur-background"/>
         </div>
         <div class="col">
             <div class="text-overlay">
@@ -27,89 +26,97 @@
                     <p class="logo">Making fostering a breeze</p>
                     <p class="motto">Joining Hearts, Creating Homes. Together, we can</p>
                     <p class="motto">make a difference, one furry friend at a time.</p>
-                    <a href="/sign-up"><button class="btn-login">Sign Up!</button></a>
+                    <a href="/sign-up">
+                        <button class="btn-login">Sign Up!</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <svg class="blue-svg" viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
-    <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="rgba(213, 236, 250, 0.58)" />
-    <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#DBEFFA" />
+    <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700"
+          fill="rgba(213, 236, 250, 0.58)"/>
+    <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#DBEFFA"/>
 </svg>
 <div class="jumbotron">
     <div class="jumbo-title">
         <div class="bkg-dog"></div>
         <img class="bluedog" src="/img/bluedog.png">
     </div>
-        <div class="jumbo-content row">
-            <h1 class="foster-tittle title-text">Fostering</h1>
-        <h3 class="foster-tittle body-text text-center"> Welcome A Furry Friend Into Your Home!</h3>
-        <p class="body-text">
-             You're only a click away from experiencing a beautiful journey of love, care, and companionship. Join us in our commitment to providing warmth, love, and security to every pet that deserves a brighter tomorrow.
+    <div class="jumbo-content row">
+        <h1 class="foster-tittle">Fostering</h1>
+        <h3 class="foster-tittle"> Welcome A Furry Friend Into Your Home!</h3>
+        <p>
+            You're only a click away from experiencing a beautiful journey of love, care, and companionship. Join us in
+            our commitment to providing warmth, love, and security to every pet that deserves a brighter tomorrow.
         </p>
-            <div>
-                <a href="/browse"><button class="btn-jumbotron body-text">Foster</button></a>
-            </div>
+        <div>
+            <a href="/browse">
+                <button class="btn-jumbotron">Foster</button>
+            </a>
         </div>
+    </div>
 </div>
 <div class="content">
 
     <svg class="svg2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 164.406">
-        <path class="wave"  d="M0,338c181,118,329-22,500,0V501H0V338Z" transform="translate(0 -335.594)"/></svg>
+        <path class="wave" d="M0,338c181,118,329-22,500,0V501H0V338Z" transform="translate(0 -335.594)"/>
+    </svg>
 
     <div class="first-row">
         <div class="image-stuff">
-<div class="heart"></div>
+            <div class="heart"></div>
             <img class="org-cat" src="/img/catkiss.png">
         </div>
 
         <div class="first-row-text-content">
-            <h1 class="adopt-title title-text">Adopt</h1>
-            <h3 class="adopt-title body-text">Be An Animal's Fur-Ever Home!</h3>
-            <p class="body-text">
-                While our site does not directly facilitate adoptions, we proudly partner with ASPCA. By choosing to adopt through ASPCA, you support their mission of rescuing and caring for animals in need, ensuring they find their forever homes.
+            <h1 class="adopt-title">Adopt</h1>
+            <h3 class="adopt-title">Be An Animal's Fur-Ever Home!</h3>
+            <p>
+                While our site does not directly facilitate adoptions, we proudly partner with ASPCA. By choosing to
+                adopt through ASPCA, you support their mission of rescuing and caring for animals in need, ensuring they
+                find their forever homes.
             </p>
-            <a href="https://www.aspca.org/adopt-pet"><button class="btn-adopt body-text">Adopt</button></a>
+            <a href="https://www.aspca.org/adopt-pet">
+                <button class="btn-adopt">Adopt</button>
+            </a>
         </div>
     </div>
     <div class="white-line"></div>
-        <svg class="top-svg3" width="100%" height="80px" viewBox="0 0 1200 80" preserveAspectRatio="none"
-             xmlns="http://www.w3.org/2000/svg"><path d="M0 .012c.299-.297 60.19 4.653 122.953 27.692 42.692 15.67 121.585 52.308 168.7 52.308 116.378 0 148.543-80 308.347-80 159.804 0 223.344 80 350 80 57.59 0 103.285-27.499 159.848-52.308 17.579-7.71 47.63-16.941 90.152-27.692" fill="#FFFFFF" /></svg>
+    <svg class="top-svg3" width="100%" height="80px" viewBox="0 0 1200 80" preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 .012c.299-.297 60.19 4.653 122.953 27.692 42.692 15.67 121.585 52.308 168.7 52.308 116.378 0 148.543-80 308.347-80 159.804 0 223.344 80 350 80 57.59 0 103.285-27.499 159.848-52.308 17.579-7.71 47.63-16.941 90.152-27.692"
+              fill="#FFFFFF"/>
+    </svg>
 
 
     <div class="second-row">
         <div class="first-row-text-content">
-            <h1 class="outreach-title title-text">About Us</h1>
-            <h3 class="outreach-title body-text">Who is Kyte Rescue?</h3>
-            <p class="body-text">
-                In our mission to create a better world for our furry friends, outreach is at the heart of what we do. Kyte Rescue is a beacon of hope for animals in need, connecting loving homes with pets waiting for their forever families.
+            <h1 class="outreach-title">About Us</h1>
+            <h3 class="outreach-title">Who is Kyte Rescue?</h3>
+            <p>
+                In our mission to create a better world for our furry friends, outreach is at the heart of what we do.
+                Kyte Rescue is a beacon of hope for animals in need, connecting loving homes with pets waiting for their
+                forever families.
             </p>
-            <a href="/about"><button class="btn-outreach body-text">Learn More</button></a>
+            <a href="/about">
+                <button class="btn-outreach">Learn More</button>
+            </a>
         </div>
         <div class="image-stuff">
             <img class="doggy" src="/img/doggy.png">
         </div>
     </div>
-        <svg class="bottom-svg3" width="100%" height="80px" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,80 C0.298702804,80.2975827 60.1901843,75.3474246 122.953125,52.3085938 C165.644815,36.6374572 202.885785,-3.10412977e-13 250,-3.10862447e-13 C366.378906,-3.10862447e-13 440.195667,80 600,80 C759.804333,80 823.34375,-3.09752192e-13 950,-3.10862447e-13 C1007.58952,-3.10862447e-13 1053.2854,27.4992709 1109.84766,52.3085938 C1127.42704,60.0192583 1157.47782,69.2497271 1200,80" fill="#FFFFFF"></path></svg>
+    <svg class="bottom-svg3" width="100%" height="80px" viewBox="0 0 1200 80" preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,80 C0.298702804,80.2975827 60.1901843,75.3474246 122.953125,52.3085938 C165.644815,36.6374572 202.885785,-3.10412977e-13 250,-3.10862447e-13 C366.378906,-3.10862447e-13 440.195667,80 600,80 C759.804333,80 823.34375,-3.09752192e-13 950,-3.10862447e-13 C1007.58952,-3.10862447e-13 1053.2854,27.4992709 1109.84766,52.3085938 C1127.42704,60.0192583 1157.47782,69.2497271 1200,80"
+              fill="#FFFFFF"></path>
+    </svg>
 </div>
-<!--            <div class=" paw-container">-->
-<!--                    <a href="/browse">-->
-<!--                        <img class="paws" src="/img/paw1.png"/>-->
-<!--                        <p class="link">Foster</p>-->
-<!--                    </a>-->
-<!--                    <a href="https://www.aspca.org/adopt-pet">-->
-<!--                        <img class="paws" src="/img/paw1.png"/>-->
-<!--                        <p class="link">Adopt</p>-->
-<!--                    </a>-->
-<!--                    <a href="/about">-->
-<!--                        <img class="paws" src="https://www.humanesociety.org/how-you-can-help"/>-->
-<!--                        <p class="link">Outreach</p>-->
-<!--                    </a>-->
-<!--                </div>-->
-<div>
-<footer th:insert="partials/footer"></footer>
 </div>
+
+    <footer th:insert="partials/footer"></footer>
+
 </body>
 </html>
 

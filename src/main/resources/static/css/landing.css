@@ -112,16 +112,8 @@ svg.bottom-svg3 {
 svg.top-svg3 {
     position: relative;
     bottom: -5rem;
-    filter: drop-shadow(0px 10px 9px rgba(253, 204, 187, 0.66));
 }
-.white-line {
-    position: absolute;
-    width: 100%;
-    z-index: 8;
-    background: #fff;
-    height: 52px;
-    top: 123.4rem;
-}
+
 
 .bkg-dog {
     background: #bde4f97a;
@@ -213,7 +205,7 @@ button.btn-jumbotron {
     flex-direction: row-reverse;
 }
 .image-stuff {
-    height: 500px;
+    height: 494px;
     width: 622px;
     display: flex;
     justify-content: center;
@@ -280,10 +272,9 @@ button.btn-jumbotron {
 
 
 img.doggy {
-    position: absolute;
-    width: 42rem;
-    height: 22rem;
-    top: 135rem;
+    width: 100%;
+    height: 62%;
+    margin-top: 165px;
 }
 .btn-outreach {
     border-radius: 6px;
