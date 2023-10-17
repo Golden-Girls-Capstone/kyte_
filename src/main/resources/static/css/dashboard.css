@@ -14,7 +14,7 @@
     justify-content: space-evenly;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    background: #A3C5F7;
+    background-image: url("../img/browse-bg.webp");
 }
 
 .user-info {
@@ -26,17 +26,21 @@
     color: var(--blush);
     background-color: var(--muave);
     text-align: center;
+    height: min-content;
+    width: max-content;
 }
 
-.user-btns {
-    justify-content: center;
-}
 .user-badges {
     height: 12vh;
     width: 19rem;
     background: white;
     border-radius: 17px;
 }
+
+.badges-display{
+    width: fit-content;
+}
+
 h4.badge-text {
     display: flex;
     justify-content: center;
@@ -78,8 +82,30 @@ input.btn.btn-danger {
 }
 .row-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
+
+.view-tab-buttons, .edit-account-btn{
+    color: #ffffff;
+    border-radius: 9px;
+    border-color: #d8868d;
+    height: 41px;
+    background: #d8868d;
+    border-style: unset;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.view-tab-buttons:hover, .edit-account-btn:hover{
+    box-shadow: 0 0 10px 2px rgb(216, 134, 141);
+    transform: scale(1.05);
+    background: #f1d8da;
+    color: #d8868d;
+}
+
+
 .user-pic-badge {
     margin-left: 1rem;
     display: flex;
@@ -95,6 +121,8 @@ input.btn.btn-danger {
     border-radius: 50%;
     border-style: double;
     object-fit: cover;
+    color: white;
+    background-color: white;
 }
 .column.foster-info.d-flex.text-center {
     justify-content: space-around;
