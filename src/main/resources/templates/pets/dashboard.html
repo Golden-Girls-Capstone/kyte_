@@ -10,25 +10,25 @@
 <div class="page-wrapper">
     <nav th:insert="partials/navbar:: nav"></nav>
     <!--            USER PROFILE PAGE-->
-    <div class="container-fluid user-profile-container overflow-scroll">
-        <div class=" column profile-pic-badge d-flex mx-5">
+    <div class=" user-profile-container ">
+        <div class="profile-banner ">
             <div class="user-pic-badge">
                 <div class="user-pic" th:if="${user != null}" th:text="${user.picture}"></div>
             </div>
             <!--        USER INFO AND EDIT BUTTON-->
             <div class="column user-info">
-                <div class="row">
-                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!
-                    </h2>
+                <div class=" user-info-wrapper">
+                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!</h2>
+                    <div class="user-btns column">
+                        <button type="button" class="edit-account-btn" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Edit Info
+                        </button>
+                    </div>
                 </div>
                 <br>
                 <!-- Button trigger modal -->
-                <div class="user-btns column">
-                    <button type="button" class="edit-account-btn" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                        Edit Info
-                    </button>
-                </div>
+
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
@@ -81,21 +81,33 @@
                 </div>
             </div>
             <!--        ANCHOR TAGS-->
-            <div class="row-buttons">
-                <button class="view-tab-buttons" id="showFavorites">Show Favorites</button>
-                <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
-                <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
-            </div>
+
         </div>
+    </div>
+    <div class="row-buttons">
+        <button class="view-tab-buttons" id="showFavorites">Show Favorites</button>
+        <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
+        <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
     </div>
     <!--        FOSTER PAGE: CURRENT Foster / submit review-->
     <div class="foster-container" id="userFosters">
-        <div class="column foster-info d-flex text-center">
+        <div class="previous-foster " style="width:50%">
+            <div id="Prev-foster" class="cards active" th:each="foster: ${fosters}">
+                <h2 class="profile-header">Previous Fosters</h2>
+                <div class="column text-center" style="width: fit-content">
+                    <!--                    <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg" alt="previous-foster-pet-image">-->
+                    <img class="previous-foster-pet-pic" th:src="${foster.photo}">
+
+                    <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="column foster-info ">
             <div id="fosters" class="cards active" th:if="${current != null}" th:object="${current}">
                 <h2 class="profile-header">Current Foster</h2>
-                <div>
+                <div class="current-foster-card-container">
                     <img class="current-foster-pet-pic" th:src="${current.photo}">
-                    <h4 th:if="${current != null}" th:text="${current.name}"></h4>
+                    <h4 class="current-foster-name" th:if="${current != null}" th:text="${current.name}"></h4>
                 </div>
 
                 <!--                FOSTER MODAL BTN-->
@@ -126,19 +138,10 @@
                 </div>
             </div>
         </div>
-        <!--previous fosters section-->
-        <div class="previous-foster d-flex row px-2" style="width:50%">
-            <div id="Prev-foster" class="cards active" th:each="foster: ${fosters}">
-                <h2 class="profile-header">Previous Fosters</h2>
-                <div class="column text-center" style="width: fit-content">
-<!--                    <img class="previous-foster-pet-pic" src="/img/dogkiss.jpeg" alt="previous-foster-pet-image">-->
-                    <img class="previous-foster-pet-pic" th:src="${foster.photo}">
-
-                    <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
-                </div>
-            </div>
-        </div>
     </div>
+
+        <!--previous fosters section-->
+
 
     <!--        FAVORITES PAGE-->
     <div class="container vh-50 p-5" id="userFavorites">
