@@ -69,16 +69,19 @@ public class UserController {
     public String editProfile(@ModelAttribute User user,
                               @RequestParam String oldPassword,
                               @RequestParam String newPassword,
-                              @CurrentSecurityContext(expression = "authentication?.name") String username) {
+                              @CurrentSecurityContext(expression = "authentication?.name") String username,
+                              Model model
+    ) {
         User userToEdit = usersDao.findByUsername(username);
-        userToEdit.setEmail(user.getEmail());
-        userToEdit.setUsername(user.getUsername());
-        userToEdit.setZipcode(user.getZipcode());
         if (!passwordEncoder.matches(oldPassword, userToEdit.getPassword())) {
-            return "redirect:/profile/edit";
+            model.addAttribute("incorrectPassword", true);
+        } else {
+            userToEdit.setEmail(user.getEmail());
+            userToEdit.setUsername(user.getUsername());
+            userToEdit.setZipcode(user.getZipcode());
+            userToEdit.setPassword(passwordEncoder.encode(newPassword));
+            usersDao.save(userToEdit);
         }
-        userToEdit.setPassword(passwordEncoder.encode(newPassword));
-        usersDao.save(userToEdit);
         return "redirect:/dashboard";
     }
 }
