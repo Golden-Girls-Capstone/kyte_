@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <img class="pet-card-img" src="${imageUrl}" alt="Pet Image">
                     </div>
                         <h2 class="pet-name">${petData.name}</h2>
-                    <div class="pet-status">${petData.status}</div>
+                     <div class="pet-status">${petData.status}</div>
                     <div class="profile-actions">
 <!--                        <form method="post" action="/browse">-->
                             <button type="submit" name="fosterButton" class="openModalButton" data-pet-image="${imageUrl}">Foster</button>
