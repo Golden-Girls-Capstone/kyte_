@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileCardsContainer = document.getElementById('profile-cards');
     const imageContainer = document.getElementById('image-container'); // Added the image container
     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+    const userLoggedIn = document.querySelector('meta[name="loggedInUser"]') != null;
 
 
     function hideLoadingImage() {
@@ -163,30 +164,42 @@ document.addEventListener("DOMContentLoaded", function () {
                         // Use the URL of the first photo from the API
                         imageUrl = petData.photos[0].medium || '/img/place-holder-pets.png';
                     }
-                    card.innerHTML = `
-                    <div class="profile-image">
-                            <img class="pet-card-img" src="${imageUrl}" alt="Pet Image">
-                    </div>
-                        <h2 class="pet-name">${petData.name}</h2>
-                     <div class="pet-status">${petData.status}</div>
-                    <div class="profile-actions">
-<!--                        <form method="post" action="/browse">-->
-                            <button type="submit" name="fosterButton" class="openModalButton" data-pet-image="${imageUrl}">Foster</button>
-<!--                        </form>-->
-<!--                        <form method="post" action="/browse">-->
-                            <button type="submit" name="favoriteButton" class="saveFavoriteButton" data-pet-image="${imageUrl}">Save</button>
-<!--                        </form>x-->
-                    </div>
+                    if(userLoggedIn) {
+                        card.innerHTML = `
+                        <div class="profile-image">
+                                <img class="pet-card-img" src="${imageUrl}" alt="Pet Image">
+                        </div>
+                            <h2 class="pet-name">${petData.name}</h2>
+                        <div class="profile-actions">
+    <!--                        <form method="post" action="/browse">-->
+                                <button type="submit" name="fosterButton" class="openModalButton" data-pet-image="${imageUrl}">Foster</button>
+    <!--                        </form>-->
+    <!--                        <form method="post" action="/browse">-->
+                                <button type="submit" name="favoriteButton" class="saveFavoriteButton" data-pet-image="${imageUrl}">Save</button>
+    <!--                        </form>x-->
+                        </div>
                     `;
 
-                    card.querySelector('.openModalButton').addEventListener('click', function(e) {
-                        openModal(petData, e.target.getAttribute('data-pet-image'));
-                    });
-                    card.querySelector('.saveFavoriteButton').addEventListener('click', function(e) {
-                        addFavorite(petData, e.target.getAttribute('data-pet-image'));
-                        openPopupModal();
-                        scrollTo(0, 0);
-                    })
+                        card.querySelector('.openModalButton').addEventListener('click', function(e) {
+                            openModal(petData, e.target.getAttribute('data-pet-image'));
+                        });
+
+                        card.querySelector('.saveFavoriteButton').addEventListener('click', function(e) {
+                            addFavorite(petData, e.target.getAttribute('data-pet-image'));
+                            openPopupModal();
+                            scrollTo(0, 0);
+                        })
+                    } else {
+                        card.innerHTML = `
+                        <div class="profile-image">
+                                <img class="pet-card-img" src="${imageUrl}" alt="Pet Image">
+                        </div>
+                        <h2 class="pet-name">${petData.name}</h2>
+                        </div>
+                        <div class="profile-actions">
+                        </div>
+                    `;
+                    }
                     profileCardsContainer.appendChild(card);
                 }
             }
