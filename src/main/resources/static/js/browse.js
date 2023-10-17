@@ -195,20 +195,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to handle the form submission
-    document.getElementById('search-form').addEventListener("submit", function(e) {
+    document.getElementById('search-form').addEventListener("submit", async function(e) {
         e.preventDefault(); // Prevent the default form submission
-        fetchBySearch();
+        const loader = document.querySelector('#hamsterLoader');
+        const profileCardContainer = document.querySelector('#profile-cards');
+        const imageContainer = document.querySelector('#image-container');
+        // make your loader appear
+        profileCardContainer.style.display="none";
+        imageContainer.style.display="none";
+        loader.style.display="block";
+        await fetchBySearch();
+        // make your loader disappear
+        loader.style.display="none";
+        profileCardContainer.style.display="flex";
+
     });
 
     // Function to fetch and render search results
-    function fetchBySearch() {
+    async function fetchBySearch() {
         const type = document.getElementById('type').value;
         const zipcode = document.getElementById('zipcode').value;
         const age = document.getElementById('age').value;
         const size = document.getElementById('size').value;
 
 
-        fetch('/api/token', {
+        await fetch('/api/token', {
             method: 'GET',
             headers: {
                 'Accept': 'text/plain',
@@ -278,3 +289,17 @@ document.addEventListener("DOMContentLoaded", function () {
 //
 // // Initial API request
 // fetchPage(currentPage);
+
+// document.onreadystatechange = function() {
+//     if (document.readyState !== "complete") {
+//         document.querySelector(
+//             "body").style.visibility = "hidden";
+//         document.querySelector(
+//             "#hamsterLoader").style.visibility = "visible";
+//     } else {
+//         document.querySelector(
+//             "#hamsterLoader").style.display = "none";
+//         document.querySelector(
+//             "body").style.visibility = "visible";
+//     }
+// };
