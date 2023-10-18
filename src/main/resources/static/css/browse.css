@@ -334,3 +334,10 @@ input#start, input#end {
     font: inherit;
     border-radius: 11px;
 }
+
+.null-user-message{
+    color:  #20254b;
+    font-family: 'Lora', serif;
+    text-align: center;
+    margin-bottom: 50px;
+}
