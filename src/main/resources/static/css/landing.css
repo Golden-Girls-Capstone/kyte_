@@ -356,33 +356,33 @@ a.anchor-btn {
 }
 
 /*Navbar Css*/
-a.nav-header {
-    display: flex;
-    flex-direction: row;
-}
+/*a.nav-header {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
 
-.navbar-brand {
-    font-family: var(--primary-font);
-    font-weight: bolder;
-}
-img.navbar-brand.Logo {
-    width: 37px;
-}
+/*.navbar-brand {*/
+/*    font-family: var(--primary-font);*/
+/*    font-weight: bolder;*/
+/*}*/
+/*img.navbar-brand.Logo {*/
+/*    width: 37px;*/
+/*}*/
 
-button.navbar-toggler.collapsed {
-    margin-top: -8px;
-    background: #A3C5F7;
-}
-#myNavbar {
-    transition: box-shadow 0.3s ease-in-out;
-    position: fixed;
-    width: 100%;
-    z-index: 10000;
-}
-#myNavbar.shadow {
-   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-    background-color: white;
-}
+/*button.navbar-toggler.collapsed {*/
+/*    margin-top: -8px;*/
+/*    background: #A3C5F7;*/
+/*}*/
+/*#myNavbar {*/
+/*    transition: box-shadow 0.3s ease-in-out;*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    z-index: 10000;*/
+/*}*/
+/*#myNavbar.shadow {*/
+/*   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;*/
+/*    background-color: white;*/
+/*}*/
 
 
 /* Flex direction (column) for offcanvas menu */
