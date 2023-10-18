@@ -71,9 +71,12 @@
                     </div>
                 </div>
                 <!--                USER BADGES-->
-                <div class="user-badges" th:each="badge : ${badges}">
+                <div class="user-badges-container" >
                     <h4 class="badge-text">Acquired Badges:</h4>
-                    <img class="badges-pic" th:src="@{|/img/${badge.img}|}">
+                    <div class="user-badge-card" th:each="badge : ${badges}">
+                        <img class="badges-pic" th:src="@{|/img/${badge.img}|}">
+                    </div>
+
                     <!--                    <div >-->
                     <!--                        <div th:data-badge-id="${badge.id}">-->
 
@@ -99,19 +102,31 @@
 <div class="wrapper-for-fosters">
 </div>
 <div class="row" id="userFosters">
+<!--    <div class="foster-container">-->
+<!--        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>-->
+<!--    </div>-->
     <div class="foster-container">
-        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>
-    </div>
-    <div class="fosters-container">
-        <div class="previous-foster">
-            <div id="Prev-foster" class="cards-hide active previous-foster-container previous-cards"
-                 th:each="foster: ${fosters}">
+        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters:</h2>
+        <div class="previous-foster-container"> <!-- Add this container -->
+            <div id="Prev-foster" class="cards-hide active previous-foster-container previous-cards" th:each="foster: ${fosters}">
                 <div class="previous-foster-card">
                     <img class="previous-foster-pet-pic" th:src="${foster.photo}">
                     <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <!--        <div class="previous-foster">-->
+<!--            <div id="Prev-foster" class="cards-hide active previous-foster-container previous-cards"-->
+<!--                 th:each="foster: ${fosters}">-->
+<!--                <div class="previous-foster-card">-->
+<!--                    <img class="previous-foster-pet-pic" th:src="${foster.photo}">-->
+<!--                    <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="column foster-info">
             <div id="fosters" class="cards-hide active current-cards" th:if="${current != null}" th:object="${current}">
                 <h2 class="profile-header">Current Foster: </h2>
@@ -181,7 +196,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <script src="/js/dashboard.js"></script>
 <footer th:insert="partials/footer:: footer"></footer>
 </body>

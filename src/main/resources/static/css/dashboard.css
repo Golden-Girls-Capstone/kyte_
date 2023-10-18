@@ -4,7 +4,9 @@ body{
 }
 
 .user-profile-container{
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
@@ -17,135 +19,137 @@ body{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-image: url("../img/browse-bg.webp");
+    background-image: url(../img/browse-bg.webp);
+    width: 100%;
 }
 
 .user-info {
-    padding-top: 3rem;
+padding-top: 3rem;
 }
 
 .edit-account-btn {
-    align-items: center;
-    color: var(--blush);
-    background-color: var(--muave);
-    text-align: center;
-    height: min-content;
-    width: max-content;
+align-items: center;
+color: var(--blush);
+background-color: var(--muave);
+text-align: center;
+height: min-content;
+width: max-content;
 }
 
 .user-badges {
-    height: 100%;
-    width: 27rem;
+    width: 49rem;
     background: #fdccbc;
     border-radius: 9px;
     margin-top: 2em;
 }
 
 .badges-display{
-    width: fit-content;
+width: fit-content;
 }
 
 h4.badge-text {
-    display: flex;
-    justify-content: center;
+display: flex;
+justify-content: center;
 }
 .card.current-foster.row.gap-5.px-5.justify-content-center {
-    width: 20%;
-    margin-left: 4rem;
-    height: 43vh;
+width: 20%;
+margin-left: 4rem;
+height: 43vh;
 }
 input.btn.btn-primary {
-    margin-left: 1rem;
-    margin-top: 2rem;
-    width: 14rem;
-    height: 43px;
+margin-left: 1rem;
+margin-top: 2rem;
+width: 14rem;
+height: 43px;
 }
 button.btn.btn-secondary {
-    margin-top: 2rem;
+margin-top: 2rem;
 }
 .modal-body {
-    position: relative;
-    flex: 1 1 auto;
-    background: aliceblue;
-    border-radius: 11px;
+position: relative;
+flex: 1 1 auto;
+background: aliceblue;
+border-radius: 11px;
 }
 .modal-header{
-    background: aliceblue;
+background: aliceblue;
 }
 input.btn.btn-danger {
-    width: 13rem;
-    height: 48px;
+width: 13rem;
+height: 48px;
 }
 .cards-hide {
-    display: none;
+display: none;
 }
 
 .active {
-    justify-content: center;
-    display: block;
+justify-content: center;
+display: block;
 }
 .row-buttons {
-    display: flex;
-    justify-content: space-evenly;
+display: flex;
+justify-content: space-evenly;
 }
 
 .view-tab-buttons,.edit-account-btn,.complete-foster-btn {
-    color: #ffffff;
-    border-radius: 9px;
-    border-color: #d8868d;
-    height: 41px;
-    background: #d8868d;
-    border-style: unset;
-    font-weight: bolder;
-    justify-content: center;
-    align-items: center;
-    transition: box-shadow 0.3s;
+color: #ffffff;
+border-radius: 9px;
+border-color: #d8868d;
+height: 41px;
+background: #d8868d;
+border-style: unset;
+font-weight: bolder;
+justify-content: center;
+align-items: center;
+transition: box-shadow 0.3s;
 }
 
 .view-tab-buttons:hover,.edit-account-btn:hover, .complete-foster-btn:hover{
-    box-shadow: 0 0 10px 2px rgb(216, 134, 141);
-    transform: scale(1.05);
-    background: #f1d8da;
-    color: #d8868d;
+box-shadow: 0 0 10px 2px rgb(216, 134, 141);
+transform: scale(1.05);
+background: #f1d8da;
+color: #d8868d;
 }
 
 
 .user-pic-badge {
-    margin-left: 1rem;
+    margin-left: 9rem;
     display: flex;
     justify-content: center;
 }
+
 .user-pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 16rem;
-    height: 16rem;
-    border-radius: 50%;
-    border-style: double;
-    background-image: url("../img/placeholder.svg");
-    background-size: cover;
-    background-position: center;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 16rem;
+height: 16rem;
+border-radius: 50%;
+border-style: double;
+background-image: url("../img/placeholder.svg");
+background-size: cover;
+background-position: center;
 }
 .column.foster-info.d-flex.text-center {
-    justify-content: space-around;
-    align-items: center;
+justify-content: space-around;
+align-items: center;
 }
 
 .user-info-wrapper{
     display: flex;
+    justify-content: flex-end;
 }
 
 .welcome-text{
-    margin-right: 2em;
-    font-family: var(--primary-font);
+margin-right: 2em;
+font-family: var(--primary-font);
 }
 
 .foster-container{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-evenly;
-    margin-top: 5em;
+/*display: flex;*/
+/*flex-direction: row-reverse;*/
+/*justify-content: space-evenly;*/
+margin-top: 5em;
 }
 /*.edit-account-btn, .complete-foster-btn  {*/
 /*    color: #ffffff;*/
@@ -234,6 +238,7 @@ input.btn.btn-danger {
     border: 3px solid #fdccbd;
     color: #20254b;
     box-shadow: 0 4px 8px #fdccbd;
+
 }
 
 .previous-foster{
@@ -266,7 +271,9 @@ input.btn.btn-danger {
 }
 
 #previousFostersHeader{
-    margin-left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .favorites-cards{
@@ -282,3 +289,20 @@ input.btn.btn-danger {
     color: #20254b;
     box-shadow: 0 4px 8px #86b7fe;
 }
+
+
+
+
+/* Style for the scrollable container */
+.previous-foster-container {
+    max-height: 409px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 19px;
+    align-content: flex-start;
+    max-width: 575px;
+}
+
+
+/* Style for the individual cards inside the container */

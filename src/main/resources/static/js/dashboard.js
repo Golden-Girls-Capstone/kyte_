@@ -64,3 +64,14 @@ function hideAllCards() {
     currentCards.forEach(card => card.classList.remove("active"));
 
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the container element
+    const previousFosterContainer = document.querySelector(".previous-foster-container");
+
+    // Add an event listener to the container to prevent scrolling from affecting the parent page
+    previousFosterContainer.addEventListener("wheel", function (e) {
+        e.preventDefault();
+        this.scrollTop += e.deltaY;
+    });
+});
