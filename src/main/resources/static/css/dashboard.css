@@ -240,16 +240,16 @@ margin-top: 5em;
     gap: 1em;
 }
 
-#userFosters{
-    display: flex;
-    max-width: 90%;
-    flex-wrap: nowrap;
-    flex-direction: row-reverse;
-    align-content: flex-end;
-    justify-content: space-around;
-    align-items: flex-end;
-    padding-right: 63px;
-}
+/*#userFosters{*/
+/*    display: flex;*/
+/*    max-width: 90%;*/
+/*    flex-wrap: nowrap;*/
+/*    flex-direction: row-reverse;*/
+/*    align-content: flex-end;*/
+/*    justify-content: space-around;*/
+/*    align-items: flex-end;*/
+/*    padding-right: 63px;*/
+/*}*/
 .fosters-container {
     display: flex;
     justify-content: space-between;
@@ -305,15 +305,15 @@ margin-top: 5em;
 }
 
 
-#userFosters {
-    display: flex;
-    max-width: 90%;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-content: flex-end;
-    justify-content: space-around;
-    align-items: flex-end;
-}
+/*#userFosters {*/
+/*    display: flex;*/
+/*    max-width: 90%;*/
+/*    flex-wrap: nowrap;*/
+/*    flex-direction: row;*/
+/*    align-content: flex-end;*/
+/*    justify-content: space-around;*/
+/*    align-items: flex-end;*/
+/*}*/
 
 /* Style for the individual cards inside the container */
 
@@ -358,15 +358,15 @@ margin-top: 5em;
 }
 
 
-#userFosters {
-    display: flex;
-    max-width: 90%;
-    flex-wrap: nowrap;
-    flex-direction: row-reverse;
-    align-content: flex-end;
-    justify-content: space-around;
-    align-items: flex-end;
-}
+/*#userFosters {*/
+/*    display: flex;*/
+/*    max-width: 90%;*/
+/*    flex-wrap: nowrap;*/
+/*    flex-direction: row-reverse;*/
+/*    align-content: flex-end;*/
+/*    justify-content: space-around;*/
+/*    align-items: flex-end;*/
+/*}*/
 
 .review-card{
     padding: 3rem;
