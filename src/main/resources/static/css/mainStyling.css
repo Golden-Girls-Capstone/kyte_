@@ -7,6 +7,7 @@
     --navy: #20254b;
     --secondary-font: 'Montserrat', sans-serif;
     --primary-font: 'Young Serif', serif;
+    --pinky:#dc787f;
 }
 
 body {
@@ -53,6 +54,9 @@ body {
 .navbar{
     z-index: 2;
 
+}
+ .navbar-brand:hover {
+    color: var(--pinky);
 }
 
 .link{
