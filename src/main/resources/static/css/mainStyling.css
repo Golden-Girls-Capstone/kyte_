@@ -65,10 +65,11 @@ body {
 .btn-link.btn.logout {
     color: #dc787f;
     text-decoration: none;
-    margin-top: -11px;
+    margin-top: -9px;
     padding: 0;
     font-size: unset;
-
+    margin-right: 4px;
+    width: 59px;
 }
 
 a.nav-anchor{

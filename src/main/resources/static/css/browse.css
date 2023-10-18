@@ -107,6 +107,7 @@ a {
     flex-wrap: wrap;
     gap: 19px;
     margin-bottom: 4em;
+    margin-left: 70px;
 }
 
 .profile-image {
@@ -265,38 +266,6 @@ input#start, input#end{
     outline: none;
     color: #d8868d;
     font: inherit;
-}
-
-.pagination {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 2rem;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.pagination button {
-    margin: 0 10px;
-}
-
-button#forward, button#backward{
-    width: 40px;
-    height: 36px;
-    border: 1px solid #d8868d;
-    background: #d8868d;
-    text-align: center;
-    color: #ffffff;
-    border-radius: 20rem;
-    cursor: pointer;
-    font-size: 20px;
-
 }
 
 #view-foster-btn{

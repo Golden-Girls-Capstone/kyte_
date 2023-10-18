@@ -27,14 +27,14 @@ body{
 padding-top: 3rem;
 }
 
-.edit-account-btn {
-align-items: center;
-color: var(--blush);
-background-color: var(--muave);
-text-align: center;
-height: min-content;
-width: max-content;
-}
+/*.edit-account-btn {*/
+/*align-items: center;*/
+/*color: var(--blush);*/
+/*background-color: var(--muave);*/
+/*text-align: center;*/
+/*height: min-content;*/
+/*width: max-content;*/
+/*}*/
 
 .user-badges {
     width: 49rem;
@@ -48,14 +48,18 @@ width: fit-content;
 }
 
 h4.badge-text {
-display: flex;
-justify-content: center;
+    display: flex;
+    justify-content: center;
+    color: #d9868d;
+    font-family: var(--primary-font);
 }
+
 .card.current-foster.row.gap-5.px-5.justify-content-center {
 width: 20%;
 margin-left: 4rem;
 height: 43vh;
 }
+
 input.btn.btn-primary {
 margin-left: 1rem;
 margin-top: 2rem;
@@ -83,11 +87,9 @@ display: none;
 }
 
 .active {
-justify-content: center;
-display: block;
+    justify-content: center;
+    display: block;
 }
-
-
 
 .shown {
     display: block;
@@ -96,15 +98,15 @@ display: block;
     display: none;
 }
 
-
-
 .row-buttons {
-display: flex;
-justify-content: space-evenly;
-    margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background: #cee7f5;
 }
 
-.view-tab-buttons,.edit-account-btn,.complete-foster-btn {
+.view-tab-buttons,.complete-foster-btn, .edit-account-btn{
 color: #ffffff;
 border-radius: 9px;
 border-color: #d8868d;
@@ -139,7 +141,8 @@ width: 16rem;
 height: 16rem;
 border-radius: 50%;
 border-style: double;
-background-image: url("../img/placeholder.svg");
+    border-color: #ffffff;
+background-image: url("../img/shiba-bg.jpg");
 background-size: cover;
 background-position: center;
 }
@@ -156,34 +159,13 @@ align-items: center;
 .welcome-text{
 margin-right: 2em;
 font-family: var(--primary-font);
+    margin-top: 20px;
 }
 
 .foster-container{
-/*display: flex;*/
-/*flex-direction: row-reverse;*/
-/*justify-content: space-evenly;*/
 margin-top: 5em;
 }
-/*.edit-account-btn, .complete-foster-btn  {*/
-/*    color: #ffffff;*/
-/*    border-radius: 9px;*/
-/*    border-color: #fdccbd;*/
-/*    height: 41px;*/
-/*    background: #fdccbd;*/
-/*    border-style: unset;*/
-/*    font-weight: bolder;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    transition: box-shadow 0.3s;*/
-/*}*/
 
-/*.edit-account-btn:hover, .complete-foster-btn:hover{*/
-/*    box-shadow: 0 0 10px 2px rgb(242, 196, 182);*/
-/*    transform: scale(1.05);*/
-/*    background: #ffffff;*/
-/*    color: #f49f86;*/
-
-/*}*/
 
 .profile-header{
     display: flex;
@@ -203,14 +185,11 @@ margin-top: 5em;
 }
 
 .current-foster-card-container{
-    /* display: flex; */
     justify-content: space-evenly;
     align-content: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
     padding: 3rem;
-    /* width: 90%; */
-    /* max-width: 300px; */
     border-radius: 16px;
     position: relative;
     background-clip: padding-box;
@@ -218,8 +197,6 @@ margin-top: 5em;
     max-width: 274px;
     background-color: #cfe6f48a;
     border: 3px solid #cfe6f4;
-    /*background-clip: padding-box;*/
-    /*text-align: center;*/
     color: #20254b;
     box-shadow: 0 4px 8px #86b7fe;
 }
@@ -306,6 +283,13 @@ margin-top: 5em;
     box-shadow: 0 4px 8px #86b7fe;
 }
 
+/* Style for validation error on edit profile modal*/
+.validation-error {
+    color: red;
+    font-size: large;
+    background-color: #EFF8FF;
+    align-items: center;
+}
 
 
 
@@ -335,19 +319,18 @@ margin-top: 5em;
 
 /* Style for the user badges container */
 .user-badges-container {
-    display: flex; /* Use flexbox to arrange badges horizontally */
-    flex-wrap: wrap; /* Wrap badges to the next line when they don't fit horizontally */
-    gap: 10px; /* Adjust the gap between badges */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-/* Style for the individual badge cards inside the container */
 .user-badge-card {
-    flex: 0 0 calc(25% - 10px); /* Set the width of each badge card to 25% with a gap in between */
+    flex: 0 0 calc(25% - 10px);
 }
 
 .badges-pic {
-    max-width: 100%; /* Ensure the badge pictures fit inside their containers */
-    height: auto; /* Maintain the aspect ratio of the badge pictures */
+    max-width: 100%;
+    height: auto;
 }
 
 .user-badges-container {
@@ -383,4 +366,53 @@ margin-top: 5em;
     align-content: flex-end;
     justify-content: space-around;
     align-items: flex-end;
+}
+
+.review-card{
+    padding: 3rem;
+    border-radius: 16px;
+    position: relative;
+    background-clip: padding-box;
+    text-align: center;
+    background-color: rgba(244, 217, 219, 0.75);
+    border: 3px solid #f4d9db;
+    color: #20254b;
+    box-shadow: 0 4px 8px #f8ccd4;
+}
+
+.delete-review-btn {
+    color: #ffffff;
+    border-radius: 9px;
+    margin-top: 20px;
+    border-color: #86b7fe;
+    width: 154px;
+    height: 41px;
+    background: #86b7fe;
+    border-style: unset;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.delete-review-btn:hover{
+    box-shadow: 0 0 10px 2px rgb(134, 183, 254);
+    transform: scale(1.05);
+    background: #d4e1f6;
+    color: #86b7fe;
+
+}
+
+.review-foster-pet-pic{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 175px;
+    height: 175px;
+    position: relative;
+    margin-bottom: 2em;
+}
+
+
+.edit-account-btn {
+    margin-top: 20px;
 }
