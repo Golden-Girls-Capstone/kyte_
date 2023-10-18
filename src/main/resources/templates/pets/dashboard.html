@@ -106,7 +106,7 @@
 <!--        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>-->
 <!--    </div>-->
     <div class="foster-container">
-        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters:</h2>
+        <h2 class="profile-header previousFostersHeader">Previous Fosters:</h2>
         <div class="previous-foster-container"> <!-- Add this container -->
             <div id="Prev-foster" class="cards-hide active previous-foster-container previous-cards" th:each="foster: ${fosters}">
                 <div class="previous-foster-card">
@@ -128,7 +128,7 @@
 <!--            </div>-->
 <!--        </div>-->
         <div class="column foster-info">
-            <div id="fosters" class="cards-hide active current-cards" th:if="${current != null}" th:object="${current}">
+            <div class="cards-hide active current-cards fosters" th:if="${current != null}" th:object="${current}">
                 <h2 class="profile-header">Current Foster: </h2>
                 <div class="current-foster-card-container">
                     <img class="current-foster-pet-pic" th:src="${current.photo}">

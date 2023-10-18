@@ -35,21 +35,21 @@ const reviewsBtn = document.querySelector("#showReviews");
 
 favoritesBtn.addEventListener("click", () => {
     hideAllCards();
-    document.getElementById("favorites-cards").classList.add("active");
-    document.getElementById('previousFostersHeader').style.display = 'none'; // Hide the header
+    document.querySelector(".favorites-cards").classList.add("active");
+    document.querySelector('previousFostersHeader').style.display = 'none'; // Hide the header
 });
 
 fostersBtn.addEventListener("click", () => {
     hideAllCards();
-    document.getElementById("fosters").classList.add("active");
-    document.getElementById("Prev-fosters").classList.add("active");
-    document.getElementById('previousFostersHeader').style.display = 'block'; // Show the header
+    document.querySelector(".fosters").classList.add("active");
+    document.querySelector("Prev-fosters").classList.add("active");
+    document.querySelector(".previousFostersHeader").style.display = 'block'; // Show the header
 });
 
 reviewsBtn.addEventListener("click", () => {
     hideAllCards();
-    document.getElementById("reviews").classList.add("active");
-    document.getElementById('previousFostersHeader').style.display = 'none'; // Hide the header
+    document.querySelector("reviews").classList.add("active");
+    document.querySelector('previousFostersHeader').style.display = 'none'; // Hide the header
 });
 
 function hideAllCards() {
