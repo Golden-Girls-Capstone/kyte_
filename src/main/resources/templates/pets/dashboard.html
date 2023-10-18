@@ -188,13 +188,13 @@
     <div>
         <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
             <div id="reviews" class="cards-hide reviews-cards" th:review-id="${review.id}">
-                <div class="card-body">
+                <div class="card-body review-card">
                     <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
                     <h5 class="card-title">Name: <span th:text="${review.pet.getName()}"></span> !</h5>
                     <p class="card-text">Review: <span th:text="${review.body}"></span></p>
                                                 <!--delete button-->
                     <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
-                        <button class="btn btn-danger w-100">Delete Review</button>
+                        <button class="delete-review-btn">Delete Review</button>
                     </form>
                 </div>
             </div>
