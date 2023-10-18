@@ -1,6 +1,6 @@
 :root {
     --baby-blue: #eef9ff;
-    --muave: #cbe2ff;
+    --muave: #e8e8e8;
     --peach: #fdccbc;
     --cream: #ffeee2;
     --blush: #f4d9db;
@@ -61,12 +61,13 @@ body {
     font-size: 2.5rem;
 
 }
-.btn-link.btn.logout {
-    color: #dc787f;
-    text-decoration: none;
-    margin-top: -7px;
-    padding: 0px;
-}
+
+/*.btn-link.btn.logout {*/
+/*    color: #dc787f;*/
+/*    text-decoration: none;*/
+/*    margin-top: -7px;*/
+/*    padding: 0px;*/
+/*}*/
 
 a.nav-anchor{
     justify-content: space-around;
