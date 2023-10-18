@@ -29,6 +29,7 @@
 // //     // Show the "Previous Fosters" header when "Show Fosters" button is clicked
 // //     document.getElementById('previousFostersHeader').style.display = 'block';
 // // });
+
 const favoritesBtn = document.querySelector("#showFavorites");
 const fostersBtn = document.querySelector("#showFosters");
 const reviewsBtn = document.querySelector("#showReviews");
@@ -38,37 +39,47 @@ const validationError = document.querySelector('.validation-error');
 const editProfileModal = document.querySelector('.edit-profile-modal');
 
 
+const favoriteContainer = document.querySelector(".dash-favorite-container");
+const fosterContainer = document.querySelector(".dash-foster-container");
+const reviewContainer = document.querySelector(".dash-review-container");
+
 favoritesBtn.addEventListener("click", () => {
-    hideAllCards();
-    document.getElementById("favorites-cards").classList.add("active");
-    document.getElementById('previousFostersHeader').style.display = 'none'; // Hide the header
+
+    favoriteContainer.classList.add("shown");
+    favoriteContainer.classList.remove("hidden");
+
+    fosterContainer.classList.add("hidden");
+    fosterContainer.classList.remove("shown");
+
+    reviewContainer.classList.add("hidden");
+    reviewContainer.classList.remove("shown");
 });
 
 fostersBtn.addEventListener("click", () => {
-    hideAllCards();
-    document.getElementById("fosters").classList.add("active");
-    document.getElementById("Prev-fosters").classList.add("active");
-    document.getElementById('previousFostersHeader').style.display = 'block'; // Show the header
+
+    fosterContainer.classList.add("shown");
+    fosterContainer.classList.remove("hidden");
+
+    favoriteContainer.classList.add("hidden");
+    favoriteContainer.classList.remove("shown");
+
+    reviewContainer.classList.add("hidden");
+    reviewContainer.classList.remove("shown");
+
 });
 
 reviewsBtn.addEventListener("click", () => {
-    hideAllCards();
-    document.getElementById("reviews").classList.add("active");
-    document.getElementById('previousFostersHeader').style.display = 'none'; // Hide the header
+
+    reviewContainer.classList.add("shown");
+    reviewContainer.classList.remove("hidden");
+
+    fosterContainer.classList.add("hidden");
+    fosterContainer.classList.remove("shown");
+
+    favoriteContainer.classList.add("hidden");
+    favoriteContainer.classList.remove("shown");
+
 });
-
-function hideAllCards() {
-    const favoriteCards = document.querySelectorAll(".favorites-cards");
-    const reviewCards = document.querySelectorAll(".reviews-cards");
-    const previousCards = document.querySelectorAll(".previous-cards");
-    const currentCards = document.querySelectorAll(".current-cards");
-
-    favoriteCards.forEach(card => card.classList.remove("active"));
-    reviewCards.forEach(card => card.classList.remove("active"));
-    previousCards.forEach(card => card.classList.remove("active"));
-    currentCards.forEach(card => card.classList.remove("active"));
-
-}
 
 document.addEventListener("DOMContentLoaded", function () {
     // Get the container element
