@@ -1,5 +1,4 @@
 package com.kyterescue.config;
-import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.UserDetailsLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import com.kyterescue.services.UserDetailsLoader;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -20,8 +17,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private UserDetailsLoader usersLoader;
+
+    private final UserDetailsLoader usersLoader;
 
     public SecurityConfig(UserDetailsLoader usersLoader) {
         this.usersLoader = usersLoader;
@@ -51,7 +48,7 @@ public class SecurityConfig {
                                 "/dashboard/review/delete/{id}",
                                 "/browse/pet",
                                 "/browse/foster/*/*/*",
-                                "browse/favorite/*",
+                                "/browse/favorite/*",
                                 "/dashboard",
                                 "/dashboard/send/validation/error"
                                 )
@@ -69,7 +66,7 @@ public class SecurityConfig {
                                 "/browse",
                                 "/browse/*",
                                 "/api/test",
-                                "pets/**",
+                                "/pets/**",
                                 "/logout",
                                 "/about",
                                 "/api/data/default",
@@ -91,7 +88,8 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/dashboard"))
                 /* Logout configuration */
                 .logout((logout) -> logout.logoutSuccessUrl("/login"))  //CHANGED THIS LINE, ADDED LOGOUT
-                .httpBasic(withDefaults());
+//                .httpBasic(withDefaults())
+        ;
         return http.build();
     }
 }
