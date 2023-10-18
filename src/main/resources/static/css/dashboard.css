@@ -13,7 +13,7 @@ body{
 .profile-banner {
     padding-top: 3rem;
     padding-bottom: 4rem;
-    column-gap: 50px;
+
     row-gap: 15px;
     justify-content: space-around;
     display: flex;
@@ -89,6 +89,7 @@ display: block;
 .row-buttons {
 display: flex;
 justify-content: space-evenly;
+    margin-top: 25px;
 }
 
 .view-tab-buttons,.edit-account-btn,.complete-foster-btn {
@@ -238,6 +239,7 @@ margin-top: 5em;
     border: 3px solid #fdccbd;
     color: #20254b;
     box-shadow: 0 4px 8px #fdccbd;
+    margin-bottom: 20px;
 
 }
 
@@ -251,11 +253,13 @@ margin-top: 5em;
 
 #userFosters{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-content: flex-end;
     max-width: 90%;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    align-content: flex-end;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-right: 63px;
 }
 .fosters-container {
     display: flex;
@@ -305,4 +309,66 @@ margin-top: 5em;
 }
 
 
+#userFosters {
+    display: flex;
+    max-width: 90%;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: flex-end;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
 /* Style for the individual cards inside the container */
+
+/* Style for the user badges container */
+.user-badges-container {
+    display: flex; /* Use flexbox to arrange badges horizontally */
+    flex-wrap: wrap; /* Wrap badges to the next line when they don't fit horizontally */
+    gap: 10px; /* Adjust the gap between badges */
+}
+
+/* Style for the individual badge cards inside the container */
+.user-badge-card {
+    flex: 0 0 calc(25% - 10px); /* Set the width of each badge card to 25% with a gap in between */
+}
+
+.badges-pic {
+    max-width: 100%; /* Ensure the badge pictures fit inside their containers */
+    height: auto; /* Maintain the aspect ratio of the badge pictures */
+}
+
+.user-badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #fdccbc91;
+    /* min-width: 100%; */
+    border-radius: 19px;
+}
+
+.user-badges-wrapper{
+    padding-left: 20px;
+    margin-right: -347px;
+}
+
+.user-info{
+    display: flex;
+    margin-right: 12rem;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+#userFosters {
+    display: flex;
+    max-width: 90%;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    align-content: flex-end;
+    justify-content: space-around;
+    align-items: flex-end;
+}

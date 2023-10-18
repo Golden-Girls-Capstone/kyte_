@@ -42,6 +42,7 @@
                             <div th:if="${invalidPassword == true}">
                                 <h2>Your password is incorrect!</h2>
                             </div>
+                            </div>
                             <div class="modal-body">
                                 <form th:action="@{/profile/edit}" th:method="post"
                                       class=" row d-flex justify-content-center p-5"
@@ -71,19 +72,23 @@
                     </div>
                 </div>
                 <!--                USER BADGES-->
-                <div class="user-badges-container" >
-                    <h4 class="badge-text">Acquired Badges:</h4>
+            <div class="user-badges-wrapper">
+                <h4 class="badge-text">Acquired Badges:</h4>
+                <div class="user-badges-container">
                     <div class="user-badge-card" th:each="badge : ${badges}">
                         <img class="badges-pic" th:src="@{|/img/${badge.img}|}">
                     </div>
+                </div>
+
+            </div>
+
 
                     <!--                    <div >-->
                     <!--                        <div th:data-badge-id="${badge.id}">-->
 
                     <!--                            <p th:text="${badge.getName()}"></p>-->
                     <!--                        </div>-->
-                </div>
-            </div>
+
             <!--                    <h4 class="badge-text">Acquired Badges:</h4>-->
             <div class="column text-center badges-display">
             </div>
@@ -101,7 +106,7 @@
 
 <div class="wrapper-for-fosters">
 </div>
-<div class="row" id="userFosters">
+<div id="userFosters">
 <!--    <div class="foster-container">-->
 <!--        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>-->
 <!--    </div>-->
