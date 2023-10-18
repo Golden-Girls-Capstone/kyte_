@@ -44,7 +44,6 @@
                             </div>
                             <div class="validation-error">
                             </div>
-                            </div>
                             <div class="modal-body">
                                 <form th:action="@{/profile/edit}" th:method="post"
                                       class=" row d-flex justify-content-center p-5 edit-profile-form"
@@ -114,18 +113,6 @@
 
 
     <div id="userFosters" class="dash-foster-container hidden">
-        <div class="foster-container previousFostersHeader">
-            <h2 class="profile-header">Previous Fosters:</h2>
-            <div class="previous-foster-container"> <!-- Add this container -->
-                <div id="prev-foster" class="previous-cards" th:each="foster: ${fosters}">
-                    <div class="previous-foster-card">
-                        <img class="previous-foster-pet-pic" th:src="${foster.photo}">
-                        <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="column foster-info">
             <div class="cards-hide active current-cards fosters-js" th:if="${current != null}" th:object="${current}">
                 <h2 class="profile-header current-foster-header-js">Current Foster: </h2>
@@ -137,6 +124,18 @@
                             data-bs-target="#review-modal">
                         Complete Foster
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="foster-container previousFostersHeader">
+            <h2 class="profile-header">Previous Fosters:</h2>
+            <div class="previous-foster-container"> <!-- Add this container -->
+                <div id="prev-foster" class="previous-cards" th:each="foster: ${fosters}">
+                    <div class="previous-foster-card">
+                        <img class="previous-foster-pet-pic" th:src="${foster.photo}">
+                        <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
+                    </div>
                 </div>
             </div>
         </div>
