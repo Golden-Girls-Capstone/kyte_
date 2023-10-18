@@ -27,14 +27,6 @@ body{
 padding-top: 3rem;
 }
 
-/*.edit-account-btn {*/
-/*align-items: center;*/
-/*color: var(--blush);*/
-/*background-color: var(--muave);*/
-/*text-align: center;*/
-/*height: min-content;*/
-/*width: max-content;*/
-/*}*/
 
 .user-badges {
     width: 49rem;
@@ -69,12 +61,14 @@ height: 43px;
 button.btn.btn-secondary {
 margin-top: 2rem;
 }
+
 .modal-body {
-position: relative;
-flex: 1 1 auto;
-background: aliceblue;
-border-radius: 11px;
+    position: relative;
+    flex: 1 1 auto;
+    background: #ffeee2;
+    border-radius: 11px;
 }
+
 .modal-header{
 background: aliceblue;
 }
@@ -92,7 +86,7 @@ display: none;
 }
 
 .shown {
-    display: block;
+    display: flex;
 }
 .hidden {
     display: none;
@@ -106,7 +100,7 @@ display: none;
     background: #cee7f5;
 }
 
-.view-tab-buttons,.complete-foster-btn, .edit-account-btn{
+.view-tab-buttons,.complete-foster-btn, .edit-account-btn, .remove-fav-btn{
 color: #ffffff;
 border-radius: 9px;
 border-color: #d8868d;
@@ -119,12 +113,14 @@ align-items: center;
 transition: box-shadow 0.3s;
 }
 
-.view-tab-buttons:hover,.edit-account-btn:hover, .complete-foster-btn:hover{
+.view-tab-buttons:hover,.edit-account-btn:hover, .complete-foster-btn:hover, .remove-fav-btn:hover{
 box-shadow: 0 0 10px 2px rgb(216, 134, 141);
 transform: scale(1.05);
 background: #f1d8da;
 color: #d8868d;
 }
+
+
 
 
 .user-pic-badge {
@@ -140,8 +136,7 @@ align-items: center;
 width: 16rem;
 height: 16rem;
 border-radius: 50%;
-border-style: double;
-    border-color: #ffffff;
+border-style: double;border-color: #ffffff;
 background-image: url("../img/shiba-bg.jpg");
 background-size: cover;
 background-position: center;
@@ -175,7 +170,7 @@ margin-top: 5em;
 }
 
 
-.current-foster-pet-pic, .previous-foster-pet-pic{
+.current-foster-pet-pic, .previous-foster-pet-pic, .favorites-pet-pic{
     border-radius: 50%;
     overflow: hidden;
     width: 175px;
@@ -267,12 +262,14 @@ margin-top: 5em;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-direction: column;
+    margin-right: 11em;
 }
 
-.favorites-cards{
+.favorites-cards {
     padding: 3rem;
     width: 90%;
-    max-width: 274px;
+    max-width: 311px;
     background-color: #cfe6f48a;
     border-radius: 16px;
     position: relative;
@@ -281,6 +278,8 @@ margin-top: 5em;
     text-align: center;
     color: #20254b;
     box-shadow: 0 4px 8px #86b7fe;
+    margin: 15px;
+    flex: 0 0 calc(50% - 10px);
 }
 
 /* Style for validation error on edit profile modal*/
@@ -342,10 +341,10 @@ margin-top: 5em;
     border-radius: 19px;
 }
 
-.user-badges-wrapper{
-    padding-left: 20px;
-    margin-right: -347px;
-}
+/*.user-badges-wrapper{*/
+/*    padding-left: 20px;*/
+/*    margin-right: -254px;*/
+/*}*/
 
 .user-info{
     display: flex;
@@ -378,6 +377,7 @@ margin-top: 5em;
     border: 3px solid #f4d9db;
     color: #20254b;
     box-shadow: 0 4px 8px #f8ccd4;
+    max-width: 323px;
 }
 
 .delete-review-btn {
@@ -416,3 +416,96 @@ margin-top: 5em;
 .edit-account-btn {
     margin-top: 20px;
 }
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #feeee1;
+    background-clip: padding-box;
+    outline: 0;
+    border-radius: 46px;
+}
+
+
+
+/*this is for the scroll on the favorites tab*/
+/*fav tab styling */
+.favorites-header{
+    color: #20254b;
+    font-family: 'Young Serif', serif;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+.favorites-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 91px;
+}
+
+.scrollable-container {
+    max-height: 441px; /* Set the desired maximum height */
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap between cards */
+}
+
+.fav-pet-name, h4, h5{
+    color: #20254b;
+    font-family: 'Young Serif', serif;
+    margin-bottom: 10px;
+}
+
+
+.remove-fav-btn, .submit-review-btn{
+    color: #ffffff;
+    border-radius: 9px;
+    margin-top: 20px;
+    border-color: #86b7fe;
+    width: 154px;
+    height: 41px;
+    background: #86b7fe;
+    border-style: unset;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.remove-fav-btn:hover, .submit-review-btn:hover{
+    box-shadow: 0 0 10px 2px rgb(134, 183, 254);
+    transform: scale(1.05);
+    background: #d4e1f6;
+    color: #86b7fe;
+
+}
+
+
+/*end of fav tab styling */
+.current-cards{
+    margin-top: 4.5em;
+}
+
+.dash-review-container{
+    margin-left: 10em;
+
+}
+
+/*scroll container for reviews */
+.reviews-container {
+    width: 100vw;
+    max-height: 445px; /* Set the desired maximum height */
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4em;
+}
+
+
+
+/*.dash-review-container {*/
+/*    margin-left: 13em;*/
+/*}*/
