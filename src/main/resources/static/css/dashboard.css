@@ -87,13 +87,16 @@ display: none;
 }
 
 .active {
-justify-content: center;
-display: block;
+    justify-content: center;
+    display: block;
 }
+
 .row-buttons {
-display: flex;
-justify-content: space-evenly;
+    display: flex;
+    justify-content: space-evenly;
     margin-top: 25px;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .view-tab-buttons,.complete-foster-btn{
@@ -153,31 +156,9 @@ font-family: var(--primary-font);
 }
 
 .foster-container{
-/*display: flex;*/
-/*flex-direction: row-reverse;*/
-/*justify-content: space-evenly;*/
 margin-top: 5em;
 }
-/*.edit-account-btn, .complete-foster-btn  {*/
-/*    color: #ffffff;*/
-/*    border-radius: 9px;*/
-/*    border-color: #fdccbd;*/
-/*    height: 41px;*/
-/*    background: #fdccbd;*/
-/*    border-style: unset;*/
-/*    font-weight: bolder;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    transition: box-shadow 0.3s;*/
-/*}*/
 
-/*.edit-account-btn:hover, .complete-foster-btn:hover{*/
-/*    box-shadow: 0 0 10px 2px rgb(242, 196, 182);*/
-/*    transform: scale(1.05);*/
-/*    background: #ffffff;*/
-/*    color: #f49f86;*/
-
-/*}*/
 
 .profile-header{
     display: flex;
@@ -331,18 +312,18 @@ margin-top: 5em;
 
 /* Style for the user badges container */
 .user-badges-container {
-    display: flex; /* Use flexbox to arrange badges horizontally */
-    flex-wrap: wrap; /* Wrap badges to the next line when they don't fit horizontally */
-    gap: 10px; /* Adjust the gap between badges */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .user-badge-card {
-    flex: 0 0 calc(25% - 10px); /* Set the width of each badge card to 25% with a gap in between */
+    flex: 0 0 calc(25% - 10px);
 }
 
 .badges-pic {
-    max-width: 100%; /* Ensure the badge pictures fit inside their containers */
-    height: auto; /* Maintain the aspect ratio of the badge pictures */
+    max-width: 100%;
+    height: auto;
 }
 
 .user-badges-container {
