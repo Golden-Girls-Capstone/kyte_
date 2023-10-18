@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let fosterPetReturnData = await fosterFetchResponse.json();
             console.log(fosterPetReturnData);
             modal.style.display = 'none';
+            window.location.replace("/dashboard");
         })
     }
 
