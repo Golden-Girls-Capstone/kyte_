@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <button type="submit" name="fosterButton" class="openModalButton" data-pet-image="${imageUrl}">Foster</button>
     <!--                        </form>-->
     <!--                        <form method="post" action="/browse">-->
-                                <button type="submit" name="favoriteButton" class="saveFavoriteButton" data-pet-image="${imageUrl}">Save</button>
+                                <button type="submit" name="favoriteButton" class="saveFavoriteButton" data-pet-image="${imageUrl}">&#x1F90D;</button>
     <!--                        </form>x-->
                         </div>
                     `;
