@@ -305,4 +305,14 @@ margin-top: 5em;
 }
 
 
+#userFosters {
+    display: flex;
+    max-width: 90%;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: flex-end;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
 /* Style for the individual cards inside the container */
