@@ -131,7 +131,8 @@ width: 16rem;
 height: 16rem;
 border-radius: 50%;
 border-style: double;
-background-image: url("../img/placeholder.svg");
+    border-color: #ffffff;
+background-image: url("../img/shiba-bg.jpg");
 background-size: cover;
 background-position: center;
 }
