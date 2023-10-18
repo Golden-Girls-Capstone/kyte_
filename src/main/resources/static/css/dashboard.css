@@ -4,7 +4,7 @@ body{
 }
 
 .user-profile-container{
-    height: 51vh;
+    height: 100%;
 
 }
 
@@ -34,7 +34,7 @@ body{
 }
 
 .user-badges {
-    height: 14vh;
+    height: 100%;
     width: 27rem;
     background: #fdccbc;
     border-radius: 9px;
@@ -76,7 +76,7 @@ input.btn.btn-danger {
     width: 13rem;
     height: 48px;
 }
-.cards {
+.cards-hide {
     display: none;
 }
 
@@ -267,4 +267,18 @@ input.btn.btn-danger {
 
 #previousFostersHeader{
     margin-left: 50%;
+}
+
+.favorites-cards{
+    padding: 3rem;
+    width: 90%;
+    max-width: 274px;
+    background-color: #cfe6f48a;
+    border-radius: 16px;
+    position: relative;
+    border: 3px solid #cfe6f4;
+    background-clip: padding-box;
+    text-align: center;
+    color: #20254b;
+    box-shadow: 0 4px 8px #86b7fe;
 }
