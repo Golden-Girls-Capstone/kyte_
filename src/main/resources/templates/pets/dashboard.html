@@ -37,11 +37,7 @@
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Account Info</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
+
                             <div class="validation-error">
                             </div>
                             <div class="modal-body">
@@ -65,7 +61,7 @@
                                            placeholder="New password"/>
                                     <br>
 
-                                    <input type="submit" class="btn btn-primary" value="Update Account"/>
+                                    <input type="submit" class="edit-account-btn" value="Update Account"/>
                                 </form>
                             </div>
                         </div>
@@ -96,16 +92,17 @@
 
     <!--        FAVORITES PAGE-->
     <div class="container vh-50 p-5 dash-favorite-container hidden">
-        <!--might have to move this -->
         <div class="favorites-container">
-            <h2 class="favorites-header favorites-header-js" >Favorites:</h2>
-            <div th:each="favorite : ${favorites}" class="favorites favorites-cards">
-                <div class="card-body">
-                    <img class="favorites-pet-pic" th:src="${favorite.photo}">
-                    <h5 class="card-title">Name: <span th:text="${favorite.name}"></span> !</h5>
-                    <form>
-                        <button class="remove-fav-btn">Remove Favorite</button>
-                    </form>
+            <h2 class="favorites-header favorites-header-js">Favorites:</h2>
+            <div class="scrollable-container">
+                <div th:each="favorite : ${favorites}" class="favorites favorites-cards">
+                    <div class="card-body">
+                        <img class="favorites-pet-pic" th:src="${favorite.photo}">
+                        <h5 class="card-title fav-pet-name"><span th:text="${favorite.name}"></span></h5>
+                        <form>
+                            <button class="remove-fav-btn">Remove Favorite</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,18 +141,13 @@
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="fosterModalBtn">Submit a review</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
                     <div class="modal-body">
                         <form th:action="@{/dashboard/review}" th:method="post" th:if="${review != null}" th:object="${review}"
                               class=" row d-flex justify-content-center p-5">
                             <input id="foster-review-input" name="foster_review" class="form-control" type="text"
                                    th:field="${review.body}"
                                    placeholder="Enter your review"/>
-                            <input type="submit" class="btn btn-danger" value="submit review"/>
+                            <input type="submit" class="submit-review-btn" value="submit review"/>
                         </form>
                     </div>
                 </div>
@@ -166,20 +158,23 @@
 
     <!--    USERS REVIEWS PAGE-->
     <div class="dash-review-container hidden">
-        <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2 ">
-            <div class="reviews-cards" th:review-id="${review.id}">
-                <div class="card-body">
-                    <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
-                    <h5 class="card-title">Name: <span th:text="${review.pet.getName()}"></span> !</h5>
-                    <p class="card-text">Review: <span th:text="${review.body}"></span></p>
-                    <!--delete button-->
-                    <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
-                        <button class="delete-review-btn">Delete Review</button>
-                    </form>
+        <div class="reviews-container">
+            <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
+                <div class="reviews-cards" th:review-id="${review.id}">
+                    <div class="card-body review-card">
+                        <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
+                        <h5 class="card-title review-pet review-pet-name"><span th:text="${review.pet.getName()}"></span></h5>
+                        <p class="card-text">Review: <span th:text="${review.body}"></span></p>
+                        <!-- delete button -->
+                        <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
+                            <button class="delete-review-btn">Delete Review</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 </div>
 
