@@ -65,6 +65,7 @@ public class UserController {
     public String viewLogin() {
         return "users/login";
     }
+
     @PostMapping("/profile/edit")
     public String editProfile(@ModelAttribute User user,
                               @RequestParam String oldPassword,
