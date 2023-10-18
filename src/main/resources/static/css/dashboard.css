@@ -294,6 +294,13 @@ margin-top: 5em;
     box-shadow: 0 4px 8px #86b7fe;
 }
 
+/* Style for validation error on edit profile modal*/
+.validation-error {
+    color: red;
+    font-size: large;
+    background-color: #EFF8FF;
+    align-items: center;
+}
 
 
 

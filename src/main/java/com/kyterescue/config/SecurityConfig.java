@@ -52,7 +52,8 @@ public class SecurityConfig {
                                 "/browse/pet",
                                 "/browse/foster/*/*/*",
                                 "browse/favorite/*",
-                                "/dashboard"
+                                "/dashboard",
+                                "/dashboard/send/validation/error"
                                 )
                                 .authenticated()
 
