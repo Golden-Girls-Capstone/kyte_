@@ -57,10 +57,10 @@ h1.meet-Devs {
     padding: 0.5rem;
 }
 
-.alumni-logo {
-    height: 22px;
-    width: 22px;
-}
+/*.alumni-logo {*/
+/*    height: 22px;*/
+/*    width: 22px;*/
+/*}*/
 
 
 .dev-cards {
@@ -110,13 +110,18 @@ h1.meet-Devs {
 
 
 div#accordionExample {
-    --bs-accordion-bg: #ffffff;
-    --bs-accordion-active-bg: var(--muave);
+    --bs-accordion-bg: var(--muave);
+    /*--bs-accordion-active-bg: var(--muave);*/
 
 }
 
 .title-text {
     font-family: 'Young Serif', serif;
+}
+
+.githubLogo, .linkedInLogo, .alumniLogo {
+    height: 30px;
+    width: 30px;
 }
 
 /*!*-----------------Media Queries-----------------*!*/
