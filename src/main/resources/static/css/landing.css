@@ -3,6 +3,9 @@
     --secondary-font: 'Montserrat', sans-serif;
 }
 
+
+
+
 body{
     overflow: scroll;
     background-color: #ffffff;
@@ -10,15 +13,18 @@ body{
 
 P.logo {
     font-size: 2.5rem;
-    /*font-family: var(--primary-font);*/
+    font-family: var(--primary-font);
     font-weight:bolder;
 }
 
 P.motto {
     font-size: 1.5rem;
-    /*font-family: var(--primary-font);*/
+    font-family: var(--primary-font);
 }
 
+.page-wrapper{
+    padding-top: unset;
+}
 .landing-text {
     color: #fffaec;
     display: flex;
@@ -59,7 +65,7 @@ li {
     width: 9rem;
     border-radius: 8px;
     color: rgb(255, 255, 255);
-    /*font-family: var(--secondary-font);*/
+    font-family: var(--secondary-font);
     background: #D78790;
     border-style: unset;
     font-weight: bolder;
@@ -73,8 +79,8 @@ li {
 .btn-login:hover {
     box-shadow: 0 0 10px 2px rgba(215, 135, 144, 0.86);
     transform: scale(1.05);
-    background: #FDCCBB;
-    color: white;
+    background: #f4d9db;
+    color: #D78790;
 }
 /*-----------------------wave effect on image------------------------*/
 .background-container {
@@ -84,6 +90,9 @@ li {
     width: 100%;
     height: 99vh;
     overflow: hidden;
+    background-image: url("../img/Untitled-design.jpg");
+    background-size: cover;
+    object-fit: cover;
 }
 
 .blur-background {
@@ -136,7 +145,7 @@ button.btn-jumbotron {
     width: 154px;
     height: 41px;
     color: #FFFFFF;
-    /*font-family: var(--secondary-font);*/
+    font-family: var(--secondary-font);
     background: #86b7fe;
     border-style: unset;
     font-weight: bolder;
@@ -159,24 +168,40 @@ button.btn-jumbotron {
 }
 /*-----------------idk-----*/
 
-.jumbotron {
-    background: rgba(213, 236, 250, 0.85);
-    height: 76vh;
+.container-fluid.foster {
+    background-image: url(../img/blue-dog-bg3.png);
+    height: 100vh;
     display: flex;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: end;
     align-items: center;
-    padding: 20px;
+    padding: unset;
+    background-size: cover;
+    padding-right: 8rem;
 }
+/*.container-fluid::before {*/
+/*    content: "";*/
+/*    background-image: url("../img/dogwave.svg");*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-size: cover; !* Adjust as needed *!*/
+/*    z-index: -1; !* Place the pseudo-element behind the container content *!*/
+/*}*/
 
 .jumbo-title {
     text-align: left;
 }
 
-.jumbo-content {
+.foster-content {
     width: 40%;
-    text-align: right;
-    position: relative;
-    top: -4em;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -54px;
+    align-items: end;
 }
 .foster-tittle {
     display: flex;
@@ -188,7 +213,7 @@ button.btn-jumbotron {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position: absolute;
+    /*position: absolute;*/
     bottom: -70rem;
     flex-direction: row-reverse;
 }
@@ -211,14 +236,9 @@ button.btn-jumbotron {
     justify-content: center;
     align-items: center;
 }
-.org-cat {
-    width: 19rem;
-    position: relative;
-    top: 10rem;
-    left: -14rem;
-}
+
 .heart {
-    --size: 35rem;
+    --size: 28rem;
     position: relative;
     width: var(--size);
     height: calc(var(--size) * 0.3);
@@ -252,7 +272,7 @@ button.btn-jumbotron {
     width: 154px;
     height: 41px;
     color: rgb(255, 255, 255);
-    /*font-family: var(--primary-font);*/
+    font-family: var(--primary-font);
     background: #D78790;
     border-style: unset;
     font-weight: bolder;
@@ -281,8 +301,8 @@ img.doggy {
     width: 154px;
     height: 41px;
     color: white;
-    /*font-family: var(--primary-font);*/
-    background: #eebdabd1;
+    font-family: var(--primary-font);
+    background: #CE8B56;
     border-style: unset;
     font-weight: bolder;
     font-size: x-large;
@@ -293,13 +313,13 @@ img.doggy {
     transition: box-shadow 0.3s;
 
 }
-.btn-outreach:hover {
-    box-shadow: 0 0 10px 2px rgb(241 197 180);
-    transform: scale(1.05);
-    background: white;
-    color: #eebdabd1;
-}
 
+.btn-outreach:hover {
+    box-shadow: 0 0 10px 2px rgba(134, 78, 70, 0.7);
+    transform: scale(1.05);
+    background: #864E46;
+    color: white;
+}
 
 
 .navbar{
@@ -313,12 +333,12 @@ img.doggy {
     font-size: 2.5rem;
 
 }
-.btn-link.btn.logout {
-    color: #dc787f;
-    text-decoration: none;
-    margin-top: -7px;
-    padding: 0px;
-}
+/*.btn-link.btn.logout {*/
+/*    color: #dc787f;*/
+/*    text-decoration: none;*/
+/*    margin-top: -7px;*/
+/*    padding: 0px;*/
+/*}*/
 
 a {
     justify-content: space-around;
@@ -330,6 +350,10 @@ a {
 }
 
 a:visited { color:#dc787f }
+
+a.anchor-btn {
+    width: 33%;
+}
 
 /*Navbar Css*/
 a.nav-header {
@@ -399,19 +423,7 @@ button.navbar-toggler.collapsed {
 
 }
 @media (min-width: 768px) {
-    .navbar-expand-md .offcanvas .offcanvas-body {
-        display: flex;
-        flex-grow: 0;
-        padding: 0;
-        overflow-y: visible;
-        flex-direction: row-reverse;
-        margin-top: 22px;
-    }
-    .navbar-expand-md .navbar-collapse {
-        display: flex !important;
-        flex-basis: auto;
-        flex-direction: row-reverse;
-    }
+
 
     .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
         display: flex;
@@ -518,9 +530,9 @@ button.navbar-toggler.collapsed {
 
 /* Tablets and Small Desktops */
 @media (min-width: 768px) and (max-width: 991px) {
-    .background-container {
-        height: 60vh;
-    }
+    /*.background-container {*/
+    /*    height: 60vh;*/
+    /*}*/
 
     .landing-text {
         position: relative;
@@ -547,7 +559,19 @@ button.navbar-toggler.collapsed {
     justify-content: center;
 }
 
+/*.jumbotron {*/
+/*    background-image: url(../img/blue-dog-wave.png);*/
+/*    height: 76vh;*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*    padding: 20px;*/
 
+/*    background-size: cover;*/
+/*    position: relative;*/
+/*    background-repeat: no-repeat;*/
+/*    z-index: 65;*/
+/*}*/
 
 
 

@@ -43,6 +43,7 @@
                             </div>
                             <div class="validation-error">
                             </div>
+                            </div>
                             <div class="modal-body">
                                 <form th:action="@{/profile/edit}" th:method="post"
                                       class=" row d-flex justify-content-center p-5 edit-profile-form"
@@ -71,19 +72,23 @@
                     </div>
                 </div>
                 <!--                USER BADGES-->
-                <div class="user-badges-container" >
-                    <h4 class="badge-text">Acquired Badges:</h4>
+            <div class="user-badges-wrapper">
+                <h4 class="badge-text">Acquired Badges:</h4>
+                <div class="user-badges-container">
                     <div class="user-badge-card" th:each="badge : ${badges}">
                         <img class="badges-pic" th:src="@{|/img/${badge.img}|}">
                     </div>
+                </div>
+
+            </div>
+
 
                     <!--                    <div >-->
                     <!--                        <div th:data-badge-id="${badge.id}">-->
 
                     <!--                            <p th:text="${badge.getName()}"></p>-->
                     <!--                        </div>-->
-                </div>
-            </div>
+
             <!--                    <h4 class="badge-text">Acquired Badges:</h4>-->
             <div class="column text-center badges-display">
             </div>
@@ -101,7 +106,7 @@
 
 <div class="wrapper-for-fosters">
 </div>
-<div class="row" id="userFosters">
+<div id="userFosters">
 <!--    <div class="foster-container">-->
 <!--        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>-->
 <!--    </div>-->
@@ -183,13 +188,13 @@
     <div>
         <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
             <div id="reviews" class="cards-hide reviews-cards" th:review-id="${review.id}">
-                <div class="card-body">
+                <div class="card-body review-card">
                     <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
                     <h5 class="card-title">Name: <span th:text="${review.pet.getName()}"></span> !</h5>
                     <p class="card-text">Review: <span th:text="${review.body}"></span></p>
                                                 <!--delete button-->
                     <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
-                        <button class="btn btn-danger w-100">Delete Review</button>
+                        <button class="delete-review-btn">Delete Review</button>
                     </form>
                 </div>
             </div>

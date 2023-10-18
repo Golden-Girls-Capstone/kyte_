@@ -62,12 +62,15 @@ body {
 
 }
 
-/*.btn-link.btn.logout {*/
-/*    color: #dc787f;*/
-/*    text-decoration: none;*/
-/*    margin-top: -7px;*/
-/*    padding: 0px;*/
-/*}*/
+.btn-link.btn.logout {
+    color: #dc787f;
+    text-decoration: none;
+    margin-top: -9px;
+    padding: 0;
+    font-size: unset;
+    margin-right: 4px;
+    width: 59px;
+}
 
 a.nav-anchor{
     justify-content: space-around;
