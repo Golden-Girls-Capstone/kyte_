@@ -11,6 +11,7 @@
     <nav th:insert="partials/navbar:: nav"></nav>
     <!--            USER PROFILE PAGE-->
     <div class="user-profile-container">
+
         <div class="profile-banner ">
             <div class="user-pic-badge">
                 <div class="user-pic" th:if="${user != null}" th:text="${user.picture}"></div>
@@ -42,36 +43,36 @@
                             <div th:if="${invalidPassword == true}">
                                 <h2>Your password is incorrect!</h2>
                             </div>
-                            </div>
-                            <div class="modal-body">
-                                <form th:action="@{/profile/edit}" th:method="post"
-                                      class=" row d-flex justify-content-center p-5"
-                                      th:object="${user}">
-                                    <br>
-                                    <input id="username" name="username" type="text" class="mb-1" th:field="*{username}"
-                                           placeholder="Username"/>
-                                    <br>
-                                    <input id="email" name="email" type="email" class="mb-1" th:field="*{email}"
-                                           placeholder="Email"/>
-                                    <br>
-                                    <input id="zipcode" name="zipcode" type="text" class="mb-1" th:field="*{zipcode}"
-                                           placeholder="Zipcode"/>
-                                    <br>
-                                    <input id="oldPassword" name="oldPassword" type="password" class="mb-1"
-                                           placeholder="old password"/>
-                                    <br>
-                                    <input id="newPassword" name="newPassword" type="password"
-                                           placeholder="new password"/>
-                                    <br>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <input type="submit" class="btn btn-primary" value="Update Account"/>
-                                </form>
-                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/profile/edit}" th:method="post"
+                                  class=" row d-flex justify-content-center p-5"
+                                  th:object="${user}">
+                                <br>
+                                <input id="username" name="username" type="text" class="mb-1" th:field="*{username}"
+                                       placeholder="Username"/>
+                                <br>
+                                <input id="email" name="email" type="email" class="mb-1" th:field="*{email}"
+                                       placeholder="Email"/>
+                                <br>
+                                <input id="zipcode" name="zipcode" type="text" class="mb-1" th:field="*{zipcode}"
+                                       placeholder="Zipcode"/>
+                                <br>
+                                <input id="oldPassword" name="oldPassword" type="password" class="mb-1"
+                                       placeholder="old password"/>
+                                <br>
+                                <input id="newPassword" name="newPassword" type="password"
+                                       placeholder="new password"/>
+                                <br>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                </button>
+                                <input type="submit" class="btn btn-primary" value="Update Account"/>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <!--                USER BADGES-->
+            </div>
+            <!--                USER BADGES-->
             <div class="user-badges-wrapper">
                 <h4 class="badge-text">Acquired Badges:</h4>
                 <div class="user-badges-container">
@@ -79,62 +80,54 @@
                         <img class="badges-pic" th:src="@{|/img/${badge.img}|}">
                     </div>
                 </div>
-
             </div>
-
-
-                    <!--                    <div >-->
-                    <!--                        <div th:data-badge-id="${badge.id}">-->
-
-                    <!--                            <p th:text="${badge.getName()}"></p>-->
-                    <!--                        </div>-->
-
-            <!--                    <h4 class="badge-text">Acquired Badges:</h4>-->
-            <div class="column text-center badges-display">
-            </div>
+            <!--            <div class="column text-center badges-display">-->
+            <!--            </div>-->
         </div>
     </div>
     <!--        ANCHOR TAGS-->
+    <div class="row-buttons">
+        <button class="view-tab-buttons" id="showFavorites">Show Favorites</button>
+        <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
+        <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
+    </div>
 
-</div>
-</div>
-<div class="row-buttons">
-    <button class="view-tab-buttons" id="showFavorites">Show Favorites</button>
-    <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
-    <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
-</div>
 
-<div class="wrapper-for-fosters">
-</div>
-<div id="userFosters">
-<!--    <div class="foster-container">-->
-<!--        <h2 class="profile-header" id="previousFostersHeader">Previous Fosters: </h2>-->
-<!--    </div>-->
-    <div class="foster-container">
-        <h2 class="profile-header previousFostersHeader">Previous Fosters:</h2>
-        <div class="previous-foster-container"> <!-- Add this container -->
-            <div id="Prev-foster" class="cards-hide active previous-foster-container previous-cards" th:each="foster: ${fosters}">
-                <div class="previous-foster-card">
-                    <img class="previous-foster-pet-pic" th:src="${foster.photo}">
-                    <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
+
+    <!--        FAVORITES PAGE-->
+    <div class="container vh-50 p-5 dash-favorite-container hidden">
+        <!--might have to move this -->
+        <div class="favorites-container">
+            <h2 class="favorites-header favorites-header-js" >Favorites:</h2>
+            <div th:each="favorite : ${favorites}" class="favorites favorites-cards">
+                <div class="card-body">
+                    <img class="favorites-pet-pic" th:src="${favorite.photo}">
+                    <h5 class="card-title">Name: <span th:text="${favorite.name}"></span> !</h5>
+                    <form>
+                        <button class="remove-fav-btn">Remove Favorite</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!--        <div class="previous-foster">-->
-<!--            <div id="Prev-foster" class="cards-hide active previous-foster-container previous-cards"-->
-<!--                 th:each="foster: ${fosters}">-->
-<!--                <div class="previous-foster-card">-->
-<!--                    <img class="previous-foster-pet-pic" th:src="${foster.photo}">-->
-<!--                    <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
+    <div id="userFosters" class="dash-foster-container hidden">
+        <div class="foster-container previousFostersHeader">
+            <h2 class="profile-header">Previous Fosters:</h2>
+            <div class="previous-foster-container"> <!-- Add this container -->
+                <div id="prev-foster" class="previous-cards" th:each="foster: ${fosters}">
+                    <div class="previous-foster-card">
+                        <img class="previous-foster-pet-pic" th:src="${foster.photo}">
+                        <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="column foster-info">
-            <div class="cards-hide active current-cards fosters" th:if="${current != null}" th:object="${current}">
-                <h2 class="profile-header">Current Foster: </h2>
+            <div class="cards-hide active current-cards fosters-js" th:if="${current != null}" th:object="${current}">
+                <h2 class="profile-header current-foster-header-js">Current Foster: </h2>
                 <div class="current-foster-card-container">
                     <img class="current-foster-pet-pic" th:src="${current.photo}">
                     <h4 class="current-foster-name" th:if="${current != null}" th:text="${current.name}"></h4>
@@ -146,7 +139,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="fosterModal"
              aria-hidden="true">
@@ -170,29 +162,17 @@
             </div>
         </div>
     </div>
-</div>
 
 
-    <!--        FAVORITES PAGE-->
-    <div class="container vh-50 p-5" id="userFavorites" >
-        <h2 class="favorites-header">Favorites:</h2>
-        <div th:each="favorite : ${favorites}" class="favorites favorites-cards cards-hide">
-            <div class="card-body">
-                <img class="favorites-pet-pic" th:src="${favorite.photo}">
-                <h5 class="card-title">Name: <span th:text="${favorite.name}"></span> !</h5>
-                <button class="remove-fav-btn">Remove Favorite</button>
-            </form>
-        </div>
-    </div>
     <!--    USERS REVIEWS PAGE-->
-    <div>
-        <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
-            <div id="reviews" class="cards-hide reviews-cards" th:review-id="${review.id}">
+    <div class="dash-review-container hidden">
+        <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2 ">
+            <div class="reviews-cards" th:review-id="${review.id}">
                 <div class="card-body">
                     <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
                     <h5 class="card-title">Name: <span th:text="${review.pet.getName()}"></span> !</h5>
                     <p class="card-text">Review: <span th:text="${review.body}"></span></p>
-                                                <!--delete button-->
+                    <!--delete button-->
                     <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
                         <button class="btn btn-danger w-100">Delete Review</button>
                     </form>
@@ -200,6 +180,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 <script src="/js/dashboard.js"></script>
