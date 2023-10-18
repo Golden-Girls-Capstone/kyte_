@@ -6,6 +6,7 @@ h1.meet-Devs {
     top: 10rem;
     color: var(--navy);
     font-weight: bolder;
+    margin-bottom: 2rem;
 }
 .Devs-R-Us {
     height: 100vh;
