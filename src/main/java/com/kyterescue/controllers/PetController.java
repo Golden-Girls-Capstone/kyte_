@@ -48,7 +48,6 @@ public class PetController {
     }
 
     @GetMapping("/dashboard")
-
     public String viewDashboard(Model model, @CurrentSecurityContext(expression = "authentication?.name")String username) throws JsonProcessingException {
         User user = authenticationService.grabAuthenticationUserDetails(model);
         model.addAttribute("current", dashboardFosterDisplayService.grabCurrentFosterAsPet(user));
