@@ -110,8 +110,8 @@ h1.meet-Devs {
 
 
 div#accordionExample {
-    --bs-accordion-bg: #ffffff;
-    --bs-accordion-active-bg: var(--muave);
+    --bs-accordion-bg: var(--muave);
+    /*--bs-accordion-active-bg: var(--muave);*/
 
 }
 
