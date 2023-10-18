@@ -36,7 +36,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
+        http
+                /* Login configuration */
+                .formLogin((login) -> login
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/dashboard"))
+                /* Logout configuration */
+                .logout((logout) -> logout.logoutSuccessUrl("/login"))  //CHANGED THIS LINE, ADDED LOGOUT
+//                .httpBasic(withDefaults())
+                .authorizeHttpRequests((requests) -> requests
 //                         Pages that require authentication
 
                         .requestMatchers(
@@ -82,13 +90,6 @@ public class SecurityConfig {
                                 "/img/**")
                                 .permitAll()
                 )
-                /* Login configuration */
-                .formLogin((login) -> login
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/dashboard"))
-                /* Logout configuration */
-                .logout((logout) -> logout.logoutSuccessUrl("/login"))  //CHANGED THIS LINE, ADDED LOGOUT
-//                .httpBasic(withDefaults())
         ;
         return http.build();
     }
