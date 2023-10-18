@@ -169,14 +169,15 @@ button.btn-jumbotron {
 /*-----------------idk-----*/
 
 .container-fluid.foster {
-    background-image: url(../img/dogwave.svg);
-    height: 69vh;
+    background-image: url(../img/blue-dog-bg3.png);
+    height: 100vh;
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: end;
     align-items: center;
     padding: unset;
     background-size: cover;
+    padding-right: 8rem;
 }
 /*.container-fluid::before {*/
 /*    content: "";*/
@@ -199,7 +200,8 @@ button.btn-jumbotron {
     text-align: center;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 123px;
+    margin-top: -54px;
+    align-items: end;
 }
 .foster-tittle {
     display: flex;
@@ -211,7 +213,7 @@ button.btn-jumbotron {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position: absolute;
+    /*position: absolute;*/
     bottom: -70rem;
     flex-direction: row-reverse;
 }
