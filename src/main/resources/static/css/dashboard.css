@@ -27,14 +27,14 @@ body{
 padding-top: 3rem;
 }
 
-.edit-account-btn {
-align-items: center;
-color: var(--blush);
-background-color: var(--muave);
-text-align: center;
-height: min-content;
-width: max-content;
-}
+/*.edit-account-btn {*/
+/*align-items: center;*/
+/*color: var(--blush);*/
+/*background-color: var(--muave);*/
+/*text-align: center;*/
+/*height: min-content;*/
+/*width: max-content;*/
+/*}*/
 
 .user-badges {
     width: 49rem;
@@ -94,12 +94,12 @@ display: none;
 .row-buttons {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 25px;
     padding-top: 2em;
     padding-bottom: 2em;
+    background: #cee7f5;
 }
 
-.view-tab-buttons,.complete-foster-btn{
+.view-tab-buttons,.complete-foster-btn, .edit-account-btn{
 color: #ffffff;
 border-radius: 9px;
 border-color: #d8868d;
@@ -406,27 +406,6 @@ margin-top: 5em;
 }
 
 
-.edit-account-btn{
-    color: #ffffff;
-    border-radius: 9px;
+.edit-account-btn {
     margin-top: 20px;
-    border-color: #fdccbc;
-    width: 154px;
-    height: 41px;
-    background: #fdccbc;
-    border-style: unset;
-    font-weight: bolder;
-    justify-content: center;
-    align-items: center;
-    transition: box-shadow 0.3s;
-
-}
-
-.edit-account-btn:hover{
-
-    box-shadow: 0 0 10px 2px rgb(251, 197, 177);
-    transform: scale(1.05);
-    background: #f8e0d8;
-    color: #fac6b4;
-
 }
