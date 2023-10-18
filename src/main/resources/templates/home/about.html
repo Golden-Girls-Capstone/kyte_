@@ -6,14 +6,42 @@
     <meta charset="UTF-8">
     <title>About Us</title>
     <link rel="stylesheet" href="/css/about.css">
+<!--<link rel="stylesheet"  href="/css/loading.css">-->
+    <link rel="stylesheet" href="/css/loading.css">
 
 </head>
 <body>
 <nav th:insert="partials/navbar :: nav"></nav>
 <form action="@{/about}" th:method="get"></form>
 <div class="container-fluid">
+    <div class="hamsterLoadingContainer">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster" id="hamsterLoader">
+            <div class="hamster-loader">
+
+                <div class="wheel"></div>
+                <div class="hamster">
+                    <div class="hamster__body">
+                        <div class="hamster__head">
+                            <div class="hamster__ear"></div>
+                            <div class="hamster__eye"></div>
+                            <div class="hamster__nose"></div>
+                        </div>
+                        <div class="hamster__limb hamster__limb--fr"></div>
+                        <div class="hamster__limb hamster__limb--fl"></div>
+                        <div class="hamster__limb hamster__limb--br"></div>
+                        <div class="hamster__limb hamster__limb--bl"></div>
+                        <div class="hamster__tail"></div>
+                    </div>
+                </div>
+                <div class="spoke"></div>
+            </div>
+        </div>
+
+    </div>
     <div class="devs-container">
+
         <h1 class="meet-Devs title-text"> Meet The Developers </h1>
+
         <div class="Devs-R-Us">
 
 
@@ -31,15 +59,15 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex ">
-                        <a href="https://github.com/emilysmendes">
+                        <a href="https://github.com/emilysmendes" target="_blank">
                             <img src="/img/github.png" class="githubLogo">
                         </a>
 
-                        <a href="https://www.linkedin.com/in/emilysvetcos/">
+                        <a href="https://www.linkedin.com/in/emilysvetcos/" target="_blank">
                             <img src="/img/linkedin.png" class="linkedInLogo">
                         </a>
 
-                        <a href="https://alumni.codeup.com/candidate/emily-mendes/">
+                        <a href="https://alumni.codeup.com/candidate/emily-mendes/" target="_blank">
                             <img src="/img/codeuplogo.png" class="alumniLogo">
                         </a>
                     </div>
@@ -52,15 +80,15 @@
                         <p class="body-text">Full Stack Developer</p>
                     </div>
                     <div class="card-footer d-flex ">
-                        <a href="https://github.com/SamR0429">
+                        <a href="https://github.com/SamR0429" target="_blank">
                             <img src="/img/github.png" class="githubLogo">
                         </a>
 
-                        <a href="https://www.linkedin.com/in/samantha-ramos99/">
+                        <a href="https://www.linkedin.com/in/samantha-ramos99/" target="_blank">
                             <img src="/img/linkedin.png" class="linkedInLogo">
                         </a>
 
-                        <a href="https://alumni.codeup.com/candidate/samantha-ramos/">
+                        <a href="https://alumni.codeup.com/candidate/samantha-ramos/" target="_blank">
                             <img src="/img/codeuplogo.png" class="alumniLogo">
                         </a>
                     </div>
@@ -73,15 +101,15 @@
                         <p class="body-text">Full Stack Developer</p>
                     </div>
                     <div class="card-footer d-flex ">
-                        <a href="https://github.com/TyONeal">
+                        <a href="https://github.com/TyONeal" target="_blank">
                             <img src="/img/github.png" class="githubLogo">
                         </a>
 
-                        <a href="https://www.linkedin.com/in/ty-oneal/">
+                        <a href="https://www.linkedin.com/in/ty-oneal/" target="_blank">
                             <img src="/img/linkedin.png" class="linkedInLogo">
                         </a>
 
-                        <a href="https://alumni.codeup.com/candidate/tyler-oneal/">
+                        <a href="https://alumni.codeup.com/candidate/tyler-oneal/" target="_blank">
                             <img src="/img/codeuplogo.png" class="alumniLogo">
                         </a>
                     </div>
@@ -94,15 +122,15 @@
                         <p class="body-text">Full Stack Developer</p>
                     </div>
                     <div class="card-footer d-flex ">
-                        <a href="https://github.com/Kvar54">
-                            <img src="/img/github.png" class="githubLogo">
+                        <a href="https://github.com/Kvar54" target="_blank">
+                            <img src="/img/github.png" class="githubLogo" >
                         </a>
 
 <!--                        <a href="">-->
                             <img src="/img/linkedin.png" class="linkedInLogo">
 <!--                        </a>-->
 
-                        <a href="https://alumni.codeup.com/candidate/keila-vargas/">
+                        <a href="https://alumni.codeup.com/candidate/keila-vargas/" target="_blank">
                             <img src="/img/codeuplogo.png" class="alumniLogo">
                         </a>
                     </div>
@@ -115,15 +143,15 @@
                         <p class="body-text">Full Stack Developer</p>
                     </div>
                     <div class="card-footer d-flex ">
-                        <a href="https://github.com/hussainarusa">
+                        <a href="https://github.com/hussainarusa" target="_blank">
                             <img src="/img/github.png" class="githubLogo">
                         </a>
 
-                        <a href="https://www.linkedin.com/in/arusa-hussain/">
+                        <a href="https://www.linkedin.com/in/arusa-hussain/" target="_blank">
                             <img src="/img/linkedin.png" class="linkedInLogo">
                         </a>
 
-                        <a href="https://alumni.codeup.com/candidate/arusa-hussain/">
+                        <a href="https://alumni.codeup.com/candidate/arusa-hussain/" target="_blank">
                             <img src="/img/codeuplogo.png" class="alumniLogo">
                         </a>
                     </div>
@@ -272,7 +300,8 @@
 </div>
 <!--page wrapper div-->
 
-
+<script src="/js/image-loader.js"></script>
+<!--<script th:src="@{/js/image-loader.js}"></script>-->
 <footer th:insert="~{partials/footer :: footer}"></footer>
 
 </body>
