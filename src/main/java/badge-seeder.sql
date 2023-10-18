@@ -1,11 +1,9 @@
 use kyte_db;
 insert into badges(id, img, name)
-values (1, '1.svg', 'Fostered a barnyard animal'),
-       (2, '2.svg', 'Fostered a dog'),
-       (3, '3.svg', 'Fostered a rabbit'),
-       (4,'4.svg', 'Fostered a small furry animal'),
-       (5,'5.svg', 'Fostered a scaly friend'),
-       (6, '6.svg', 'Fostered a bird'),
-       (7,'7.svg', 'Fostered a cat'),
-       (8,'8.svg', 'Fostered a old friend');
+values (1, 'barn-badge.png', 'Fostered a barnyard animal'),
+       (2, 'dog-badge.png', 'Fostered a dog'),
+       (3, 'carrot-badge.png', 'Fostered a rabbit'),
+       (4,'scales-badge.png', 'Fostered a scaly friend'),
+       (5, 'bird-badge.png', 'Fostered a bird'),
+       (6,'cat-badge.png', 'Fostered a cat');
 

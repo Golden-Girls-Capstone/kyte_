@@ -26,10 +26,9 @@ public class AssignUserBadgesService {
             case "dog" -> badgesDao.findBadgeById(2);
             case "rabbit" -> badgesDao.findBadgeById(3);
             case "small-furry" -> badgesDao.findBadgeById(4);
-            case "scales-fins-other" -> badgesDao.findBadgeById(5);
-            case "bird" -> badgesDao.findBadgeById(6);
-            case "cat" -> badgesDao.findBadgeById(7);
-//            case "old" -> badgesDao.findBadgeById(8);
+//            case "scales,fins & other" -> badgesDao.findBadgeById(5);
+            case "bird" -> badgesDao.findBadgeById(5);
+            case "cat" -> badgesDao.findBadgeById(6);
             default -> null;
         };
     }
