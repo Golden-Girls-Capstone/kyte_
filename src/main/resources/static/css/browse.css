@@ -107,6 +107,7 @@ a {
     flex-wrap: wrap;
     gap: 19px;
     margin-bottom: 4em;
+    margin-left: 70px;
 }
 
 .profile-image {
