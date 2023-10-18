@@ -27,10 +27,12 @@
                         </button>
                     </div>
                 </div>
+                <div th:if="${validationError}" th:text="${errorMessage}">
+                </div>
                 <br>
                 <!-- Button trigger modal -->
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade edit-profile-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -39,12 +41,11 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
-                            <div th:if="${invalidPassword == true}">
-                                <h2>Your password is incorrect!</h2>
+                            <div class="validation-error">
                             </div>
                             <div class="modal-body">
                                 <form th:action="@{/profile/edit}" th:method="post"
-                                      class=" row d-flex justify-content-center p-5"
+                                      class=" row d-flex justify-content-center p-5 edit-profile-form"
                                       th:object="${user}">
                                     <br>
                                     <input id="username" name="username" type="text" class="mb-1" th:field="*{username}"
@@ -57,13 +58,12 @@
                                            placeholder="Zipcode"/>
                                     <br>
                                     <input id="oldPassword" name="oldPassword" type="password" class="mb-1"
-                                           placeholder="old password"/>
+                                           placeholder="Current password"/>
                                     <br>
                                     <input id="newPassword" name="newPassword" type="password"
-                                           placeholder="new password"/>
+                                           placeholder="New password"/>
                                     <br>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
+
                                     <input type="submit" class="btn btn-primary" value="Update Account"/>
                                 </form>
                             </div>
@@ -153,7 +153,7 @@
                                 aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form th:action="@{/dashboard/review}" th:method="post" th:object="${review}"
+                        <form th:action="@{/dashboard/review}" th:method="post" th:if="${review != null}" th:object="${review}"
                               class=" row d-flex justify-content-center p-5">
                             <input id="foster-review-input" name="foster_review" class="form-control" type="text"
                                    th:field="${review.body}"

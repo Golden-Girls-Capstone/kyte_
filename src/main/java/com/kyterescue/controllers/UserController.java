@@ -69,19 +69,26 @@ public class UserController {
     public String editProfile(@ModelAttribute User user,
                               @RequestParam String oldPassword,
                               @RequestParam String newPassword,
-                              @CurrentSecurityContext(expression = "authentication?.name") String username,
                               Model model
     ) {
-        User userToEdit = usersDao.findByUsername(username);
-        if (!passwordEncoder.matches(oldPassword, userToEdit.getPassword())) {
-            model.addAttribute("incorrectPassword", true);
-        } else {
-            userToEdit.setEmail(user.getEmail());
+        String errorMessage = "Bad credentials";
+        System.out.println("inside postmap");
+        User userToEdit = authenticationService.grabAuthenticationUserDetails(model);
+        System.out.println("This is user password: " + userToEdit.getPassword());
+        if (passwordEncoder.matches(oldPassword, userToEdit.getPassword())) {
+            System.out.println("inside correct password");
             userToEdit.setUsername(user.getUsername());
+            userToEdit.setEmail(user.getEmail());
             userToEdit.setZipcode(user.getZipcode());
-            userToEdit.setPassword(passwordEncoder.encode(newPassword));
+            if (!newPassword.equals("")) {
+                userToEdit.setPassword(passwordEncoder.encode(newPassword));
+            }
             usersDao.save(userToEdit);
+        } else {
+            System.out.println("inside incorrect password");
+            model.addAttribute("validationError");
+            model.addAttribute("errorMessage", errorMessage);
         }
-        return "redirect:/dashboard";
+        return "pets/dashboard";
     }
 }
