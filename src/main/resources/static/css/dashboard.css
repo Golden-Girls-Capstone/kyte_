@@ -509,3 +509,11 @@ margin-top: 5em;
 /*.dash-review-container {*/
 /*    margin-left: 13em;*/
 /*}*/
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+
+}
