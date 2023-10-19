@@ -131,6 +131,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
+                        <h2 class="review-modal-title">Leave your review here</h2>
                         <form th:action="@{/dashboard/review}" th:method="post" th:if="${review != null}" th:object="${review}"
                               class=" row d-flex justify-content-center p-5">
                             <input id="foster-review-input" name="foster_review" class="form-control" type="text"
