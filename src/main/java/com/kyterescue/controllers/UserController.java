@@ -3,6 +3,8 @@ import com.kyterescue.entities.*;
 import com.kyterescue.services.AuthenticationService;
 import com.kyterescue.services.CheckForUniqueService;
 import com.kyterescue.services.EmailService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -67,29 +69,12 @@ public class UserController {
     }
 
     @PostMapping("/profile/edit")
-    public String editProfile(@ModelAttribute User user,
-                              @RequestParam String oldPassword,
-                              @RequestParam String newPassword,
-                              Model model
-    ) {
-        String errorMessage = "Bad credentials";
-        System.out.println("inside postmap");
+    public void editProfile(@ModelAttribute User user, Model model, HttpServletRequest request) throws ServletException {
         User userToEdit = authenticationService.grabAuthenticationUserDetails(model);
-        System.out.println("This is user password: " + userToEdit.getPassword());
-        if (passwordEncoder.matches(oldPassword, userToEdit.getPassword())) {
-            System.out.println("inside correct password");
             userToEdit.setUsername(user.getUsername());
             userToEdit.setEmail(user.getEmail());
             userToEdit.setZipcode(user.getZipcode());
-            if (!newPassword.equals("")) {
-                userToEdit.setPassword(passwordEncoder.encode(newPassword));
-            }
             usersDao.save(userToEdit);
-        } else {
-            System.out.println("inside incorrect password");
-            model.addAttribute("validationError");
-            model.addAttribute("errorMessage", errorMessage);
-        }
-        return "pets/dashboard";
+            request.logout();
     }
 }

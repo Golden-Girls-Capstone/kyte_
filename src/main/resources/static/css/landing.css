@@ -559,33 +559,27 @@ button.navbar-toggler.collapsed {
     justify-content: center;
 }
 
-/*Hamster Loader*/
 #loading-ham {
+    position: fixed;
     z-index: 999;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(5px);
-    /*background-color: #fff;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15rem;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .loader {
-    border: 16px solid  #0000FF;
-    border-top: 16px solid #7EC8E3;;
+    border: 16px solid #0000FF;
+    border-top: 16px solid #7EC8E3;
     border-radius: 50%;
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
 }
-
-#content-container {
-    display: none;
-}
-
-
 
 
