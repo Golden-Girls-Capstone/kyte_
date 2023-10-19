@@ -1,6 +1,7 @@
 body{
     color: #20254b;
     font-family: 'Montserrat', sans-serif;
+    height: 100vh;
 }
 
 .user-profile-container{
