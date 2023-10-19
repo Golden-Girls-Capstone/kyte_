@@ -22,6 +22,6 @@ document.onreadystatechange = function() {
         setTimeout(function() {
             document.querySelector("#loading-ham").style.display = "none";
             document.querySelector("body").classList.remove("loading");
-        }, 3000);
+        }, 6000);
     }
 };
