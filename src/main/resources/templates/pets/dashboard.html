@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <div th:insert="partials/header:: header"></div>
-    <!--    <link rel="stylesheet" href="/css/dashboard.css">-->
     <link rel="stylesheet" href="/css/dashboard.css">
     <title>Title</title>
 </head>
@@ -19,8 +18,7 @@
             <!--        USER INFO AND EDIT BUTTON-->
             <div class="column user-info">
                 <div class=" user-info-wrapper">
-                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!
-                    </h2>
+                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!</h2>
                     <div class="user-btns column">
                         <button type="button" class="edit-account-btn" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
@@ -29,16 +27,16 @@
                     </div>
                 </div>
                 <br>
-                <!-- Button trigger modal -->
 
+                <!-- Button trigger modal -->
                 <div class="modal fade edit-profile-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-
                             <div class="validation-error">
                             </div>
                             <div class="modal-body">
+                                <h2 class="model-title">Edit Profile</h2>
                                 <form th:action="@{/profile/edit}" th:method="post"
                                       class=" row d-flex justify-content-center p-5 edit-profile-form"
                                       th:object="${user}">
@@ -52,13 +50,12 @@
                                     <input id="zipcode" name="zipcode" type="text" class="mb-1" th:field="*{zipcode}"
                                            placeholder="Zipcode"/>
                                     <br>
-                                    <input id="oldPassword" name="oldPassword" type="password" class="mb-1"
-                                           placeholder="Current password"/>
-                                    <br>
-                                    <input id="newPassword" name="newPassword" type="password"
-                                           placeholder="New password"/>
-                                    <br>
-
+<!--                                    <input id="oldPassword" name="oldPassword" type="password" class="mb-1"-->
+<!--                                           placeholder="Current password"/>-->
+<!--                                    <br>-->
+<!--                                    <input id="newPassword" name="newPassword" type="password"-->
+<!--                                           placeholder="New password"/>-->
+<!--                                    <br>-->
                                     <input type="submit" class="edit-account-btn" value="Update Account"/>
                                 </form>
                             </div>
@@ -75,8 +72,6 @@
                     </div>
                 </div>
             </div>
-            <!--            <div class="column text-center badges-display">-->
-            <!--            </div>-->
         </div>
     </div>
     <!--        ANCHOR TAGS-->
@@ -85,9 +80,6 @@
         <button class="view-tab-buttons" id="showFosters">Show Fosters</button>
         <button class="view-tab-buttons" id="showReviews">Show Reviews</button>
     </div>
-
-
-
     <!--        FAVORITES PAGE-->
     <div class="container vh-50 p-5 dash-favorite-container hidden">
         <div class="favorites-container">
@@ -105,7 +97,6 @@
             </div>
         </div>
     </div>
-
 
     <div id="userFosters" class="dash-foster-container hidden">
         <div class="column foster-info">
@@ -140,6 +131,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
+                        <h2 class="review-modal-title">Leave your review here</h2>
                         <form th:action="@{/dashboard/review}" th:method="post" th:if="${review != null}" th:object="${review}"
                               class=" row d-flex justify-content-center p-5">
                             <input id="foster-review-input" name="foster_review" class="form-control" type="text"
@@ -152,7 +144,6 @@
             </div>
         </div>
     </div>
-
 
     <!--    USERS REVIEWS PAGE-->
     <div class="dash-review-container hidden">
@@ -172,7 +163,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 
