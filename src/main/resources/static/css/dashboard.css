@@ -461,7 +461,14 @@ margin-top: 5em;
 /*    margin-left: 13em;*/
 /*}*/
 
-.model-title{
+.nullMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Young Serif', serif);
+    text-align: center;
+
+  .model-title{
     text-align: center;
     margin-bottom: 1px;
 }
