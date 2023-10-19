@@ -14,31 +14,32 @@
 <body>
 <nav th:insert="partials/navbar :: nav"></nav>
 <form action="@{/about}" th:method="get"></form>
-<div class="container-fluid">
-    <div class="hamsterLoadingContainer">
-        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster" id="hamsterLoader">
-            <div class="hamster-loader">
 
-                <div class="wheel"></div>
-                <div class="hamster">
-                    <div class="hamster__body">
-                        <div class="hamster__head">
-                            <div class="hamster__ear"></div>
-                            <div class="hamster__eye"></div>
-                            <div class="hamster__nose"></div>
-                        </div>
-                        <div class="hamster__limb hamster__limb--fr"></div>
-                        <div class="hamster__limb hamster__limb--fl"></div>
-                        <div class="hamster__limb hamster__limb--br"></div>
-                        <div class="hamster__limb hamster__limb--bl"></div>
-                        <div class="hamster__tail"></div>
+<div class="hamsterLoadingContainer" id="loading-ham">
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster" id="hamsterLoader">
+        <div class="hamster-loader">
+
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
                     </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
                 </div>
-                <div class="spoke"></div>
             </div>
+            <div class="spoke"></div>
         </div>
-
     </div>
+
+</div>
+<div class="container-fluid" id="content-container">
     <div class="devs-container">
 
         <h1 class="meet-Devs title-text"> Meet The Developers </h1>
