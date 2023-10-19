@@ -18,7 +18,8 @@
             <!--        USER INFO AND EDIT BUTTON-->
             <div class="column user-info">
                 <div class=" user-info-wrapper">
-                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!</h2>
+                    <h2 class="welcome-text"> Welcome, <span th:if="${user != null}" th:text="${user.username}"></span>!
+                    </h2>
                     <div class="user-btns column">
                         <button type="button" class="edit-account-btn" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
@@ -30,7 +31,8 @@
 
 
                 <!-- Button trigger modal -->
-                <div class="modal fade edit-profile-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade edit-profile-modal" id="exampleModal" tabindex="-1"
+                     aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -51,12 +53,12 @@
                                     <input id="zipcode" name="zipcode" type="text" class="mb-1" th:field="*{zipcode}"
                                            placeholder="Zipcode"/>
                                     <br>
-<!--                                    <input id="oldPassword" name="oldPassword" type="password" class="mb-1"-->
-<!--                                           placeholder="Current password"/>-->
-<!--                                    <br>-->
-<!--                                    <input id="newPassword" name="newPassword" type="password"-->
-<!--                                           placeholder="New password"/>-->
-<!--                                    <br>-->
+                                    <!--                                    <input id="oldPassword" name="oldPassword" type="password" class="mb-1"-->
+                                    <!--                                           placeholder="Current password"/>-->
+                                    <!--                                    <br>-->
+                                    <!--                                    <input id="newPassword" name="newPassword" type="password"-->
+                                    <!--                                           placeholder="New password"/>-->
+                                    <!--                                    <br>-->
                                     <input type="submit" class="edit-account-btn" value="Update Account"/>
                                 </form>
                             </div>
@@ -87,68 +89,43 @@
         <div class="favorites-container">
             <h2 class="favorites-header favorites-header-js">Favorites:</h2>
             <div class="scrollable-container">
-                <div th:if="${favorites == null or favorites.isEmpty()}" class="favorites favorites-cards">
-                    <h1 class="nullMessage d-flex">No favorites yet!</h1>
-                </div>
-                <div th:unless="${favorites == null or favorites.isEmpty()}" class="favorites favorites-cards">
-                    <div th:each="favorite : ${favorites}" class="card-body">
+                <div th:each="favorite : ${favorites}" class="favorites favorites-cards">
+                    <div class="cards-body">
                         <img class="favorites-pet-pic" th:src="${favorite.photo}">
                         <h5 class="card-title fav-pet-name"><span th:text="${favorite.name}"></span></h5>
                     </div>
                 </div>
-<!--                <div th:each="favorite : ${favorites}" class="favorites favorites-cards">-->
-<!--                    <div th:if="${favorites == null}">-->
-<!--                        <h1>No favorites yet!</h1>-->
-<!--                    </div>-->
-<!--                    <div th:unless="${favorites != null}">-->
-
-<!--                        <div class="card-body">-->
-<!--                            <img class="favorites-pet-pic" th:src="${favorite.photo}">-->
-<!--                            <h5 class="card-title fav-pet-name"><span th:text="${favorite.name}"></span></h5>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </div>
 
     <div id="userFosters" class="dash-foster-container hidden">
         <div class="column foster-info">
-            <div th:if="${current == null or current.isEmpty()}">
-                <h1 class="nullMessage d-flex">No Fosters yet!</h1>
-            </div>
-            <div th:unless="${current == null or current.isEmpty()}">
-                <div class="cards-hide active current-cards fosters-js" th:if="${current != null}" th:object="${current}">
-                    <h2 class="profile-header current-foster-header-js">Current Foster: </h2>
-                    <div class="current-foster-card-container">
-                        <img class="current-foster-pet-pic" th:src="${current.photo}">
-                        <h4 class="current-foster-name" th:if="${current != null}" th:text="${current.name}"></h4>
+            <div class="cards-hide active current-cards fosters-js" th:if="${current != null}"
+                 th:object="${current}">
+                <h2 class="profile-header current-foster-header-js">Current Foster: </h2>
+                <div class="current-foster-card-container">
+                    <img class="current-foster-pet-pic" th:src="${current.photo}">
+                    <h4 class="current-foster-name" th:if="${current != null}" th:text="${current.name}"></h4>
 
-                        <button type="button" class="complete-foster-btn" data-bs-toggle="modal"
-                                data-bs-target="#review-modal">
-                            Complete Foster
-                        </button>
-            </div>
-
+                    <button type="button" class="complete-foster-btn" data-bs-toggle="modal"
+                            data-bs-target="#review-modal">
+                        Complete Foster
+                    </button>
                 </div>
             </div>
         </div>
 
         <div class="foster-container previousFostersHeader">
-            <div th:if="${foster == null or null.isEmpty()}">
-            </div>
-            <div th:unless="${foster == null or foster.isEmpty()}">
-                <h2 class="profile-header">Previous Fosters:</h2>
-                <div class="previous-foster-container"> <!-- Add this container -->
-                    <div id="prev-foster" class="previous-cards" th:each="foster: ${fosters}">
-                        <div class="previous-foster-card">
-                            <img class="previous-foster-pet-pic" th:src="${foster.photo}">
-                            <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
-                        </div>
+            <h2 class="profile-header">Previous Fosters:</h2>
+            <div class="previous-foster-container"> <!-- Add this container -->
+                <div id="prev-foster" class="previous-cards" th:each="foster: ${fosters}">
+                    <div class="previous-foster-card">
+                        <img class="previous-foster-pet-pic" th:src="${foster.photo}">
+                        <h4 th:if="${foster.name != null}" th:text="${foster.name}"></h4>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="modal fade" id="review-modal" tabindex="-1" aria-labelledby="fosterModal"
@@ -156,10 +133,9 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
+                        <h2 class="review-modal-title">Leave your review here</h2>
                         <form th:action="@{/dashboard/review}" th:method="post" th:if="${review != null}"
                               th:object="${review}"
-                        <h2 class="review-modal-title">Leave your review here</h2>
-                        <form th:action="@{/dashboard/review}" th:method="post" th:if="${review != null}" th:object="${review}"
                               class=" row d-flex justify-content-center p-5">
                             <input id="foster-review-input" name="foster_review" class="form-control" type="text"
                                    th:field="${review.body}"
@@ -173,54 +149,25 @@
     </div>
 
     <!--    USERS REVIEWS PAGE-->
+
     <div class="dash-review-container hidden">
-        <div th:if="${reviews == null or #lists.isEmpty(reviews)}">
-            <h1 class="nullMessage ">No reviews yet!</h1>
-        </div>
-        <div th:unless="${reviews == null or #lists.isEmpty(reviews)}">
-            <div class="reviews-container">
-                <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
-                    <div class="reviews-cards" th:review-id="${review.id}">
-                        <div class="card-body review-card">
-                            <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
-                            <h5 class="card-title review-pet review-pet-name"><span th:text="${review.pet.getName()}"></span></h5>
-                            <p class="card-text">Review: <span th:text="${review.body}"></span></p>
-                            <!-- delete button -->
-                            <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
-                                <button class="delete-review-btn">Delete Review</button>
-                            </form>
-                        </div>
+        <div class="reviews-container">
+            <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">
+                <div class="reviews-cards" th:review-id="${review.id}">
+                    <div class="card-body review-card">
+                        <img class="review-foster-pet-pic" th:src="${review.pet.photo}">
+                        <h5 class="card-title review-pet review-pet-name"><span
+                                th:text="${review.pet.getName()}"></span></h5>
+                        <p class="card-text">Review: <span th:text="${review.body}"></span></p>
+                        <!-- delete button -->
+                        <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">
+                            <button class="delete-review-btn">Delete Review</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--    <div class="dash-review-container hidden">-->
-<!--        <div th:if="${review == null or review.isEmpty()}">-->
-<!--            <h1>No reviews yet!</h1>-->
-<!--        </div>-->
-<!--        <div th:unless="${review == null or review.isEmpty()}">-->
-<!--            <div class="reviews-container">-->
-<!--                <div th:each="review : ${reviews}" class="col-12 col-lg-6 col-xl-4 my-2">-->
-<!--                    <div class="reviews-cards" th:review-id="${review.id}">-->
-<!--                        <div class="card-body review-card">-->
-<!--                            <img class="review-foster-pet-pic" th:src="${review.pet.photo}">-->
-<!--                            <h5 class="card-title review-pet review-pet-name"><span-->
-<!--                                    th:text="${review.pet.getName()}"></span></h5>-->
-<!--                            <p class="card-text">Review: <span th:text="${review.body}"></span></p>-->
-<!--                            &lt;!&ndash; delete button &ndash;&gt;-->
-<!--                            <form th:action="@{|/dashboard/review/delete/${review.id}|}" th:method="POST">-->
-<!--                                <button class="delete-review-btn">Delete Review</button>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--    </div>-->
-
 </div>
 
 <script src="/js/dashboard.js"></script>
