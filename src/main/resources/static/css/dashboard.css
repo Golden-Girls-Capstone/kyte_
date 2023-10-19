@@ -465,8 +465,9 @@ margin-top: 5em;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Young Serif', serif);
+    font-family: 'Young Serif', serif;
     text-align: center;
+}
 
   .model-title{
     text-align: center;
@@ -476,4 +477,8 @@ margin-top: 5em;
 .review-modal-title{
     text-align: center;
     margin-bottom: 1px;
+}
+
+.update-alert{
+    color: red;
 }
